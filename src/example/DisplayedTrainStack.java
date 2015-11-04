@@ -1,0 +1,49 @@
+package example;
+
+public class DisplayedTrainStack extends Stack {
+	
+	private TrainCard [] stack;
+	private int currentAmount;
+
+	public DisplayedTrainStack(int _amount) {
+		super(_amount);
+		
+		stack = new TrainCard [this.getAmount()];
+	}
+	
+	public void draw (){
+		/**
+		 * again, a function that exists in a few places, unsure where to do this
+		 */
+	}
+	
+	public void checkIfThreeJokers(){
+		/**
+		 * 
+		 * gets called every time there are new cards in the stack, if there are three jokers
+		 * then call discard and replenish all
+		 */
+	}
+	public void discardStack (){
+		/**
+		 * 
+		 * 
+		 * add the entire stack to trash, delete entire stack, call replenishall
+		 */
+		
+	}
+	public void replenish(){
+		
+		/**
+		 * replenish one card to the five visible ones
+		 */
+	
+	}
+	public void replenishAll(){
+		/**
+		 * replenish all 5 cards due to 3 jokers
+		 */
+		
+	}
+	
+}

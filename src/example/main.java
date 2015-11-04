@@ -10,7 +10,7 @@ public class main {
 
 		DatagramSocket socket;
 		
-		Connection c1 = new Connection(new Color(), new Town(), new Town(), 4, 7);
+		
 		
 		
 		
