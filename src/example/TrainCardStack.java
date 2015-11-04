@@ -8,7 +8,7 @@ public class TrainCardStack extends Stack{
 	public TrainCardStack(int _amount) {
 		super(_amount);
 		
-		stack = new TrainCard [this.getAmount()];
+		setStack(new TrainCard [this.getAmount()]);
 	}
 	
 
@@ -22,6 +22,16 @@ public class TrainCardStack extends Stack{
 		 * removes the first or last card from the array
 		 * transfers it to either a hand stack or the 5 visibile stack
 		 */
+	}
+
+
+	public TrainCard [] getStack() {
+		return this.stack;
+	}
+
+
+	public void setStack(TrainCard [] stack) {
+		this.stack = stack;
 	}
 	
 }
