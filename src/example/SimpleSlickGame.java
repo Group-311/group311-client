@@ -24,6 +24,7 @@ public class SimpleSlickGame extends BasicGame
 	public void render(GameContainer gc, Graphics g) throws SlickException
 	{
 		g.drawString("Stop, siger Kirsten!", 250, 200);
+	
 	}
 
 	public static void main(String[] args)
