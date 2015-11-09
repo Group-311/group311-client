@@ -43,4 +43,26 @@ public class SimpleSlickGame extends BasicGame
 			Logger.getLogger(SimpleSlickGame.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
+	
+	/**
+	 * This function will check if two towns are connected
+	 * @param _townA 
+	 * The "start" town, you're checking if townB is connected to townA or vice versa
+	 * @param _townB
+	 * The "other" town.
+	 * @return
+	 * Returns true if any of the connections of townB starts or ends in townA.
+	 */
+	
+	public boolean checkConnected(Town _townA, Town _townB){
+		//Loop through all the connections of _townB
+		for(int i = 0; i < _townB.getConnections().length; i++){
+		//If any of the connections of _townB starts or ends in _townA, return true.
+		if(_townB.getConnections()[i].getTownA() == _townA 
+				|| _townB.getConnections()[i].getTownB() == _townA)
+		return true;
+		}
+		//else return false
+		return false;
+	}
 }

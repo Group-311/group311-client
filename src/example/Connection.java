@@ -25,13 +25,29 @@ public class Connection{
 		this.length = _length;
 		this.point = _point;
 		this.color = _color;
-		this.townA = _townA;
-		this.townB = _townB;
+		this.setTownA(_townA);
+		this.setTownB(_townB);
 		this.isTaken = false;
 	}
 	
 	public void makeTaken(){
 		this.isTaken = true;
+	}
+
+	public Town getTownA() {
+		return townA;
+	}
+
+	public void setTownA(Town townA) {
+		this.townA = townA;
+	}
+
+	public Town getTownB() {
+		return townB;
+	}
+
+	public void setTownB(Town townB) {
+		this.townB = townB;
 	}
 	
 
