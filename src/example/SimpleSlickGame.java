@@ -65,6 +65,7 @@ public class SimpleSlickGame extends BasicGame
 	}
 	
 	/**
+	 * ONLY CHECKS ONE CONNECTION BETWEEN TWO TOWNS
 	 * This function will check if two towns are connected
 	 * @param _townA 
 	 * The "start" town, you're checking if townB is connected to townA or vice versa

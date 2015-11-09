@@ -27,12 +27,9 @@ public class Connection{
 		this.color = _color;
 		this.setTownA(_townA);
 		this.setTownB(_townB);
-		this.isTaken = false;
+		this.setTaken(false);
 	}
 	
-	public void makeTaken(){
-		this.isTaken = true;
-	}
 
 	public Town getTownA() {
 		return townA;
@@ -48,6 +45,16 @@ public class Connection{
 
 	public void setTownB(Town townB) {
 		this.townB = townB;
+	}
+
+
+	public boolean isTaken() {
+		return isTaken;
+	}
+
+
+	public void setTaken(boolean isTaken) {
+		this.isTaken = isTaken;
 	}
 	
 

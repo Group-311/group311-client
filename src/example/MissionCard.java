@@ -15,7 +15,21 @@ public class MissionCard extends Card{
 		
 	}
 	
-	public void complete(){
+	/**
+	 * ONLY CHECKS FIRST CONNECTION AT THE MOMENT
+	 * 
+	 * Checks whether any of this.townAs connection is taken, if not then the mission
+	 *  could not possibly be completed.
+	 *  WILL WAIT FOR GRAPH LECTURE
+	 */
+	public void checkComplete(){
+		for(int i = 0; i < this.townA.getConnections().length; i++){
+		if(townA.getConnections()[i].isTaken())
+			for(int j = 0; j < townA.getConnections().length; j++){
+				
+			}
+		}
+		
 		this.isCompleted = true;
 	}
 }
