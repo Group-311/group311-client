@@ -5,6 +5,15 @@ public class Town {
 	private Connection [] connections;
 	private String name;
 	private int xPos, yPos;
+	public Town(String _name, int amountOfConnections, int _xPos, int _yPos, Connection connection, Connection connection2){
+		this.name = _name;
+		setConnections(new Connection [amountOfConnections]);
+		this.xPos = _xPos;
+		this.yPos = _yPos;
+		
+		connections[0] = connection;
+		connections[1] = connection2;
+	}
 	
 	public Town(String _name, int amountOfConnections, int _xPos, int _yPos, Connection connection, Connection connection2,
 			Connection connection3){
