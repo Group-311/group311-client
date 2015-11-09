@@ -5,8 +5,11 @@ public class PlayerPiece {
 	private int totalPoints, xPos, yPos;
 	private Color color;
 	private Train [] trains;
+	private Connection [] completedRoutes;
 	
 	PlayerPiece(){
+		
+		completedRoutes = new Connection [36];
 		
 	}
 	
