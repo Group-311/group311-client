@@ -1,10 +1,17 @@
 package example;
 
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-public class main {
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import com.sun.java.swing.plaf.windows.WindowsPasswordFieldUI;
+
+public class main extends JPanel {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
@@ -48,6 +55,10 @@ public class main {
 		{
 			
 		}
+	}
+	protected void paintComponent(Graphics g)
+	{
+		
 	}
 
 }
