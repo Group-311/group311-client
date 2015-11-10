@@ -27,24 +27,24 @@ public class Board {
 		colors[7] = new Color("green", 7);
 		colors[8] = new Color("pink", 8);
 		
-		connections[0] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[10] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[1] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[11] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[2] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[12] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[3] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[13] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[4] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[14] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[5] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[15] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[6] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[16] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[7] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[17] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[8] = new Connection(colors[6], towns[0], towns[5], 3, 4);			connections[18] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[9] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[19] = new Connection(colors[6], towns[0], towns[1], 1, 1);
+		connections[0] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[10] = new Connection(colors[4], towns[1], towns[6], 6, 13);	
+		connections[1] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[11] = new Connection(colors[0], towns[2], towns[7], 6, 13);	
+		connections[2] = new Connection(colors[6], towns[1], towns[2], 1, 1);			connections[12] = new Connection(colors[2], towns[3], towns[7], 5, 10);	
+		connections[3] = new Connection(colors[6], towns[1], towns[2], 1, 1);			connections[13] = new Connection(colors[3], towns[3], towns[7], 5, 10);	
+		connections[4] = new Connection(colors[7], towns[2], towns[3], 5, 10);			connections[14] = new Connection(colors[6], towns[3], towns[8], 2, 2);	
+		connections[5] = new Connection(colors[8], towns[2], towns[3], 5, 10);			connections[15] = new Connection(colors[6], towns[4], towns[9], 3, 4);	
+		connections[6] = new Connection(colors[4], towns[3], towns[4], 3, 4);			connections[16] = new Connection(colors[5], towns[4], towns[13], 6, 13);	
+		connections[7] = new Connection(colors[8], towns[3], towns[4], 3, 4);			connections[17] = new Connection(colors[3], towns[5], towns[10], 6, 13);	
+		connections[8] = new Connection(colors[6], towns[0], towns[5], 3, 4);			connections[18] = new Connection(colors[6], towns[5], towns[6], 4, 7);	
+		connections[9] = new Connection(colors[6], towns[1], towns[5], 4, 7);			connections[19] = new Connection(colors[8], towns[6], towns[7], 3, 4);
 		
-		connections[20] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[30] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[21] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[31] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[22] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[32] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[23] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[33] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[24] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[34] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[25] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[35] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[26] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[36] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
+		connections[20] = new Connection(colors[1], towns[7], towns[11], 3, 4);			connections[30] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
+		connections[21] = new Connection(colors[4], towns[7], towns[11], 3, 4);			connections[31] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
+		connections[22] = new Connection(colors[3], towns[9], towns[11], 5, 10);			connections[32] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
+		connections[23] = new Connection(colors[6], towns[9], towns[12], 3, 4);			connections[33] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
+		connections[24] = new Connection(colors[6], towns[9], towns[13], 3, 4);			connections[34] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
+		connections[25] = new Connection(colors[0], towns[6], towns[10], 4, 7);			connections[35] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
+		connections[26] = new Connection(colors[2], towns[6], towns[14], 6, 13);			connections[36] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
 		connections[27] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[37] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
 		connections[28] = new Connection(colors[6], towns[0], towns[5], 3, 4);			connections[38] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
 		connections[29] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[39] = new Connection(colors[6], towns[0], towns[1], 1, 1);
@@ -79,7 +79,7 @@ public class Board {
 		connections[85] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[95] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
 		connections[86] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[96] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
 		connections[87] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[97] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[88] = new Connection(colors[6], towns[0], towns[5], 3, 4);				
+		connections[88] = new Connection(colors[6], towns[0], towns[5], 3, 4);			connections[98] = new Connection(colors[6], towns[0], towns[1], 1, 1);
 		connections[89] = new Connection(colors[6], towns[0], towns[1], 1, 1);			
 		
 		
