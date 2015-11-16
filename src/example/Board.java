@@ -13,7 +13,7 @@ public class Board {
 	Board(int numOfPlayers){
 		
 		towns = new Town [36];
-		connections = new Connection[100];
+		connections = new Connection[99];
 		colors = new Color[9];
 		players = new PlayerPiece[numOfPlayers];
 		
@@ -49,38 +49,38 @@ public class Board {
 		connections[28] = new Connection(colors[7], towns[6], towns[11], 4, 7);			connections[38] = new Connection(colors[7], towns[13], towns[19], 6, 13);	
 		connections[29] = new Connection(colors[8], towns[11], towns[15], 4, 7);		connections[39] = new Connection(colors[6], towns[10], towns[20], 6, 13);
 		
-		connections[40] = new Connection(colors[5], towns[10], towns[14], 4, 7);			connections[50] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[41] = new Connection(colors[6], towns[14], towns[20], 3, 4);			connections[51] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[42] = new Connection(colors[8], towns[14], towns[26], 6, 13);			connections[52] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[43] = new Connection(colors[1], towns[14], towns[21], 3, 4);			connections[53] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[44] = new Connection(colors[6], towns[14], towns[15], 2, 2);			connections[54] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[45] = new Connection(colors[6], towns[14], towns[15], 2, 2);			connections[55] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[46] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[56] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[47] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[57] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[48] = new Connection(colors[6], towns[0], towns[5], 3, 4);			connections[58] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[49] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[59] = new Connection(colors[6], towns[0], towns[1], 1, 1);
+		connections[40] = new Connection(colors[5], towns[10], towns[14], 4, 7);		connections[50] = new Connection(colors[8], towns[16], towns[22], 2, 2);	
+		connections[41] = new Connection(colors[6], towns[14], towns[20], 3, 4);		connections[51] = new Connection(colors[6], towns[16], towns[17], 2, 2);	
+		connections[42] = new Connection(colors[8], towns[14], towns[26], 6, 13);		connections[52] = new Connection(colors[6], towns[16], towns[17], 2, 2);	
+		connections[43] = new Connection(colors[1], towns[14], towns[21], 3, 4);		connections[53] = new Connection(colors[6], towns[17], towns[23], 2, 2);	
+		connections[44] = new Connection(colors[6], towns[14], towns[15], 2, 2);		connections[54] = new Connection(colors[6], towns[17], towns[18], 2, 2);	
+		connections[45] = new Connection(colors[6], towns[14], towns[15], 2, 2);		connections[55] = new Connection(colors[6], towns[17], towns[18], 2, 2);	
+		connections[46] = new Connection(colors[0], towns[15], towns[21], 4, 7);		connections[56] = new Connection(colors[6], towns[18], towns[23], 2, 2);	
+		connections[47] = new Connection(colors[6], towns[15], towns[16], 1, 1);		connections[57] = new Connection(colors[6], towns[18], towns[19], 1, 1);	
+		connections[48] = new Connection(colors[6], towns[15], towns[16], 1, 1);		connections[58] = new Connection(colors[6], towns[18], towns[19], 1, 1);	
+		connections[49] = new Connection(colors[0], towns[16], towns[22], 2, 2);		connections[59] = new Connection(colors[6], towns[18], towns[24], 2, 2);
 		
-		connections[60] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[70] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[61] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[71] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[62] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[72] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[63] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[73] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[64] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[74] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[65] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[75] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[66] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[76] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[67] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[77] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[68] = new Connection(colors[6], towns[0], towns[5], 3, 4);			connections[78] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[69] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[79] = new Connection(colors[6], towns[0], towns[1], 1, 1);
+		connections[60] = new Connection(colors[5], towns[20], towns[25], 5, 10);		connections[70] = new Connection(colors[6], towns[22], towns[23], 2, 2);	
+		connections[61] = new Connection(colors[6], towns[20], towns[26], 2, 2);		connections[71] = new Connection(colors[3], towns[23], towns[28], 3, 4);	
+		connections[62] = new Connection(colors[6], towns[26], towns[25], 3, 4);		connections[72] = new Connection(colors[7], towns[23], towns[24], 3, 4);	
+		connections[63] = new Connection(colors[3], towns[21], towns[26], 4, 7);		connections[73] = new Connection(colors[4], towns[24], towns[29], 4, 7);	
+		connections[64] = new Connection(colors[2], towns[21], towns[27], 3, 4);		connections[74] = new Connection(colors[2], towns[24], towns[29], 4, 7);	
+		connections[65] = new Connection(colors[5], towns[21], towns[27], 3, 4);		connections[75] = new Connection(colors[1], towns[24], towns[35], 6, 13);	
+		connections[66] = new Connection(colors[7], towns[21], towns[22], 2, 2);		connections[76] = new Connection(colors[6], towns[26], towns[27], 2, 2);	
+		connections[67] = new Connection(colors[3], towns[21], towns[22], 2, 2);		connections[77] = new Connection(colors[3], towns[27], towns[31], 2, 2);	
+		connections[68] = new Connection(colors[7], towns[22], towns[27], 5, 10);		connections[78] = new Connection(colors[7], towns[27], towns[31], 2, 2);	
+		connections[69] = new Connection(colors[6], towns[22], towns[28], 2, 2);		connections[79] = new Connection(colors[6], towns[27], towns[32], 2, 2);
 		
-		connections[80] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[90] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[81] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[91] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[82] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[92] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[83] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[93] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[84] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[94] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[85] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[95] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[86] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[96] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[87] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[97] = new Connection(colors[6], towns[0], towns[1], 1, 1);	
-		connections[88] = new Connection(colors[6], towns[0], towns[5], 3, 4);			connections[98] = new Connection(colors[6], towns[0], towns[1], 1, 1);
-		connections[89] = new Connection(colors[6], towns[0], towns[1], 1, 1);			
+		connections[80] = new Connection(colors[6], towns[27], towns[33], 2, 2);		connections[90] = new Connection(colors[1], towns[25], towns[31], 3, 4);	
+		connections[81] = new Connection(colors[4], towns[27], towns[28], 4, 7);		connections[91] = new Connection(colors[4], towns[30], towns[31], 2, 2);	
+		connections[82] = new Connection(colors[5], towns[28], towns[33], 3, 4);		connections[92] = new Connection(colors[1], towns[30], towns[31], 2, 2);	
+		connections[83] = new Connection(colors[6], towns[28], towns[29], 1, 1);		connections[93] = new Connection(colors[2], towns[31], towns[32], 2, 2);	
+		connections[84] = new Connection(colors[6], towns[29], towns[33], 2, 2);		connections[94] = new Connection(colors[5], towns[31], towns[32], 2, 2);	
+		connections[85] = new Connection(colors[6], towns[29], towns[33], 2, 2);		connections[95] = new Connection(colors[6], towns[32], towns[33], 2, 2);	
+		connections[86] = new Connection(colors[6], towns[29], towns[34], 2, 2);		connections[96] = new Connection(colors[6], towns[32], towns[33], 2, 2);	
+		connections[87] = new Connection(colors[0], towns[29], towns[35], 5, 10);		connections[97] = new Connection(colors[6], towns[33], towns[34], 2, 2);	
+		connections[88] = new Connection(colors[6], towns[25], towns[30], 2, 2);		connections[98] = new Connection(colors[8], towns[34], towns[35], 4, 7);
+		connections[89] = new Connection(colors[6], towns[25], towns[30], 2, 2);			
 		
 		
 		towns[0] = new Town("Vancouver", 3, 94, 591, connections[0],connections[1], connections[8]);
