@@ -52,6 +52,9 @@ public class SimpleSlickGame extends BasicGame
 	public static void main(String[] args)
 	{
 		Board board = new Board(3);
+		System.out.println(board.connections[28].getTownA().getName());
+		System.out.println(board.towns[20].getName());
+		System.out.println(board.towns[20].getConnection(1).getTownA().getName());
 		try
 		{
 			AppGameContainer appgc;
