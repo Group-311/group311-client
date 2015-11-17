@@ -16,6 +16,9 @@ import com.sun.javafx.collections.MappingChange.Map;
 
 import sun.net.www.content.image.gif;
 
+import java.io.*;
+import java.net.*;
+
 public class SimpleSlickGame extends BasicGame
 {
 	public SimpleSlickGame(String gamename)
@@ -49,12 +52,31 @@ public class SimpleSlickGame extends BasicGame
 	}
 	
 
-	public static void main(String[] args)
+	public static void main(String[] args)  
 	{
 		Board board = new Board(3);
 		System.out.println(board.connections[28].getTownA().getName());
 		System.out.println(board.towns[20].getName());
 		System.out.println(board.towns[20].getConnection(1).getTownA().getName());
+		
+	try{
+			
+			String sentence;
+			String modifiedSentence;
+			BufferedReader inFromUser = new BufferedReader( new InputStreamReader(System.in));
+			Socket clientSocket = new Socket("172.20.10.5", 1233);
+			DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
+			BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+			sentence = inFromUser.readLine();
+			outToServer.writeBytes(sentence + '\n');
+			modifiedSentence = inFromServer.readLine();
+			System.out.println("FROM SERVER: " + modifiedSentence);
+			clientSocket.close();
+			
+			}catch(Exception e){
+				System.out.println(e.getStackTrace());
+			}
+		
 		try
 		{
 			AppGameContainer appgc;
@@ -66,6 +88,7 @@ public class SimpleSlickGame extends BasicGame
 		{
 			Logger.getLogger(SimpleSlickGame.class.getName()).log(Level.SEVERE, null, ex);
 		}
+	
 	}
 	
 	/**
