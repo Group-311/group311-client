@@ -2,20 +2,28 @@ package example;
 
 import java.awt.image.BufferedImage;
 
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
+
 public class Board {
 	
-	private BufferedImage boardPic;
+	private Image boardPic;
 	Town [] towns;
 	PlayerPiece [] players;
 	Connection [] connections;
 	Color [] colors;
+	Card  summaryCard;
 	
-	Board(int numOfPlayers){
+	Board(int numOfPlayers) throws SlickException  {
 		
 		towns = new Town [36];
 		connections = new Connection[99];
 		colors = new Color[9];
 		players = new PlayerPiece[numOfPlayers];
+
+		
+		summaryCard = new SummaryCard();
+		
 		
 		colors[0] = new Color("blue", 0);
 		colors[1] = new Color("red", 1);
@@ -157,6 +165,17 @@ public class Board {
 		towns[34] = new Town("Charleston", 3, 781, 298,  connections[86], connections[97], connections[98]);
 		towns[35] = new Town("Miami", 3, 809, 159,  connections[75], connections[78], connections[87]);
 		
+		
+		
+		
+	}
+
+	public Image getBoardPic() {
+		return boardPic;
+	}
+
+	public void setBoardPic(Image boardPic) throws SlickException {
+		this.boardPic = new Image("map.jpg");
 	}
 
 }
