@@ -13,6 +13,7 @@ public class Board {
 	Connection [] connections;
 	Color [] colors;
 	Card  summaryCard;
+	Card[] missionCards;
 	
 	Board(int numOfPlayers) throws SlickException  {
 		
@@ -23,6 +24,8 @@ public class Board {
 
 		
 		summaryCard = new SummaryCard();
+		missionCards = new MissionCard[30];
+		
 		
 		
 		colors[0] = new Color("blue", 0);
@@ -166,7 +169,36 @@ public class Board {
 		towns[35] = new Town("Miami", 3, 809, 159,  connections[75], connections[78], connections[87]);
 		
 		
-		
+		missionCards[0] = new MissionCard(towns[11], towns[13],4);
+		missionCards[1] = new MissionCard(towns[16], towns[19],5);
+		missionCards[2] = new MissionCard(towns[31], towns[29],6);
+		missionCards[3] = new MissionCard(towns[5], towns[7],7);
+		missionCards[4] = new MissionCard(towns[21], towns[24],7);
+		missionCards[5] = new MissionCard(towns[6], towns[4],8);
+		missionCards[6] = new MissionCard(towns[20], towns[28],8);
+		missionCards[7] = new MissionCard(towns[14], towns[19],8);
+		missionCards[8] = new MissionCard(towns[25], towns[29],9);
+		missionCards[9] = new MissionCard(null, null,0);
+		missionCards[10] = new MissionCard(null, null,0);
+		missionCards[11] = new MissionCard(null, null,0);
+		missionCards[12] = new MissionCard(null, null,0);
+		missionCards[13] = new MissionCard(null, null,0);
+		missionCards[14] = new MissionCard(null, null,0);
+		missionCards[15] = new MissionCard(null, null,0);
+		missionCards[16] = new MissionCard(null, null,0);
+		missionCards[17] = new MissionCard(null, null,0);
+		missionCards[18] = new MissionCard(null, null,0);
+		missionCards[19] = new MissionCard(null, null,0);
+		missionCards[20] = new MissionCard(null, null,0);
+		missionCards[21] = new MissionCard(null, null,0);
+		missionCards[22] = new MissionCard(null, null,0);
+		missionCards[23] = new MissionCard(null, null,0);
+		missionCards[24] = new MissionCard(null, null,0);
+		missionCards[25] = new MissionCard(null, null,0);
+		missionCards[26] = new MissionCard(null, null,0);
+		missionCards[27] = new MissionCard(null, null,0);
+		missionCards[28] = new MissionCard(null, null,0);
+		missionCards[29] = new MissionCard(null, null,0);
 		
 	}
 
