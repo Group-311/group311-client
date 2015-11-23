@@ -2,15 +2,19 @@ package example;
 
 import java.awt.image.BufferedImage;
 
+import org.newdawn.slick.Image;
+
 public class MissionCard extends Card{
 	
 	private Town townA, townB;
 	private int points;
-	private BufferedImage image;
+	Image image;
 	private boolean isCompleted;
 
-	MissionCard(){
-		
+	MissionCard(Town townA,Town townB, int points){
+		this.townA=townA;
+		this.townB=townB;
+		this.points=points;
 		this.isCompleted = false;
 		
 	}
@@ -32,4 +36,6 @@ public class MissionCard extends Card{
 		
 		this.isCompleted = true;
 	}
+	
+	
 }
