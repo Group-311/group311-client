@@ -2,10 +2,61 @@ package example;
 
 import java.awt.image.BufferedImage;
 
-public class Card {
+import org.lwjgl.opengl.Drawable;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
+
+import com.sun.corba.se.spi.monitoring.StatisticsAccumulator;
+
+public class Card{
+	protected static int height, width;
+	protected  int xPos, yPos;
+protected Image frontImage,backImage;
+protected Image displayedImage;
+	private int visible=0;
+
+	public void setFrontImage(Image frontImage) throws SlickException {
+		this.frontImage = frontImage;
+	}
+	public Image getFrontImage() {
+		return frontImage;
+	}
+
+	public void setBackImage(Image backImage) throws SlickException {
+		this.backImage = backImage;
+	}
+	public Image getBackImage() {
+		return backImage;
+	}
+
+	public static void setWidth(int width) {
+		Card.width = width;
+	}
+	public static int getWidth() {
+		return width;
+	}
 	
-	protected int xPos, yPos, height, width;
+	public static void setHeight(int height) {
+		Card.height = height;
+	}
+	public static int getHeight() {
+		return height;
+	}
 	
-	protected BufferedImage frontImage, backImage;
+	public void flipCard() {
+		if (visible==0)
+			visible=1;
+		else
+			visible=0;
+	System.out.println("Card has been flipped");
+		return;
+	}
+	
+	public void setVisible(){
+		if (visible==0)
+			backImage.draw(xPos,0,width,height);
+		else
+			frontImage.draw(xPos,0,width,height);
+	}
 
 }
