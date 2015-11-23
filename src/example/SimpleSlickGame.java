@@ -26,6 +26,7 @@ public class SimpleSlickGame extends BasicGame {
 	static Board board;
 	private Image summaryBackImage = null;
 	private Image summaryFrontImage = null;
+	private Image genericCardBack = null;
 	private Image map = null;
 
 	int xpos;
@@ -45,6 +46,12 @@ public class SimpleSlickGame extends BasicGame {
 		summaryFrontImage = new Image("/summaryFront.jpg");
 		board.summaryCard.setBackImage(summaryBackImage);
 		board.summaryCard.setFrontImage(summaryFrontImage);
+		
+		genericCardBack = new Image("/genericCardBack.jpg");
+		
+		
+		
+		
 	}
 
 	@Override
