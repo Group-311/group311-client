@@ -22,7 +22,7 @@ public class SummaryCard extends Card {
 		super();
 	
 		xPos = 747;
-		yPos = 682;
+		yPos = 0;
 
 		
 		setHeight(85);

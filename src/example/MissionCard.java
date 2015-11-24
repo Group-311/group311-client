@@ -16,7 +16,6 @@ public class MissionCard extends Card{
 		this.townB=townB;
 		this.points=points;
 		this.isCompleted = false;
-		
 	}
 	
 	/**
@@ -35,6 +34,8 @@ public class MissionCard extends Card{
 		}
 		
 		this.isCompleted = true;
+		
+	 // Add points to the player who completed it
 	}
 	
 	

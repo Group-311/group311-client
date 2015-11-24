@@ -54,9 +54,9 @@ protected Image displayedImage;
 	
 	public void setVisible(){
 		if (visible==0)
-			backImage.draw(xPos,0,width,height);
+			backImage.draw(xPos,yPos,width,height);
 		else
-			frontImage.draw(xPos,0,width,height);
+			frontImage.draw(xPos,yPos,width,height);
 	}
 
 }
