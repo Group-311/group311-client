@@ -3,6 +3,9 @@ package example;
 import java.util.logging.Level;
 import org.lwjgl.input.Mouse;
 import java.util.logging.Logger;
+
+import javax.swing.text.StyledEditorKit.ForegroundAction;
+
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
@@ -39,6 +42,8 @@ public class SimpleSlickGame extends BasicGame {
 	private Image whiteTrainCard = null;
 	private Image yellowTrainCard = null;
 	private Image rainbowTrainCard = null;
+	
+	private Image[] missions= null;
 	
 	private Image map = null;
 
@@ -110,6 +115,15 @@ public class SimpleSlickGame extends BasicGame {
 		}
 		for (int i = 96; i < 110; i++) {
 			board.trainCards[i].setFrontImage(rainbowTrainCard);
+		}
+		
+		missions = new Image[30];
+		
+		//Loading and applying the missionCards.
+		for (int i=0; i<board.missionCards.length; i++)
+		{
+		missions[i] = new Image("/mission("+i+").png");
+		board.missionCards[i].setFrontImage(missions[i]);
 		}
 		
 		
