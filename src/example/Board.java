@@ -14,17 +14,20 @@ public class Board {
 	Color [] colors;
 	Card  summaryCard;
 	Card[] missionCards;
+	Card[] trainCards;
 	
 	Board(int numOfPlayers) throws SlickException  {
 		
 		towns = new Town [36];
 		connections = new Connection[99];
-		colors = new Color[9];
+		colors = new Color[10];
 		players = new PlayerPiece[numOfPlayers];
 
 		
 		summaryCard = new SummaryCard();
 		missionCards = new MissionCard[30];
+		trainCards = new TrainCard[110];
+		
 		
 		
 		
@@ -37,6 +40,7 @@ public class Board {
 		colors[6] = new Color("grey", 6);
 		colors[7] = new Color("green", 7);
 		colors[8] = new Color("pink", 8);
+		colors[9] = new Color("rainbow", 9);
 		
 		towns[0] = new Town("Vancouver", 3, 94, 591, connections[0],connections[1], connections[8]);
 		towns[1] = new Town("Seattle", 6, 92,542, connections[0], connections[1], connections[2], connections[3], connections[9], connections[10] );
@@ -200,14 +204,36 @@ public class Board {
 		missionCards[28] = new MissionCard(towns[4], towns[31],21);
 		missionCards[29] = new MissionCard(towns[1], towns[31],22);
 		
-	}
+		// Creating all the trainCards
+		for (int i = 0; i < trainCards.length; i++) {
+			if (i < 12) 
+				trainCards[i] = new TrainCard(colors[0]); // Blue
+			else if (i >= 12 && i < 24) 
+				trainCards[i] = new TrainCard(colors[1]); // Red
+			else if (i >= 24 && i < 36) 
+				trainCards[i] = new TrainCard(colors[2]); // Orange
+			else if (i >= 36 && i < 48) 
+				trainCards[i] = new TrainCard(colors[3]); // White
+			else if (i >= 48 && i < 60) 
+				trainCards[i] = new TrainCard(colors[4]); // Yellow
+			else if (i >= 60 && i < 72) 
+				trainCards[i] = new TrainCard(colors[5]); // Black
+			else if (i >= 72 && i < 84) 
+				trainCards[i] = new TrainCard(colors[7]); // Green
+			else if (i >= 84 && i < 96) 
+				trainCards[i] = new TrainCard(colors[8]); // Pink
+			else if (i >= 96 && i < 110) 
+				trainCards[i] = new TrainCard(colors[9]); // Rainbow
+		}
 
+	}
+	
 	public Image getBoardPic() {
 		return boardPic;
 	}
 
 	public void setBoardPic(Image boardPic) throws SlickException {
-		this.boardPic = new Image("map.jpg");
+		this.boardPic = new Image("/Map.jpg");
 	}
-
 }
+	
