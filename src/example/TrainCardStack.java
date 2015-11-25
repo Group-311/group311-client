@@ -1,5 +1,8 @@
 package example;
 
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+
 public class TrainCardStack extends Stack {
 
 	private TrainCard[] stack;
@@ -23,7 +26,7 @@ public class TrainCardStack extends Stack {
 			int index = rnd.nextInt(i + 1);
 			// Initialize a new variable called swap that is equal to the value
 			// of the trainCardStack room number #index
-			int swap = stack[index];
+			TrainCard swap = stack[index];
 			// Swap the two values with each other.
 			stack[index] = stack[i];
 			stack[i] = swap;
