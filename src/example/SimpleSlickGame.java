@@ -4,27 +4,13 @@ import java.util.logging.Level;
 import org.lwjgl.input.Mouse;
 import java.util.logging.Logger;
 
-import javax.swing.text.StyledEditorKit.ForegroundAction;
-
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.ImageBuffer;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.opengl.LoadableImageData;
-import org.omg.CORBA.PUBLIC_MEMBER;
-
-import com.sun.javafx.collections.MappingChange.Map;
-import com.sun.scenario.effect.Blend;
-import com.sun.xml.internal.ws.api.streaming.XMLStreamWriterFactory.Zephyr;
-
-import sun.net.www.content.image.gif;
-
-import java.io.*;
-import java.net.*;
 
 public class SimpleSlickGame extends BasicGame {
 	static Board board;
