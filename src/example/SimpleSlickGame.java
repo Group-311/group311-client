@@ -47,9 +47,7 @@ public class SimpleSlickGame extends BasicGame {
 	public void init(GameContainer gc) throws SlickException {
 		// I don't know where this has to be loaded, but for now we can load all
 		// images here
-		// adding all the mission cards in a new stack called missioncardstack
-		board.missionCardStack = new Stack(board.missionCards);
-		
+
 		map = new Image("/Map.jpg");
 		board.setBoardPic(map);
 		
