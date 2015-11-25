@@ -47,6 +47,8 @@ public class SimpleSlickGame extends BasicGame {
 	public void init(GameContainer gc) throws SlickException {
 		// I don't know where this has to be loaded, but for now we can load all
 		// images here
+		// adding all the mission cards in a new stack called missioncardstack
+		board.missionCardStack = new Stack(board.missionCards);
 		
 		map = new Image("/Map.jpg");
 		board.setBoardPic(map);
@@ -127,6 +129,9 @@ public class SimpleSlickGame extends BasicGame {
 			board.missionCards[i].setBackImage(missionCardBack);
 		}
 		
+	
+		
+		
 		
 	}
 
@@ -140,7 +145,7 @@ public class SimpleSlickGame extends BasicGame {
 		//Calling flipcard function if activated
 			if (input.isMousePressed(0)) {
 				if (xpos <board.summaryCard.xPos+board.summaryCard.width && xpos>board.summaryCard.xPos && ypos>768-board.summaryCard.height )
-					board.summaryCard.flipCard();
+					board.missionCardStack.card[1].flipCard();
 				
 			
 			
@@ -156,6 +161,7 @@ public class SimpleSlickGame extends BasicGame {
 		
 		board.getBoardPic().draw();; // Place it in (0,0)
 		board.summaryCard.setVisible();
+		board.missionCardStack.card[1].setVisible();
 	}
 	
 

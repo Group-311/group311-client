@@ -18,6 +18,9 @@ public class Board {
 	Card[] missionCards;
 	Card[] trainCards;
 	
+	Stack missionCardStack;
+	
+	
 	Board(int numOfPlayers) throws SlickException  {
 		
 		towns = new Town [36];
@@ -205,9 +208,29 @@ public class Board {
 		missionCards[27] = new MissionCard(towns[4], towns[35],20);
 		missionCards[28] = new MissionCard(towns[4], towns[31],21);
 		missionCards[29] = new MissionCard(towns[1], towns[31],22);
+
+
+				
+		
+		/*
+		// Initialize Random class so it can be used in the following shuffle
+		// code
+		Random rnd = ThreadLocalRandom.current();
+
+		for (int i = missionCards.length - 1; i > 0; i--) {
+			// initialize a new variable called index which takes a random value
+			// between 0 and i+1 (i+1 = 110 at first iteration of the for loop)
+			int index = rnd.nextInt(i + 1);
+			// Initialize a new variable called swap that is equal to the value of the mission card room number #index
+			Card swap = missionCards[index];
+			// Swap the two values with each other.
+			missionCards[index] = missionCards[i];
+			missionCards[i] = swap;
+			// Go to next iteration of the for loop and repeat the shuffle
+		}*/
 		
 		// Creating all the trainCards
-		for (int i = trainCards.length - 1; i > - 1; i--) {
+		for (int i = 0; i < trainCards.length; i++) {
 			if (i < 12) 
 				trainCards[i] = new TrainCard(colors[0]); // Blue
 			else if (i >= 12 && i < 24) 
@@ -227,9 +250,6 @@ public class Board {
 			else if (i >= 96 && i < 110) 
 				trainCards[i] = new TrainCard(colors[9]); // Rainbow
 		}
-		
-	
-
 	}
 	
 	public Image getBoardPic() {
