@@ -14,6 +14,8 @@ import org.newdawn.slick.SlickException;
 
 public class SimpleSlickGame extends BasicGame {
 	static Board board;
+	public TrainCardStack trainCardStack;
+
 	private Image summaryBackImage = null;
 	private Image summaryFrontImage = null;
 	private Image missionCardBack = null;
@@ -126,18 +128,11 @@ public class SimpleSlickGame extends BasicGame {
 		}
 		
 		
-		
-		
-		
-		
-		
-		
-		
 	}
 
 	@Override
 	public void update(GameContainer gc, int i) throws SlickException {
-	
+		
 		Input input = gc.getInput();
 		 xpos = Mouse.getX();
 		 ypos = Mouse.getY();
@@ -162,6 +157,7 @@ public class SimpleSlickGame extends BasicGame {
 		board.getBoardPic().draw();; // Place it in (0,0)
 		board.summaryCard.setVisible();
 	}
+	
 
 	public static void main(String[] args) throws SlickException {
 		board = new Board(3);

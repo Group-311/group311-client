@@ -1,6 +1,8 @@
 package example;
 
 import java.awt.image.BufferedImage;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -205,26 +207,28 @@ public class Board {
 		missionCards[29] = new MissionCard(towns[1], towns[31],22);
 		
 		// Creating all the trainCards
-		for (int i = 0; i < trainCards.length; i++) {
+		for (int i = trainCards.length - 1; i > - 1; i--) {
 			if (i < 12) 
-				trainCards[i] = new TrainCard(colors[0]); // Blue
+				trainCards[i] = new TrainCard(colors[0], i); // Blue
 			else if (i >= 12 && i < 24) 
-				trainCards[i] = new TrainCard(colors[1]); // Red
+				trainCards[i] = new TrainCard(colors[1], i); // Red
 			else if (i >= 24 && i < 36) 
-				trainCards[i] = new TrainCard(colors[2]); // Orange
+				trainCards[i] = new TrainCard(colors[2], i); // Orange
 			else if (i >= 36 && i < 48) 
-				trainCards[i] = new TrainCard(colors[3]); // White
+				trainCards[i] = new TrainCard(colors[3], i); // White
 			else if (i >= 48 && i < 60) 
-				trainCards[i] = new TrainCard(colors[4]); // Yellow
+				trainCards[i] = new TrainCard(colors[4], i); // Yellow
 			else if (i >= 60 && i < 72) 
-				trainCards[i] = new TrainCard(colors[5]); // Black
+				trainCards[i] = new TrainCard(colors[5], i); // Black
 			else if (i >= 72 && i < 84) 
-				trainCards[i] = new TrainCard(colors[7]); // Green
+				trainCards[i] = new TrainCard(colors[7], i); // Green
 			else if (i >= 84 && i < 96) 
-				trainCards[i] = new TrainCard(colors[8]); // Pink
+				trainCards[i] = new TrainCard(colors[8], i); // Pink
 			else if (i >= 96 && i < 110) 
-				trainCards[i] = new TrainCard(colors[9]); // Rainbow
+				trainCards[i] = new TrainCard(colors[9], i); // Rainbow
 		}
+		
+	
 
 	}
 	
