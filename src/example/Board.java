@@ -209,23 +209,23 @@ public class Board {
 		// Creating all the trainCards
 		for (int i = trainCards.length - 1; i > - 1; i--) {
 			if (i < 12) 
-				trainCards[i] = new TrainCard(colors[0], i); // Blue
+				trainCards[i] = new TrainCard(colors[0]); // Blue
 			else if (i >= 12 && i < 24) 
-				trainCards[i] = new TrainCard(colors[1], i); // Red
+				trainCards[i] = new TrainCard(colors[1]); // Red
 			else if (i >= 24 && i < 36) 
-				trainCards[i] = new TrainCard(colors[2], i); // Orange
+				trainCards[i] = new TrainCard(colors[2]); // Orange
 			else if (i >= 36 && i < 48) 
-				trainCards[i] = new TrainCard(colors[3], i); // White
+				trainCards[i] = new TrainCard(colors[3]); // White
 			else if (i >= 48 && i < 60) 
-				trainCards[i] = new TrainCard(colors[4], i); // Yellow
+				trainCards[i] = new TrainCard(colors[4]); // Yellow
 			else if (i >= 60 && i < 72) 
-				trainCards[i] = new TrainCard(colors[5], i); // Black
+				trainCards[i] = new TrainCard(colors[5]); // Black
 			else if (i >= 72 && i < 84) 
-				trainCards[i] = new TrainCard(colors[7], i); // Green
+				trainCards[i] = new TrainCard(colors[7]); // Green
 			else if (i >= 84 && i < 96) 
-				trainCards[i] = new TrainCard(colors[8], i); // Pink
+				trainCards[i] = new TrainCard(colors[8]); // Pink
 			else if (i >= 96 && i < 110) 
-				trainCards[i] = new TrainCard(colors[9], i); // Rainbow
+				trainCards[i] = new TrainCard(colors[9]); // Rainbow
 		}
 		
 	

@@ -3,16 +3,16 @@ package example;
 public class TrainCard extends Card {
 
 	protected Color color;
-	protected int stackNumber;
+
 	
 	public TrainCard(){
 		
 	}
 	
-	public TrainCard(Color _color, int _stackNumber){
+	public TrainCard(Color _color){
 		
 		this.color = _color;
-		this.stackNumber = _stackNumber;
+
 		
 		//this.frontImage = trainImage;
 	}
