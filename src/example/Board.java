@@ -210,7 +210,7 @@ public class Board {
 		missionCardStack = new Stack(missionCards);
 		
 		// Creating all the trainCards
-		for (int i =  0; i <trainCards.length; i++) {
+
 		for (int i = 0; i < trainCards.length; i++) {
 			if (i < 12) 
 				trainCards[i] = new TrainCard(colors[0]); // Blue
