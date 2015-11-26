@@ -207,7 +207,7 @@ public class Board {
 		missionCards[29] = new MissionCard(towns[1], towns[31],22);
 		
 		// adding all the mission cards in a new stack called missioncardstack
-		missionCardStack = new Stack(missionCards);
+	
 		
 		// Creating all the trainCards
 
