@@ -18,6 +18,8 @@ import com.google.gson.JsonObject;
 import com.sun.java.swing.plaf.windows.WindowsPasswordFieldUI;
 import com.sun.security.ntlm.Client;
 
+import jdk.nashorn.internal.ir.WhileNode;
+
 public class main extends JPanel {
 	static Train t;
 
@@ -33,6 +35,7 @@ public class main extends JPanel {
 	}
 
 	public void run() throws Exception {
+		
 
 		Socket Sock = new Socket("172.20.10.2", 2222);
 		PrintStream ps = new PrintStream(Sock.getOutputStream());
@@ -50,6 +53,7 @@ public class main extends JPanel {
 
 		String Message = br.readLine();
 		System.out.println(Message);
+
 	}
 }
 
