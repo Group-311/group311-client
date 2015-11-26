@@ -1,9 +1,5 @@
 package example;
 
-import java.awt.image.BufferedImage;
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
-
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
@@ -19,23 +15,23 @@ public class Board {
 	Card[] trainCards;
 	
 	Stack missionCardStack;
+	Stack trainCardStack;
 	
 	
 	Board(int numOfPlayers) throws SlickException  {
 		
+		// set the amount of towns, connections, colors and players
 		towns = new Town [36];
 		connections = new Connection[99];
 		colors = new Color[10];
 		players = new PlayerPiece[numOfPlayers];
 
-		
+		// create the different types of cards
 		summaryCard = new SummaryCard();
 		missionCards = new MissionCard[30];
 		trainCards = new TrainCard[110];
 		
-		
-		
-		
+		// create all the different colors for the trains/players
 		colors[0] = new Color("blue", 0);
 		colors[1] = new Color("red", 1);
 		colors[2] = new Color("orange", 2);
@@ -47,6 +43,7 @@ public class Board {
 		colors[8] = new Color("pink", 8);
 		colors[9] = new Color("rainbow", 9);
 		
+		// creating all the towns
 		towns[0] = new Town("Vancouver", 3, 94, 591, connections[0],connections[1], connections[8]);
 		towns[1] = new Town("Seattle", 6, 92,542, connections[0], connections[1], connections[2], connections[3], connections[9], connections[10] );
 		towns[2] = new Town("Portland", 5, 74,499,connections[2], connections[3], connections[4], connections[5], connections[11] );
@@ -84,6 +81,7 @@ public class Board {
 		towns[34] = new Town("Charleston", 3, 781, 298,  connections[86], connections[97], connections[98]);
 		towns[35] = new Town("Miami", 3, 809, 159,  connections[75], connections[78], connections[87]);
 		
+		// creating all the connections
 		connections[0] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[10] = new Connection(colors[4], towns[1], towns[6], 6, 13);	
 		connections[1] = new Connection(colors[6], towns[0], towns[1], 1, 1);			connections[11] = new Connection(colors[0], towns[2], towns[7], 6, 13);	
 		connections[2] = new Connection(colors[6], towns[1], towns[2], 1, 1);			connections[12] = new Connection(colors[2], towns[3], towns[7], 5, 10);	
@@ -139,7 +137,7 @@ public class Board {
 		connections[88] = new Connection(colors[6], towns[25], towns[30], 2, 2);		connections[98] = new Connection(colors[8], towns[34], towns[35], 4, 7);
 		connections[89] = new Connection(colors[6], towns[25], towns[30], 2, 2);			
 		
-		
+		// creating all the towns again
 		towns[0] = new Town("Vancouver", 3, 94, 591, connections[0],connections[1], connections[8]);
 		towns[1] = new Town("Seattle", 6, 92,542, connections[0], connections[1], connections[2], connections[3], connections[9], connections[10] );
 		towns[2] = new Town("Portland", 5, 74,499,connections[2], connections[3], connections[4], connections[5], connections[11] );
@@ -177,7 +175,7 @@ public class Board {
 		towns[34] = new Town("Charleston", 3, 781, 298,  connections[86], connections[97], connections[98]);
 		towns[35] = new Town("Miami", 3, 809, 159,  connections[75], connections[78], connections[87]);
 		
-		
+		// creating all the mission cards
 		missionCards[0] = new MissionCard(towns[11], towns[13],4);
 		missionCards[1] = new MissionCard(towns[16], towns[19],5);
 		missionCards[2] = new MissionCard(towns[31], towns[29],6);
@@ -212,7 +210,7 @@ public class Board {
 		// adding all the mission cards in a new stack called missioncardstack
 		missionCardStack = new Stack(missionCards);
 		
-		// Creating all the trainCards
+		// creating all the trainCards
 		for (int i = 0; i < trainCards.length; i++) {
 			if (i < 12) 
 				trainCards[i] = new TrainCard(colors[0]); // Blue
@@ -233,6 +231,9 @@ public class Board {
 			else if (i >= 96 && i < 110) 
 				trainCards[i] = new TrainCard(colors[9]); // Rainbow
 		}
+		// adding all the mission cards in a new stack called traincardstack
+		trainCardStack = new Stack(trainCards);
+		
 	}
 	
 	public Image getBoardPic() {

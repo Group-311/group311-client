@@ -1,17 +1,16 @@
 package example;
 
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
-
 public class TrainCardStack extends Stack {
 
 	private TrainCard[] stack;
 	private int currentAmount;
 
-	public TrainCardStack(int _amount) {
-		super(_amount);
+	public TrainCardStack(TrainCard[] _cards) {
+		super(_cards);
 
 		setStack(new TrainCard[this.getAmount()]);
+		
+		currentAmount = _cards.length;
 	}
 
 	public void drawCard(Stack _stack) {

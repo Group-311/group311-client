@@ -1,8 +1,5 @@
 package example;
 
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
-
 public class MissionCardStack extends Stack {
 
 	private MissionCard[] stack;
@@ -14,34 +11,6 @@ public class MissionCardStack extends Stack {
 		setStack(new MissionCard[this.getAmount()]);
 
 		currentAmount = _cards.length;
-	}
-
-	public void shuffle(Card[] stack) {
-		// Initialize Random class so it can be used in the following shuffle
-		// code
-		Random rnd = ThreadLocalRandom.current();
-
-		for (int i = stack.length - 1; i > 0; i--) {
-			// initialize a new variable called index which takes a random value
-			// between 0 and i+1 (i+1 = 110 at first iteration of the for loop)
-			int index = rnd.nextInt(i + 1);
-			// Initialize a new variable called swap that is equal to the value
-			// of the trainCardStack room number #index
-			Card swap = stack[index];
-			// Swap the two values with each other.
-			stack[index] = stack[i];
-			stack[i] = swap;
-			// Go to next iteration of the for loop and repeat the shuffle
-		}
-
-		// Print the shuffled reference values to see if the references have
-		// been shuffled, this can be deleted later
-		System.out.println("");
-		System.out.println("TrainCardStack shuffled in the following order: ");
-		for (int i = 0; i < stack.length; i++) {
-			System.out.print(stack[i] + " ");
-		}
-		System.out.println("");
 	}
 
 	public void draw() {
