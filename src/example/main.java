@@ -29,9 +29,9 @@ public class main extends JPanel {
 			
 			byte[] b = message.getBytes(); 												//Send the message to be made of bytes
 			
-			InetAddress host = InetAddress.getByName("172.20.10.3");  					//Put name of the server here
+			InetAddress host = InetAddress.getByName("172.20.10.2");  					//Put name of the server here
 	
-			int serverSocket = 2000; 													//name of the port
+			int serverSocket = 1330; 													//name of the port
 			
 			DatagramPacket request = new DatagramPacket(b,b.length,host,serverSocket); 	//Creating packet
 			
