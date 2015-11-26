@@ -29,7 +29,7 @@ public class Stack {
 		return null;
 	}
 	
-	public Stack shuffleMissions(Card[] _cards) {
+	public void shuffle(Card[] _cards) {
 
 		// Initialize Random class so it can be used in the following shuffle
 		// code
@@ -41,7 +41,7 @@ public class Stack {
 			int index = rnd.nextInt(i + 1);
 			// Initialize a new variable called swap that is equal to the value
 			// of the trainCardStack room number #index
-			MissionCard swap = _cards[index];
+			Card swap = _cards[index];
 			// Swap the two values with each other.
 			_cards[index] = _cards[i];
 			_cards[i] = swap;

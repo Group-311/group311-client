@@ -14,10 +14,6 @@ public class TrainCardStack extends Stack {
 		setStack(new TrainCard[this.getAmount()]);
 	}
 
-	public void shuffle() {
-
-	}
-
 	public void drawCard(Stack _stack) {
 		/**
 		 * removes the first or last card from the array transfers it to either
