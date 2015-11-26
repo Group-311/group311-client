@@ -2,20 +2,65 @@ package example;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.Socket;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import com.sun.java.swing.plaf.windows.WindowsPasswordFieldUI;
+import com.sun.security.ntlm.Client;
 
 public class main extends JPanel {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 
-		DatagramSocket socket;
+		main client = new main();
+		
+	
+		String json = new String ("");
+		
+		
+		
+	
+		
+		
+		
+		client.run();
+	}
+	
+	public void run() throws Exception{
+		
+		Socket Sock = new Socket("172.20.10.2", 2222);
+		PrintStream ps = new PrintStream(Sock.getOutputStream());
+		ps.println("Hello u ho");
+		
+		InputStreamReader ir = new InputStreamReader(Sock.getInputStream());
+		BufferedReader br = new BufferedReader(ir);
+		
+		String Message = br.readLine();
+		System.out.println(Message);
+	}
+}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		// Commenting this out and trying with an alternative
+		/*DatagramSocket socket;
 		
 		
 		
@@ -31,7 +76,7 @@ public class main extends JPanel {
 			
 			InetAddress host = InetAddress.getByName("172.20.10.2");  					//Put name of the server here
 	
-			int serverSocket = 1330; 													//name of the port
+			int serverSocket = 2222; 													//name of the port
 			
 			DatagramPacket request = new DatagramPacket(b,b.length,host,serverSocket); 	//Creating packet
 			
@@ -61,5 +106,5 @@ public class main extends JPanel {
 		
 	}
 
-}
+}*/
 
