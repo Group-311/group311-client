@@ -211,7 +211,6 @@ public class Board {
 		
 		// adding all the mission cards in a new stack called missioncardstack
 		missionCardStack = new Stack(missionCards);
-		missionCardStack.shuffleMissions(_cards);
 		
 		// Creating all the trainCards
 		for (int i = 0; i < trainCards.length; i++) {

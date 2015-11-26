@@ -1,5 +1,7 @@
 package example;
 
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
 import org.lwjgl.input.Mouse;
 import java.util.logging.Logger;
@@ -127,9 +129,28 @@ public class SimpleSlickGame extends BasicGame {
 			board.missionCards[i].setBackImage(missionCardBack);
 		}
 		
-	
-		
-		
+		// Initialize Random class so it can be used in the following shuffle
+		// code
+		Random rnd = ThreadLocalRandom.current();
+
+		for (int i = board.missionCards.length - 1; i > 0; i--) {
+			// initialize a new variable called index which takes a random value
+			// between 0 and i+1 (i+1 = 110 at first iteration of the for loop)
+			int index = rnd.nextInt(i + 1);
+			// Initialize a new variable called swap that is equal to the value
+			// of the trainCardStack room number #index
+			Card swap = board.missionCards[index];
+			// Swap the two values with each other.
+			board.missionCards[index] = board.missionCards[i];
+			board.missionCards[i] = swap;
+			// Go to next iteration of the for loop and repeat the shuffle
+		}
+
+		// Print the shuffled values
+		System.out.println("TrainCardStack shuffled in the following order: ");
+		for (int i = 0; i < board.missionCards.length; i++) {
+			System.out.print(board.missionCards[i] + " ");
+		}	
 		
 	}
 
@@ -139,6 +160,7 @@ public class SimpleSlickGame extends BasicGame {
 		Input input = gc.getInput();
 		 xpos = Mouse.getX();
 		 ypos = Mouse.getY();
+		 
 
 		//Calling flipcard function if activated
 			if (input.isMousePressed(0)) {
