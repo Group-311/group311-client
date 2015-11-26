@@ -13,6 +13,8 @@ public class Connection{
 	private Color color;
 	private Town townA, townB;
 	private boolean isTaken;
+	
+	public boolean isVisited;
 
 	/**
 	* setting all values through the constructor
@@ -27,7 +29,9 @@ public class Connection{
 		this.color = _color;
 		this.setTownA(_townA);
 		this.setTownB(_townB);
-		this.setTaken(false);
+		//this.setTaken();
+		
+		isVisited = false;
 	}
 	
 
@@ -53,8 +57,11 @@ public class Connection{
 	}
 
 
-	public void setTaken(boolean isTaken) {
-		this.isTaken = isTaken;
+	public void setTaken() {
+		this.isTaken = true;
+	}
+	public void setIsVisited(){
+		this.isVisited = true;
 	}
 	
 
