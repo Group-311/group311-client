@@ -17,14 +17,14 @@ import org.newdawn.slick.SlickException;
 public class SimpleSlickGame extends BasicGame {
 	static Board board;
 	
-	private Image blackPlayerPiece;
+	/*private Image blackPlayerPiece;
 	private Image bluePlayerPiece;
 	private Image greenPlayerPiece;
 	private Image orangePlayerPiece;
 	private Image pinkPlayerPiece;
 	private Image redPlayerPiece;
 	private Image whitePlayerPiece;
-	private Image yellowPlayerPiece;
+	private Image yellowPlayerPiece;*/
 	
 	private Image summaryBackImage = null;
 	private Image summaryFrontImage = null;
@@ -75,7 +75,7 @@ public class SimpleSlickGame extends BasicGame {
 			board.trainCards[i].setBackImage(trainCardBack);
 		}
 		
-		//Loading all the playerPieceImages
+	/*	//Loading all the playerPieceImages
 		blackPlayerPiece = new Image("/blackPlayerPiece.png");
 		bluePlayerPiece = new Image("/bluePlayerPiece.png");
 		greenPlayerPiece = new Image("/greenPlayerPiece.png");
@@ -83,7 +83,7 @@ public class SimpleSlickGame extends BasicGame {
 		pinkPlayerPiece = new Image("/pinkPlayerPiece.png");
 		redPlayerPiece = new Image("/redPlayerPiece.png");
 		whitePlayerPiece = new Image("/whitePlayerPiece.png");
-		yellowPlayerPiece = new Image("/yellowPlayerPiece.png");
+		yellowPlayerPiece = new Image("/yellowPlayerPiece.png");*/
 		
 		//Loading all the trainCardImages
 		blackTrainCard = new Image("/blackTrainCard.png");
