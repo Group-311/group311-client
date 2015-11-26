@@ -16,8 +16,16 @@ import org.newdawn.slick.SlickException;
 
 public class SimpleSlickGame extends BasicGame {
 	static Board board;
-	public TrainCardStack trainCardStack;
-
+	
+	/*private Image blackPlayerPiece;
+	private Image bluePlayerPiece;
+	private Image greenPlayerPiece;
+	private Image orangePlayerPiece;
+	private Image pinkPlayerPiece;
+	private Image redPlayerPiece;
+	private Image whitePlayerPiece;
+	private Image yellowPlayerPiece;*/
+	
 	private Image summaryBackImage = null;
 	private Image summaryFrontImage = null;
 	private Image missionCardBack = null;
@@ -67,6 +75,16 @@ public class SimpleSlickGame extends BasicGame {
 			board.trainCards[i].setBackImage(trainCardBack);
 		}
 		
+	/*	//Loading all the playerPieceImages
+		blackPlayerPiece = new Image("/blackPlayerPiece.png");
+		bluePlayerPiece = new Image("/bluePlayerPiece.png");
+		greenPlayerPiece = new Image("/greenPlayerPiece.png");
+		orangePlayerPiece = new Image("/orangePlayerPiece.png");
+		pinkPlayerPiece = new Image("/pinkPlayerPiece.png");
+		redPlayerPiece = new Image("/redPlayerPiece.png");
+		whitePlayerPiece = new Image("/whitePlayerPiece.png");
+		yellowPlayerPiece = new Image("/yellowPlayerPiece.png");*/
+		
 		//Loading all the trainCardImages
 		blackTrainCard = new Image("/blackTrainCard.png");
 		blueTrainCard = new Image("/blueTrainCard.png");
@@ -114,13 +132,7 @@ public class SimpleSlickGame extends BasicGame {
 		{
 		missions[i] = new Image("/mission("+i+").png");
 		board.missionCards[i].setFrontImage(missions[i]);
-		}
-		
-		
-		
-		
-		
-		
+		}		
 		
 		//Setting the cardback for the missioncards
 		missionCardBack = new Image("/missionCardBack.png");
@@ -129,8 +141,11 @@ public class SimpleSlickGame extends BasicGame {
 			board.missionCards[i].setBackImage(missionCardBack);
 		}
 		
+		//Shuffle mission cards
 		board.missionCardStack.shuffle(board.missionCards);
 		
+		//Shuffle train cards
+		board.trainCardStack.shuffle(board.trainCards);
 	}
 
 	@Override
@@ -145,8 +160,8 @@ public class SimpleSlickGame extends BasicGame {
 			if (input.isMousePressed(0)) {
 				if (xpos <board.summaryCard.xPos+board.summaryCard.width && xpos>board.summaryCard.xPos && ypos>768-board.summaryCard.height)
 					//board.summaryCard.flipCard();
-				
-					board.missionCardStack.card[1].flipCard();
+					//board.missionCardStack.card[1].flipCard();
+					board.trainCardStack.card[1].flipCard();
 		}
 
 	}
@@ -158,6 +173,7 @@ public class SimpleSlickGame extends BasicGame {
 		board.getBoardPic().draw();; // Place it in (0,0)
 		board.summaryCard.setVisible();
 		board.missionCardStack.card[1].setVisible();
+		board.trainCardStack.card[1].setVisible();
 	}
 	
 
