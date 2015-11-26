@@ -206,8 +206,12 @@ public class Board {
 		missionCards[28] = new MissionCard(towns[4], towns[31],21);
 		missionCards[29] = new MissionCard(towns[1], towns[31],22);
 		
+		// adding all the mission cards in a new stack called missioncardstack
+		missionCardStack = new Stack(missionCards);
+		
 		// Creating all the trainCards
 		for (int i =  0; i <trainCards.length; i++) {
+		for (int i = 0; i < trainCards.length; i++) {
 			if (i < 12) 
 				trainCards[i] = new TrainCard(colors[0]); // Blue
 			else if (i >= 12 && i < 24) 
@@ -227,9 +231,6 @@ public class Board {
 			else if (i >= 96 && i < 110) 
 				trainCards[i] = new TrainCard(colors[9]); // Rainbow
 		}
-		
-	
-
 	}
 	
 	public Image getBoardPic() {

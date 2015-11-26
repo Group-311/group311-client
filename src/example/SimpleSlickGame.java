@@ -1,5 +1,7 @@
 package example;
 
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
 import org.lwjgl.input.Mouse;
 import java.util.logging.Logger;
@@ -47,7 +49,7 @@ public class SimpleSlickGame extends BasicGame {
 	public void init(GameContainer gc) throws SlickException {
 		// I don't know where this has to be loaded, but for now we can load all
 		// images here
-		
+
 		map = new Image("/Map.jpg");
 		board.setBoardPic(map);
 		
@@ -127,6 +129,7 @@ public class SimpleSlickGame extends BasicGame {
 			board.missionCards[i].setBackImage(missionCardBack);
 		}
 		
+		board.missionCardStack.shuffle(board.missionCards);
 		
 	}
 
@@ -136,26 +139,25 @@ public class SimpleSlickGame extends BasicGame {
 		Input input = gc.getInput();
 		 xpos = Mouse.getX();
 		 ypos = Mouse.getY();
+		 
 
 		//Calling flipcard function if activated
 			if (input.isMousePressed(0)) {
-				if (xpos <board.summaryCard.xPos+board.summaryCard.width && xpos>board.summaryCard.xPos && ypos>768-board.summaryCard.height )
-					board.summaryCard.flipCard();
+				if (xpos <board.summaryCard.xPos+board.summaryCard.width && xpos>board.summaryCard.xPos && ypos>768-board.summaryCard.height)
+					//board.summaryCard.flipCard();
 				
-			
-			
+					board.missionCardStack.card[1].flipCard();
 		}
 
 	}
 
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException {
-
-		
 	 // Loads the placement Map image used	to detect cities
 		
 		board.getBoardPic().draw();; // Place it in (0,0)
 		board.summaryCard.setVisible();
+		board.missionCardStack.card[1].setVisible();
 	}
 	
 
