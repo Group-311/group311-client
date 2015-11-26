@@ -207,7 +207,7 @@ public class Board {
 		missionCards[29] = new MissionCard(towns[1], towns[31],22);
 		
 		// Creating all the trainCards
-		for (int i = trainCards.length - 1; i > - 1; i--) {
+		for (int i =  0; i <trainCards.length; i++) {
 			if (i < 12) 
 				trainCards[i] = new TrainCard(colors[0]); // Blue
 			else if (i >= 12 && i < 24) 
