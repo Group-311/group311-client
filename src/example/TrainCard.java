@@ -3,6 +3,7 @@ package example;
 public class TrainCard extends Card {
 
 	protected Color color;
+
 	
 	public TrainCard(){
 		
@@ -11,6 +12,8 @@ public class TrainCard extends Card {
 	public TrainCard(Color _color){
 		
 		this.color = _color;
+
+		
 		//this.frontImage = trainImage;
 	}
 	
