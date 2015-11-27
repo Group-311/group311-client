@@ -40,6 +40,11 @@ public class SimpleSlickGame extends BasicGame {
 	int xpos;
 	int ypos;
 	Input input;
+	
+	private Town townA= null;
+	private Town townB = null;
+	
+	public Connection selectedConnection = null;
 
 	public SimpleSlickGame(String gamename) {
 		super("TicketToRide");
@@ -147,15 +152,29 @@ public class SimpleSlickGame extends BasicGame {
 
 		// --------------------------------------------------------------------------------------------------------------------------------------------
 		// Will implement what happens when you click a city in here.
-		if (input.isMousePressed(0)) {
-			for (int j = 0; j < board.towns.length; j++) {
-				if (xpos < board.towns[j].getxPos() + 10 && xpos >= board.towns[j].getxPos() - 10
-						&& ypos < board.towns[j].getyPos() + 10 && ypos > board.towns[j].getyPos() - 10)
-					System.out.println(board.towns[j].getName());
-			}
-			System.out.println(xpos + " " + ypos);
-		}
-		// --------------------------------------------------------------------------------------------------------------------------------------------
+
+				if (input.isMousePressed(0)) {
+					for (int j = 0; j < board.towns.length; j++) {
+						if (xpos < board.towns[j].getxPos() + 10 && xpos >= board.towns[j].getxPos() - 10
+								&& ypos < board.towns[j].getyPos() + 10 && ypos > board.towns[j].getyPos() - 10) {
+							System.out.println("You have selected " + board.towns[j].getName());
+							if (townA == null) {
+								townA = board.towns[j];
+								System.out.println(townA.getName() + " has been clicked as town A");
+							} else if (townB == null) {
+								townB = board.towns[j];
+								System.out.println(townB.getName() + " has been clicked as town B");
+							}
+							
+						}
+
+					}
+					if (townA!=null && townB!=null){
+						selectedConnection = findConnectionToBuild(townA, townB);
+					}
+					// System.out.println(townB.getName() + " " + townA.getName());
+				}
+				//  --------------------------------------------------------------------------------------------------------------------------------------------
 		
 		// Right click
 		if (input.isMousePressed(1)) {
@@ -177,6 +196,23 @@ public class SimpleSlickGame extends BasicGame {
 				board.trainCardStack.card[1].flipCard();
 			}
 		}
+	}
+	private Connection findConnectionToBuild(Town town1, Town town2) {
+		
+		for(int i = 0; i < board.connections.length; i++){
+			if(board.connections[i].getTownA().getName() == town1.getName() || board.connections[i].getTownA().getName() == town2.getName()){
+				System.out.println("We have a town");
+				if(board.connections[i].getTownB().getName() == town1.getName() || board.connections[i].getTownB().getName() == town2.getName()){
+					System.out.println("These are neighbours");
+					if(!board.connections[i].isTaken())
+						return board.connections[i];
+				}
+			}
+			/*else {
+				System.out.println("You probably didnt click two neighbouring cities, or no connections are available between these two cities");
+			}*/
+		}
+		return null;
 	}
 
 	@Override
@@ -202,7 +238,7 @@ public class SimpleSlickGame extends BasicGame {
 
 		System.out.println(board.towns[0].getConnections().length);
 		System.out.println(board.towns[3].getConnections().length);
-<<<<<<< Updated upstream
+
 
 		// GsonJson test with stacks of
 		// traincards.-----------------------------------------------------------
@@ -237,17 +273,16 @@ public class SimpleSlickGame extends BasicGame {
 		 * }catch(Exception e){ System.out.println(e.getStackTrace()); }
 		 */
 
-=======
 		
 		//GsonJson test with stacks of traincards.-----------------------------------------------------------
-				System.out.println(board.trainCardStack.card[1].getColor().getColorNum());
+				/*System.out.println(board.trainCardStack.card[1].getColor().getColorNum());
 				System.out.println(board.trainCardStack.card[50].getColor().getColorNum());
 				Gson serializer = new Gson();
 				String Jsontrain = serializer.toJson(board);
 				
 				Board temp  = new Gson().fromJson(Jsontrain, Board.class);
 				
-				System.out.println(temp.trainCardStack. card[1].getColor().getColorNum());
+				System.out.println(temp.trainCardStack. card[1].getColor().getColorNum());*/
 		// JSON TEST END ------------------------------------------------------------------------------------
 				
 				
@@ -274,7 +309,7 @@ public class SimpleSlickGame extends BasicGame {
 				System.out.println(e.getStackTrace());
 			}*/
 		
->>>>>>> Stashed changes
+
 		/*
 		 * try{
 		 * 
@@ -300,6 +335,8 @@ public class SimpleSlickGame extends BasicGame {
 			Logger.getLogger(SimpleSlickGame.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
+	
+	
 
 	/**
 	 * ONLY CHECKS ONE CONNECTION BETWEEN TWO TOWNS This function will check if

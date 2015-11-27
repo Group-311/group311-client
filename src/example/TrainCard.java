@@ -4,7 +4,7 @@ import org.newdawn.slick.SlickException;
 
 public class TrainCard extends Card {
 	
-	protected Color color;
+
 
 	public TrainCard() throws SlickException {
 		super();
