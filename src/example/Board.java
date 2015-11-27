@@ -355,38 +355,43 @@ public class Board {
 	public void setBoardPic(Image boardPic) throws SlickException {
 		this.boardPic = new Image("/Map.jpg");
 	}
+	
+	/*
+	This function should return a boolean but is void for troubleshooting.
+	It receives two Town objects from the function call.
+	It should loop through all of the linked connections of _townA to see if its "taken" 
+	by the player, and if any of the linked towns of the connection is the town we're looking for (_townB in the parameters)
+
+	If this is not the case, the function should call it self on the next town of that connection to see if it can satisfy the condition.
+	*/
+
+
 	public void checkConnected(Town _townA, Town _townB){
-		
-		
-		
-		//Loop through all the connections of _townB
-		for(int i = 0; i < _townA.getConnections().length; i++){
-		//If any of the connections of _townB starts or ends in _townA, return true.
-			
-			System.out.println(_townA.getConnection(i).getTownB().getName());
 			
 			
-			if(_townA.getConnection(i).getTownB().getName() == _townB.getName() || 
-					_townA.getConnection(i).getTownA().getName() == _townB.getName()
-					&& _townA.getConnection(i).isTaken()){
+			
+			//Loop through all the connections of _townA
+			for(int i = 0; i < _townA.getConnections().length; i++){
 				
-				//return true;
-				System.out.println("Found a connection!");
-				break;
-			}else if(_townA.getConnection(i).isTaken() && !_townA.getConnection(i).getIsVisited()){
+				System.out.println(_townA.getConnection(i).getTownB().getName());
 				
-				_townA.getConnection(i).setIsVisited();
 				
-				System.out.println("Did not find a connection, looking in other connection");
-				checkConnected(_townA.getConnection(i).getTownB(), _townB);
-				
+				if(_townA.getConnection(i).getTownB().getName() == _townB.getName() || 
+						_townA.getConnection(i).getTownA().getName() == _townB.getName()
+						&& _townA.getConnection(i).isTaken()){
+					
+					//return true;
+					System.out.println("Found a connection!");
+					break;
+				}else if(_townA.getConnection(i).isTaken() && !_townA.getConnection(i).getIsVisited()){
+					
+					_townA.getConnection(i).setIsVisited();
+					
+					System.out.println("Did not find a connection, looking in other connection");
+					checkConnected(_townA.getConnection(i).getTownB(), _townB);
+					
+				}	
 			}
-			
 		}
-		
-		
-		//else return false
-		//return false;
-	}
 }
 

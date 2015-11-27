@@ -202,6 +202,7 @@ public class SimpleSlickGame extends BasicGame {
 
 		System.out.println(board.towns[0].getConnections().length);
 		System.out.println(board.towns[3].getConnections().length);
+<<<<<<< Updated upstream
 
 		// GsonJson test with stacks of
 		// traincards.-----------------------------------------------------------
@@ -236,6 +237,44 @@ public class SimpleSlickGame extends BasicGame {
 		 * }catch(Exception e){ System.out.println(e.getStackTrace()); }
 		 */
 
+=======
+		
+		//GsonJson test with stacks of traincards.-----------------------------------------------------------
+				System.out.println(board.trainCardStack.card[1].getColor().getColorNum());
+				System.out.println(board.trainCardStack.card[50].getColor().getColorNum());
+				Gson serializer = new Gson();
+				String Jsontrain = serializer.toJson(board);
+				
+				Board temp  = new Gson().fromJson(Jsontrain, Board.class);
+				
+				System.out.println(temp.trainCardStack. card[1].getColor().getColorNum());
+		// JSON TEST END ------------------------------------------------------------------------------------
+				
+				
+				
+				
+		//System.out.println(board.checkConnected(board.towns[0], board.towns[3]));
+		board.checkConnected(board.towns[0], board.towns[1]);
+		
+/*	try{
+			
+			String sentence;
+			String modifiedSentence;
+			BufferedReader inFromUser = new BufferedReader( new InputStreamReader(System.in));
+			Socket clientSocket = new Socket("172.20.10.5", 1233);
+			DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
+			BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+			sentence = inFromUser.readLine();
+			outToServer.writeBytes(sentence + '\n');
+			modifiedSentence = inFromServer.readLine();
+			System.out.println("FROM SERVER: " + modifiedSentence);
+			clientSocket.close();
+			
+			}catch(Exception e){
+				System.out.println(e.getStackTrace());
+			}*/
+		
+>>>>>>> Stashed changes
 		/*
 		 * try{
 		 * 
