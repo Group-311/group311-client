@@ -1,11 +1,16 @@
 package example;
 
+import org.newdawn.slick.SlickException;
+
 public class TrainCard extends Card {
+	
+	protected Color color;
 
-
-
-	public TrainCard() {
-
+	public TrainCard() throws SlickException {
+		super();
+		
+		xPos = 0;
+		yPos = 0;
 	}
 
 	public TrainCard(Color color) {

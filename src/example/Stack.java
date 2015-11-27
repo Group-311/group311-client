@@ -3,7 +3,7 @@ package example;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Stack {
+public class Stack extends Card {
 
 	protected int amount;
 	Card[] card;

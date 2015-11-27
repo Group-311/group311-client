@@ -3,6 +3,7 @@ package example;
 import java.awt.image.BufferedImage;
 
 import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 
 public class MissionCard extends Card{
 	
@@ -11,7 +12,12 @@ public class MissionCard extends Card{
 	Image image;
 	private boolean isCompleted;
 
-	public MissionCard(Town townA,Town townB, int points){
+	public MissionCard(Town townA,Town townB, int points) throws SlickException {
+		super();
+		
+		xPos = 896;
+		yPos = 0;
+		
 		this.townA=townA;
 		this.townB=townB;
 		this.points=points;

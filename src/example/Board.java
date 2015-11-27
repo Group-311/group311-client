@@ -17,7 +17,9 @@ public class Board {
 	Card[] missionCards;
 	Card[] trainCards;
 
+	// Create a stack for all the missions
 	Stack missionCardStack;
+	// Create a stack for all the traincards
 	Stack trainCardStack;
 
 	Board(int numOfPlayers) throws SlickException {

@@ -11,8 +11,8 @@ import com.sun.corba.se.spi.monitoring.StatisticsAccumulator;
 public class Card{
 	protected static int height, width;
 	protected  int xPos, yPos;
-protected Image frontImage,backImage;
-protected Image displayedImage;
+	protected Image frontImage,backImage;
+	protected Image displayedImage;
 	private int visible=0;
 	protected Color color;
 
