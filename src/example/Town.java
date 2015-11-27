@@ -1,5 +1,7 @@
 package example;
 
+import com.tinyline.tiny2d.i;
+
 public class Town {
 	
 	private Connection [] connections;
@@ -143,6 +145,6 @@ public class Town {
 	public int getyPos() {
 		return yPos;
 	}
-	
+
 
 }
