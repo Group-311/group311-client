@@ -353,5 +353,38 @@ public class Board {
 	public void setBoardPic(Image boardPic) throws SlickException {
 		this.boardPic = new Image("/Map.jpg");
 	}
+	public void checkConnected(Town _townA, Town _townB){
+		
+		
+		
+		//Loop through all the connections of _townB
+		for(int i = 0; i < _townA.getConnections().length; i++){
+		//If any of the connections of _townB starts or ends in _townA, return true.
+			
+			System.out.println(_townA.getConnection(i).getTownB().getName());
+			
+			
+			if(_townA.getConnection(i).getTownB().getName() == _townB.getName() || 
+					_townA.getConnection(i).getTownA().getName() == _townB.getName()
+					&& _townA.getConnection(i).isTaken()){
+				
+				//return true;
+				System.out.println("Found a connection!");
+				break;
+			}else if(_townA.getConnection(i).isTaken() && !_townA.getConnection(i).getIsVisited()){
+				
+				_townA.getConnection(i).setIsVisited();
+				
+				System.out.println("Did not find a connection, looking in other connection");
+				checkConnected(_townA.getConnection(i).getTownB(), _townB);
+				
+			}
+			
+		}
+		
+		
+		//else return false
+		//return false;
+	}
 }
 
