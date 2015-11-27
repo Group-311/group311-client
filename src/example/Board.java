@@ -62,7 +62,7 @@ public class Board {
 				connections[26], connections[27], connections[28]);
 		towns[7] = new Town("Salt Lake City", 7, 233, 382, connections[11], connections[12], connections[13],
 				connections[20], connections[21], connections[22], connections[19]);
-		towns[8] = new Town("Las Vegas", 2, 186, 286, connections[15], connections[22]);
+		towns[8] = new Town("Las Vegas", 2, 186, 286, connections[14], connections[99]);
 		towns[9] = new Town("Phoenix", 4, 235, 228, connections[15], connections[22], connections[23], connections[24]);
 		towns[10] = new Town("Winnipeg", 4, 407, 596, connections[17], connections[25], connections[39],
 				connections[40]);
