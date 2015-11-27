@@ -1,11 +1,5 @@
 package example;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.InputStreamReader;
-import java.net.Socket;
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
 import org.lwjgl.input.Mouse;
 import java.util.logging.Logger;
