@@ -1,5 +1,9 @@
 package example;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStreamReader;
+import java.net.Socket;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
@@ -182,7 +186,7 @@ public class SimpleSlickGame extends BasicGame {
 		System.out.println(board.connections[28].getTownA().getName());
 		System.out.println(board.towns[20].getName());
 		System.out.println(board.towns[20].getConnection(1).getTownA().getName());
-<<<<<<< HEAD
+
 		
 		board.connections[0].setTaken();
 		board.connections[2].setTaken();
@@ -213,10 +217,6 @@ public class SimpleSlickGame extends BasicGame {
 				System.out.println(e.getStackTrace());
 			}
 		
-		try
-		{
-=======
-
 		/*
 		 * try{
 		 * 
@@ -234,7 +234,6 @@ public class SimpleSlickGame extends BasicGame {
 		 */
 
 		try {
->>>>>>> origin/master
 			AppGameContainer appgc;
 			appgc = new AppGameContainer(new SimpleSlickGame("Simple Slick Game"));
 			appgc.setDisplayMode(1024, 768, false);
@@ -242,7 +241,6 @@ public class SimpleSlickGame extends BasicGame {
 		} catch (SlickException ex) {
 			Logger.getLogger(SimpleSlickGame.class.getName()).log(Level.SEVERE, null, ex);
 		}
-
 	}
 
 	/**
@@ -257,10 +255,6 @@ public class SimpleSlickGame extends BasicGame {
 	 * @return Returns true if any of the connections of townB starts or ends in
 	 *         townA.
 	 */
-<<<<<<< HEAD
-	
-
-=======
 
 	public boolean checkConnected(Town _townA, Town _townB) {
 		// Loop through all the connections of _townB
@@ -273,5 +267,4 @@ public class SimpleSlickGame extends BasicGame {
 		// else return false
 		return false;
 	}
->>>>>>> origin/master
 }
