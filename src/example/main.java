@@ -50,10 +50,10 @@ public class main extends JPanel {
 
 		InputStreamReader ir = new InputStreamReader(Sock.getInputStream());
 		BufferedReader br = new BufferedReader(ir);
-
+while(true){
 		String Message = br.readLine();
 		System.out.println(Message);
-
+}
 	}
 }
 
