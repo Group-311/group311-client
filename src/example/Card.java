@@ -14,6 +14,7 @@ public class Card{
 protected Image frontImage,backImage;
 protected Image displayedImage;
 	private int visible=0;
+	protected Color color;
 
 	public void setFrontImage(Image frontImage) throws SlickException {
 		this.frontImage = frontImage;
@@ -57,6 +58,13 @@ protected Image displayedImage;
 			backImage.draw(xPos,yPos,width,height);
 		else
 			frontImage.draw(xPos,yPos,width,height);
+	}
+	public Color getColor() {
+		return color;
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
 	}
 
 }
