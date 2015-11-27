@@ -192,7 +192,7 @@ public class SimpleSlickGame extends BasicGame {
 		System.out.println(board.towns[3].getConnections().length);
 		
 		//System.out.println(board.checkConnected(board.towns[0], board.towns[3]));
-		
+		//board.checkConnected(board.towns[0], board.towns[2]);
 		
 /*	try{
 			
@@ -251,7 +251,7 @@ public class SimpleSlickGame extends BasicGame {
 	 *         townA.
 	 */
 
-	public boolean checkConnected(Town _townA, Town _townB) {
+	/*public boolean checkConnected(Town _townA, Town _townB) {
 		// Loop through all the connections of _townB
 		for (int i = 0; i < _townB.getConnections().length; i++) {
 			// If any of the connections of _townB starts or ends in _townA,
@@ -261,5 +261,5 @@ public class SimpleSlickGame extends BasicGame {
 		}
 		// else return false
 		return false;
-	}
+	}*/
 }
