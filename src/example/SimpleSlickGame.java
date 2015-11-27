@@ -170,8 +170,16 @@ public class SimpleSlickGame extends BasicGame {
 
 					}
 					if (townA!=null && townB!=null){
-						selectedConnection = findConnectionToBuild(townA, townB);
+						if(findConnectionToBuild(townA, townB) == null){
+							townA = null;
+							townB = null;
+						}else{
+							selectedConnection = findConnectionToBuild(townA, townB);
+							System.out.println("The selected connection require "+selectedConnection.getLength()+" trains with the color "+selectedConnection.getColor().getColorName());
+						}
+						
 					}
+					
 					// System.out.println(townB.getName() + " " + townA.getName());
 				}
 				//  --------------------------------------------------------------------------------------------------------------------------------------------
@@ -201,7 +209,7 @@ public class SimpleSlickGame extends BasicGame {
 		
 		for(int i = 0; i < board.connections.length; i++){
 			if(board.connections[i].getTownA().getName() == town1.getName() || board.connections[i].getTownA().getName() == town2.getName()){
-				System.out.println("We have a town");
+				//Keeps looking for the right connection
 				if(board.connections[i].getTownB().getName() == town1.getName() || board.connections[i].getTownB().getName() == town2.getName()){
 					System.out.println("These are neighbours");
 					if(!board.connections[i].isTaken())

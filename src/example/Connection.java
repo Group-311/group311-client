@@ -76,6 +76,15 @@ public class Connection{
 	public void setTaken(boolean isTaken) {
 		this.isTaken = isTaken;
 	}
+
+
+	public int getLength() {
+		return length;
+	}
+	
+	public Color getColor() {
+		return color;
+	}
 	
 
 }

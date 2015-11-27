@@ -373,22 +373,27 @@ public class Board {
 			//Loop through all the connections of _townA
 			for(int i = 0; i < _townA.getConnections().length; i++){
 				
-				System.out.println(_townA.getConnection(i).getTownB().getName());
+				//implement a current town that can be incremented 
+				Town currentTown = _townA;
+				
+				System.out.println(currentTown.getConnection(i).getTownB().getName());
 				
 				
-				if(_townA.getConnection(i).getTownB().getName() == _townB.getName() || 
-						_townA.getConnection(i).getTownA().getName() == _townB.getName()
-						&& _townA.getConnection(i).isTaken()){
+				
+				if(currentTown.getConnection(i).getTownB().getName() == _townB.getName() || 
+						currentTown.getConnection(i).getTownA().getName() == _townB.getName()
+						&& currentTown.getConnection(i).isTaken()){
 					
 					//return true;
 					System.out.println("Found a connection!");
 					break;
-				}else if(_townA.getConnection(i).isTaken() && !_townA.getConnection(i).getIsVisited()){
+				}else if(currentTown.getConnection(i).isTaken() && !currentTown.getConnection(i).getIsVisited()){
 					
-					_townA.getConnection(i).setIsVisited();
+					currentTown.getConnection(i).setIsVisited();
+					currentTown = currentTown.getConnection(i).getTownB();
 					
 					System.out.println("Did not find a connection, looking in other connection");
-					checkConnected(_townA.getConnection(i).getTownB(), _townB);
+					checkConnected(currentTown, _townB);
 					
 				}	
 			}

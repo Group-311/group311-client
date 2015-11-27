@@ -14,4 +14,9 @@ public class Color {
 		return colorNum;
 	}
 
+	public String getColorName() {
+		return colorName;
+	}
+
+
 }
