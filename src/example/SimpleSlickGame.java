@@ -11,6 +11,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.omg.CORBA.BAD_INV_ORDER;
 
 import com.google.gson.Gson;
 
@@ -155,23 +156,42 @@ public class SimpleSlickGame extends BasicGame {
 		 xpos = Mouse.getX();
 		 ypos = Mouse.getY();
 		 
+	
+		 
+		 
 
-		//Calling flipcard function if activated
+		// Calling flipcard function if activated
+
+			// --------------------------------------------------------------------------------------------------------------------------------------------
+			// Will implement what happens when you click a city in here.
+		 
+		
 			if (input.isMousePressed(0)) {
-				if (xpos <board.summaryCard.xPos+board.summaryCard.width && xpos>board.summaryCard.xPos && ypos>768-board.summaryCard.height)
-					board.summaryCard.flipCard();
+				 for (int j = 0; j < board.towns.length; j++) {
+					if (xpos < board.towns[j].getxPos()+10 && xpos >= board.towns[j].getxPos()-10 && ypos < board.towns[j].getyPos()+10 && ypos> board.towns[j].getyPos()-10)
+					System.out.println(board.towns[j].getName());
+				
+						
+
+				}
+					System.out.println(xpos + " " +ypos);
+			}
+				 //--------------------------------------------------------------------------------------------------------------------------------------------
+				 
+				//if (xpos <board.summaryCard.xPos+board.summaryCard.width && xpos>board.summaryCard.xPos && ypos>768-board.summaryCard.height)
+					//board.summaryCard.flipCard();
 				
 					//board.missionCardStack.card[1].flipCard();
 					//board.trainCardStack.card[1].flipCard();
 		}
 
-	}
+	
 
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException {
 	 // Loads the placement Map image used	to detect cities
 		
-		board.getBoardPic().draw();; // Place it in (0,0)
+		board.getBoardPic().draw(); // Place it in (0,0)
 		board.summaryCard.setVisible();
 		board.missionCardStack.card[1].setVisible();
 		board.trainCardStack.card[1].setVisible();
