@@ -26,7 +26,7 @@ public class Board {
 
 		// set the amount of towns, connections, colors and players
 		towns = new Town[36];
-		connections = new Connection[99];
+		connections = new Connection[100];
 		colors = new Color[10];
 		players = new PlayerPiece[numOfPlayers];
 
@@ -62,7 +62,7 @@ public class Board {
 				connections[26], connections[27], connections[28]);
 		towns[7] = new Town("Salt Lake City", 7, 233, 382, connections[11], connections[12], connections[13],
 				connections[20], connections[21], connections[22], connections[19]);
-		towns[8] = new Town("Las Vegas", 2, 1, 286, connections[15], connections[22]);
+		towns[8] = new Town("Las Vegas", 2, 186, 286, connections[15], connections[22]);
 		towns[9] = new Town("Phoenix", 4, 235, 228, connections[15], connections[22], connections[23], connections[24]);
 		towns[10] = new Town("Winnipeg", 4, 407, 596, connections[17], connections[25], connections[39],
 				connections[40]);
@@ -124,7 +124,7 @@ public class Board {
 		connections[3] = new Connection(colors[6], towns[1], towns[2], 1, 1);
 		connections[13] = new Connection(colors[3], towns[3], towns[7], 5, 10);
 		connections[4] = new Connection(colors[7], towns[2], towns[3], 5, 10);
-		connections[14] = new Connection(colors[6], towns[3], towns[8], 2, 2);
+		connections[14] = new Connection(colors[6], towns[4], towns[8], 2, 2);
 		connections[5] = new Connection(colors[8], towns[2], towns[3], 5, 10);
 		connections[15] = new Connection(colors[6], towns[4], towns[9], 3, 4);
 		connections[6] = new Connection(colors[4], towns[3], towns[4], 3, 4);
@@ -218,6 +218,8 @@ public class Board {
 		connections[88] = new Connection(colors[6], towns[25], towns[30], 2, 2);
 		connections[98] = new Connection(colors[8], towns[34], towns[35], 4, 7);
 		connections[89] = new Connection(colors[6], towns[25], towns[30], 2, 2);
+		connections[99] = new Connection(colors[2], towns[7], towns[8], 3, 4);
+		
 
 		// creating all the towns again
 		towns[0] = new Town("Vancouver", 3, 94, 591, connections[0], connections[1], connections[8]);
@@ -234,7 +236,7 @@ public class Board {
 				connections[26], connections[27], connections[28]);
 		towns[7] = new Town("Salt Lake City", 7, 233, 382, connections[11], connections[12], connections[13],
 				connections[20], connections[21], connections[22], connections[19]);
-		towns[8] = new Town("Las Vegas", 2, 1, 286, connections[15], connections[22]);
+		towns[8] = new Town("Las Vegas", 2, 186, 286, connections[14], connections[99]);
 		towns[9] = new Town("Phoenix", 4, 235, 228, connections[15], connections[22], connections[23], connections[24]);
 		towns[10] = new Town("Winnipeg", 4, 407, 596, connections[17], connections[25], connections[39],
 				connections[40]);
