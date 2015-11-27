@@ -12,6 +12,8 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
+import com.google.gson.Gson;
+
 public class SimpleSlickGame extends BasicGame {
 	static Board board;
 	
@@ -191,6 +193,20 @@ public class SimpleSlickGame extends BasicGame {
 		System.out.println(board.towns[0].getConnections().length);
 		System.out.println(board.towns[3].getConnections().length);
 		
+		//GsonJson test with stacks of traincards.-----------------------------------------------------------
+				System.out.println(board.trainCardStack.card[1].getColor().getColorNum());
+				System.out.println(board.trainCardStack.card[50].getColor().getColorNum());
+				Gson serializer = new Gson();
+				String Jsontrain = serializer.toJson(board);
+				
+				Board temp  = new Gson().fromJson(Jsontrain, Board.class);
+				
+				System.out.println(temp.trainCardStack. card[1].getColor().getColorNum());
+		// JSON TEST END ------------------------------------------------------------------------------------
+				
+				
+				
+				
 		//System.out.println(board.checkConnected(board.towns[0], board.towns[3]));
 		//board.checkConnected(board.towns[0], board.towns[2]);
 		
