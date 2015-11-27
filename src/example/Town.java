@@ -137,7 +137,12 @@ public class Town {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+	public int getxPos() {
+		return xPos;
+	}
+	public int getyPos() {
+		return yPos;
+	}
 	
 
 }
