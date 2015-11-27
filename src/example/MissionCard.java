@@ -11,7 +11,7 @@ public class MissionCard extends Card{
 	Image image;
 	private boolean isCompleted;
 
-	MissionCard(Town townA,Town townB, int points){
+	public MissionCard(Town townA,Town townB, int points){
 		this.townA=townA;
 		this.townB=townB;
 		this.points=points;
