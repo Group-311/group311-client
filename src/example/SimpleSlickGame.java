@@ -163,9 +163,10 @@ public class SimpleSlickGame extends BasicGame {
 		//Calling flipcard function if activated
 			if (input.isMousePressed(0)) {
 				if (xpos <board.summaryCard.xPos+board.summaryCard.width && xpos>board.summaryCard.xPos && ypos>768-board.summaryCard.height)
-					//board.summaryCard.flipCard();
+					board.summaryCard.flipCard();
+				
 					//board.missionCardStack.card[1].flipCard();
-					board.trainCardStack.card[1].flipCard();
+					//board.trainCardStack.card[1].flipCard();
 		}
 
 	}
@@ -199,7 +200,7 @@ public class SimpleSlickGame extends BasicGame {
 		//System.out.println(board.checkConnected(board.towns[0], board.towns[3]));
 		
 		
-	try{
+/*	try{
 			
 			String sentence;
 			String modifiedSentence;
@@ -215,7 +216,7 @@ public class SimpleSlickGame extends BasicGame {
 			
 			}catch(Exception e){
 				System.out.println(e.getStackTrace());
-			}
+			}*/
 		
 		/*
 		 * try{
