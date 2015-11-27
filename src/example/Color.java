@@ -9,5 +9,9 @@ public class Color {
 		this.colorName = _colorName;
 		this.colorNum = _colorNum;
 	}
+	
+	public int getColorNum() {
+		return colorNum;
+	}
 
 }
