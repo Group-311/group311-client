@@ -2,6 +2,7 @@
 package example;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -9,9 +10,14 @@ import org.newdawn.slick.SlickException;
 public class Board {
 
 	private Image boardPic;
-	Town[] towns;
+	//Town[] towns;
+	
+	ArrayList<Town> towns = new ArrayList<Town>();
 	PlayerPiece[] players;
-	Connection[] connections;
+	//Connection[] connections;
+	
+	ArrayList<Connection> connections = new ArrayList<Connection>();
+	
 	Color[] colors;
 	Card summaryCard;
 	Card[] missionCards;
@@ -46,7 +52,8 @@ public class Board {
 		colors[7] = new Color("green", 7);
 		colors[8] = new Color("pink", 8);
 		colors[9] = new Color("rainbow", 9);
-
+		
+		/*
 		// creating all the towns
 		towns[0] = new Town("Vancouver", 3, 94, 591, connections[0], connections[1], connections[8]);
 		towns[1] = new Town("Seattle", 6, 92, 542, connections[0], connections[1], connections[2], connections[3],
@@ -113,6 +120,8 @@ public class Board {
 				connections[82], connections[84], connections[85]);
 		towns[34] = new Town("Charleston", 3, 781, 298, connections[86], connections[97], connections[98]);
 		towns[35] = new Town("Miami", 3, 809, 159, connections[75], connections[78], connections[87]);
+		
+		*/
 
 		// creating all the connections
 		connections[0] = new Connection(colors[6], towns[0], towns[1], 1, 1);
@@ -221,6 +230,7 @@ public class Board {
 		connections[99] = new Connection(colors[2], towns[7], towns[8], 3, 4);
 		
 
+		/*
 		// creating all the towns again
 		towns[0] = new Town("Vancouver", 3, 94, 591, connections[0], connections[1], connections[8]);
 		towns[1] = new Town("Seattle", 6, 92, 542, connections[0], connections[1], connections[2], connections[3],
@@ -287,6 +297,7 @@ public class Board {
 				connections[82], connections[84], connections[85]);
 		towns[34] = new Town("Charleston", 3, 781, 298, connections[86], connections[97], connections[98]);
 		towns[35] = new Town("Miami", 3, 809, 159, connections[75], connections[78], connections[87]);
+		*/
 
 		// creating all the mission cards
 		missionCards[0] = new MissionCard(towns[11], towns[13], 4);
@@ -368,7 +379,7 @@ public class Board {
 	*/
 
 
-	public void checkConnected(Town _townA, Town _townB){
+	public void REMOVEDcheckConnected(Town _townA, Town _townB){ //pass in player as well
 			
 			
 			
@@ -380,25 +391,133 @@ public class Board {
 				
 				System.out.println(currentTown.getConnection(i).getTownB().getName());
 				
-				
+				//if _townB is taken by player
+				if(currentTown.getConnection(i).isTaken()){
 				
 				if(currentTown.getConnection(i).getTownB().getName() == _townB.getName() || 
-						currentTown.getConnection(i).getTownA().getName() == _townB.getName()
-						&& currentTown.getConnection(i).isTaken()){
+						currentTown.getConnection(i).getTownA().getName() == _townB.getName() ){
 					
 					//return true;
 					System.out.println("Found a connection!");
 					break;
 				}else if(currentTown.getConnection(i).isTaken() && !currentTown.getConnection(i).getIsVisited()){
 					
-					currentTown.getConnection(i).setIsVisited();
+					currentTown.getConnection(i).setIsVisited(true);
 					currentTown = currentTown.getConnection(i).getTownB();
 					
 					System.out.println("Did not find a connection, looking in other connection");
-					checkConnected(currentTown, _townB);
+					REMOVEDcheckConnected(currentTown, _townB);
 					
 				}	
+				}
+				
+				//make visited?
 			}
 		}
+	
+	public boolean _areConnected(Town _townA, Town _townB /*, Player player*/){
+
+		Town current = _townA;
+		boolean returnValue = false;
+		
+
+		for(int i = 0; i < current.getConnections().length; i++){
+			if(current.getConnection(i).isTaken()){
+					
+					if(current.getConnection(i).getTownB().getName() == _townB.getName() || 
+						current.getConnection(i).getTownA().getName() == _townB.getName() ){
+
+						return true;
+			}
+		}
+	}
+
+
+		System.out.println(current.getName());
+		//System.out.println(current.getName());
+
+	for(int i = 0; i < current.getConnections().length; i++){
+		
+		//if(current.getConnection(i).isTaken()){
+		
+		//System.out.println("Iteration "+i);
+		//System.out.println("Current node is "+current.getName());
+		//System.out.println(current.getConnection(i));
+		
+		
+
+		if(current.getConnection(i).getTownB().getName() == current.getName()){
+			current = _townA.getConnection(i).getTownA();
+			break;
+		}else{
+			current = _townA.getConnection(i).getTownB();
+			break;
+		//}
+	}/*else if(current.getConnection(i).isTaken() == false){
+		System.out.println(current.getName()+" "+" Connections are: ");
+		System.out.println(current.getConnection(i));
+		return false;
+	}*/
+}
+		
+		System.out.println("Did we get here? 2");
+		
+		System.out.println("Current node is "+current.getName());
+		System.out.println("1"+towns[1].getName());
+		System.out.println("2"+current);
+		System.out.println("3"+_townA.getConnection(0).getTownB());
+		
+		System.out.println(current.getName()+" number of connections are "+current.getConnections().length);
+		
+		System.out.println(current.getConnection(0));
+		System.out.println(connections[0]);
+		System.out.println(towns[1].getConnection(0));
+		
+		System.out.println(current.getConnection(0).isTaken());
+		
+		returnValue = false;
+		
+		
+ for(int i = 0; i < current.getConnections().length; i++){
+	 
+	 System.out.println("Iteration number "+i);
+	 
+	 if(current.getConnection(i).isTaken()){
+		
+		if(!current.getConnection(i).getIsVisited()){
+			
+			current.getConnection(i).setIsVisited(true);
+
+			System.out.println("Did we get here? 1");
+			returnValue = returnValue || _areConnected(current, _townB/*, player*/);
+		}
+	}
+ }
+
+
+	return returnValue;
+
+
+}
+
+	void setAllUnVisited(){
+
+		for(int i = 0; i < connections.length; i++){
+
+			connections[i].setIsVisited(false);
+
+		}
+
+	}
+
+	public boolean areConnected(Town _townA, Town _townB/*,  Player player */){
+
+		boolean temp;
+		temp = _areConnected(_townA, _townB);
+		setAllUnVisited();
+
+		return temp;
+
+	}
 }
 

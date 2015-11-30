@@ -1,12 +1,17 @@
 package example;
 
+import java.util.ArrayList;
+
 import com.tinyline.tiny2d.i;
 
 public class Town {
 	
-	private Connection [] connections;
+	//private Connection [] connections;
+	ArrayList<Connection> connections = new ArrayList<Connection>();
 	private String name;
 	private int xPos, yPos;
+	
+	/*
 	
 	public Town(String _name, int amountOfConnections, int _xPos, int _yPos, Connection connection, Connection connection2){
 		this.setName(_name);
@@ -119,16 +124,18 @@ public class Town {
 		connections[7] = connection8;
 		connections[8] = connection9;
 	}
+	
+	*/
 
-	public Connection [] getConnections() {
+	public ArrayList<Connection> getConnections() {
 		return connections;
 	}
 	public Connection getConnection(int i) {
-		return connections[i];
+		return connections.get(i);
 	}
 
 
-	public void setConnections(Connection [] connections) {
+	public void setConnections(ArrayList <Connection> connections) {
 		this.connections = connections;
 	}
 
@@ -144,6 +151,9 @@ public class Town {
 	}
 	public int getyPos() {
 		return yPos;
+	}
+	public void addConnection(Connection c){
+		
 	}
 
 

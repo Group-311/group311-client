@@ -240,9 +240,6 @@ public class SimpleSlickGame extends BasicGame {
 		System.out.println(board.towns[20].getName());
 		System.out.println(board.towns[20].getConnection(1).getTownA().getName());
 
-		board.connections[0].setTaken();
-		board.connections[2].setTaken();
-		board.connections[4].setTaken();
 
 		System.out.println(board.towns[0].getConnections().length);
 		System.out.println(board.towns[3].getConnections().length);
@@ -294,10 +291,14 @@ public class SimpleSlickGame extends BasicGame {
 		// JSON TEST END ------------------------------------------------------------------------------------
 				
 				
-				
+
+		board.connections[8].setTaken(true);
+		board.connections[17].setTaken(true);
+		//board.connections[4].setTaken();
 				
 		//System.out.println(board.checkConnected(board.towns[0], board.towns[3]));
-		board.checkConnected(board.towns[0], board.towns[1]);
+		//board.REMOVEDcheckConnected(board.towns[0], board.towns[1]);
+		System.out.println(board.areConnected(board.towns[0], board.towns[10]));
 		
 /*	try{
 			

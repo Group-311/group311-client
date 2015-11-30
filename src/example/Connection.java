@@ -14,7 +14,7 @@ public class Connection{
 	private Town townA, townB;
 	private boolean isTaken;
 	
-	public boolean isVisited;
+	private boolean isVisited;
 
 	/**
 	* setting all values through the constructor
@@ -29,7 +29,11 @@ public class Connection{
 		this.color = _color;
 		this.setTownA(_townA);
 		this.setTownB(_townB);
-		//this.setTaken();
+		
+		_townA.addConnection(this);
+		
+		this.setTaken(false);
+		isTaken = false;
 		
 		isVisited = false;
 	}
@@ -56,12 +60,8 @@ public class Connection{
 		return isTaken();
 	}
 
-
-	public void setTaken() {
-		this.isTaken = true;
-	}
-	public void setIsVisited(){
-		this.isVisited = true;
+	public void setIsVisited(boolean b){
+		this.isVisited = b;
 	}
 	public boolean getIsVisited(){
 		return this.isVisited;
@@ -73,8 +73,8 @@ public class Connection{
 	}
 
 
-	public void setTaken(boolean isTaken) {
-		this.isTaken = isTaken;
+	public void setTaken(boolean _isTaken) {
+		this.isTaken = _isTaken;
 	}
 
 
