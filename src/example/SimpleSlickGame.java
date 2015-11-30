@@ -295,6 +295,7 @@ public class SimpleSlickGame extends BasicGame {
 		//board.connections[8].setTaken(true);
 		//board.connections[17].setTaken(true);
 		//board.connections[4].setTaken();
+		
 		System.out.println("Helensas size "+board.towns[6].getConnections().size());
 		System.out.println("..."+board.connections.get(16).getTownA().getName());
 		System.out.println("..."+board.connections.get(16).getTownB().getName());
@@ -302,11 +303,26 @@ public class SimpleSlickGame extends BasicGame {
 		System.out.println("..."+board.connections.get(17).getTownA().getName());
 		System.out.println("..."+board.connections.get(17).getTownB().getName());
 		board.connections.get(17).setTaken(true);
+		System.out.println("..."+board.connections.get(32).getTownA().getName());
+		System.out.println("..."+board.connections.get(32).getTownB().getName());
+		board.connections.get(32).setTaken(true);
+		System.out.println("..."+board.connections.get(0).getTownA().getName());
+		System.out.println("..."+board.connections.get(0).getTownB().getName());
+		board.connections.get(0).setTaken(true);
+		System.out.println("..."+board.connections.get(4).getTownA().getName());
+		System.out.println("..."+board.connections.get(4).getTownB().getName());
+		board.connections.get(4).setTaken(true);
+		System.out.println("..."+board.connections.get(8).getTownA().getName());
+		System.out.println("..."+board.connections.get(8).getTownB().getName());
+		board.connections.get(8).setTaken(true);
+		System.out.println("..."+board.connections.get(12).getTownA().getName());
+		System.out.println("..."+board.connections.get(12).getTownB().getName());
+		board.connections.get(12).setTaken(true);
 				
 		//System.out.println(board.checkConnected(board.towns[0], board.towns[3]));
 		//board.REMOVEDcheckConnected(board.towns[0], board.towns[1]);
 		
-		System.out.println(board.areConnected(board.towns[0], board.towns[6]));
+		System.out.println(board.areConnected2(board.towns[0], board.towns[4]));
 		
 /*	try{
 			

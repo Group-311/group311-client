@@ -755,5 +755,48 @@ public class Board {
 		return temp;
 
 	}
+	
+	public boolean areConnected2(Town townA, Town townB){
+		
+	
+		Town current = townA;
+
+		for(int i = 0; i <  current.getConnections().size(); i++){
+
+		if(current.getConnection(i).getIsTaken() && current.getConnection(i).getIsVisited() == false){
+			current.getConnection(i).setIsVisited(true);
+				if(current.getConnection(i).getTownB().getName() == townB.getName() ||
+						current.getConnection(i).getTownA().getName() == townB.getName()){
+				return true;
+				}
+			}
+		}
+
+		boolean returnValue = false;
+
+		for(int i = 0; i < current.getConnections().size(); i++){
+			
+		 /*if(current.getConnection(i).getTownB().getName() == current.getName()){
+				System.out.println("I set current from "+current.getName());
+				current = townA.getConnection(i).getTownA();
+				System.out.println("I set current to "+current.getName());
+				
+			}else{
+				System.out.println("I set current from "+current.getName());
+				current = townA.getConnection(i).getTownB();
+				System.out.println("I set current to "+current.getName()); 
+				}*/
+			
+
+		if(current.getConnection(i).isTaken()){
+
+			returnValue = areConnected2(current.getConnection(i).getTownB(), townB);
+
+			}
+		}
+		
+		return returnValue;
+		
+	}
 }
 
