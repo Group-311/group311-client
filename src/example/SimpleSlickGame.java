@@ -207,13 +207,13 @@ public class SimpleSlickGame extends BasicGame {
 	}
 	private Connection findConnectionToBuild(Town town1, Town town2) {
 		
-		for(int i = 0; i < board.connections.length; i++){
-			if(board.connections[i].getTownA().getName() == town1.getName() || board.connections[i].getTownA().getName() == town2.getName()){
+		for(int i = 0; i < board.connections.size(); i++){
+			if(board.connections.get(i).getTownA().getName() == town1.getName() || board.connections.get(i).getTownA().getName() == town2.getName()){
 				//Keeps looking for the right connection
-				if(board.connections[i].getTownB().getName() == town1.getName() || board.connections[i].getTownB().getName() == town2.getName()){
+				if(board.connections.get(i).getTownB().getName() == town1.getName() || board.connections.get(i).getTownB().getName() == town2.getName()){
 					System.out.println("These are neighbours");
-					if(!board.connections[i].isTaken())
-						return board.connections[i];
+					if(!board.connections.get(i).isTaken())
+						return board.connections.get(i);
 				}
 			}
 			/*else {
@@ -236,25 +236,25 @@ public class SimpleSlickGame extends BasicGame {
 
 	public static void main(String[] args) throws SlickException {
 		board = new Board(3);
-		System.out.println(board.connections[28].getTownA().getName());
+		//System.out.println(board.connections[28].getTownA().getName());
 		System.out.println(board.towns[20].getName());
 		System.out.println(board.towns[20].getConnection(1).getTownA().getName());
 
 
-		System.out.println(board.towns[0].getConnections().length);
-		System.out.println(board.towns[3].getConnections().length);
+		System.out.println(board.towns[0].getConnections().size());
+		System.out.println(board.towns[3].getConnections().size());
 
 
 		// GsonJson test with stacks of
 		// traincards.-----------------------------------------------------------
-		System.out.println(board.trainCardStack.card[1].getColor().getColorNum());
+	/*	System.out.println(board.trainCardStack.card[1].getColor().getColorNum());
 		System.out.println(board.trainCardStack.card[50].getColor().getColorNum());
 		Gson serializer = new Gson();
 		String Jsontrain = serializer.toJson(board);
 
 		Board temp = new Gson().fromJson(Jsontrain, Board.class);
 
-		System.out.println(temp.trainCardStack.card[1].getColor().getColorNum());
+		System.out.println(temp.trainCardStack.card[1].getColor().getColorNum());  */
 		// JSON TEST END
 		// ------------------------------------------------------------------------------------
 
@@ -292,13 +292,21 @@ public class SimpleSlickGame extends BasicGame {
 				
 				
 
-		board.connections[8].setTaken(true);
-		board.connections[17].setTaken(true);
+		//board.connections[8].setTaken(true);
+		//board.connections[17].setTaken(true);
 		//board.connections[4].setTaken();
+		System.out.println("Helensas size "+board.towns[6].getConnections().size());
+		System.out.println("..."+board.connections.get(16).getTownA().getName());
+		System.out.println("..."+board.connections.get(16).getTownB().getName());
+		board.connections.get(16).setTaken(true);
+		System.out.println("..."+board.connections.get(17).getTownA().getName());
+		System.out.println("..."+board.connections.get(17).getTownB().getName());
+		board.connections.get(17).setTaken(true);
 				
 		//System.out.println(board.checkConnected(board.towns[0], board.towns[3]));
 		//board.REMOVEDcheckConnected(board.towns[0], board.towns[1]);
-		System.out.println(board.areConnected(board.towns[0], board.towns[10]));
+		
+		System.out.println(board.areConnected(board.towns[0], board.towns[6]));
 		
 /*	try{
 			

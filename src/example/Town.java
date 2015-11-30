@@ -11,6 +11,14 @@ public class Town {
 	private String name;
 	private int xPos, yPos;
 	
+	public Town(String _name, int amountOfConnections, int _xPos, int _yPos){
+		
+		this.setName(_name);
+		this.xPos = _xPos;
+		this.yPos = _yPos;
+		
+	}
+	
 	/*
 	
 	public Town(String _name, int amountOfConnections, int _xPos, int _yPos, Connection connection, Connection connection2){
@@ -153,6 +161,8 @@ public class Town {
 		return yPos;
 	}
 	public void addConnection(Connection c){
+		
+		connections.add(c);
 		
 	}
 

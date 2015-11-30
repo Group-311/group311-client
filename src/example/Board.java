@@ -10,9 +10,9 @@ import org.newdawn.slick.SlickException;
 public class Board {
 
 	private Image boardPic;
-	//Town[] towns;
+	Town[] towns;
 	
-	ArrayList<Town> towns = new ArrayList<Town>();
+	//ArrayList<Town> towns = new ArrayList<Town>();
 	PlayerPiece[] players;
 	//Connection[] connections;
 	
@@ -32,7 +32,7 @@ public class Board {
 
 		// set the amount of towns, connections, colors and players
 		towns = new Town[36];
-		connections = new Connection[100];
+		//connections = new Connection[100];
 		colors = new Color[10];
 		players = new PlayerPiece[numOfPlayers];
 
@@ -122,112 +122,348 @@ public class Board {
 		towns[35] = new Town("Miami", 3, 809, 159, connections[75], connections[78], connections[87]);
 		
 		*/
+		towns[0] = new Town("Vancouver", 3, 94, 591);
+		
+		towns[1] = new Town("Seattle", 6, 92, 542);
+		towns[2] = new Town("Portland", 5, 74, 499);
+		towns[3] = new Town("San Francisco", 6, 61, 325);
+		towns[4] = new Town("Los Angeles", 5, 128, 233);
+		towns[5] = new Town("Calgary", 4, 210, 605);
+		towns[6] = new Town("Helena", 7, 297, 489);
+		towns[7] = new Town("Salt Lake City", 7, 233, 382);
+		towns[8] = new Town("Las Vegas", 2, 186, 286);
+		towns[9] = new Town("Phoenix", 4, 235, 228);
+		towns[10] = new Town("Winnipeg", 4, 407, 596);
+		towns[11] = new Town("Denver", 9, 349, 354);
+		towns[12] = new Town("Santa Fe", 4, 342, 274);
+		towns[13] = new Town("El Paso", 6, 338, 196);
+		towns[14] = new Town("Duluth", 7, 504, 495);
+		towns[15] = new Town("Omaha", 7, 478, 415);
+		towns[16] = new Town("Kansas City", 8, 497, 370);
+		towns[17] = new Town("Oklahoma City", 8, 479, 293);
+		towns[18] = new Town("Dallas", 6, 497, 217);
+		towns[19] = new Town("Houston", 4, 532, 184);
+		towns[20] = new Town("Sault St Marie", 4, 616, 553);
+		towns[21] = new Town("Chicago", 7, 612, 441);
+		towns[22] = new Town("Saint Louis", 7, 573, 386);
+		towns[23] = new Town("Little Rock", 5, 557, 290);
+		towns[24] = new Town("New Orleans", 5, 613, 192);
+		towns[25] = new Town("Montreal", 5, 784, 611);
+		towns[26] = new Town("Toronto", 5, 712, 534);
+		towns[27] = new Town("Pittsburgh", 9, 726, 453);
+		towns[28] = new Town("Nashville", 5, 654, 335);
+		towns[29] = new Town("Atlanta", 7, 669, 304);
+		towns[30] = new Town("Boston", 4, 845, 559);
+		towns[31] = new Town("New York", 7, 800, 493);
+		towns[32] = new Town("Washington", 5, 807, 414);
+		towns[33] = new Town("Raleigh", 7, 756, 355);
+		towns[34] = new Town("Charleston", 3, 781, 298);
+		towns[35] = new Town("Miami", 3, 809, 159);
 
 		// creating all the connections
-		connections[0] = new Connection(colors[6], towns[0], towns[1], 1, 1);
-		connections[10] = new Connection(colors[4], towns[1], towns[6], 6, 13);
-		connections[1] = new Connection(colors[6], towns[0], towns[1], 1, 1);
-		connections[11] = new Connection(colors[0], towns[2], towns[7], 6, 13);
-		connections[2] = new Connection(colors[6], towns[1], towns[2], 1, 1);
-		connections[12] = new Connection(colors[2], towns[3], towns[7], 5, 10);
-		connections[3] = new Connection(colors[6], towns[1], towns[2], 1, 1);
-		connections[13] = new Connection(colors[3], towns[3], towns[7], 5, 10);
-		connections[4] = new Connection(colors[7], towns[2], towns[3], 5, 10);
-		connections[14] = new Connection(colors[6], towns[4], towns[8], 2, 2);
-		connections[5] = new Connection(colors[8], towns[2], towns[3], 5, 10);
-		connections[15] = new Connection(colors[6], towns[4], towns[9], 3, 4);
-		connections[6] = new Connection(colors[4], towns[3], towns[4], 3, 4);
-		connections[16] = new Connection(colors[5], towns[4], towns[13], 6, 13);
-		connections[7] = new Connection(colors[8], towns[3], towns[4], 3, 4);
-		connections[17] = new Connection(colors[3], towns[5], towns[10], 6, 13);
-		connections[8] = new Connection(colors[6], towns[0], towns[5], 3, 4);
-		connections[18] = new Connection(colors[6], towns[5], towns[6], 4, 7);
-		connections[9] = new Connection(colors[6], towns[1], towns[5], 4, 7);
-		connections[19] = new Connection(colors[8], towns[6], towns[7], 3, 4);
+		//connections[0] = new Connection(colors[6], towns[0], towns[1], 1, 1);
+		connections.add(new Connection(colors[6], towns[0], towns[1], 1, 1));
+		
+		//connections[10] = new Connection(colors[4], towns[1], towns[6], 6, 13);
+		connections.add(new Connection(colors[4], towns[1], towns[6], 6, 13));
+		
+		//connections[1] = new Connection(colors[6], towns[0], towns[1], 1, 1);
+		connections.add(new Connection(colors[6], towns[0], towns[1], 1, 1));
+		
+		//connections[11] = new Connection(colors[0], towns[2], towns[7], 6, 13);
+		connections.add(new Connection(colors[0], towns[2], towns[7], 6, 13));
+		
+		//	connections[2] = new Connection(colors[6], towns[1], towns[2], 1, 1);
+		connections.add(new Connection(colors[6], towns[1], towns[2], 1, 1));
+		
+		//	connections[12] = new Connection(colors[2], towns[3], towns[7], 5, 10);
+		connections.add(new Connection(colors[2], towns[3], towns[7], 5, 10));
+		
+		//connections[3] = new Connection(colors[6], towns[1], towns[2], 1, 1);
+		connections.add(new Connection(colors[6], towns[1], towns[2], 1, 1));
+		
+		//connections[13] = new Connection(colors[3], towns[3], towns[7], 5, 10);
+		connections.add(new Connection(colors[3], towns[3], towns[7], 5, 10));
+		
+		//connections[4] = new Connection(colors[7], towns[2], towns[3], 5, 10);
+		connections.add(new Connection(colors[7], towns[2], towns[3], 5, 10));
+		
+		//connections[14] = new Connection(colors[6], towns[4], towns[8], 2, 2);
+		connections.add(new Connection(colors[6], towns[4], towns[8], 2, 2));
+		
+		//connections[5] = new Connection(colors[8], towns[2], towns[3], 5, 10);
+		connections.add(new Connection(colors[8], towns[2], towns[3], 5, 10));
+		
+		//connections[15] = new Connection(colors[6], towns[4], towns[9], 3, 4);
+		connections.add(new Connection(colors[6], towns[4], towns[9], 3, 4));
+		
+		//connections[6] = new Connection(colors[4], towns[3], towns[4], 3, 4);
+		connections.add(new Connection(colors[4], towns[3], towns[4], 3, 4));
+		
+		//connections[16] = new Connection(colors[5], towns[4], towns[13], 6, 13);
+		connections.add(new Connection(colors[5], towns[4], towns[13], 6, 13));
+		
+		//connections[7] = new Connection(colors[8], towns[3], towns[4], 3, 4);
+		connections.add(new Connection(colors[8], towns[3], towns[4], 3, 4));
+		
+		//connections[17] = new Connection(colors[3], towns[5], towns[10], 6, 13);
+		connections.add(new Connection(colors[3], towns[5], towns[10], 6, 13));
+		
+		//connections[8] = new Connection(colors[6], towns[0], towns[5], 3, 4);
+		connections.add(new Connection(colors[6], towns[0], towns[5], 3, 4));
+		
+		//connections[18] = new Connection(colors[6], towns[5], towns[6], 4, 7);
+		connections.add(new Connection(colors[6], towns[5], towns[6], 4, 7));
+		
+		//connections[9] = new Connection(colors[6], towns[1], towns[5], 4, 7);
+		connections.add(new Connection(colors[6], towns[1], towns[5], 4, 7));
+		
+		//connections[19] = new Connection(colors[8], towns[6], towns[7], 3, 4);
+		connections.add(new Connection(colors[8], towns[6], towns[7], 3, 4));
+		
 
-		connections[20] = new Connection(colors[1], towns[7], towns[11], 3, 4);
-		connections[30] = new Connection(colors[5], towns[11], towns[16], 4, 7);
-		connections[21] = new Connection(colors[4], towns[7], towns[11], 3, 4);
-		connections[31] = new Connection(colors[2], towns[11], towns[16], 4, 7);
-		connections[22] = new Connection(colors[3], towns[9], towns[11], 5, 10);
-		connections[32] = new Connection(colors[1], towns[11], towns[7], 4, 7);
-		connections[23] = new Connection(colors[6], towns[9], towns[12], 3, 4);
-		connections[33] = new Connection(colors[6], towns[11], towns[12], 2, 2);
-		connections[24] = new Connection(colors[6], towns[9], towns[13], 3, 4);
-		connections[34] = new Connection(colors[0], towns[12], towns[17], 3, 4);
-		connections[25] = new Connection(colors[0], towns[6], towns[10], 4, 7);
-		connections[35] = new Connection(colors[6], towns[12], towns[13], 2, 2);
-		connections[26] = new Connection(colors[2], towns[6], towns[14], 6, 13);
-		connections[36] = new Connection(colors[4], towns[13], towns[17], 5, 10);
-		connections[27] = new Connection(colors[1], towns[6], towns[15], 5, 10);
-		connections[37] = new Connection(colors[1], towns[13], towns[18], 4, 7);
-		connections[28] = new Connection(colors[7], towns[6], towns[11], 4, 7);
-		connections[38] = new Connection(colors[7], towns[13], towns[19], 6, 13);
-		connections[29] = new Connection(colors[8], towns[11], towns[15], 4, 7);
-		connections[39] = new Connection(colors[6], towns[10], towns[20], 6, 13);
+		//connections[20] = new Connection(colors[1], towns[7], towns[11], 3, 4);
+		connections.add(new Connection(colors[1], towns[7], towns[11], 3, 4));
+		
+		//connections[30] = new Connection(colors[5], towns[11], towns[16], 4, 7);
+		connections.add(new Connection(colors[5], towns[11], towns[16], 4, 7));
+		
+		//connections[21] = new Connection(colors[4], towns[7], towns[11], 3, 4);
+		connections.add(new Connection(colors[4], towns[7], towns[11], 3, 4));
+		
+		//connections[31] = new Connection(colors[2], towns[11], towns[16], 4, 7);
+		connections.add(new Connection(colors[2], towns[11], towns[16], 4, 7));
+		
+		//connections[22] = new Connection(colors[3], towns[9], towns[11], 5, 10);
+		connections.add(new Connection(colors[3], towns[9], towns[11], 5, 10));
+		
+		//connections[32] = new Connection(colors[1], towns[11], towns[7], 4, 7);
+		connections.add(new Connection(colors[1], towns[11], towns[7], 4, 7));
+		
+		//connections[23] = new Connection(colors[6], towns[9], towns[12], 3, 4);
+		connections.add(new Connection(colors[6], towns[9], towns[12], 3, 4));
+		
+		//connections[33] = new Connection(colors[6], towns[11], towns[12], 2, 2);
+		connections.add(new Connection(colors[6], towns[11], towns[12], 2, 2));
+		
+		//connections[24] = new Connection(colors[6], towns[9], towns[13], 3, 4);
+		connections.add(new Connection(colors[6], towns[9], towns[13], 3, 4));
+		
+		//connections[34] = new Connection(colors[0], towns[12], towns[17], 3, 4);
+		connections.add(new Connection(colors[0], towns[12], towns[17], 3, 4));
+		
+		//connections[25] = new Connection(colors[0], towns[6], towns[10], 4, 7);
+		connections.add(new Connection(colors[0], towns[6], towns[10], 4, 7));
+		
+		//connections[35] = new Connection(colors[6], towns[12], towns[13], 2, 2);
+		connections.add(new Connection(colors[6], towns[12], towns[13], 2, 2));
+		
+		//connections[26] = new Connection(colors[2], towns[6], towns[14], 6, 13);
+		connections.add(new Connection(colors[2], towns[6], towns[14], 6, 13));
+		
+		//connections[36] = new Connection(colors[4], towns[13], towns[17], 5, 10);
+		connections.add(new Connection(colors[4], towns[13], towns[17], 5, 10));
+		
+		//connections[27] = new Connection(colors[1], towns[6], towns[15], 5, 10);
+		connections.add(new Connection(colors[1], towns[6], towns[15], 5, 10));
+		
+		//connections[37] = new Connection(colors[1], towns[13], towns[18], 4, 7);
+		connections.add(new Connection(colors[1], towns[13], towns[18], 4, 7));
+		
+		//connections[28] = new Connection(colors[7], towns[6], towns[11], 4, 7);
+		connections.add(new Connection(colors[7], towns[6], towns[11], 4, 7));
+		
+		//connections[38] = new Connection(colors[7], towns[13], towns[19], 6, 13);
+		connections.add(new Connection(colors[7], towns[13], towns[19], 6, 13));
+		
+		//connections[29] = new Connection(colors[8], towns[11], towns[15], 4, 7);
+		connections.add(new Connection(colors[8], towns[11], towns[15], 4, 7));
+		
+		//connections[39] = new Connection(colors[6], towns[10], towns[20], 6, 13);
+		connections.add(new Connection(colors[6], towns[10], towns[20], 6, 13));
+		
 
-		connections[40] = new Connection(colors[5], towns[10], towns[14], 4, 7);
-		connections[50] = new Connection(colors[8], towns[16], towns[22], 2, 2);
-		connections[41] = new Connection(colors[6], towns[14], towns[20], 3, 4);
-		connections[51] = new Connection(colors[6], towns[16], towns[17], 2, 2);
-		connections[42] = new Connection(colors[8], towns[14], towns[26], 6, 13);
-		connections[52] = new Connection(colors[6], towns[16], towns[17], 2, 2);
-		connections[43] = new Connection(colors[1], towns[14], towns[21], 3, 4);
-		connections[53] = new Connection(colors[6], towns[17], towns[23], 2, 2);
-		connections[44] = new Connection(colors[6], towns[14], towns[15], 2, 2);
-		connections[54] = new Connection(colors[6], towns[17], towns[18], 2, 2);
-		connections[45] = new Connection(colors[6], towns[14], towns[15], 2, 2);
-		connections[55] = new Connection(colors[6], towns[17], towns[18], 2, 2);
-		connections[46] = new Connection(colors[0], towns[15], towns[21], 4, 7);
-		connections[56] = new Connection(colors[6], towns[18], towns[23], 2, 2);
-		connections[47] = new Connection(colors[6], towns[15], towns[16], 1, 1);
-		connections[57] = new Connection(colors[6], towns[18], towns[19], 1, 1);
-		connections[48] = new Connection(colors[6], towns[15], towns[16], 1, 1);
-		connections[58] = new Connection(colors[6], towns[18], towns[19], 1, 1);
-		connections[49] = new Connection(colors[0], towns[16], towns[22], 2, 2);
-		connections[59] = new Connection(colors[6], towns[18], towns[24], 2, 2);
+		//connections[40] = new Connection(colors[5], towns[10], towns[14], 4, 7);
+		connections.add(new Connection(colors[5], towns[10], towns[14], 4, 7));
+		
+		//connections[50] = new Connection(colors[8], towns[16], towns[22], 2, 2);
+		connections.add(new Connection(colors[8], towns[16], towns[22], 2, 2));
+		
+		//connections[41] = new Connection(colors[6], towns[14], towns[20], 3, 4);
+		connections.add(new Connection(colors[6], towns[14], towns[20], 3, 4));
+		
+		//connections[51] = new Connection(colors[6], towns[16], towns[17], 2, 2);
+		connections.add(new Connection(colors[6], towns[16], towns[17], 2, 2));
+		
+		//connections[42] = new Connection(colors[8], towns[14], towns[26], 6, 13);
+		connections.add(new Connection(colors[8], towns[14], towns[26], 6, 13));
+		
+		//connections[52] = new Connection(colors[6], towns[16], towns[17], 2, 2);
+		connections.add(new Connection(colors[6], towns[16], towns[17], 2, 2));
+		
+		//connections[43] = new Connection(colors[1], towns[14], towns[21], 3, 4);
+		connections.add(new Connection(colors[1], towns[14], towns[21], 3, 4));
+		
+		//connections[53] = new Connection(colors[6], towns[17], towns[23], 2, 2);
+		connections.add(new Connection(colors[6], towns[17], towns[23], 2, 2));
+		
+		//connections[44] = new Connection(colors[6], towns[14], towns[15], 2, 2);
+		connections.add(new Connection(colors[6], towns[14], towns[15], 2, 2));
+		
+		//connections[54] = new Connection(colors[6], towns[17], towns[18], 2, 2);
+		connections.add(new Connection(colors[6], towns[17], towns[18], 2, 2));
+		
+		//connections[45] = new Connection(colors[6], towns[14], towns[15], 2, 2);
+		connections.add(new Connection(colors[6], towns[14], towns[15], 2, 2));
+		
+		//connections[55] = new Connection(colors[6], towns[17], towns[18], 2, 2);
+		connections.add(new Connection(colors[6], towns[17], towns[18], 2, 2));
+		
+		//connections[46] = new Connection(colors[0], towns[15], towns[21], 4, 7);
+		connections.add(new Connection(colors[0], towns[15], towns[21], 4, 7));
+		
+		//connections[56] = new Connection(colors[0], towns[15], towns[21], 4, 7);
+		connections.add(new Connection(colors[0], towns[15], towns[21], 4, 7));
+		
+		//connections[47] = new Connection(colors[6], towns[15], towns[16], 1, 1);
+		connections.add(new Connection(colors[6], towns[15], towns[16], 1, 1));
+		
+		//connections[57] = new Connection(colors[6], towns[18], towns[19], 1, 1);
+		connections.add(new Connection(colors[6], towns[18], towns[19], 1, 1));
+		
+		//connections[48] = new Connection(colors[6], towns[15], towns[16], 1, 1);
+		connections.add(new Connection(colors[6], towns[15], towns[16], 1, 1));
+		
+		//connections[58] = new Connection(colors[6], towns[18], towns[19], 1, 1);
+		connections.add(new Connection(colors[6], towns[18], towns[19], 1, 1));
+		
+		//connections[49] = new Connection(colors[0], towns[16], towns[22], 2, 2);
+		connections.add(new Connection(colors[0], towns[16], towns[22], 2, 2));
+		
+		//connections[59] = new Connection(colors[6], towns[18], towns[24], 2, 2);
+		connections.add(new Connection(colors[6], towns[18], towns[24], 2, 2));
+		
 
-		connections[60] = new Connection(colors[5], towns[20], towns[25], 5, 10);
-		connections[70] = new Connection(colors[6], towns[22], towns[23], 2, 2);
-		connections[61] = new Connection(colors[6], towns[20], towns[26], 2, 2);
-		connections[71] = new Connection(colors[3], towns[23], towns[28], 3, 4);
-		connections[62] = new Connection(colors[6], towns[26], towns[25], 3, 4);
-		connections[72] = new Connection(colors[7], towns[23], towns[24], 3, 4);
-		connections[63] = new Connection(colors[3], towns[21], towns[26], 4, 7);
-		connections[73] = new Connection(colors[4], towns[24], towns[29], 4, 7);
-		connections[64] = new Connection(colors[2], towns[21], towns[27], 3, 4);
-		connections[74] = new Connection(colors[2], towns[24], towns[29], 4, 7);
-		connections[65] = new Connection(colors[5], towns[21], towns[27], 3, 4);
-		connections[75] = new Connection(colors[1], towns[24], towns[35], 6, 13);
-		connections[66] = new Connection(colors[7], towns[21], towns[22], 2, 2);
-		connections[76] = new Connection(colors[6], towns[26], towns[27], 2, 2);
-		connections[67] = new Connection(colors[3], towns[21], towns[22], 2, 2);
-		connections[77] = new Connection(colors[3], towns[27], towns[31], 2, 2);
-		connections[68] = new Connection(colors[7], towns[22], towns[27], 5, 10);
-		connections[78] = new Connection(colors[7], towns[27], towns[31], 2, 2);
-		connections[69] = new Connection(colors[6], towns[22], towns[28], 2, 2);
-		connections[79] = new Connection(colors[6], towns[27], towns[32], 2, 2);
+		//connections[60] = new Connection(colors[5], towns[20], towns[25], 5, 10);
+		connections.add(new Connection(colors[5], towns[20], towns[25], 5, 10));
+		
+		//connections[70] = new Connection(colors[6], towns[22], towns[23], 2, 2);
+		connections.add(new Connection(colors[6], towns[22], towns[23], 2, 2));
+		
+		//connections[61] = new Connection(colors[6], towns[20], towns[26], 2, 2);
+		connections.add(new Connection(colors[6], towns[20], towns[26], 2, 2));
+		
+		//connections[71] = new Connection(colors[3], towns[23], towns[28], 3, 4);
+		connections.add(new Connection(colors[3], towns[23], towns[28], 3, 4));
+		
+		//connections[62] = new Connection(colors[6], towns[26], towns[25], 3, 4);
+		connections.add(new Connection(colors[6], towns[26], towns[25], 3, 4));
+		
+		//connections[72] = new Connection(colors[7], towns[23], towns[24], 3, 4);
+		connections.add(new Connection(colors[7], towns[23], towns[24], 3, 4));
+		
+		//connections[63] = new Connection(colors[3], towns[21], towns[26], 4, 7);
+		connections.add(new Connection(colors[3], towns[21], towns[26], 4, 7));
+		
+		//connections[73] = new Connection(colors[4], towns[24], towns[29], 4, 7);
+		connections.add(new Connection(colors[4], towns[24], towns[29], 4, 7));
+		
+		//connections[64] = new Connection(colors[2], towns[21], towns[27], 3, 4);
+		connections.add(new Connection(colors[2], towns[21], towns[27], 3, 4));
+		
+		//connections[74] = new Connection(colors[2], towns[24], towns[29], 4, 7);
+		connections.add(new Connection(colors[2], towns[24], towns[29], 4, 7));
+		
+		//connections[65] = new Connection(colors[5], towns[21], towns[27], 3, 4);
+		connections.add(new Connection(colors[5], towns[21], towns[27], 3, 4));
+		
+		//connections[75] = new Connection(colors[1], towns[24], towns[35], 6, 13);
+		connections.add(new Connection(colors[1], towns[24], towns[35], 6, 13));
+		
+		//connections[66] = new Connection(colors[7], towns[21], towns[22], 2, 2);
+		connections.add(new Connection(colors[7], towns[21], towns[22], 2, 2));
+		
+		//connections[76] = new Connection(colors[6], towns[26], towns[27], 2, 2);
+		connections.add(new Connection(colors[6], towns[26], towns[27], 2, 2));
+		
+		//connections[67] = new Connection(colors[3], towns[21], towns[22], 2, 2);
+		connections.add(new Connection(colors[3], towns[21], towns[22], 2, 2));
+		
+		//connections[77] = new Connection(colors[3], towns[27], towns[31], 2, 2);
+		connections.add(new Connection(colors[3], towns[27], towns[31], 2, 2));
+		
+		//connections[68] = new Connection(colors[7], towns[22], towns[27], 5, 10);
+		connections.add(new Connection(colors[7], towns[22], towns[27], 5, 10));
+		
+		//connections[78] = new Connection(colors[7], towns[27], towns[31], 2, 2);
+		connections.add(new Connection(colors[7], towns[27], towns[31], 2, 2));
+		
+		//connections[69] = new Connection(colors[6], towns[22], towns[28], 2, 2);
+		connections.add(new Connection(colors[6], towns[22], towns[28], 2, 2));
+		
+		//connections[79] = new Connection(colors[6], towns[27], towns[32], 2, 2);
+		connections.add(new Connection(colors[6], towns[27], towns[32], 2, 2));
+		
 
-		connections[80] = new Connection(colors[6], towns[27], towns[33], 2, 2);
-		connections[90] = new Connection(colors[1], towns[25], towns[31], 3, 4);
-		connections[81] = new Connection(colors[4], towns[27], towns[28], 4, 7);
-		connections[91] = new Connection(colors[4], towns[30], towns[31], 2, 2);
-		connections[82] = new Connection(colors[5], towns[28], towns[33], 3, 4);
-		connections[92] = new Connection(colors[1], towns[30], towns[31], 2, 2);
-		connections[83] = new Connection(colors[6], towns[28], towns[29], 1, 1);
-		connections[93] = new Connection(colors[2], towns[31], towns[32], 2, 2);
-		connections[84] = new Connection(colors[6], towns[29], towns[33], 2, 2);
-		connections[94] = new Connection(colors[5], towns[31], towns[32], 2, 2);
-		connections[85] = new Connection(colors[6], towns[29], towns[33], 2, 2);
-		connections[95] = new Connection(colors[6], towns[32], towns[33], 2, 2);
-		connections[86] = new Connection(colors[6], towns[29], towns[34], 2, 2);
-		connections[96] = new Connection(colors[6], towns[32], towns[33], 2, 2);
-		connections[87] = new Connection(colors[0], towns[29], towns[35], 5, 10);
-		connections[97] = new Connection(colors[6], towns[33], towns[34], 2, 2);
-		connections[88] = new Connection(colors[6], towns[25], towns[30], 2, 2);
-		connections[98] = new Connection(colors[8], towns[34], towns[35], 4, 7);
-		connections[89] = new Connection(colors[6], towns[25], towns[30], 2, 2);
-		connections[99] = new Connection(colors[2], towns[7], towns[8], 3, 4);
+		//connections[80] = new Connection(colors[6], towns[27], towns[33], 2, 2);
+		connections.add(new Connection(colors[6], towns[27], towns[33], 2, 2));
+		
+		//connections[90] = new Connection(colors[1], towns[25], towns[31], 3, 4);
+		connections.add(new Connection(colors[1], towns[25], towns[31], 3, 4));
+		
+		//connections[81] = new Connection(colors[4], towns[27], towns[28], 4, 7);
+		connections.add(new Connection(colors[4], towns[27], towns[28], 4, 7));
+		
+		//connections[91] = new Connection(colors[4], towns[30], towns[31], 2, 2);
+		connections.add(new Connection(colors[4], towns[30], towns[31], 2, 2));
+		
+		//connections[82] = new Connection(colors[5], towns[28], towns[33], 3, 4);
+		connections.add(new Connection(colors[5], towns[28], towns[33], 3, 4));
+		
+		//connections[92] = new Connection(colors[1], towns[30], towns[31], 2, 2);
+		connections.add(new Connection(colors[1], towns[30], towns[31], 2, 2));
+		
+		//connections[83] = new Connection(colors[6], towns[28], towns[29], 1, 1);
+		connections.add(new Connection(colors[6], towns[28], towns[29], 1, 1));
+		
+		//connections[93] = new Connection(colors[2], towns[31], towns[32], 2, 2);
+		connections.add(new Connection(colors[2], towns[31], towns[32], 2, 2));
+		
+		//connections[84] = new Connection(colors[6], towns[29], towns[33], 2, 2);
+		connections.add(new Connection(colors[6], towns[29], towns[33], 2, 2));
+		
+		//connections[94] = new Connection(colors[5], towns[31], towns[32], 2, 2);
+		connections.add(new Connection(colors[5], towns[31], towns[32], 2, 2));
+		
+		//connections[85] = new Connection(colors[6], towns[29], towns[33], 2, 2);
+		connections.add(new Connection(colors[6], towns[29], towns[33], 2, 2));
+		
+		//connections[95] = new Connection(colors[6], towns[32], towns[33], 2, 2);
+		connections.add(new Connection(colors[6], towns[32], towns[33], 2, 2));
+		
+		//connections[86] = new Connection(colors[6], towns[29], towns[34], 2, 2);
+		connections.add(new Connection(colors[6], towns[29], towns[34], 2, 2));
+		
+		//connections[96] = new Connection(colors[6], towns[32], towns[33], 2, 2);
+		connections.add(new Connection(colors[6], towns[32], towns[33], 2, 2));
+		
+		//connections[87] = new Connection(colors[0], towns[29], towns[35], 5, 10);
+		connections.add(new Connection(colors[0], towns[29], towns[35], 5, 10));
+		
+		//connections[97] = new Connection(colors[6], towns[33], towns[34], 2, 2);
+		connections.add(new Connection(colors[6], towns[33], towns[34], 2, 2));
+		
+		//connections[88] = new Connection(colors[6], towns[25], towns[30], 2, 2);
+		connections.add(new Connection(colors[6], towns[25], towns[30], 2, 2));
+		
+		//connections[98] = new Connection(colors[8], towns[34], towns[35], 4, 7);
+		connections.add(new Connection(colors[8], towns[34], towns[35], 4, 7));
+		
+		//connections[89] = new Connection(colors[6], towns[25], towns[30], 2, 2);
+		connections.add(new Connection(colors[6], towns[25], towns[30], 2, 2));
+		
+		//connections[99] = new Connection(colors[2], towns[7], towns[8], 3, 4);
+		connections.add(new Connection(colors[2], towns[7], towns[8], 3, 4));
 		
 
 		/*
@@ -384,7 +620,7 @@ public class Board {
 			
 			
 			//Loop through all the connections of _townA
-			for(int i = 0; i < _townA.getConnections().length; i++){
+			for(int i = 0; i < _townA.getConnections().size(); i++){
 				
 				//implement a current town that can be incremented 
 				Town currentTown = _townA;
@@ -420,8 +656,12 @@ public class Board {
 		Town current = _townA;
 		boolean returnValue = false;
 		
+		System.out.println("Checking if "+_townA.getName()+" and "+_townB.getName()+" are connected");
+		System.out.println(_townA.getName()+" has "+_townA.getConnections().size()+" connections");
+		
 
-		for(int i = 0; i < current.getConnections().length; i++){
+		for(int i = 0; i < current.getConnections().size(); i++){
+			System.out.println("The status of the takness of "+current.getName()+" is "+current.getConnection(i).isTaken());
 			if(current.getConnection(i).isTaken()){
 					
 					if(current.getConnection(i).getTownB().getName() == _townB.getName() || 
@@ -436,49 +676,45 @@ public class Board {
 		System.out.println(current.getName());
 		//System.out.println(current.getName());
 
-	for(int i = 0; i < current.getConnections().length; i++){
-		
-		//if(current.getConnection(i).isTaken()){
-		
-		//System.out.println("Iteration "+i);
-		//System.out.println("Current node is "+current.getName());
-		//System.out.println(current.getConnection(i));
-		
-		
+	for(int i = 0; i < current.getConnections().size(); i++){
+		if(!current.getConnection(i).getIsVisited()){
+			current.getConnection(i).setIsVisited(true);
 
 		if(current.getConnection(i).getTownB().getName() == current.getName()){
+			System.out.println("I set current from "+current.getName());
 			current = _townA.getConnection(i).getTownA();
-			break;
+			System.out.println("I set current to "+current.getName());
+			
 		}else{
+			System.out.println("I set current from "+current.getName());
 			current = _townA.getConnection(i).getTownB();
-			break;
-		//}
-	}/*else if(current.getConnection(i).isTaken() == false){
-		System.out.println(current.getName()+" "+" Connections are: ");
-		System.out.println(current.getConnection(i));
-		return false;
-	}*/
-}
+			System.out.println("I set current to "+current.getName());
+			
+	}
 		
-		System.out.println("Did we get here? 2");
+		for(int j = 0; j < current.getConnections().size(); j++){
+			 
+			 System.out.println("Iteration number "+j);
+			 
+			 if(current.getConnection(j).isTaken()){
+				
+				
+					
+					current.getConnection(j).setIsVisited(true);
+
+					System.out.println("Current before recursion: "+current.getName());
+					
+					returnValue = returnValue || _areConnected(current, _townB);
+				
+			 	}
+		 	}
+		}
+	}
 		
-		System.out.println("Current node is "+current.getName());
-		System.out.println("1"+towns[1].getName());
-		System.out.println("2"+current);
-		System.out.println("3"+_townA.getConnection(0).getTownB());
-		
-		System.out.println(current.getName()+" number of connections are "+current.getConnections().length);
-		
-		System.out.println(current.getConnection(0));
-		System.out.println(connections[0]);
-		System.out.println(towns[1].getConnection(0));
-		
-		System.out.println(current.getConnection(0).isTaken());
-		
-		returnValue = false;
+		/*returnValue = false;
 		
 		
- for(int i = 0; i < current.getConnections().length; i++){
+ for(int i = 0; i < current.getConnections().size(); i++){
 	 
 	 System.out.println("Iteration number "+i);
 	 
@@ -489,10 +725,10 @@ public class Board {
 			current.getConnection(i).setIsVisited(true);
 
 			System.out.println("Did we get here? 1");
-			returnValue = returnValue || _areConnected(current, _townB/*, player*/);
+			returnValue = returnValue || _areConnected(current, _townB);
 		}
 	}
- }
+ } */
 
 
 	return returnValue;
@@ -502,9 +738,9 @@ public class Board {
 
 	void setAllUnVisited(){
 
-		for(int i = 0; i < connections.length; i++){
+		for(int i = 0; i < connections.size(); i++){
 
-			connections[i].setIsVisited(false);
+			connections.get(i).setIsVisited(false);
 
 		}
 

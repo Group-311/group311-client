@@ -32,6 +32,8 @@ public class Connection{
 		
 		_townA.addConnection(this);
 		
+		_townB.addConnection(this);
+		
 		this.setTaken(false);
 		isTaken = false;
 		
