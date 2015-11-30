@@ -2,13 +2,15 @@ package example;
 
 public class DisplayedTrainStack extends Stack {
 	
-	private TrainCard [] stack;
+	private TrainCard[] stack;
 	private int currentAmount, numberOfJokers;
 
-	public DisplayedTrainStack(int _amount) {
-		super(_amount);
+	public DisplayedTrainStack(TrainCard[] _cards) {
+		super(_cards);
 		
 		stack = new TrainCard [this.getAmount()];
+		
+		currentAmount = _cards.length;
 	}
 	
 	public void draw (){

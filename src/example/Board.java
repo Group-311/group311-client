@@ -22,11 +22,16 @@ public class Board {
 	Card summaryCard;
 	Card[] missionCards;
 	Card[] trainCards;
+	Card stationaryCard;
+	// card array for the 5 displayed cards
+	//Card[] displayedCards;
 
 	// Create a stack for all the missions
 	Stack missionCardStack;
 	// Create a stack for all the traincards
 	Stack trainCardStack;
+	// Create a stack for all the displayed cards
+	//Stack displayedCardStack;
 
 	Board(int numOfPlayers) throws SlickException {
 
@@ -38,8 +43,15 @@ public class Board {
 
 		// create the different types of cards
 		summaryCard = new SummaryCard();
+		// create stationary card for a stationary backImage on the mission and train stacks
+		stationaryCard = new StationaryCard();
 		missionCards = new MissionCard[30];
-		trainCards = new TrainCard[110];
+		
+		//trainCards = new TrainCard[110];		with joker
+		trainCards = new TrainCard[96];		// without jokers
+		
+		// displayed cards on boards maybe set these 5 displayedCards equal to the first 5 cards of the shuffled trainCardStack
+		//displayedCards = new TrainCard[5];
 
 		// create all the different colors for the trains/players
 		colors[0] = new Color("blue", 0);
@@ -51,7 +63,7 @@ public class Board {
 		colors[6] = new Color("grey", 6);
 		colors[7] = new Color("green", 7);
 		colors[8] = new Color("pink", 8);
-		colors[9] = new Color("rainbow", 9);
+		//colors[9] = new Color("rainbow", 9);	no joker
 		
 		/*
 		// creating all the towns
@@ -589,11 +601,20 @@ public class Board {
 				trainCards[i] = new TrainCard(colors[7]); // Green
 			else if (i >= 84 && i < 96)
 				trainCards[i] = new TrainCard(colors[8]); // Pink
-			else if (i >= 96 && i < 110)
-				trainCards[i] = new TrainCard(colors[9]); // Rainbow
+//			else if (i >= 96 && i < 110)
+//				trainCards[i] = new TrainCard(colors[9]); // Rainbow // with jokers
 		}
 		// adding all the mission cards in a new stack called traincardstack
 		trainCardStack = new Stack(trainCards);
+		
+		//1 assumption: this shouldn't go here because the trainCardStack has not yet been shuffled
+		//2 assumption: this should go here since it merealy tells the program that we want the displayedCards card array to hold 5 TrainCards that inherit from Cards		
+		//for(int i = 0; i < displayedCards.length; i++) {
+		//displayedCards[i] = new TrainCard();
+		//}
+			
+		// should store 5 cards
+		//displayedCardStack = new Stack(displayedCards);
 
 	}
 

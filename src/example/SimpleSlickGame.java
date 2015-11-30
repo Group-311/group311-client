@@ -31,7 +31,7 @@ public class SimpleSlickGame extends BasicGame {
 	private Image redTrainCard = null;
 	private Image whiteTrainCard = null;
 	private Image yellowTrainCard = null;
-	private Image rainbowTrainCard = null;
+	// private Image rainbowTrainCard = null; without jokers
 
 	private Image[] missions = null;
 
@@ -40,10 +40,10 @@ public class SimpleSlickGame extends BasicGame {
 	int xpos;
 	int ypos;
 	Input input;
-	
-	private Town townA= null;
+
+	private Town townA = null;
 	private Town townB = null;
-	
+
 	public Connection selectedConnection = null;
 
 	public SimpleSlickGame(String gamename) {
@@ -67,12 +67,17 @@ public class SimpleSlickGame extends BasicGame {
 		// Setting cardback and cardfront for the trainCards
 		// Cardback is the same for all the trainCards
 		trainCardBack = new Image("/trainCardBack.png");
+
 		for (int i = 0; i < board.trainCards.length; i++) {
 			board.trainCards[i].setBackImage(trainCardBack);
 			board.trainCards[i].xPos = 1024 - board.trainCardStack.width;
 			board.trainCards[i].yPos += board.trainCardStack.height;
-
 		}
+
+		// Setting the image for the stationaryCard
+		board.stationaryCard.setBackImage(trainCardBack);
+		board.stationaryCard.xPos = 1024 - board.stationaryCard.width;
+		board.stationaryCard.yPos += board.stationaryCard.height;
 
 		// Loading all the trainCardImages
 		blackTrainCard = new Image("/blackTrainCard.png");
@@ -83,7 +88,7 @@ public class SimpleSlickGame extends BasicGame {
 		redTrainCard = new Image("/redTrainCard.png");
 		whiteTrainCard = new Image("/whiteTrainCard.png");
 		yellowTrainCard = new Image("/yellowTrainCard.png");
-		rainbowTrainCard = new Image("/rainbowTrainCard.png");
+		// rainbowTrainCard = new Image("/rainbowTrainCard.png"); without jokers
 
 		// Applying the trainCardImages to the correct spot within the array.
 		for (int i = 0; i < 12; i++) {
@@ -110,9 +115,9 @@ public class SimpleSlickGame extends BasicGame {
 		for (int i = 84; i < 96; i++) {
 			board.trainCards[i].setFrontImage(pinkTrainCard);
 		}
-		for (int i = 96; i < 110; i++) {
-			board.trainCards[i].setFrontImage(rainbowTrainCard);
-		}
+		// for (int i = 96; i < 110; i++) {
+		// board.trainCards[i].setFrontImage(rainbowTrainCard); // with jokers
+		// }
 
 		// Shuffle train cards in the traincard stack
 		board.trainCardStack.shuffle(board.trainCards);
@@ -136,7 +141,8 @@ public class SimpleSlickGame extends BasicGame {
 
 		// Shuffle mission cards in the missioncard stack
 		board.missionCardStack.shuffle(board.missionCards);
-		// Set the mouse input conditions for the borders of the missioncard stack
+		// Set the mouse input conditions for the borders of the missioncard
+		// stack
 		board.missionCardStack.xPos = 1024 - board.missionCardStack.width;
 		board.missionCardStack.yPos += board.missionCardStack.height;
 	}
@@ -148,42 +154,45 @@ public class SimpleSlickGame extends BasicGame {
 		xpos = Mouse.getX();
 		ypos = Mouse.getY();
 
+		int currentCard = 0;
+
 		// Calling flipcard function if activated
 
 		// --------------------------------------------------------------------------------------------------------------------------------------------
 		// Will implement what happens when you click a city in here.
 
-				if (input.isMousePressed(0)) {
-					for (int j = 0; j < board.towns.length; j++) {
-						if (xpos < board.towns[j].getxPos() + 10 && xpos >= board.towns[j].getxPos() - 10
-								&& ypos < board.towns[j].getyPos() + 10 && ypos > board.towns[j].getyPos() - 10) {
-							System.out.println("You have selected " + board.towns[j].getName());
-							if (townA == null) {
-								townA = board.towns[j];
-								System.out.println(townA.getName() + " has been clicked as town A");
-							} else if (townB == null) {
-								townB = board.towns[j];
-								System.out.println(townB.getName() + " has been clicked as town B");
-							}
-							
-						}
+		if (input.isMousePressed(0)) {
+			for (int j = 0; j < board.towns.length; j++) {
+				if (xpos < board.towns[j].getxPos() + 10 && xpos >= board.towns[j].getxPos() - 10
+						&& ypos < board.towns[j].getyPos() + 10 && ypos > board.towns[j].getyPos() - 10) {
+					System.out.println("You have selected " + board.towns[j].getName());
+					if (townA == null) {
+						townA = board.towns[j];
+						System.out.println(townA.getName() + " has been clicked as town A");
+					} else if (townB == null) {
+						townB = board.towns[j];
+						System.out.println(townB.getName() + " has been clicked as town B");
+					}
 
-					}
-					if (townA!=null && townB!=null){
-						if(findConnectionToBuild(townA, townB) == null){
-							townA = null;
-							townB = null;
-						}else{
-							selectedConnection = findConnectionToBuild(townA, townB);
-							System.out.println("The selected connection require "+selectedConnection.getLength()+" trains with the color "+selectedConnection.getColor().getColorName());
-						}
-						
-					}
-					
-					// System.out.println(townB.getName() + " " + townA.getName());
 				}
-				//  --------------------------------------------------------------------------------------------------------------------------------------------
-		
+
+			}
+			if (townA != null && townB != null) {
+				if (findConnectionToBuild(townA, townB) == null) {
+					townA = null;
+					townB = null;
+				} else {
+					selectedConnection = findConnectionToBuild(townA, townB);
+					System.out.println("The selected connection require " + selectedConnection.getLength()
+							+ " trains with the color " + selectedConnection.getColor().getColorName());
+				}
+
+			}
+
+			// System.out.println(townB.getName() + " " + townA.getName());
+		}
+		// --------------------------------------------------------------------------------------------------------------------------------------------
+
 		// Right click
 		if (input.isMousePressed(1)) {
 			// mouse input conditions for summary card
@@ -195,30 +204,88 @@ public class SimpleSlickGame extends BasicGame {
 			// mouse input conditions for mission card stack
 			if (xpos < board.missionCardStack.xPos + board.missionCardStack.width && xpos > board.missionCardStack.xPos
 					&& ypos > 768 - board.missionCardStack.height) {
-				board.missionCardStack.card[1].flipCard();
+				board.missionCardStack.card[0].flipCard();
 			}
 
 			// mouse input conditions for train card stack
 			if (xpos < board.trainCardStack.xPos + board.trainCardStack.width && xpos > board.trainCardStack.xPos
 					&& ypos < 768 - board.trainCardStack.height && ypos > 768 - 2 * board.trainCardStack.height) {
-				board.trainCardStack.card[1].flipCard();
+				// System.out.println(" ");
+				// for(int j = 0; j < 5; j++) {
+				// board.displayedCardStack.card[j] =
+				// board.trainCards[currentCard++];
+				// System.out.println(board.displayedCardStack.card[j]);
+				// System.out.println("Card " + currentCard + ", which is " +
+				// board.trainCards[currentCard] + " from the train card stack,
+				// is now equal to card " + board.displayedCardStack.card[j] + "
+				// in the displayed stack");
+				// }
+
+				for (int j = 0; j < 5; j++) {
+					board.trainCardStack.card[currentCard++].yPos = 595 - board.trainCardStack.height * (j + 1);
+					board.trainCardStack.card[j].flipCard();
+				}
+
+				// Exact values for the moouseY input conditions as reminders
+				// board.trainCardStack.card[0].yPos = 510;
+				// board.trainCardStack.card[1].yPos = 425;
+				// board.trainCardStack.card[2].yPos = 340;
+				// board.trainCardStack.card[3].yPos = 255;
+				// board.trainCardStack.card[4].yPos = 170;
 			}
+
+			// Mouse input conditions for the displayed cards
+			// if (xpos < board.trainCardStack.xPos + board.trainCardStack.width
+			// && xpos > board.trainCardStack.xPos
+			// && ypos < 768 - 2 * board.trainCardStack.height && ypos > 768 - 3
+			// * board.trainCardStack.height) {
+			// }
+
+			// if (xpos < board.trainCardStack.xPos + board.trainCardStack.width
+			// && xpos > board.trainCardStack.xPos
+			// && ypos < 768 - 3 * board.trainCardStack.height && ypos > 768 - 4
+			// * board.trainCardStack.height) {
+			// }
+			//
+			// if (xpos < board.trainCardStack.xPos + board.trainCardStack.width
+			// && xpos > board.trainCardStack.xPos
+			// && ypos < 768 - 4 * board.trainCardStack.height && ypos > 768 - 5
+			// * board.trainCardStack.height) {
+			// }
+			//
+			// if (xpos < board.trainCardStack.xPos + board.trainCardStack.width
+			// && xpos > board.trainCardStack.xPos
+			// && ypos < 768 - 5 * board.trainCardStack.height && ypos > 768 - 6
+			// * board.trainCardStack.height) {
+			// }
+			//
+			// if (xpos < board.trainCardStack.xPos + board.trainCardStack.width
+			// && xpos > board.trainCardStack.xPos
+			// && ypos < 768 - 6 * board.trainCardStack.height && ypos > 768 - 7
+			// * board.trainCardStack.height) {
+			// }
+
 		}
 	}
+
 	private Connection findConnectionToBuild(Town town1, Town town2) {
-		
-		for(int i = 0; i < board.connections.size(); i++){
-			if(board.connections.get(i).getTownA().getName() == town1.getName() || board.connections.get(i).getTownA().getName() == town2.getName()){
-				//Keeps looking for the right connection
-				if(board.connections.get(i).getTownB().getName() == town1.getName() || board.connections.get(i).getTownB().getName() == town2.getName()){
+
+		for (int i = 0; i < board.connections.size(); i++) {
+			if (board.connections.get(i).getTownA().getName() == town1.getName()
+					|| board.connections.get(i).getTownA().getName() == town2.getName()) {
+				// Keeps looking for the right connection
+				if (board.connections.get(i).getTownB().getName() == town1.getName()
+						|| board.connections.get(i).getTownB().getName() == town2.getName()) {
 					System.out.println("These are neighbours");
-					if(!board.connections.get(i).isTaken())
+					if (!board.connections.get(i).isTaken())
 						return board.connections.get(i);
 				}
 			}
-			/*else {
-				System.out.println("You probably didnt click two neighbouring cities, or no connections are available between these two cities");
-			}*/
+			/*
+			 * else { System.out.println(
+			 * "You probably didnt click two neighbouring cities, or no connections are available between these two cities"
+			 * ); }
+			 */
 		}
 		return null;
 	}
@@ -228,33 +295,41 @@ public class SimpleSlickGame extends BasicGame {
 		// Loads the placement Map image used to detect cities
 
 		board.getBoardPic().draw(); // Place it in (0,0)
-		
+
 		board.summaryCard.setVisible();
-		board.missionCardStack.card[1].setVisible();
-		board.trainCardStack.card[1].setVisible();
+		
+		board.stationaryCard.setVisible();
+
+		board.missionCardStack.card[0].setVisible();
+
+		for (int j = 0; j < 5; j++) {
+			board.trainCardStack.card[j].setVisible();
+		}
 	}
 
 	public static void main(String[] args) throws SlickException {
 		board = new Board(3);
-		//System.out.println(board.connections[28].getTownA().getName());
+		// System.out.println(board.connections[28].getTownA().getName());
 		System.out.println(board.towns[20].getName());
 		System.out.println(board.towns[20].getConnection(1).getTownA().getName());
-
 
 		System.out.println(board.towns[0].getConnections().size());
 		System.out.println(board.towns[3].getConnections().size());
 
-
 		// GsonJson test with stacks of
 		// traincards.-----------------------------------------------------------
-	/*	System.out.println(board.trainCardStack.card[1].getColor().getColorNum());
-		System.out.println(board.trainCardStack.card[50].getColor().getColorNum());
-		Gson serializer = new Gson();
-		String Jsontrain = serializer.toJson(board);
-
-		Board temp = new Gson().fromJson(Jsontrain, Board.class);
-
-		System.out.println(temp.trainCardStack.card[1].getColor().getColorNum());  */
+		/*
+		 * System.out.println(board.trainCardStack.card[1].getColor().
+		 * getColorNum());
+		 * System.out.println(board.trainCardStack.card[50].getColor().
+		 * getColorNum()); Gson serializer = new Gson(); String Jsontrain =
+		 * serializer.toJson(board);
+		 * 
+		 * Board temp = new Gson().fromJson(Jsontrain, Board.class);
+		 * 
+		 * System.out.println(temp.trainCardStack.card[1].getColor().getColorNum
+		 * ());
+		 */
 		// JSON TEST END
 		// ------------------------------------------------------------------------------------
 
@@ -278,70 +353,71 @@ public class SimpleSlickGame extends BasicGame {
 		 * }catch(Exception e){ System.out.println(e.getStackTrace()); }
 		 */
 
-		
-		//GsonJson test with stacks of traincards.-----------------------------------------------------------
-				/*System.out.println(board.trainCardStack.card[1].getColor().getColorNum());
-				System.out.println(board.trainCardStack.card[50].getColor().getColorNum());
-				Gson serializer = new Gson();
-				String Jsontrain = serializer.toJson(board);
-				
-				Board temp  = new Gson().fromJson(Jsontrain, Board.class);
-				
-				System.out.println(temp.trainCardStack. card[1].getColor().getColorNum());*/
-		// JSON TEST END ------------------------------------------------------------------------------------
-				
-				
+		// GsonJson test with stacks of
+		// traincards.-----------------------------------------------------------
+		/*
+		 * System.out.println(board.trainCardStack.card[1].getColor().
+		 * getColorNum());
+		 * System.out.println(board.trainCardStack.card[50].getColor().
+		 * getColorNum()); Gson serializer = new Gson(); String Jsontrain =
+		 * serializer.toJson(board);
+		 * 
+		 * Board temp = new Gson().fromJson(Jsontrain, Board.class);
+		 * 
+		 * System.out.println(temp.trainCardStack.
+		 * card[1].getColor().getColorNum());
+		 */
+		// JSON TEST END
+		// ------------------------------------------------------------------------------------
 
-		//board.connections[8].setTaken(true);
-		//board.connections[17].setTaken(true);
-		//board.connections[4].setTaken();
-		
-		System.out.println("Helensas size "+board.towns[6].getConnections().size());
-		System.out.println("..."+board.connections.get(16).getTownA().getName());
-		System.out.println("..."+board.connections.get(16).getTownB().getName());
+		// board.connections[8].setTaken(true);
+		// board.connections[17].setTaken(true);
+		// board.connections[4].setTaken();
+
+		System.out.println("Helensas size " + board.towns[6].getConnections().size());
+		System.out.println("..." + board.connections.get(16).getTownA().getName());
+		System.out.println("..." + board.connections.get(16).getTownB().getName());
 		board.connections.get(16).setTaken(true);
-		System.out.println("..."+board.connections.get(17).getTownA().getName());
-		System.out.println("..."+board.connections.get(17).getTownB().getName());
+		System.out.println("..." + board.connections.get(17).getTownA().getName());
+		System.out.println("..." + board.connections.get(17).getTownB().getName());
 		board.connections.get(17).setTaken(true);
-		System.out.println("..."+board.connections.get(32).getTownA().getName());
-		System.out.println("..."+board.connections.get(32).getTownB().getName());
+		System.out.println("..." + board.connections.get(32).getTownA().getName());
+		System.out.println("..." + board.connections.get(32).getTownB().getName());
 		board.connections.get(32).setTaken(true);
-		System.out.println("..."+board.connections.get(0).getTownA().getName());
-		System.out.println("..."+board.connections.get(0).getTownB().getName());
+		System.out.println("..." + board.connections.get(0).getTownA().getName());
+		System.out.println("..." + board.connections.get(0).getTownB().getName());
 		board.connections.get(0).setTaken(true);
-		System.out.println("..."+board.connections.get(4).getTownA().getName());
-		System.out.println("..."+board.connections.get(4).getTownB().getName());
+		System.out.println("..." + board.connections.get(4).getTownA().getName());
+		System.out.println("..." + board.connections.get(4).getTownB().getName());
 		board.connections.get(4).setTaken(true);
-		System.out.println("..."+board.connections.get(8).getTownA().getName());
-		System.out.println("..."+board.connections.get(8).getTownB().getName());
+		System.out.println("..." + board.connections.get(8).getTownA().getName());
+		System.out.println("..." + board.connections.get(8).getTownB().getName());
 		board.connections.get(8).setTaken(true);
-		System.out.println("..."+board.connections.get(12).getTownA().getName());
-		System.out.println("..."+board.connections.get(12).getTownB().getName());
+		System.out.println("..." + board.connections.get(12).getTownA().getName());
+		System.out.println("..." + board.connections.get(12).getTownB().getName());
 		board.connections.get(12).setTaken(true);
-				
-		//System.out.println(board.checkConnected(board.towns[0], board.towns[3]));
-		//board.REMOVEDcheckConnected(board.towns[0], board.towns[1]);
-		
+
+		// System.out.println(board.checkConnected(board.towns[0],
+		// board.towns[3]));
+		// board.REMOVEDcheckConnected(board.towns[0], board.towns[1]);
+
 		System.out.println(board.areConnected2(board.towns[0], board.towns[4]));
-		
-/*	try{
-			
-			String sentence;
-			String modifiedSentence;
-			BufferedReader inFromUser = new BufferedReader( new InputStreamReader(System.in));
-			Socket clientSocket = new Socket("172.20.10.5", 1233);
-			DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
-			BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-			sentence = inFromUser.readLine();
-			outToServer.writeBytes(sentence + '\n');
-			modifiedSentence = inFromServer.readLine();
-			System.out.println("FROM SERVER: " + modifiedSentence);
-			clientSocket.close();
-			
-			}catch(Exception e){
-				System.out.println(e.getStackTrace());
-			}*/
-		
+
+		/*
+		 * try{
+		 * 
+		 * String sentence; String modifiedSentence; BufferedReader inFromUser =
+		 * new BufferedReader( new InputStreamReader(System.in)); Socket
+		 * clientSocket = new Socket("172.20.10.5", 1233); DataOutputStream
+		 * outToServer = new DataOutputStream(clientSocket.getOutputStream());
+		 * BufferedReader inFromServer = new BufferedReader(new
+		 * InputStreamReader(clientSocket.getInputStream())); sentence =
+		 * inFromUser.readLine(); outToServer.writeBytes(sentence + '\n');
+		 * modifiedSentence = inFromServer.readLine(); System.out.println(
+		 * "FROM SERVER: " + modifiedSentence); clientSocket.close();
+		 * 
+		 * }catch(Exception e){ System.out.println(e.getStackTrace()); }
+		 */
 
 		/*
 		 * try{
@@ -368,8 +444,6 @@ public class SimpleSlickGame extends BasicGame {
 			Logger.getLogger(SimpleSlickGame.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
-	
-	
 
 	/**
 	 * ONLY CHECKS ONE CONNECTION BETWEEN TWO TOWNS This function will check if
