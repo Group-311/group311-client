@@ -429,7 +429,7 @@ public class SimpleSlickGame extends BasicGame {
 		// board.towns[3]));
 		// board.REMOVEDcheckConnected(board.towns[0], board.towns[1]);
 		
-		System.out.println("THIS IS THE NEW ONE EMIL!!!"+board.missionCards[19].areConnected());
+		System.out.println("THIS IS THE NEW ONE EMIL!!!"+board.missionCards[9].areConnected());
 		
 
 		/*

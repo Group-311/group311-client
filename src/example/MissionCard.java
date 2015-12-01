@@ -45,7 +45,7 @@ public class MissionCard extends Card{
 		
 		for(int i = 0; i < this.townA.getConnections().size();i++){
 			
-			if(areConnected2(this.townA, this.townB, i )){
+			if(_areConnected(this.townA, this.townB, i )){
 				System.out.println("IT HAPPENED AT LEAST ONCE!!!");
 				temp = true;
 			}
@@ -64,7 +64,7 @@ public class MissionCard extends Card{
 		}
 
 	}
-public boolean areConnected2(Town townA, Town townB, int forloopfucker){
+public boolean _areConnected(Town townA, Town townB, int forloopfucker){
 		
 		System.out.println("Checking if "+townA.getName()+" and "+townB.getName()+" are connected!");
 		
@@ -127,7 +127,7 @@ public boolean areConnected2(Town townA, Town townB, int forloopfucker){
 
 			if(!current.getConnection(i).getIsVisited()){
 				System.out.println("Calling recursive funtion on "+current.getName());
-				returnValue = returnValue || areConnected2(current, townB, forloopfucker);
+				returnValue = returnValue || _areConnected(current, townB, forloopfucker);
 			}
 
 			}
