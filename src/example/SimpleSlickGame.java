@@ -334,12 +334,7 @@ public class SimpleSlickGame extends BasicGame {
 
 	public static void main(String[] args) throws SlickException {
 		board = new Board(4);
-		// System.out.println(board.connections[28].getTownA().getName());
-		System.out.println(board.towns[20].getName());
-		System.out.println(board.towns[20].getConnection(1).getTownA().getName());
 
-		System.out.println(board.towns[0].getConnections().size());
-		System.out.println(board.towns[3].getConnections().size());
 
 		// GsonJson test with stacks of
 		// traincards.-----------------------------------------------------------
@@ -394,43 +389,6 @@ public class SimpleSlickGame extends BasicGame {
 		 */
 		// JSON TEST END
 		// ------------------------------------------------------------------------------------
-
-		// board.connections[8].setTaken(true);
-		// board.connections[17].setTaken(true);
-		// board.connections[4].setTaken();
-
-		System.out.println("Helensas size " + board.towns[6].getConnections().size());
-		System.out.println("..." + board.connections.get(16).getTownA().getName());
-		System.out.println("..." + board.connections.get(16).getTownB().getName());
-		board.connections.get(16).setTaken(true);
-		System.out.println("..." + board.connections.get(17).getTownA().getName());
-		System.out.println("..." + board.connections.get(17).getTownB().getName());
-		board.connections.get(17).setTaken(true);
-		System.out.println("..." + board.connections.get(32).getTownA().getName());
-		System.out.println("..." + board.connections.get(32).getTownB().getName());
-		board.connections.get(32).setTaken(true);
-		System.out.println("..." + board.connections.get(0).getTownA().getName());
-		System.out.println("..." + board.connections.get(0).getTownB().getName());
-		board.connections.get(0).setTaken(true);
-		System.out.println("..." + board.connections.get(4).getTownA().getName());
-		System.out.println("..." + board.connections.get(4).getTownB().getName());
-		board.connections.get(4).setTaken(true);
-		System.out.println("..." + board.connections.get(8).getTownA().getName());
-		System.out.println("..." + board.connections.get(8).getTownB().getName());
-		board.connections.get(8).setTaken(true);
-		System.out.println("..." + board.connections.get(12).getTownA().getName());
-		System.out.println("..." + board.connections.get(12).getTownB().getName());
-		board.connections.get(12).setTaken(true);
-		System.out.println("..." + board.connections.get(36).getTownA().getName());
-		System.out.println("..." + board.connections.get(36).getTownB().getName());
-		board.connections.get(36).setTaken(true);
-
-		// System.out.println(board.checkConnected(board.towns[0],
-		// board.towns[3]));
-		// board.REMOVEDcheckConnected(board.towns[0], board.towns[1]);
-		
-		System.out.println("THIS IS THE NEW ONE EMIL!!!"+board.missionCards[9].areConnected());
-		
 
 		/*
 		 * try{
