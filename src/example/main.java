@@ -22,42 +22,35 @@ import jdk.nashorn.internal.ir.WhileNode;
 
 public class main extends JPanel {
 	static Train t;
-
-
+static Players p1;
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 
 		main client = new main();
 
-	
-
 		client.run();
 	}
 
 	public void run() throws Exception {
-		
 
 		Socket Sock = new Socket("172.20.10.2", 2222);
 		PrintStream ps = new PrintStream(Sock.getOutputStream());
 		String activator = new String("2");
-		
-		
-		
-		
+
 		t = new Train(null);
 		t.decrease(3);
 
 		Gson serializer = new Gson();
 		String json = serializer.toJson(t);
-		
+
 		ps.println(activator + "\n" + json + "\n");
 
 		InputStreamReader ir = new InputStreamReader(Sock.getInputStream());
 		BufferedReader br = new BufferedReader(ir);
-while(true){
-		String Message = br.readLine();
-		System.out.println(Message);
-}
+		while (true) {
+			String Message = br.readLine();
+			System.out.println(Message);
+		}
 	}
 }
 
