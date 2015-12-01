@@ -66,5 +66,9 @@ public class Card{
 	public Color getColor() {
 		return color;
 	}
+	
+	public boolean areConnected(){
+		return false;
+	}
 
 }
