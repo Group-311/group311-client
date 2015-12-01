@@ -401,7 +401,12 @@ public class SimpleSlickGame extends BasicGame {
 		// board.towns[3]));
 		// board.REMOVEDcheckConnected(board.towns[0], board.towns[1]);
 		
-		System.out.println(board.areConnected2(board.towns[5], board.towns[14]));
+		for(int i = 0; i < board.towns[1].getConnections().size();i++){
+		
+			if(board.areConnected2(board.towns[0], board.towns[14], i )){
+				System.out.println("IT HAPPENED AT LEAST ONCE!!!");
+			}
+		}
 		
 
 		/*

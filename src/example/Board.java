@@ -777,7 +777,7 @@ public class Board {
 
 	}
 	
-	public boolean areConnected2(Town townA, Town townB){
+	public boolean areConnected2(Town townA, Town townB, int forloopfucker){
 		
 		System.out.println("Checking if "+townA.getName()+" and "+townB.getName()+" are connected!");
 		
@@ -802,16 +802,17 @@ public class Board {
 		
 		previous = current;
 
-		for(int i = 0; i < current.getConnections().size(); i++){
+		for(int i = 0+forloopfucker; i < current.getConnections().size(); i++){
 			if(current.getConnection(i).getIsTaken() /*&& current.getConnection(i).getTownA().getName() != previous.getName() /*&&
 					current.getConnection(i).getTownB().getName() != previous.getName()*/&& current.getConnection(i).getIsVisited() == false){
+				
 				current.getConnection(i).setIsVisited(true);
 				System.out.println("A connection between "+current.getConnection(i).getTownA().getName()+" and "+current.getConnection(i).getTownB().getName()+" is set to visited" );
 			
 		 if(current.getConnection(i).getTownB().getName() == current.getName()){
 			 
 				System.out.println("I set current from "+current.getName());
-				current = current.getConnection(i).getTownA();
+				current = townA.getConnection(i).getTownA();
 				System.out.println("I set current to "+current.getName());
 				break;
 				
@@ -821,7 +822,7 @@ public class Board {
 				
 				
 				System.out.println("I set current from "+current.getName());
-				current = current.getConnection(i).getTownB();
+				current = townA.getConnection(i).getTownB();
 				System.out.println("I set current to "+current.getName());
 				break;
 				
@@ -833,11 +834,12 @@ public class Board {
 		
 		for(int i = 0; i < current.getConnections().size(); i++){
 
-		if(current.getConnection(i).getIsTaken()){
+		if(current.getConnection(i).getIsTaken()/* && current.getConnection(i).getIsVisited() == false*/){
+			
 
 			if(!current.getConnection(i).getIsVisited()){
 				System.out.println("Calling recursive funtion on "+current.getName());
-				returnValue = returnValue || areConnected2(current, townB);
+				returnValue = returnValue || areConnected2(current, townB, forloopfucker);
 			}
 
 			}
