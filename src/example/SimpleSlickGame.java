@@ -326,6 +326,10 @@ public class SimpleSlickGame extends BasicGame {
 		{
 			board.players[i].setVisible(g);
 		}
+		
+		board.button.setVisible(g);
+		
+		
 	}
 
 	public static void main(String[] args) throws SlickException {

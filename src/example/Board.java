@@ -11,6 +11,7 @@ public class Board {
 
 	private Image boardPic;
 	Town[] towns;
+	EndButton button;
 	
 	//ArrayList<Town> towns = new ArrayList<Town>();
 	PlayerPiece[] players;
@@ -64,6 +65,8 @@ public class Board {
 		colors[7] = new Color("green", 7);
 		colors[8] = new Color("pink", 8);
 		//colors[9] = new Color("rainbow", 9);	no joker
+		
+		button = new EndButton();
 		
 		/*
 		// creating all the towns
