@@ -75,9 +75,9 @@ public class SimpleSlickGame extends BasicGame {
 		}
 
 		// Setting the image for the stationaryCard
-		board.stationaryCard.setBackImage(trainCardBack);
-		board.stationaryCard.xPos = 1024 - board.stationaryCard.width;
-		board.stationaryCard.yPos += board.stationaryCard.height;
+		//board.stationaryCard.setBackImage(trainCardBack);
+		//board.stationaryCard.xPos = 1024 - board.stationaryCard.width;
+		//board.stationaryCard.yPos += board.stationaryCard.height;
 
 		// Loading all the trainCardImages
 		blackTrainCard = new Image("/blackTrainCard.png");
@@ -277,7 +277,7 @@ public class SimpleSlickGame extends BasicGame {
 				if (board.connections.get(i).getTownB().getName() == town1.getName()
 						|| board.connections.get(i).getTownB().getName() == town2.getName()) {
 					System.out.println("These are neighbours");
-					if (!board.connections.get(i).isTaken())
+					if (!board.connections.get(i).getIsTaken())
 						return board.connections.get(i);
 				}
 			}
@@ -298,7 +298,7 @@ public class SimpleSlickGame extends BasicGame {
 
 		board.summaryCard.setVisible();
 		
-		board.stationaryCard.setVisible();
+		//board.stationaryCard.setVisible();
 
 		board.missionCardStack.card[0].setVisible();
 
@@ -400,8 +400,9 @@ public class SimpleSlickGame extends BasicGame {
 		// System.out.println(board.checkConnected(board.towns[0],
 		// board.towns[3]));
 		// board.REMOVEDcheckConnected(board.towns[0], board.towns[1]);
-
-		System.out.println(board.areConnected2(board.towns[0], board.towns[4]));
+		
+		System.out.println(board.areConnected2(board.towns[5], board.towns[14]));
+		
 
 		/*
 		 * try{

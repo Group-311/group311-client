@@ -58,10 +58,6 @@ public class Connection{
 	}
 
 
-	public boolean getIsTaken() {
-		return isTaken();
-	}
-
 	public void setIsVisited(boolean b){
 		this.isVisited = b;
 	}
@@ -70,7 +66,7 @@ public class Connection{
 	}
 
 
-	public boolean isTaken() {
+	public boolean getIsTaken() {
 		return isTaken;
 	}
 

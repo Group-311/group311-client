@@ -44,7 +44,7 @@ public class Board {
 		// create the different types of cards
 		summaryCard = new SummaryCard();
 		// create stationary card for a stationary backImage on the mission and train stacks
-		stationaryCard = new StationaryCard();
+		//stationaryCard = new StationaryCard(); // I had to comment yo shit out Adi since it broke everything, Regards, Emil
 		missionCards = new MissionCard[30];
 		
 		//trainCards = new TrainCard[110];		with joker
@@ -649,7 +649,7 @@ public class Board {
 				System.out.println(currentTown.getConnection(i).getTownB().getName());
 				
 				//if _townB is taken by player
-				if(currentTown.getConnection(i).isTaken()){
+				if(currentTown.getConnection(i).getIsTaken()){
 				
 				if(currentTown.getConnection(i).getTownB().getName() == _townB.getName() || 
 						currentTown.getConnection(i).getTownA().getName() == _townB.getName() ){
@@ -657,7 +657,7 @@ public class Board {
 					//return true;
 					System.out.println("Found a connection!");
 					break;
-				}else if(currentTown.getConnection(i).isTaken() && !currentTown.getConnection(i).getIsVisited()){
+				}else if(currentTown.getConnection(i).getIsTaken() && !currentTown.getConnection(i).getIsVisited()){
 					
 					currentTown.getConnection(i).setIsVisited(true);
 					currentTown = currentTown.getConnection(i).getTownB();
@@ -682,8 +682,8 @@ public class Board {
 		
 
 		for(int i = 0; i < current.getConnections().size(); i++){
-			System.out.println("The status of the takness of "+current.getName()+" is "+current.getConnection(i).isTaken());
-			if(current.getConnection(i).isTaken()){
+			System.out.println("The status of the takness of "+current.getName()+" is "+current.getConnection(i).getIsTaken());
+			if(current.getConnection(i).getIsTaken()){
 					
 					if(current.getConnection(i).getTownB().getName() == _townB.getName() || 
 						current.getConnection(i).getTownA().getName() == _townB.getName() ){
@@ -717,7 +717,7 @@ public class Board {
 			 
 			 System.out.println("Iteration number "+j);
 			 
-			 if(current.getConnection(j).isTaken()){
+			 if(current.getConnection(j).getIsTaken()){
 				
 				
 					
@@ -779,39 +779,66 @@ public class Board {
 	
 	public boolean areConnected2(Town townA, Town townB){
 		
-	
+		System.out.println("Checking if "+townA.getName()+" and "+townB.getName()+" are connected!");
+		
+		Town previous = null;
 		Town current = townA;
 
 		for(int i = 0; i <  current.getConnections().size(); i++){
 
-		if(current.getConnection(i).getIsTaken() && current.getConnection(i).getIsVisited() == false){
-			current.getConnection(i).setIsVisited(true);
+		if(current.getConnection(i).getIsTaken()/* && current.getConnection(i).getIsVisited() == false*/){
+			
+			
+			
 				if(current.getConnection(i).getTownB().getName() == townB.getName() ||
 						current.getConnection(i).getTownA().getName() == townB.getName()){
+					
 				return true;
 				}
 			}
 		}
 
 		boolean returnValue = false;
+		
+		previous = current;
 
 		for(int i = 0; i < current.getConnections().size(); i++){
+			if(current.getConnection(i).getIsTaken() /*&& current.getConnection(i).getTownA().getName() != previous.getName() /*&&
+					current.getConnection(i).getTownB().getName() != previous.getName()*/&& current.getConnection(i).getIsVisited() == false){
+				current.getConnection(i).setIsVisited(true);
+				System.out.println("A connection between "+current.getConnection(i).getTownA().getName()+" and "+current.getConnection(i).getTownB().getName()+" is set to visited" );
 			
-		 /*if(current.getConnection(i).getTownB().getName() == current.getName()){
+		 if(current.getConnection(i).getTownB().getName() == current.getName()){
+			 
 				System.out.println("I set current from "+current.getName());
-				current = townA.getConnection(i).getTownA();
+				current = current.getConnection(i).getTownA();
 				System.out.println("I set current to "+current.getName());
+				break;
+				
+				
 				
 			}else{
+				
+				
 				System.out.println("I set current from "+current.getName());
-				current = townA.getConnection(i).getTownB();
-				System.out.println("I set current to "+current.getName()); 
-				}*/
+				current = current.getConnection(i).getTownB();
+				System.out.println("I set current to "+current.getName());
+				break;
+				
+				
+				}
+			}
+		}
 			
+		
+		for(int i = 0; i < current.getConnections().size(); i++){
 
-		if(current.getConnection(i).isTaken()){
+		if(current.getConnection(i).getIsTaken()){
 
-			returnValue = areConnected2(current.getConnection(i).getTownB(), townB);
+			if(!current.getConnection(i).getIsVisited()){
+				System.out.println("Calling recursive funtion on "+current.getName());
+				returnValue = returnValue || areConnected2(current, townB);
+			}
 
 			}
 		}
