@@ -13,9 +13,8 @@ public class Board {
 	Town[] towns;
 	EndButton button;
 	
-	//ArrayList<Town> towns = new ArrayList<Town>();
 	PlayerPiece[] players;
-	//Connection[] connections;
+
 	
 	ArrayList<Connection> connections = new ArrayList<Connection>();
 	
@@ -38,7 +37,6 @@ public class Board {
 
 		// set the amount of towns, connections, colors and players
 		towns = new Town[36];
-		//connections = new Connection[100];
 		colors = new Color[10];
 		players = new PlayerPiece[numOfPlayers];
 

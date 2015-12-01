@@ -353,25 +353,6 @@ public class SimpleSlickGame extends BasicGame {
 		// JSON TEST END
 		// ------------------------------------------------------------------------------------
 
-		// System.out.println(board.checkConnected(board.towns[0],
-		// board.towns[3]));
-		// board.checkConnected(board.towns[0], board.towns[2]);
-
-		/*
-		 * try{
-		 * 
-		 * String sentence; String modifiedSentence; BufferedReader inFromUser =
-		 * new BufferedReader( new InputStreamReader(System.in)); Socket
-		 * clientSocket = new Socket("172.20.10.5", 1233); DataOutputStream
-		 * outToServer = new DataOutputStream(clientSocket.getOutputStream());
-		 * BufferedReader inFromServer = new BufferedReader(new
-		 * InputStreamReader(clientSocket.getInputStream())); sentence =
-		 * inFromUser.readLine(); outToServer.writeBytes(sentence + '\n');
-		 * modifiedSentence = inFromServer.readLine(); System.out.println(
-		 * "FROM SERVER: " + modifiedSentence); clientSocket.close();
-		 * 
-		 * }catch(Exception e){ System.out.println(e.getStackTrace()); }
-		 */
 
 		// GsonJson test with stacks of
 		// traincards.-----------------------------------------------------------
@@ -390,37 +371,6 @@ public class SimpleSlickGame extends BasicGame {
 		// JSON TEST END
 		// ------------------------------------------------------------------------------------
 
-		/*
-		 * try{
-		 * 
-		 * String sentence; String modifiedSentence; BufferedReader inFromUser =
-		 * new BufferedReader( new InputStreamReader(System.in)); Socket
-		 * clientSocket = new Socket("172.20.10.5", 1233); DataOutputStream
-		 * outToServer = new DataOutputStream(clientSocket.getOutputStream());
-		 * BufferedReader inFromServer = new BufferedReader(new
-		 * InputStreamReader(clientSocket.getInputStream())); sentence =
-		 * inFromUser.readLine(); outToServer.writeBytes(sentence + '\n');
-		 * modifiedSentence = inFromServer.readLine(); System.out.println(
-		 * "FROM SERVER: " + modifiedSentence); clientSocket.close();
-		 * 
-		 * }catch(Exception e){ System.out.println(e.getStackTrace()); }
-		 */
-
-		/*
-		 * try{
-		 * 
-		 * String sentence; String modifiedSentence; BufferedReader inFromUser =
-		 * new BufferedReader( new InputStreamReader(System.in)); Socket
-		 * clientSocket = new Socket("172.20.10.5", 1233); DataOutputStream
-		 * outToServer = new DataOutputStream(clientSocket.getOutputStream());
-		 * BufferedReader inFromServer = new BufferedReader(new
-		 * InputStreamReader(clientSocket.getInputStream())); sentence =
-		 * inFromUser.readLine(); outToServer.writeBytes(sentence + '\n');
-		 * modifiedSentence = inFromServer.readLine(); System.out.println(
-		 * "FROM SERVER: " + modifiedSentence); clientSocket.close();
-		 * 
-		 * }catch(Exception e){ System.out.println(e.getStackTrace()); }
-		 */
 
 		try {
 			AppGameContainer appgc;
@@ -431,27 +381,4 @@ public class SimpleSlickGame extends BasicGame {
 			Logger.getLogger(SimpleSlickGame.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
-
-	/**
-	 * ONLY CHECKS ONE CONNECTION BETWEEN TWO TOWNS This function will check if
-	 * two towns are connected
-	 * 
-	 * @param _townA
-	 *            The "start" town, you're checking if townB is connected to
-	 *            townA or vice versa
-	 * @param _townB
-	 *            The "other" town.
-	 * @return Returns true if any of the connections of townB starts or ends in
-	 *         townA.
-	 */
-
-	/*
-	 * public boolean checkConnected(Town _townA, Town _townB) { // Loop through
-	 * all the connections of _townB for (int i = 0; i <
-	 * _townB.getConnections().length; i++) { // If any of the connections of
-	 * _townB starts or ends in _townA, // return true. if
-	 * (_townB.getConnections()[i].getTownA() == _townA ||
-	 * _townB.getConnections()[i].getTownB() == _townA) return true; } // else
-	 * return false return false; }
-	 */
 }
