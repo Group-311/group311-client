@@ -18,10 +18,19 @@ public class MissionCard extends Card{
 		xPos = 896;
 		yPos = 0;
 		
-		this.townA=townA;
-		this.townB=townB;
+		this.townA = townA;
+		this.townB = townB;
 		this.points=points;
 		this.isCompleted = false;
+	}
+
+	public Town getTownA() {
+		return townA;
+	}
+
+
+	public Town getTownB() {
+		return townB;
 	}
 	
 	/**
@@ -31,10 +40,10 @@ public class MissionCard extends Card{
 	 *  could not possibly be completed.
 	 *  WILL WAIT FOR GRAPH LECTURE
 	 */
-	public void checkComplete(){
-		for(int i = 0; i < this.townA.getConnections().length; i++){
-		if(townA.getConnections()[i].isTaken())
-			for(int j = 0; j < townA.getConnections().length; j++){
+	/*public void checkComplete(){
+		for(int i = 0; i < this.townA.getConnections().size(); i++){
+		if(townA.getConnection(i).getIsTaken())
+			for(int j = 0; j < townA.getConnections().size(); j++){
 				
 			}
 		}
@@ -42,7 +51,7 @@ public class MissionCard extends Card{
 		this.isCompleted = true;
 		
 	 // Add points to the player who completed it
-	}
+	}*/
 	
 	
 }
