@@ -327,7 +327,7 @@ public class SimpleSlickGame extends BasicGame {
 			board.players[i].setVisible(g);
 		}
 		
-		board.button.setVisible(g);
+		board.button.setVisible(g,0);
 		
 		
 	}
