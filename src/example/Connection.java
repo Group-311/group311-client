@@ -12,6 +12,7 @@ public class Connection {
 	private Color color;
 	private Town townA, townB;
 	private boolean isTaken;
+	private int ownedBy;
 
 	private boolean isVisited;
 
@@ -27,6 +28,7 @@ public class Connection {
 		this.color = _color;
 		this.setTownA(_townA);
 		this.setTownB(_townB);
+		
 
 		_townA.addConnection(this);
 
@@ -76,5 +78,14 @@ public class Connection {
 
 	public Color getColor() {
 		return color;
+	}
+	public boolean getTakenByPlayer(int pnum){
+		if(ownedBy == pnum)
+			return true;
+		
+		return false;
+	}
+	public void setTakenByPlayer(int pnum){
+		ownedBy = pnum;
 	}
 }
