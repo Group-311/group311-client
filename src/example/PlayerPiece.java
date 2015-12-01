@@ -8,31 +8,35 @@ public class PlayerPiece {
 	private int totalPoints, xPos, yPos;
 	private Color color;
 	private Circle playerPiece;
+	private int playerNum;
 
-	PlayerPiece(Color color) {
+	PlayerPiece(Color color, int playerNum) {
 		this.color = color;
-		xPos = 18;
+		xPos = 10 + playerNum * 4;
 		yPos = 632;
 		totalPoints = 0;
+		this.playerNum = playerNum;
 
 	}
 
 	public void move(int points) {
-		if (xPos == 18 && yPos <= 632 && yPos >= 104) {
-			this.yPos -= points * 33;
-		}
-		if (yPos == 104 && xPos <= 843 && xPos >= 18) {
-			this.xPos += points * 33;
-		}
-		if (xPos == 876 && yPos >= 104 && yPos <= 632) {
-			this.yPos += points * 33;
-		}
-		if (yPos == 665 && xPos <= 876 && xPos > 52) {
-			this.xPos -= points * 33;
-		}
-		if (xPos < 52 && yPos == 665) {
-			xPos = 18;
-			yPos = 599;
+		for (int i = 0; i < points; i++) {
+			if (xPos == 10 + playerNum * 4 && yPos > 104) {
+				this.yPos -= 33;
+			}
+			if (yPos == 104 && xPos < 843 + playerNum*4) {
+				this.xPos += 33;
+			}
+			if (xPos == 868 + playerNum*4) {
+				this.yPos += 33;
+			}
+			if (yPos == 665 ) {
+				this.xPos -= 33;
+			}
+			if (xPos < 52 + playerNum*4 && yPos == 665) {
+				xPos = 10 + playerNum*4;
+				yPos = 599;
+			}
 		}
 		totalPoints += points;
 
@@ -52,6 +56,14 @@ public class PlayerPiece {
 
 	public int getyPos() {
 		return yPos;
+	}
+
+	public void setxPos(int xPos) {
+		this.xPos = xPos;
+	}
+
+	public void setyPos(int yPos) {
+		this.yPos = yPos;
 	}
 
 	public int getTotalPoints() {
