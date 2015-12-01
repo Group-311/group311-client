@@ -69,4 +69,7 @@ public class PlayerPiece {
 	public int getTotalPoints() {
 		return totalPoints;
 	}
+	public void setColor(Color color) {
+		this.color = color;
+	}
 }

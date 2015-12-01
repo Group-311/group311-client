@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -34,6 +35,8 @@ public class SimpleSlickGame extends BasicGame {
 	// private Image rainbowTrainCard = null; without jokers
 
 	private Image[] missions = null;
+	
+	private Color red,green,blue,yellow;
 
 	private Image map = null;
 
@@ -57,7 +60,19 @@ public class SimpleSlickGame extends BasicGame {
 
 		map = new Image("/pics/Map.jpg");
 		board.setBoardPic(map);
-
+		
+		//Setting som colors for the playerpieces
+		red = new Color(255,0,0);
+		green = new Color(0,255,0);
+		blue = new Color(0,0,255);
+		yellow = new Color(255,255,0);
+		
+		
+		board.players[0].setColor(new Color(red));
+		board.players[1].setColor(new Color(green));
+		board.players[2].setColor(new Color(blue));
+		board.players[3].setColor(new Color(yellow));
+		
 		// Setting the images for the summaryCard
 		summaryBackImage = new Image("/pics/summaryBack.jpg");
 		summaryFrontImage = new Image("/pics/summaryFront.jpg");
@@ -305,10 +320,16 @@ public class SimpleSlickGame extends BasicGame {
 		for (int j = 0; j < 5; j++) {
 			board.trainCardStack.card[j].setVisible();
 		}
+		
+		//Setting the visibility of the playerpieces
+		for (int i=0; i<board.players.length;i++)
+		{
+			board.players[i].setVisible(g);
+		}
 	}
 
 	public static void main(String[] args) throws SlickException {
-		board = new Board(3);
+		board = new Board(4);
 		// System.out.println(board.connections[28].getTownA().getName());
 		System.out.println(board.towns[20].getName());
 		System.out.println(board.towns[20].getConnection(1).getTownA().getName());

@@ -615,6 +615,14 @@ public class Board {
 			
 		// should store 5 cards
 		//displayedCardStack = new Stack(displayedCards);
+		
+		
+		//PlayerPiece instanciation.
+		for (int i=0; i<players.length;i++)
+		{
+			players[i]= new PlayerPiece(null, i+1);
+		}
+
 
 	}
 
