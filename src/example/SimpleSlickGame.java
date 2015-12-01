@@ -396,6 +396,9 @@ public class SimpleSlickGame extends BasicGame {
 		System.out.println("..." + board.connections.get(12).getTownA().getName());
 		System.out.println("..." + board.connections.get(12).getTownB().getName());
 		board.connections.get(12).setTaken(true);
+		System.out.println("..." + board.connections.get(36).getTownA().getName());
+		System.out.println("..." + board.connections.get(36).getTownB().getName());
+		board.connections.get(36).setTaken(true);
 
 		// System.out.println(board.checkConnected(board.towns[0],
 		// board.towns[3]));
@@ -403,7 +406,7 @@ public class SimpleSlickGame extends BasicGame {
 		
 		for(int i = 0; i < board.towns[1].getConnections().size();i++){
 		
-			if(board.areConnected2(board.towns[0], board.towns[14], i )){
+			if(board.areConnected2(board.towns[0], board.towns[11], i )){
 				System.out.println("IT HAPPENED AT LEAST ONCE!!!");
 			}
 		}
