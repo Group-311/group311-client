@@ -623,7 +623,7 @@ public class Board {
 	}
 
 	public void setBoardPic(Image boardPic) throws SlickException {
-		this.boardPic = new Image("/Map.jpg");
+		this.boardPic = new Image("/pics/Map.jpg");
 	}
 	
 	/*

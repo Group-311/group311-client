@@ -55,18 +55,18 @@ public class SimpleSlickGame extends BasicGame {
 		// I don't know where this has to be loaded, but for now we can load all
 		// images here
 
-		map = new Image("/Map.jpg");
+		map = new Image("/pics/Map.jpg");
 		board.setBoardPic(map);
 
 		// Setting the images for the summaryCard
-		summaryBackImage = new Image("/summaryBack.jpg");
-		summaryFrontImage = new Image("/summaryFront.jpg");
+		summaryBackImage = new Image("/pics/summaryBack.jpg");
+		summaryFrontImage = new Image("/pics/summaryFront.jpg");
 		board.summaryCard.setBackImage(summaryBackImage);
 		board.summaryCard.setFrontImage(summaryFrontImage);
 
 		// Setting cardback and cardfront for the trainCards
 		// Cardback is the same for all the trainCards
-		trainCardBack = new Image("/trainCardBack.png");
+		trainCardBack = new Image("/pics/trainCardBack.png");
 
 		for (int i = 0; i < board.trainCards.length; i++) {
 			board.trainCards[i].setBackImage(trainCardBack);
@@ -80,14 +80,14 @@ public class SimpleSlickGame extends BasicGame {
 		board.stationaryCard.yPos += board.stationaryCard.height;
 
 		// Loading all the trainCardImages
-		blackTrainCard = new Image("/blackTrainCard.png");
-		blueTrainCard = new Image("/blueTrainCard.png");
-		greenTrainCard = new Image("/greenTrainCard.png");
-		orangeTrainCard = new Image("/orangeTrainCard.png");
-		pinkTrainCard = new Image("/pinkTrainCard.png");
-		redTrainCard = new Image("/redTrainCard.png");
-		whiteTrainCard = new Image("/whiteTrainCard.png");
-		yellowTrainCard = new Image("/yellowTrainCard.png");
+		blackTrainCard = new Image("/pics/blackTrainCard.png");
+		blueTrainCard = new Image("/pics/blueTrainCard.png");
+		greenTrainCard = new Image("/pics/greenTrainCard.png");
+		orangeTrainCard = new Image("/pics/orangeTrainCard.png");
+		pinkTrainCard = new Image("/pics/pinkTrainCard.png");
+		redTrainCard = new Image("/pics/redTrainCard.png");
+		whiteTrainCard = new Image("/pics/whiteTrainCard.png");
+		yellowTrainCard = new Image("/pics/yellowTrainCard.png");
 		// rainbowTrainCard = new Image("/rainbowTrainCard.png"); without jokers
 
 		// Applying the trainCardImages to the correct spot within the array.
@@ -129,12 +129,12 @@ public class SimpleSlickGame extends BasicGame {
 
 		// Loading and applying the missionCards.
 		for (int i = 0; i < board.missionCards.length; i++) {
-			missions[i] = new Image("/mission(" + i + ").png");
+			missions[i] = new Image("/pics/misssion(" + i + ").jpg");
 			board.missionCards[i].setFrontImage(missions[i]);
 		}
 
 		// Setting the cardback for the missioncards
-		missionCardBack = new Image("/missionCardBack.png");
+		missionCardBack = new Image("/pics/missionCardBack.png");
 		for (int i = 0; i < board.missionCards.length; i++) {
 			board.missionCards[i].setBackImage(missionCardBack);
 		}
