@@ -44,7 +44,7 @@ public class Board {
 		// create the different types of cards
 		summaryCard = new SummaryCard();
 		// create stationary card for a stationary backImage on the mission and train stacks
-		//stationaryCard = new StationaryCard(); // I had to comment yo shit out Adi since it broke everything, Regards, Emil
+		stationaryCard = new StationaryCard();
 		missionCards = new MissionCard[30];
 		
 		//trainCards = new TrainCard[110];		with joker

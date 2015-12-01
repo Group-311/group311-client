@@ -75,9 +75,9 @@ public class SimpleSlickGame extends BasicGame {
 		}
 
 		// Setting the image for the stationaryCard
-		//board.stationaryCard.setBackImage(trainCardBack);
-		//board.stationaryCard.xPos = 1024 - board.stationaryCard.width;
-		//board.stationaryCard.yPos += board.stationaryCard.height;
+		board.stationaryCard.setBackImage(trainCardBack);
+		board.stationaryCard.xPos = 1024 - board.stationaryCard.width;
+		board.stationaryCard.yPos += board.stationaryCard.height;
 
 		// Loading all the trainCardImages
 		blackTrainCard = new Image("/blackTrainCard.png");
@@ -298,7 +298,7 @@ public class SimpleSlickGame extends BasicGame {
 
 		board.summaryCard.setVisible();
 		
-		//board.stationaryCard.setVisible();
+		board.stationaryCard.setVisible();
 
 		board.missionCardStack.card[0].setVisible();
 
