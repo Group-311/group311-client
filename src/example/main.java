@@ -39,6 +39,10 @@ public class main extends JPanel {
 
 		Socket Sock = new Socket("172.20.10.2", 2222);
 		PrintStream ps = new PrintStream(Sock.getOutputStream());
+		String activator = new String("2");
+		
+		
+		
 		
 		t = new Train(null);
 		t.decrease(3);
@@ -46,7 +50,7 @@ public class main extends JPanel {
 		Gson serializer = new Gson();
 		String json = serializer.toJson(t);
 		
-		ps.println(json);
+		ps.println(activator + "\n" + json + "\n");
 
 		InputStreamReader ir = new InputStreamReader(Sock.getInputStream());
 		BufferedReader br = new BufferedReader(ir);
