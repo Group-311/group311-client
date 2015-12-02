@@ -129,9 +129,9 @@ public class SimpleSlickGame extends BasicGame {
 		}
 		for (int i = 84; i < 96; i++) {
 			board.trainCards[i].setFrontImage(pinkTrainCard);
-		}
+		}										
 		// for (int i = 96; i < 110; i++) {
-		// board.trainCards[i].setFrontImage(rainbowTrainCard); // with jokers
+		// board.trainCards[i].setFrontImage(rainbowTrainCard); // no jokers atm
 		// }
 
 		// Shuffle train cards in the traincard stack
@@ -139,7 +139,21 @@ public class SimpleSlickGame extends BasicGame {
 		// Set the mouse input conditions for the borders of the traincard stack
 		board.trainCardStack.xPos = 1024 - board.trainCardStack.width;
 		board.trainCardStack.yPos += board.trainCardStack.height;
-
+		
+		System.out.println(" ");
+		System.out.println("Unshuffled array: " + Stack.TCARDS + " cards in total");		// Print un-shuffled array
+		System.out.println(board.stackOfTraincards);	
+		board.trainCardStack.shuffleA(1000);									// Shuffle cards
+		board.arrayOfTraincards = board.trainCardStack.getdeckOfA();			// Copy the shuffled cards to the array list b and print it with the for loop
+		System.out.println("Shuffle array: " + board.arrayOfTraincards.size() + " cards in total");
+		for (int i = 0; i < board.arrayOfTraincards.size(); i++) {
+			System.out.print(board.arrayOfTraincards.get(i).toString() + " "); 		// LOOK INTO THIS STRING - THINK IT IS BECAUSE YOU HAVE TWO CONSTRUCTERS.
+																					// THE 2ND CONSTRUCTER DOESNT LOOK INTO THE SUITE AND RANK SORTING
+		}
+		System.out.println();		// For spacing
+		System.out.println();
+		
+		
 		missions = new Image[30];
 
 		// Loading and applying the missionCards.
@@ -225,17 +239,9 @@ public class SimpleSlickGame extends BasicGame {
 			// mouse input conditions for train card stack
 			if (xpos < board.trainCardStack.xPos + board.trainCardStack.width && xpos > board.trainCardStack.xPos
 					&& ypos < 768 - board.trainCardStack.height && ypos > 768 - 2 * board.trainCardStack.height) {
-				// System.out.println(" ");
-				// for(int j = 0; j < 5; j++) {
-				// board.displayedCardStack.card[j] =
-				// board.trainCards[currentCard++];
-				// System.out.println(board.displayedCardStack.card[j]);
-				// System.out.println("Card " + currentCard + ", which is " +
-				// board.trainCards[currentCard] + " from the train card stack,
-				// is now equal to card " + board.displayedCardStack.card[j] + "
-				// in the displayed stack");
-				// }
-
+				
+				board.arrayOfTraincards.get(0).flipCard(); //from array list stack
+				
 				for (int j = 0; j < 5; j++) {
 					board.trainCardStack.card[currentCard++].yPos = 595 - board.trainCardStack.height * (j + 1);
 					board.trainCardStack.card[j].flipCard();
@@ -316,10 +322,12 @@ public class SimpleSlickGame extends BasicGame {
 		board.stationaryCard.setVisible();
 
 		board.missionCardStack.card[0].setVisible();
+		
+		board.arrayOfTraincards.get(0).setVisible();
 
-		for (int j = 0; j < 5; j++) {
-			board.trainCardStack.card[j].setVisible();
-		}
+//		for (int j = 0; j < 5; j++) {
+//			board.trainCardStack.card[j].setVisible();
+//		}
 		
 		//Setting the visibility of the playerpieces
 		for (int i=0; i<board.players.length;i++)
@@ -379,6 +387,7 @@ public class SimpleSlickGame extends BasicGame {
 			appgc.start();
 		} catch (SlickException ex) {
 			Logger.getLogger(SimpleSlickGame.class.getName()).log(Level.SEVERE, null, ex);
+
 		}
 	}
 }

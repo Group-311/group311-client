@@ -23,18 +23,26 @@ public class Board {
 	Card[] missionCards;
 	Card[] trainCards;
 	Card stationaryCard;
-	// card array for the 5 displayed cards
-	//Card[] displayedCards;
 
 	// Create a stack for all the missions
 	Stack missionCardStack;
 	// Create a stack for all the traincards
-	Stack trainCardStack;
-	// Create a stack for all the displayed cards
-	//Stack displayedCardStack;
+	Stack trainCardStack;	
+	// DeckOfCards that should be used to create the array list of the train card stack
+	Stack stackOfTraincards;
+	// Instantiate array list that should copy the cards from the deckofcards stack
+	ArrayList<Card> arrayOfTraincards;
+	ArrayList<Card> player1HandStack, player2HandStack, player3HandStack, player4HandStack;					// Instantiate playerhandstack arrays
 
 	Board(int numOfPlayers) throws SlickException {
-
+		
+		player1HandStack = new ArrayList<Card>();			// Player hand stack
+		player2HandStack = new ArrayList<Card>();			// Player hand stack
+		player3HandStack = new ArrayList<Card>();			// Player hand stack
+		player4HandStack = new ArrayList<Card>();			// Player hand stack
+		
+		stackOfTraincards = new Stack();																	// Un-shuffled cards
+		
 		// set the amount of towns, connections, colors and players
 		towns = new Town[36];
 		colors = new Color[10];
@@ -42,15 +50,13 @@ public class Board {
 
 		// create the different types of cards
 		summaryCard = new SummaryCard();
+		
 		// create stationary card for a stationary backImage on the mission and train stacks
 		stationaryCard = new StationaryCard();
 		missionCards = new MissionCard[30];
 		
 		//trainCards = new TrainCard[110];		with joker
 		trainCards = new TrainCard[96];		// without jokers
-		
-		// displayed cards on boards maybe set these 5 displayedCards equal to the first 5 cards of the shuffled trainCardStack
-		//displayedCards = new TrainCard[5];
 
 		// create all the different colors for the trains/players
 		colors[0] = new Color("blue", 0);
@@ -406,7 +412,6 @@ public class Board {
 		//connections[99] = new Connection(colors[2], towns[7], towns[8], 3, 4);
 		connections.add(new Connection(colors[2], towns[7], towns[8], 3, 4));
 		
-		
 
 		// creating all the mission cards
 		missionCards[0] = new MissionCard(towns[11], towns[13], 4);
@@ -443,8 +448,8 @@ public class Board {
 		// adding all the mission cards in a new stack called missioncardstack
 		missionCardStack = new Stack(missionCards);
 
+		
 		// creating all the trainCards
-
 		for (int i = 0; i < trainCards.length; i++) {
 			if (i < 12)
 				trainCards[i] = new TrainCard(colors[0]); // Blue
@@ -468,23 +473,12 @@ public class Board {
 		// adding all the mission cards in a new stack called traincardstack
 		trainCardStack = new Stack(trainCards);
 		
-		//1 assumption: this shouldn't go here because the trainCardStack has not yet been shuffled
-		//2 assumption: this should go here since it merealy tells the program that we want the displayedCards card array to hold 5 TrainCards that inherit from Cards		
-		//for(int i = 0; i < displayedCards.length; i++) {
-		//displayedCards[i] = new TrainCard();
-		//}
-			
-		// should store 5 cards
-		//displayedCardStack = new Stack(displayedCards);
-		
-		
-		//PlayerPiece instanciation.
+		//PlayerPiece instantiation.
 		for (int i=0; i<players.length;i++)
 		{
 			players[i]= new PlayerPiece(null, i+1);
 		}
-
-
+		
 	}
 
 	public Image getBoardPic() {
@@ -494,7 +488,5 @@ public class Board {
 	public void setBoardPic(Image boardPic) throws SlickException {
 		this.boardPic = new Image("/pics/Map.jpg");
 	}
-	
-
 }
 
