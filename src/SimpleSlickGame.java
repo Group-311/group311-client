@@ -144,17 +144,6 @@ public class SimpleSlickGame extends BasicGame {
 		// }
 		
 		
-		
-		// Set the mouse input conditions for the borders of the traincard stack
-		board.trainCardStack.xPos = 1024 - board.trainCardStack.width;
-		board.trainCardStack.yPos += board.trainCardStack.height;
-		
-		//board.trainCardStack.shuffleA(1000);									// Shuffle cards
-		board.arrayOfTraincards = board.trainCardStack.getdeckOfA();			// Copy the shuffled cards to the array list b and print it with the for loop	
-		//board.arrayOfTraincards.get(0).xPos = board.trainCardStack.xPos;
-		
-		System.out.println(board.arrayOfTraincards.size());
-		
 
 		//System.out.println(board.stationaryCard.yPos);
 
@@ -254,24 +243,23 @@ public class SimpleSlickGame extends BasicGame {
 				}
 
 			}
-
-			// System.out.println(townB.getName() + " " + townA.getName());
-		}
-		// --------------------------------------------------------------------------------------------------------------------------------------------
-
-		// Right click
-		if (input.isMousePressed(1)) {
+			
+			
 			// mouse input conditions for summary card
 			if (xpos < board.summaryCard.xPos + board.summaryCard.width && xpos > board.summaryCard.xPos
 					&& ypos > 768 - board.summaryCard.height) {
 				board.summaryCard.flipCard();
 			}
-
+			
 			// mouse input conditions for mission card stack
 			if (xpos < board.missionCardStack.xPos + board.missionCardStack.width && xpos > board.missionCardStack.xPos
 					&& ypos > 768 - board.missionCardStack.height) {
 				board.missionCardStack.card[0].flipCard();
 			}
+			
+
+
+
 
 			// mouse input conditions for train card stack
 			if (xpos < board.trainCardStack.xPos + board.trainCardStack.width && xpos > board.trainCardStack.xPos
@@ -290,7 +278,10 @@ public class SimpleSlickGame extends BasicGame {
 				//					board.trainCardStack.card[j].flipCard();
 				//}
 			}
+			
+			// System.out.println(townB.getName() + " " + townA.getName());
 		}
+		// --------------------------------------------------------------------------------------------------------------------------------------------
 	}
 
 	private Connection findConnectionToBuild(Town town1, Town town2) {

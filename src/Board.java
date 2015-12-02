@@ -28,8 +28,6 @@ public class Board {
 	Stack missionCardStack;
 	// Create a stack for all the traincards
 	Stack trainCardStack;	
-	// DeckOfCards that should be used to create the array list of the train card stack
-	Stack stackOfTraincards;
 
 	ArrayList<Card> arrayOfTraincards;
 	ArrayList<Card> player1HandStack, player2HandStack, player3HandStack, player4HandStack;					// Instantiate playerhandstack arrays
@@ -44,9 +42,7 @@ public class Board {
 		
 		displayedTrainStack = new ArrayList<Card>();		// Displayed stack on the board
 		displayedMissionStack = new ArrayList<Card>();
-		
-		stackOfTraincards = new Stack();					// Un-shuffled cards
-		
+				
 		// set the amount of towns, connections, colors and players
 		towns = new Town[36];
 		colors = new CustomColor[9];
@@ -481,6 +477,16 @@ public class Board {
 		}
 		// adding all the mission cards in a new stack called traincardstack
 		trainCardStack = new Stack(trainCards);
+		
+		// Set the mouse input conditions for the borders of the traincard stack
+		trainCardStack.xPos = 1024 - trainCardStack.width;
+		trainCardStack.yPos += trainCardStack.height;
+		
+		trainCardStack.shuffleA(1000);									// Shuffle cards
+		arrayOfTraincards = trainCardStack.getdeckOfA();			// Copy the shuffled cards to the array list b and print it with the for loop	
+		//board.arrayOfTraincards.get(0).xPos = board.trainCardStack.xPos;
+		
+		System.out.println(arrayOfTraincards.size());
 		
 		//PlayerPiece instantiation.
 		for (int i=0; i<players.length;i++)
