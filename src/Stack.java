@@ -98,6 +98,14 @@ public class Stack extends Card {
 	 */
 	public Stack(Card[] _cards){
 		this.card = _cards;
+		
+		int i = 0;
+		for (int suit = Card.PINK; suit <= Card.GREEN; suit++) {
+			for (int rank = 1; rank <= 12; rank++) {
+				card[i].suit();
+				card[i].rank();
+			}
+		}
 
 		/*
 		 * The array list called listOfTraincards will now add all the Cards from the

@@ -139,16 +139,53 @@ public class SimpleSlickGame extends BasicGame {
 		// for (int i = 96; i < 110; i++) {
 		// board.trainCards[i].setFrontImage(rainbowTrainCard); // no jokers atm
 		// }
-
-		// Shuffle train cards in the traincard stack
-		board.trainCardStack.shuffle(board.trainCards);
+		
+		
+		
 		// Set the mouse input conditions for the borders of the traincard stack
 		board.trainCardStack.xPos = 1024 - board.trainCardStack.width;
 		board.trainCardStack.yPos += board.trainCardStack.height;
 		
-		board.trainCardStack.shuffleA(1000);									// Shuffle cards
-		board.arrayOfTraincards = board.trainCardStack.getdeckOfA();			// Copy the shuffled cards to the array list b and print it with the for loop
-				
+		//board.trainCardStack.shuffleA(1000);									// Shuffle cards
+		board.arrayOfTraincards = board.trainCardStack.getdeckOfA();			// Copy the shuffled cards to the array list b and print it with the for loop	
+		//board.arrayOfTraincards.get(0).xPos = board.trainCardStack.xPos;
+		
+		System.out.println(board.arrayOfTraincards.size());
+		
+
+		//System.out.println(board.stationaryCard.yPos);
+
+		/*
+		 * Tasks, which should happen in 1 function: card#deckOfA -->
+		 * card#playerHandStack card#deckOfA --> remove
+		 */
+		System.out.print("Displayed stack on board:		");					// Print player hand 1
+		int asdf = 2;
+		
+		for(int i = 0; i < 5; i ++) {
+				board.displayedStack.add(board.arrayOfTraincards.get(0));			// card#deckOfA --> card#playerHandStack
+				board.displayedStack.get(i).yPos = 85 * asdf;
+				board.arrayOfTraincards.remove(0);									// card#deckOfA --> remove
+				System.out.print(board.displayedStack.size() + "		");			// print the cards in the players hand stack
+				asdf++;
+			}
+
+
+		
+		board.displayedStack.add(board.arrayOfTraincards.get(0));			// card#deckOfA --> card#playerHandStack
+		board.displayedStack.get(1).yPos = 85 * 3;
+		board.arrayOfTraincards.remove(0);									// card#deckOfA --> remove
+		System.out.print(board.displayedStack.size() + "		");			// print the cards in the players hand stack
+		
+		board.displayedStack.add(board.arrayOfTraincards.get(0));			// card#deckOfA --> card#playerHandStack
+		board.displayedStack.get(2).yPos = 85 * 4;
+		board.arrayOfTraincards.remove(0);									// card#deckOfA --> remove
+		System.out.print(board.displayedStack.size() + "		");			// print the cards in the players hand stack
+		
+		
+		
+
+		
 		
 		missions = new Image[30];
 
@@ -237,70 +274,19 @@ public class SimpleSlickGame extends BasicGame {
 			if (xpos < board.trainCardStack.xPos + board.trainCardStack.width && xpos > board.trainCardStack.xPos
 					&& ypos < 768 - board.trainCardStack.height && ypos > 768 - 2 * board.trainCardStack.height) {
 				
-				
-				board.arrayOfTraincards.get(0).yPos = +100;
-				board.arrayOfTraincards.get(0).flipCard(); //from array list stack
-				board.arrayOfTraincards.remove(0);
-				System.out.println(board.arrayOfTraincards.get(0).yPos);
+				//board.arrayOfTraincards.get(0).flipCard(); //from array list stack
 								
 //				for (int j = 0; j < 5; j++) {
 //					board.trainCardStack.card[currentCard++].yPos = 595 - board.trainCardStack.height * (j + 1);
 //					board.trainCardStack.card[j].flipCard();
 //				}
-
-				//				/*
-				//				 * Tasks, which should happen in 1 function: card#deckOfA -->
-				//				 * card#playerHandStack card#deckOfA --> remove
-				//				 */
-				//				System.out.print("Player Hand 1:		");								// Print player hand 1
-				//				for (int j = 0; j < 4; j++) {
-				//					board.player1HandStack.add(board.arrayOfTraincards.get(0));			// card#deckOfA --> card#playerHandStack
-				//					board.arrayOfTraincards.remove(0);									// card#deckOfA --> remove
-				//					System.out.print(board.player1HandStack.get(j) + "		");			// print the cards in the players hand stack
-				//				}
-				//				System.out.println();		// For spacing
-				//				System.out.println();
-				//				
-				//				
+								
+								
 				//				for (int j = 0; j < 5; j++) {
 				//					board.trainCardStack.card[currentCard++].yPos = 595 - board.trainCardStack.height * (j + 1);
 				//					board.trainCardStack.card[j].flipCard();
 				//}
-				
-				// Exact values for the moouseY input conditions as reminders 510, 425, 340, 255, 170;
 			}
-
-			// Mouse input conditions for the displayed cards
-			// if (xpos < board.trainCardStack.xPos + board.trainCardStack.width
-			// && xpos > board.trainCardStack.xPos
-			// && ypos < 768 - 2 * board.trainCardStack.height && ypos > 768 - 3
-			// * board.trainCardStack.height) {
-			// }
-
-			// if (xpos < board.trainCardStack.xPos + board.trainCardStack.width
-			// && xpos > board.trainCardStack.xPos
-			// && ypos < 768 - 3 * board.trainCardStack.height && ypos > 768 - 4
-			// * board.trainCardStack.height) {
-			// }
-			//
-			// if (xpos < board.trainCardStack.xPos + board.trainCardStack.width
-			// && xpos > board.trainCardStack.xPos
-			// && ypos < 768 - 4 * board.trainCardStack.height && ypos > 768 - 5
-			// * board.trainCardStack.height) {
-			// }
-			//
-			// if (xpos < board.trainCardStack.xPos + board.trainCardStack.width
-			// && xpos > board.trainCardStack.xPos
-			// && ypos < 768 - 5 * board.trainCardStack.height && ypos > 768 - 6
-			// * board.trainCardStack.height) {
-			// }
-			//
-			// if (xpos < board.trainCardStack.xPos + board.trainCardStack.width
-			// && xpos > board.trainCardStack.xPos
-			// && ypos < 768 - 6 * board.trainCardStack.height && ypos > 768 - 7
-			// * board.trainCardStack.height) {
-			// }
-
 		}
 	}
 
@@ -340,8 +326,9 @@ public class SimpleSlickGame extends BasicGame {
 				
 		//board.connections.get(2).setTakenByPlayer(player1, g);
 		
-		board.arrayOfTraincards.get(0).setVisible1();
-		
+		for(int i = 0; i < 5; i++) {
+		board.displayedStack.get(i).setVisible1();
+		}
 		//board.stationaryCard.setVisible();
 		
 		

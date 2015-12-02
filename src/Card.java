@@ -51,8 +51,9 @@ public class Card {
 
 		cardSuit = (byte) suit;
 	}
-
+	
 	public Card() {
+		
 	}
 
 	public int suit() {

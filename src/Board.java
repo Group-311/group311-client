@@ -42,7 +42,9 @@ public class Board {
 		player3HandStack = new ArrayList<Card>();			// Player hand stack
 		player4HandStack = new ArrayList<Card>();			// Player hand stack
 		
-		stackOfTraincards = new Stack();																	// Un-shuffled cards
+		displayedStack = new ArrayList<Card>();				// Displayed stack on the board
+		
+		stackOfTraincards = new Stack();					// Un-shuffled cards
 		
 		// set the amount of towns, connections, colors and players
 		towns = new Town[36];
