@@ -45,6 +45,20 @@ public class Connection {
 
 		isVisited = false;
 	}
+	Connection(CustomColor _color, Town _townA, Town _townB, int _length, int _point, int a) {
+
+		this.length = _length;
+		this.point = _point;
+		this.color = _color;
+		this.setTownA(_townA);
+		this.setTownB(_townB);
+		
+
+		this.setTaken(false);
+		isTaken = false;
+
+		isVisited = false;
+	}
 
 	public Town getTownA() {
 		return townA;
