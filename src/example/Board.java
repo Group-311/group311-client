@@ -4,6 +4,7 @@ package example;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
@@ -18,7 +19,7 @@ public class Board {
 	
 	ArrayList<Connection> connections = new ArrayList<Connection>();
 	
-	Color[] colors;
+	CustomColor[] colors;
 	Card summaryCard;
 	Card[] missionCards;
 	Card[] trainCards;
@@ -45,7 +46,7 @@ public class Board {
 		
 		// set the amount of towns, connections, colors and players
 		towns = new Town[36];
-		colors = new Color[10];
+		colors = new CustomColor[10];
 		players = new PlayerPiece[numOfPlayers];
 
 		// create the different types of cards
@@ -59,15 +60,15 @@ public class Board {
 		trainCards = new TrainCard[96];		// without jokers
 
 		// create all the different colors for the trains/players
-		colors[0] = new Color("blue", 0);
-		colors[1] = new Color("red", 1);
-		colors[2] = new Color("orange", 2);
-		colors[3] = new Color("white", 3);
-		colors[4] = new Color("yellow", 4);
-		colors[5] = new Color("black", 5);
-		colors[6] = new Color("grey", 6);
-		colors[7] = new Color("green", 7);
-		colors[8] = new Color("pink", 8);
+		colors[0] = new CustomColor("blue", 0, new Color(0,0,255));
+		colors[1] = new CustomColor("red", 1, new Color(255,0,0));
+		colors[2] = new CustomColor("orange", 2, new Color(255,127,0));
+		colors[3] = new CustomColor("white", 3, new Color(255,255,255));
+		colors[4] = new CustomColor("yellow", 4, new Color(255,255,0));
+		colors[5] = new CustomColor("black", 5, new Color(0,0,0));
+		colors[6] = new CustomColor("grey", 6, new Color(127,127,127));
+		colors[7] = new CustomColor("green", 7, new Color(0,255,0));
+		colors[8] = new CustomColor("pink", 8, new Color(255,127,127));
 		//colors[9] = new Color("rainbow", 9);	no joker
 		
 		button = new EndButton();

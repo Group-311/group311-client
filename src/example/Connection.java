@@ -9,7 +9,7 @@ public class Connection {
 	 */
 
 	private int length, point;
-	private Color color;
+	private CustomColor color;
 	private Town townA, townB;
 	private boolean isTaken;
 	private int ownedBy;
@@ -21,7 +21,7 @@ public class Connection {
 	 * setters Values should not be changed
 	 */
 
-	Connection(Color _color, Town _townA, Town _townB, int _length, int _point) {
+	Connection(CustomColor _color, Town _townA, Town _townB, int _length, int _point) {
 
 		this.length = _length;
 		this.point = _point;
@@ -76,7 +76,7 @@ public class Connection {
 		return length;
 	}
 
-	public Color getColor() {
+	public CustomColor getColor() {
 		return color;
 	}
 	public boolean getTakenByPlayer(int pnum){
