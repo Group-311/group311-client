@@ -2,10 +2,10 @@ package example;
 
 public class Train {
 	
-	private CustomColor trainColor;
+	private Color trainColor;
 	private int amountOfTrains;
 	
-	Train(CustomColor _trainColor){
+	Train(Color _trainColor){
 		this.trainColor = _trainColor;
 		amountOfTrains = 45;
 	}

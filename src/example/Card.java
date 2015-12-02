@@ -39,7 +39,7 @@ public class Card{
 	protected Image frontImage,backImage;
 	protected Image displayedImage;
 	private int visible=0;
-	protected CustomColor color;
+	protected Color color;
 	
 	/*
 	 * Card constructer. 
@@ -114,10 +114,14 @@ public class Card{
 			frontImage.draw(xPos,yPos,width,height);
 	}
 	
-	public void setColor(CustomColor color) {
+	public void setColor(Color color) {
 		this.color = color;
 	}
+<<<<<<< HEAD
 	public CustomColor getColor() {
+=======
+	public Color getColor() {
+>>>>>>> origin/master
 		return color;
 	}
 	
