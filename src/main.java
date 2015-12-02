@@ -5,6 +5,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
+import javax.swing.text.StyledEditorKit.ForegroundAction;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
@@ -37,7 +38,7 @@ public class main extends JPanel {
 	
 	public static Town tempCityB, tempCityA;
 	public static Card tempCard;
-
+	
 	
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
@@ -49,7 +50,7 @@ public class main extends JPanel {
 
 	public void run() throws Exception {
 
-		Socket Sock = new Socket("172.20.10.2", 2222);
+		Socket Sock = new Socket("192.168.43.131", 2222);
 		PrintStream ps = new PrintStream(Sock.getOutputStream());
 		String activator = new String("1");
 		b1 = new Board(4);
@@ -93,14 +94,64 @@ public class main extends JPanel {
 		String json9 = serializer.toJson(t10);
 		
 		String jsonTest = serializer.toJson(arrayTest);
-		String missionTest = serializer.toJson(new MissionCard(new Town(b1.towns[1].getName(), 4, b1.towns[1].getxPos(), b1.towns[1].getyPos()), new Town(b1.towns[4].getName(), 6, b1.towns[4].getxPos(), b1.towns[4].getxPos()), 2));
+		String missionTest = serializer.toJson(new MissionCard(new Town(b1.towns[1].getName(), 4, b1.connections.get(1).getTownA().getxPos(), b1.towns[1].getyPos()), new Town(b1.towns[4].getName(), 6, b1.towns[4].getxPos(), b1.towns[4].getxPos()), 2));
 		//String townTest = serializer.toJson(new Town(b1.towns[1].getName(), 5, 74, 499));
+	
+		//jsonTest2=null;
+//
+
+		/* String jsonTest2 = serializer.toJson(
+					new Connection(
+					new CustomColor("red",
+							 2, 
+							 new Color(255,0,0)), 
+					 
+					new Town("piK", 
+							2, 
+							3, 
+							4), 
+					
+					new Town("fisse", 
+							5, 
+							6, 
+							7), 
+					
+					8, 
+					9,1));*/
+		 String jsontest2 = null;
+		 String[] jsontest3 = new String[b1.connections.size()];
+		for (int i=0; i<b1.connections.size(); i++){
+			
+	   String temp = serializer.toJson(
+			new Connection(
+			new CustomColor(b1.connections.get(i).getColor().getColorName(),
+					 b1.connections.get(i).getColor().getColorNum(), 
+					 b1.connections.get(i).getColor().getColor()), 
+			 
+			new Town(b1.connections.get(i).getTownA().getName(), 
+					b1.connections.get(i).getTownA().getAmountOfConnections(), 
+					b1.connections.get(i).getTownA().getxPos(), 
+					b1.connections.get(i).getTownA().getyPos()), 
+			
+			new Town(b1.connections.get(i).getTownB().getName(), 
+					b1.connections.get(i).getTownB().getAmountOfConnections(), 
+					b1.connections.get(i).getTownB().getxPos(), 
+					b1.connections.get(i).getTownB().getyPos()), 
+			
+			b1.connections.get(i).getLength(), 
+			b1.connections.get(i).getPoint(),1));
+	   
+	   jsontest3[i]=temp;
 		
-
-		
-
-		ps.println(activator + "\n" + json +/* "\n" + json1 + "\n"+ json2 + "\n" +json3 + "\n"+json4 + "\n"+json5 + "\n"+json6 + "\n"+json7 +*/ "\n"+missionTest + "\n"+json9 + "\n");
-
+			   
+}
+		ps.println(activator +"\n");
+		//System.out.println(jsonTest2);
+		for (int i=0; i<b1.connections.size();i++)
+		{
+		ps.println(jsontest3[i] + "\n");
+			//ps.println(activator + "\n" + jsontest3[i] +/* "\n" + json1 + "\n"+ json2 + "\n" +json3 + "\n"+json4 + "\n"+json5 + "\n"+json6 + "\n"+json7 +*/ "\n"+ jsontest3[5] + "\n"+json9 + "\n");
+		}
 		InputStreamReader ir = new InputStreamReader(Sock.getInputStream());
 		BufferedReader br = new BufferedReader(ir);
 		while (true) {
@@ -109,6 +160,7 @@ public class main extends JPanel {
 		}
 	}
 }
+
 
 // Commenting this out and trying with an alternative
 /*
