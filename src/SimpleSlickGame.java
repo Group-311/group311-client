@@ -274,6 +274,8 @@ public class SimpleSlickGame extends BasicGame {
 
 		board.getBoardPic().draw(); // Place it in (0,0)
 
+		board.player1HandStack.get(0).setVisible1();
+		
 		board.summaryCard.setVisible();
 		board.stationaryCard.setVisible();
 		board.missionCardStack.card[0].setVisible();
@@ -283,9 +285,9 @@ public class SimpleSlickGame extends BasicGame {
 			board.displayedTrainStack.get(i).setVisible1();
 		}
 		
-		for (int i = 0; i < 4; i++) {
-			board.player1HandStack.get(i).setVisible1();
-		}
+//		for (int i = 0; i < 4; i++) {
+//			board.player1HandStack.get(i).setVisible1();
+//		}
 
 		// for (int j = 0; j < 5; j++) {
 		// board.trainCardStack.card[j].setVisible();

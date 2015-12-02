@@ -26,11 +26,10 @@ public class Board {
 
 	// Create a stack for all the missions
 	Stack missionCardStack;
-	// Create a stack for all the traincards
-	Stack trainCardStack;	
+	Stack trainCardStack;		// Create a stack for all the traincards
 
-	ArrayList<Card> player1HandStack, player2HandStack, player3HandStack, player4HandStack;					// Instantiate playerhandstack arrays
-	ArrayList<Card> arrayOfTrainCards, displayedTrainStack, displayedMissionStack;
+	ArrayList<Card> player1HandStack, player2HandStack, player3HandStack, player4HandStack;					// Instantiate player hand stack array lists
+	ArrayList<Card> arrayOfTrainCards, displayedTrainStack, displayedMissionStack;							// Instantiate train card stack, displayed train card stack and displayed mission card stack arraylists
 
 	Board(int numOfPlayers) throws SlickException {
 		
@@ -40,7 +39,7 @@ public class Board {
 		player4HandStack = new ArrayList<Card>();			// Player hand stack
 		
 		displayedTrainStack = new ArrayList<Card>();		// Displayed stack on the board
-		displayedMissionStack = new ArrayList<Card>();
+		displayedMissionStack = new ArrayList<Card>();		// Displayed stack on the board
 				
 		// set the amount of towns, connections, colors and players
 		towns = new Town[36];
@@ -56,7 +55,6 @@ public class Board {
 		stationaryCard.yPos += stationaryCard.height;
 		
 		missionCards = new MissionCard[30];
-		
 		//trainCards = new TrainCard[110];		with joker
 		trainCards = new TrainCard[96];		// without jokers
 
@@ -524,15 +522,16 @@ public class Board {
 		
 		for(int i = 0; i < 4; i ++) {
 			player1HandStack.add(arrayOfTrainCards.get(0));
-			player1HandStack.get(i).yPos = 800;
-			player1HandStack.get(i).xPos = 85 * handTrainStackIncrementer;
+			player1HandStack.get(i).yPos = 500;
+			player1HandStack.get(i).xPos = 700;
 			arrayOfTrainCards.remove(0); // card#deckOfA --> remove
 			handTrainStackIncrementer++;
 		}
 		System.out.println("Amount of cards in the hand stack: " + player1HandStack.size() + "		");			// print the cards in the players hand stack
+		
+		
 		System.out.println("Amount of face-down cards in the train stack on the board: " + arrayOfTrainCards.size());
 		System.out.println(" "); // for spacing
-		
 		//PlayerPiece instantiation.
 		for (int i=0; i<players.length;i++)
 		{
