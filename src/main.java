@@ -1,25 +1,12 @@
-import java.awt.Dimension;
-import java.awt.Graphics;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;import org.omg.CORBA.BAD_INV_ORDER;
+import javax.swing.JPanel;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.sun.java.swing.plaf.windows.WindowsPasswordFieldUI;
-import com.sun.security.ntlm.Client;
-
-import jdk.nashorn.internal.ir.WhileNode;
 
 public class main extends JPanel {
 	static Board b1;
