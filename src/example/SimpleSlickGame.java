@@ -68,10 +68,15 @@ public class SimpleSlickGame extends BasicGame {
 		yellow = new Color(255,255,0);
 		
 		
-		board.players[0].setColor(new Color(red));
+		/*board.players[0].setColor(new Color(red));
 		board.players[1].setColor(new Color(green));
 		board.players[2].setColor(new Color(blue));
-		board.players[3].setColor(new Color(yellow));
+		board.players[3].setColor(new Color(yellow));*/
+		
+		board.players[0].setColor(board.colors[1].getColor());
+		board.players[1].setColor(board.colors[7].getColor());
+		board.players[2].setColor(board.colors[0].getColor());
+		board.players[3].setColor(board.colors[4].getColor());
 		
 		// Setting the images for the summaryCard
 		summaryBackImage = new Image("/pics/summaryBack.jpg");
