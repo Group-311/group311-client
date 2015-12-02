@@ -71,12 +71,6 @@ public class main extends JPanel {
 		
 	
 		
-		
-	
-		
-		t10 = new PlayerPiece(null, 4);
-
-		
 		Gson serializer = new Gson();
 		//Gson serializer2 = new GsonBuilder().create();
 		
@@ -158,15 +152,22 @@ public class main extends JPanel {
 		}
 		System.out.println(jsonTCS[4]);
 		
-		/*
+		
 		//DisplayedTrainStack to JSON string
-		String[] jsonDTS = new String[b1.displayedTrainStack.size()];;
+		String[] jsonDTS = new String[b1.displayedTrainStack.size()];
 		for (int i=0; i<b1.displayedTrainStack.size(); i++)
 		{
 			String temp = serializer.toJson(b1.displayedTrainStack.get(i));
 			jsonDTS[i] = temp;
 		}
 		
+		// PlayerPiece to JSON string
+		String[] jsonPlP = new String[b1.players.length];
+		for (int i = 0; i < b1.players.length; i++) {
+			String temp = serializer.toJson(b1.players[i]);
+			jsonPlP[i] = temp;
+		}
+		/*
 		//DisplayedMissionStack to JSON string
 		String[] jsonMCS = new String[b1.displayedMissionStack.size()];;
 		for (int i=0; i<b1.displayedMissionStack.size(); i++)
@@ -176,13 +177,7 @@ public class main extends JPanel {
 			
 		}
 		
-		//PlayerPiece to JSON string
-		String[] jsonPlP = new String[b1.players.length];;
-		for (int i =0; i<b1.players.length; i++)
-			{
-			String temp = serializer.toJson(b1.players[i]);
-			jsonPlP[i]=temp;
-			}*/
+		*/
 		
 		//Trains to JSON
 		//String[] jsonTra = null;
@@ -219,24 +214,22 @@ public class main extends JPanel {
 		{
 			ps.println(jsonTCS[i]);
 		}
-		/*
+		
 		//Sending displayedTrainStack
 		for (int i=0; i<b1.displayedTrainStack.size(); i++)
 		{
-			ps.println(jsonDTS[i] + "\n");
+			ps.println(jsonDTS[i]);
 		}
 		
-		//Sending the missionCardStack
-		for (int i=0; i<b1.displayedMissionStack.size(); i++)
-		{
-			ps.println(jsonMCS[i] + "\n");
+		// Sending the playerpieces
+		for (int i = 0; i < b1.players.length; i++) {
+			ps.println(jsonPlP[i]);
 		}
-		
-		//Sending the playerpieces
-		for (int i =0; i<b1.players.length; i++)
-		{
-			ps.println(jsonPlP[i] + "\n");
-		}*/
+		/*
+		 * //Sending the missionCardStack for (int i=0;
+		 * i<b1.displayedMissionStack.size(); i++) { ps.println(jsonMCS[i]); }
+		 * 
+		 */
 		
 
 		
