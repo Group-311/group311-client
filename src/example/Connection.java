@@ -1,4 +1,7 @@
+
 package example;
+
+import org.newdawn.slick.Graphics;
 
 public class Connection {
 
@@ -10,6 +13,7 @@ public class Connection {
 
 	private int length, point;
 	private CustomColor color;
+	private CustomColor takenColor;
 	private Town townA, townB;
 	private boolean isTaken;
 	private int ownedBy;
@@ -79,13 +83,17 @@ public class Connection {
 	public CustomColor getColor() {
 		return color;
 	}
-	public boolean getTakenByPlayer(int pnum){
-		if(ownedBy == pnum)
+/*	public boolean getTakenByPlayer(Player player){
+		if(ownedBy == player.getNum())
 			return true;
 		
 		return false;
 	}
-	public void setTakenByPlayer(int pnum){
-		ownedBy = pnum;
-	}
+	public void setTakenByPlayer(Player player, Graphics g){
+		ownedBy = player.getNum();
+		
+		g.setColor(player.getColor());
+		
+		g.drawLine(townA.getxPos(), townA.getyPos(), townB.getxPos(), townB.getyPos());
+	}*/
 }

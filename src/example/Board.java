@@ -60,6 +60,7 @@ public class Board {
 		trainCards = new TrainCard[96];		// without jokers
 
 		// create all the different colors for the trains/players
+		
 		colors[0] = new CustomColor("blue", 0, new Color(0,0,255));
 		colors[1] = new CustomColor("red", 1, new Color(255,0,0));
 		colors[2] = new CustomColor("orange", 2, new Color(255,127,0));
