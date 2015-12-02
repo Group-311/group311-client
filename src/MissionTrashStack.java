@@ -6,7 +6,7 @@ public class MissionTrashStack extends Stack {
 	private int currentAmount;
 
 	public MissionTrashStack(int _amount) {
-		super(_amount);
+		//super(_amount);
 		
 		stack = new MissionCard [this.getAmount()];
 	}

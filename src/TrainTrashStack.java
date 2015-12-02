@@ -6,7 +6,7 @@ public class TrainTrashStack extends Stack {
 	private int currentAmount;
 	
 	public TrainTrashStack(int _amount) {
-		super(_amount);
+		//super(_amount);
 		
 		stack = new TrainCard [this.getAmount()];
 	}

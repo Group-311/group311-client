@@ -63,6 +63,9 @@ public class SimpleSlickGame extends BasicGame {
 	public void init(GameContainer gc) throws SlickException {
 		// I don't know where this has to be loaded, but for now we can load all
 		// images here
+		
+		for(int flf = 0; flf < board.connections.size(); flf++)
+			connectionsToDraw.add(board.connections.get(flf));
 
 		map = new Image("/pics/Map.jpg");
 		board.setBoardPic(map);
@@ -245,7 +248,7 @@ public class SimpleSlickGame extends BasicGame {
 					townB = null;
 				} else {
 					selectedConnection = findConnectionToBuild(townA, townB);
-					connectionsToDraw.add(selectedConnection);
+					//connectionsToDraw.add(selectedConnection);
 					System.out.println("The selected connection require " + selectedConnection.getLength()
 							+ " trains with the color " + selectedConnection.getColor().getColorName());
 				}
@@ -358,6 +361,7 @@ public class SimpleSlickGame extends BasicGame {
 	public static void main(String[] args) throws SlickException {
 		board = new Board(4);
 		 
+		
 
 
 		// GsonJson test with stacks of
