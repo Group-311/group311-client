@@ -99,14 +99,14 @@ public class Board {
 		towns[19] = new Town("Houston", 4, 532, 184);
 		towns[20] = new Town("Sault St Marie", 4, 616, 553);
 		towns[21] = new Town("Chicago", 7, 612, 441);
-		towns[22] = new Town("Saint Louis", 7, 573, 386);
+		towns[22] = new Town("Saint Louis", 7, 573, 370);
 		towns[23] = new Town("Little Rock", 5, 557, 290);
 		towns[24] = new Town("New Orleans", 5, 613, 192);
 		towns[25] = new Town("Montreal", 5, 784, 611);
 		towns[26] = new Town("Toronto", 5, 712, 534);
 		towns[27] = new Town("Pittsburgh", 9, 726, 453);
 		towns[28] = new Town("Nashville", 5, 654, 335);
-		towns[29] = new Town("Atlanta", 7, 669, 304);
+		towns[29] = new Town("Atlanta", 7, 695, 304);
 		towns[30] = new Town("Boston", 4, 845, 559);
 		towns[31] = new Town("New York", 7, 800, 493);
 		towns[32] = new Town("Washington", 5, 807, 414);
@@ -212,7 +212,7 @@ public class Board {
 		connections.add(new Connection(colors[2], towns[11], towns[16], 4, 7));
 		
 		//connections[32] = new Connection(colors[1], towns[11], towns[7], 4, 7);
-		connections.add(new Connection(colors[1], towns[11], towns[7], 4, 7));
+		connections.add(new Connection(colors[1], towns[11], towns[17], 4, 7));
 		
 		//connections[33] = new Connection(colors[6], towns[11], towns[12], 2, 2);
 		connections.add(new Connection(colors[6], towns[11], towns[12], 2, 2));
@@ -284,7 +284,7 @@ public class Board {
 		connections.add(new Connection(colors[6], towns[17], towns[18], 2, 2));
 		
 		//connections[56] = new Connection(colors[0], towns[15], towns[21], 4, 7);
-		connections.add(new Connection(colors[0], towns[15], towns[21], 4, 7));
+		connections.add(new Connection(colors[6], towns[18], towns[23], 2, 2));
 		
 		//connections[57] = new Connection(colors[6], towns[18], towns[19], 1, 1);
 		connections.add(new Connection(colors[6], towns[18], towns[19], 1, 1));
@@ -293,7 +293,7 @@ public class Board {
 		connections.add(new Connection(colors[6], towns[18], towns[19], 1, 1));
 		
 		//connections[59] = new Connection(colors[6], towns[18], towns[24], 2, 2);
-		connections.add(new Connection(colors[6], towns[18], towns[24], 2, 2));
+		connections.add(new Connection(colors[6], towns[19], towns[24], 2, 2));
 
 		//connections[60] = new Connection(colors[5], towns[20], towns[25], 5, 10);
 		connections.add(new Connection(colors[5], towns[20], towns[25], 5, 10));
@@ -414,6 +414,9 @@ public class Board {
 		
 		//connections[99] = new Connection(colors[2], towns[7], towns[8], 3, 4);
 		connections.add(new Connection(colors[2], towns[7], towns[8], 3, 4));
+		
+		//This one did not exist when I tested, not sure what happened here
+		//connections.add(new Connection(colors[6], towns[18], towns[23], 2, 2));
 		
 
 		// creating all the mission cards
