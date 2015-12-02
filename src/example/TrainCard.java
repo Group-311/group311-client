@@ -38,8 +38,8 @@ public class TrainCard extends Card {
 		super.setColor(color);
 	}
 	@Override
-	public CustomColor getColor() {
+	public CustomColor getCustomColor() {
 		// TODO Auto-generated method stub
-		return super.getColor();
+		return super.getCustomColor();
 	}
 }

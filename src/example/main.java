@@ -22,7 +22,7 @@ import jdk.nashorn.internal.ir.WhileNode;
 
 public class main extends JPanel {
 	static Train t;
-static Players p1;
+	static Players p1;
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 

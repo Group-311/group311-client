@@ -23,6 +23,7 @@ public class CustomColor{
 	public String getColorName() {
 		return colorName;
 	}
+
 	public Color getColor(){
 		return actualColor;
 	}

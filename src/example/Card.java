@@ -117,7 +117,7 @@ public class Card{
 	public void setColor(CustomColor color) {
 		this.color = color;
 	}
-	public CustomColor getColor() {
+	public CustomColor getCustomColor() {
 		return color;
 	}
 	
