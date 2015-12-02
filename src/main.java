@@ -11,6 +11,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 
 import com.google.gson.Gson;
+import com.sun.corba.se.spi.servicecontext.SendingContextServiceContext;
 import com.sun.xml.internal.messaging.saaj.soap.ver1_1.Message1_1Impl;
 import com.sun.xml.internal.ws.api.model.wsdl.editable.EditableWSDLBoundFault;
 
@@ -19,11 +20,9 @@ public class main extends JPanel {
 	
 	public static Train t;
 	public static Stack t2;
-	public static TrainCardStack t3;
-	public static DisplayedTrainStack t4;
-	public static HandMissionStack t5;
+
 	public static Stack t6;
-	public static TrainTrashStack t7;
+
 	public static Stack t8;
 	public static Connection t9;
 	public static PlayerPiece t10;
@@ -50,7 +49,7 @@ public class main extends JPanel {
 
 	public void run() throws Exception {
 
-		Socket Sock = new Socket("192.168.43.131", 2222);
+		Socket Sock = new Socket("192.168.43.8", 2222);
 		PrintStream ps = new PrintStream(Sock.getOutputStream());
 		String activator = new String("1");
 		b1 = new Board(4);
@@ -84,11 +83,10 @@ public class main extends JPanel {
 		
 		String json = serializer.toJson(t);
 		String json1 = serializer.toJson(t2);
-		String json2 = serializer.toJson(t3);
-		String json3 = serializer.toJson(t4);
-		String json4 = serializer.toJson(t5);
+
+
 		String json5 = serializer.toJson(t6);
-		String json6 = serializer.toJson(t7);
+
 		String json7 = serializer.toJson(t8);
 		String json8 = serializer.toJson(t9);
 		String json9 = serializer.toJson(t10);
@@ -120,6 +118,9 @@ public class main extends JPanel {
 					9,1));*/
 		 String jsontest2 = null;
 		 String[] jsontest3 = new String[b1.connections.size()];
+		 
+		 
+		 //sending the connections into a array of Strings.
 		for (int i=0; i<b1.connections.size(); i++){
 			
 	   String temp = serializer.toJson(
@@ -145,13 +146,101 @@ public class main extends JPanel {
 		
 			   
 }
+		
+		//Sending all the traincard from the traincardstack to the arraystring
+		String[] jsonTCS = new String[b1.arrayOfTrainCards.size()];
+		System.out.println(b1.arrayOfTrainCards.size());
+			
+		for (int i =0; i<b1.arrayOfTrainCards.size(); i++)
+		{
+			String temp = serializer.toJson(b1.arrayOfTrainCards.get(i));
+			jsonTCS[i]=temp;
+		}
+		System.out.println(jsonTCS[4]);
+		
+		/*
+		//DisplayedTrainStack to JSON string
+		String[] jsonDTS = new String[b1.displayedTrainStack.size()];;
+		for (int i=0; i<b1.displayedTrainStack.size(); i++)
+		{
+			String temp = serializer.toJson(b1.displayedTrainStack.get(i));
+			jsonDTS[i] = temp;
+		}
+		
+		//DisplayedMissionStack to JSON string
+		String[] jsonMCS = new String[b1.displayedMissionStack.size()];;
+		for (int i=0; i<b1.displayedMissionStack.size(); i++)
+		{
+			String temp = serializer.toJson(b1.displayedMissionStack.get(i));
+			jsonMCS[i] = temp;
+			
+		}
+		
+		//PlayerPiece to JSON string
+		String[] jsonPlP = new String[b1.players.length];;
+		for (int i =0; i<b1.players.length; i++)
+			{
+			String temp = serializer.toJson(b1.players[i]);
+			jsonPlP[i]=temp;
+			}*/
+		
+		//Trains to JSON
+		//String[] jsonTra = null;
+		
+		
+		//Player to Json
+		
+		//TrashTrainCard to JSON
+		
+		//TrashMissionCard to JSON
+		
+		//MissionCards on hand to JSON
+		
+		//TrainCards on hand to JSON
+		
+		
+		
+		
+		
+		//-----------------------------------------------------------------------------------------------------------------------
+		//This is where we start sending the JSONS
 		ps.println(activator +"\n");
-		//System.out.println(jsonTest2);
+
+
+		//Sending all the connections.
 		for (int i=0; i<b1.connections.size();i++)
 		{
-		ps.println(jsontest3[i] + "\n");
+		ps.println(jsontest3[i]);
 			//ps.println(activator + "\n" + jsontest3[i] +/* "\n" + json1 + "\n"+ json2 + "\n" +json3 + "\n"+json4 + "\n"+json5 + "\n"+json6 + "\n"+json7 +*/ "\n"+ jsontest3[5] + "\n"+json9 + "\n");
 		}
+					
+		//sending the arrayoftraincards.
+		for (int i =0; i<b1.arrayOfTrainCards.size();i++)
+		{
+			ps.println(jsonTCS[i]);
+		}
+		/*
+		//Sending displayedTrainStack
+		for (int i=0; i<b1.displayedTrainStack.size(); i++)
+		{
+			ps.println(jsonDTS[i] + "\n");
+		}
+		
+		//Sending the missionCardStack
+		for (int i=0; i<b1.displayedMissionStack.size(); i++)
+		{
+			ps.println(jsonMCS[i] + "\n");
+		}
+		
+		//Sending the playerpieces
+		for (int i =0; i<b1.players.length; i++)
+		{
+			ps.println(jsonPlP[i] + "\n");
+		}*/
+		
+
+		
+		
 		InputStreamReader ir = new InputStreamReader(Sock.getInputStream());
 		BufferedReader br = new BufferedReader(ir);
 		while (true) {
