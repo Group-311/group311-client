@@ -104,5 +104,9 @@ public class Connection {
 		
 		//return g;
 	}
+	public int getPoint() {
+		return point;
+	}
+	
 
 }

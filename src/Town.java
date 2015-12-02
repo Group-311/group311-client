@@ -10,12 +10,14 @@ public class Town {
 	ArrayList<Connection> connections = new ArrayList<Connection>();
 	private String name;
 	private int xPos, yPos;
+	private int amountOfConnections;
 	
 	public Town(String _name, int amountOfConnections, int _xPos, int _yPos){
 		
 		this.setName(_name);
 		this.xPos = _xPos;
 		this.yPos = _yPos;
+		this.amountOfConnections=amountOfConnections;
 		
 	}
 	
@@ -164,6 +166,9 @@ public class Town {
 		
 		connections.add(c);
 		
+	}
+	public int getAmountOfConnections() {
+		return amountOfConnections;
 	}
 
 

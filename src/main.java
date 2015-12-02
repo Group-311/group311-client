@@ -6,34 +6,44 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+import org.newdawn.slick.Color;
+import org.newdawn.slick.Image;
+
 import com.google.gson.Gson;
+import com.sun.xml.internal.messaging.saaj.soap.ver1_1.Message1_1Impl;
+import com.sun.xml.internal.ws.api.model.wsdl.editable.EditableWSDLBoundFault;
 
 public class main extends JPanel {
 	static Board b1;
 	
-	static Train t;
-	static Stack t2;
-	static TrainCardStack t3;
-	static DisplayedTrainStack t4;
-	static HandMissionStack t5;
-	static Stack t6;
-	static TrainTrashStack t7;
-	static Stack t8;
-	static Connection t9;
-	static PlayerPiece t10;
+	public static Train t;
+	public static Stack t2;
+	public static TrainCardStack t3;
+	public static DisplayedTrainStack t4;
+	public static HandMissionStack t5;
+	public static Stack t6;
+	public static TrainTrashStack t7;
+	public static Stack t8;
+	public static Connection t9;
+	public static PlayerPiece t10;
 	
+	public static Card m1;
 	
-	static Town townA,townB;
+	public static Town townA,townB;
 	
-	static Card missionCard;
+	public static Card missionCard;
 	
-	static ArrayList<Integer> arrayTest;
+	public static ArrayList<Integer> arrayTest;
+	
+	public static Town tempCityB, tempCityA;
+	public static Card tempCard;
 
+	
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 
 		main client = new main();
-
+		
 		client.run();
 	}
 
@@ -59,19 +69,18 @@ public class main extends JPanel {
 		arrayTest.add(5);
 		arrayTest.add(100);
 		
-		townA = new Town("Seattle", 6, 92, 542);
-		townB = new Town("Portland", 5, 74, 499);
+	
 		
 		
-		missionCard = b1.missionCards[5];
-				
+	
+		
 		t10 = new PlayerPiece(null, 4);
 
 		
 		Gson serializer = new Gson();
 		//Gson serializer2 = new GsonBuilder().create();
 		
-
+		
 		String json = serializer.toJson(t);
 		String json1 = serializer.toJson(t2);
 		String json2 = serializer.toJson(t3);
@@ -84,7 +93,8 @@ public class main extends JPanel {
 		String json9 = serializer.toJson(t10);
 		
 		String jsonTest = serializer.toJson(arrayTest);
-		String missionTest = serializer.toJson(missionCard);
+		String missionTest = serializer.toJson(new MissionCard(new Town(b1.towns[1].getName(), 4, b1.towns[1].getxPos(), b1.towns[1].getyPos()), new Town(b1.towns[4].getName(), 6, b1.towns[4].getxPos(), b1.towns[4].getxPos()), 2));
+		//String townTest = serializer.toJson(new Town(b1.towns[1].getName(), 5, 74, 499));
 		
 
 		
