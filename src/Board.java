@@ -29,9 +29,8 @@ public class Board {
 	// Create a stack for all the traincards
 	Stack trainCardStack;	
 
-	ArrayList<Card> arrayOfTraincards;
 	ArrayList<Card> player1HandStack, player2HandStack, player3HandStack, player4HandStack;					// Instantiate playerhandstack arrays
-	ArrayList<Card> displayedTrainStack, displayedMissionStack;
+	ArrayList<Card> arrayOfTrainCards, displayedTrainStack, displayedMissionStack;
 
 	Board(int numOfPlayers) throws SlickException {
 		
@@ -483,10 +482,10 @@ public class Board {
 		trainCardStack.yPos += trainCardStack.height;
 		
 		trainCardStack.shuffleA(1000);									// Shuffle cards
-		arrayOfTraincards = trainCardStack.getdeckOfA();			// Copy the shuffled cards to the array list b and print it with the for loop	
+		arrayOfTrainCards = trainCardStack.getdeckOfA();			// Copy the shuffled cards to the array list b and print it with the for loop	
 		//board.arrayOfTraincards.get(0).xPos = board.trainCardStack.xPos;
 		
-		System.out.println(arrayOfTraincards.size());
+		System.out.println(arrayOfTrainCards.size());
 		
 		//PlayerPiece instantiation.
 		for (int i=0; i<players.length;i++)
