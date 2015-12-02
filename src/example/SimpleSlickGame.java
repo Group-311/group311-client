@@ -46,6 +46,9 @@ public class SimpleSlickGame extends BasicGame {
 
 	private Town townA = null;
 	private Town townB = null;
+	
+
+	Players player1= new Players("Emil", 1, board.colors[0]);
 
 	public Connection selectedConnection = null;
 
@@ -325,7 +328,7 @@ public class SimpleSlickGame extends BasicGame {
 		
 		board.arrayOfTraincards.get(0).setVisible();
 		
-		//board.connections.get(2).setTakenByPlayer(player1, g);
+		board.connections.get(2).setTakenByPlayer(player1, g);
 
 //		for (int j = 0; j < 5; j++) {
 //			board.trainCardStack.card[j].setVisible();
@@ -341,9 +344,11 @@ public class SimpleSlickGame extends BasicGame {
 		
 		
 	}
+	
 
 	public static void main(String[] args) throws SlickException {
 		board = new Board(4);
+		 
 
 
 		// GsonJson test with stacks of

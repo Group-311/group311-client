@@ -2,6 +2,7 @@
 
 package example;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
 public class Connection {
@@ -84,18 +85,22 @@ public class Connection {
 	public CustomColor getColor() {
 		return color;
 	}
-/*	public boolean getTakenByPlayer(Player player){
+	public boolean getTakenByPlayer(Players player){
 		if(ownedBy == player.getNum())
 			return true;
 		
 		return false;
 	}
-	public void setTakenByPlayer(Player player, Graphics g){
+	public void setTakenByPlayer(Players player, Graphics g){
 		ownedBy = player.getNum();
 		
-		g.setColor(player.getColor());
+		//g.setColor(player.getCustomColor().getColor());
+		g.setColor(new Color(0,0,255));
 		
+		System.out.println("Did htis happen?");
 		g.drawLine(townA.getxPos(), townA.getyPos(), townB.getxPos(), townB.getyPos());
-	}*/
+		
+		//return g;
+	}
 
 }

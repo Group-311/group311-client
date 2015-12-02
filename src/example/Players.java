@@ -1,3 +1,4 @@
+package example;
 
 import java.net.*;
 import java.util.ArrayList;
@@ -9,20 +10,26 @@ public class Players {
 	public int numOfTrains;
 	private ArrayList<MissionCard> handOfMissions = new ArrayList<MissionCard>();
 	private ArrayList<TrainCard> handOfTrainCards = new ArrayList<TrainCard>();
-	private int r,g,b;
 	boolean canPlay = false;
+	private CustomColor playerColor;
+	private int playerNum;
 	
 	
-	public Players(Socket sock, String name, int r, int g, int b) {
+	public Players(/*Socket sock*/ String name, int playerNum, CustomColor c) {
 		
+		playerColor = c;
 		this.sock = sock;
 		this.name = name;
-		this.r = r;
-		this.g = g;
-		this.b = b;
+		this.playerNum = playerNum;
 	}
 	
+	public CustomColor getCustomColor(){
+		return playerColor;
+	}
 	
+	public int getNum(){
+		return playerNum;
+	}
 
 	public int getNumOfTrains() {
 		return numOfTrains;
