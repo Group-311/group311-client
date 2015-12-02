@@ -93,12 +93,14 @@ public class Connection {
 	}
 	public void setTakenByPlayer(Players player, Graphics g){
 		ownedBy = player.getNum();
+		this.isTaken = true;
 		
 		//g.setColor(player.getCustomColor().getColor());
-		g.setColor(new Color(0,0,255));
+		g.setColor(player.getCustomColor().getColor());
+	
 		
-		System.out.println("Did htis happen?");
-		g.drawLine(townA.getxPos(), townA.getyPos(), townB.getxPos(), townB.getyPos());
+		g.drawLine(townA.getxPos(), 768-townA.getyPos(), townB.getxPos(), 768-townB.getyPos());
+		
 		
 		//return g;
 	}

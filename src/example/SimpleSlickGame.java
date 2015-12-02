@@ -1,5 +1,6 @@
 package example;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 import org.lwjgl.input.Mouse;
 import java.util.logging.Logger;
@@ -47,7 +48,9 @@ public class SimpleSlickGame extends BasicGame {
 	private Town townA = null;
 	private Town townB = null;
 	
-
+	
+	public ArrayList<Connection> connectionsToDraw = new ArrayList<Connection>();
+	
 	Players player1= new Players("Emil", 1, board.colors[0]);
 
 	public Connection selectedConnection = null;
@@ -205,6 +208,7 @@ public class SimpleSlickGame extends BasicGame {
 					townB = null;
 				} else {
 					selectedConnection = findConnectionToBuild(townA, townB);
+					connectionsToDraw.add(selectedConnection);
 					System.out.println("The selected connection require " + selectedConnection.getLength()
 							+ " trains with the color " + selectedConnection.getColor().getColorName());
 				}
@@ -340,7 +344,7 @@ public class SimpleSlickGame extends BasicGame {
 		
 		//board.stationaryCard.setVisible();
 		
-		board.connections.get(2).setTakenByPlayer(player1, g);
+		
 
 //		for (int j = 0; j < 5; j++) {
 //			board.trainCardStack.card[j].setVisible();
@@ -353,6 +357,12 @@ public class SimpleSlickGame extends BasicGame {
 		}
 		
 		board.button.setVisible(g,0);
+		
+		
+		for(int j = 0; j < connectionsToDraw.size(); j++ ){
+			connectionsToDraw.get(j).setTakenByPlayer(player1, g);
+		}
+		
 		
 		
 	}
