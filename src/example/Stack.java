@@ -104,8 +104,8 @@ public class Stack extends Card {
 		 * trainCards array. Thus, the array list will copy all the cards from
 		 * the trainCards array including the same array positions
 		 */
-		for (int j = 0; j < _cards.length; j++) {
-			listOfTraincards.add(_cards[j]);
+		for (int j = 0; j < card.length; j++) {
+			listOfTraincards.add(card[j]);
 		}
 	}
 

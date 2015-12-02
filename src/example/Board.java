@@ -1,7 +1,6 @@
 
 package example;
 
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import org.newdawn.slick.Color;
@@ -31,9 +30,10 @@ public class Board {
 	Stack trainCardStack;	
 	// DeckOfCards that should be used to create the array list of the train card stack
 	Stack stackOfTraincards;
-	// Instantiate array list that should copy the cards from the deckofcards stack
+
 	ArrayList<Card> arrayOfTraincards;
 	ArrayList<Card> player1HandStack, player2HandStack, player3HandStack, player4HandStack;					// Instantiate playerhandstack arrays
+	ArrayList<Card> displayedStack;
 
 	Board(int numOfPlayers) throws SlickException {
 		

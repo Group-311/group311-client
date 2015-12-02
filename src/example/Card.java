@@ -8,16 +8,15 @@ import org.newdawn.slick.SlickException;
 
 import com.sun.corba.se.spi.monitoring.StatisticsAccumulator;
 
-public class Card{
+public class Card {
 	/*
-	 * Overview:
-	 *      Suit: 8 = GREEN, 7 = RED, 6 = BLACK, 5 = ORANGE, 4 = YELLOW, 3 = BLUE, 2 = WHITE, 1 = PINK
-	 *      
-	 *      Rank:  1 - 12
-	 *      
-	 *      Card:
-	 *      byte cardSuit;                -- contain 1, 2, 3, 4, 5, 6, 7 or 8
-	 *      byte cardRank;                -- contain 1, 2, ... 11, 12
+	 * Overview: Suit: 8 = GREEN, 7 = RED, 6 = BLACK, 5 = ORANGE, 4 = YELLOW, 3
+	 * = BLUE, 2 = WHITE, 1 = PINK
+	 * 
+	 * Rank: 1 - 12
+	 * 
+	 * Card: byte cardSuit; -- contain 1, 2, 3, 4, 5, 6, 7 or 8 byte cardRank;
+	 * -- contain 1, 2, ... 11, 12
 	 */
 	public static final int GREEN = 8;
 	public static final int RED = 7;
@@ -33,16 +32,16 @@ public class Card{
 
 	private byte cardSuit;
 	private byte cardRank;
-	
+
 	protected static int height, width;
-	protected  int xPos, yPos;
-	protected Image frontImage,backImage;
+	protected int xPos, yPos;
+	protected Image frontImage, backImage;
 	protected Image displayedImage;
-	private int visible=0;
+	private int visible = 0;
 	protected CustomColor color;
-	
+
 	/*
-	 * Card constructer. 
+	 * Card constructer.
 	 */
 	public Card(int suit, int rank) {
 		if (rank == 1)
@@ -52,9 +51,8 @@ public class Card{
 
 		cardSuit = (byte) suit;
 	}
-	
+
 	public Card() {
-		
 	}
 
 	public int suit() {
@@ -73,6 +71,7 @@ public class Card{
 	public void setFrontImage(Image frontImage) throws SlickException {
 		this.frontImage = frontImage;
 	}
+
 	public Image getFrontImage() {
 		return frontImage;
 	}
@@ -80,6 +79,7 @@ public class Card{
 	public void setBackImage(Image backImage) throws SlickException {
 		this.backImage = backImage;
 	}
+
 	public Image getBackImage() {
 		return backImage;
 	}
@@ -87,44 +87,49 @@ public class Card{
 	public static void setWidth(int width) {
 		Card.width = width;
 	}
+
 	public static int getWidth() {
 		return width;
 	}
-	
+
 	public static void setHeight(int height) {
 		Card.height = height;
 	}
+
 	public static int getHeight() {
 		return height;
 	}
-	
+
 	public void flipCard() {
-		if (visible==0)
-			visible=1;
+		if (visible == 0)
+			visible = 1;
 		else
-			visible=0;
-	System.out.println("Card has been flipped");
+			visible = 0;
+		System.out.println("Card has been flipped");
 		return;
 	}
-	
-	public void setVisible(){
-		if (visible==0)
-			backImage.draw(xPos,yPos,width,height);
+
+	public void setVisible() {
+		if (visible == 0)
+			backImage.draw(xPos, yPos, width, height);
 		else
-			frontImage.draw(xPos,yPos,width,height);
+			frontImage.draw(xPos, yPos, width, height);
 	}
-	
+
+	public void setVisible1() {
+		frontImage.draw(xPos, yPos, width, height);
+	}
+
 	public void setColor(CustomColor color) {
 		this.color = color;
 	}
-
 
 	public CustomColor getColor() {
 
 		return color;
 	}
-	
-	public boolean areConnected(){
+
+	public boolean areConnected() {
 		return false;
 	}
 
