@@ -1,6 +1,6 @@
 
-
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import org.lwjgl.input.Mouse;
 import java.util.logging.Logger;
@@ -36,8 +36,8 @@ public class SimpleSlickGame extends BasicGame {
 	// private Image rainbowTrainCard = null; without jokers
 
 	private Image[] missions = null;
-	
-	private Color red,green,blue,yellow;
+
+	private Color red, green, blue, yellow;
 
 	private Image map = null;
 
@@ -47,11 +47,10 @@ public class SimpleSlickGame extends BasicGame {
 
 	private Town townA = null;
 	private Town townB = null;
-	
-	
+
 	public ArrayList<Connection> connectionsToDraw = new ArrayList<Connection>();
-	
-	Players player1= new Players("Emil", 1, board.colors[0]);
+
+	Players player1 = new Players("Emil", 1, board.colors[0]);
 
 	public Connection selectedConnection = null;
 
@@ -63,25 +62,24 @@ public class SimpleSlickGame extends BasicGame {
 	public void init(GameContainer gc) throws SlickException {
 		// I don't know where this has to be loaded, but for now we can load all
 		// images here
-		
-		for(int flf = 0; flf < board.connections.size(); flf++)
+
+		for (int flf = 0; flf < board.connections.size(); flf++)
 			connectionsToDraw.add(board.connections.get(flf));
 
 		map = new Image("/pics/Map.jpg");
 		board.setBoardPic(map);
-		
-		//Setting som colors for the playerpieces
-		red = new Color(255,0,0);
-		green = new Color(0,255,0);
-		blue = new Color(0,0,255);
-		yellow = new Color(255,255,0);
-		
-		
+
+		// Setting som colors for the playerpieces
+		red = new Color(255, 0, 0);
+		green = new Color(0, 255, 0);
+		blue = new Color(0, 0, 255);
+		yellow = new Color(255, 255, 0);
+
 		board.players[0].setColor(new Color(red));
 		board.players[1].setColor(new Color(green));
 		board.players[2].setColor(new Color(blue));
 		board.players[3].setColor(new Color(yellow));
-		
+
 		// Setting the images for the summaryCard
 		summaryBackImage = new Image("/pics/summaryBack.jpg");
 		summaryFrontImage = new Image("/pics/summaryFront.jpg");
@@ -94,14 +92,10 @@ public class SimpleSlickGame extends BasicGame {
 
 		for (int i = 0; i < board.trainCards.length; i++) {
 			board.trainCards[i].setBackImage(trainCardBack);
-			board.trainCards[i].xPos = 1024 - board.trainCardStack.width;
-			board.trainCards[i].yPos += board.trainCardStack.height;
 		}
 
 		// Setting the image for the stationaryCard
 		board.stationaryCard.setBackImage(trainCardBack);
-		board.stationaryCard.xPos = 1024 - board.stationaryCard.width;
-		board.stationaryCard.yPos += board.stationaryCard.height;
 
 		// Loading all the trainCardImages
 		blackTrainCard = new Image("/pics/blackTrainCard.png");
@@ -138,59 +132,21 @@ public class SimpleSlickGame extends BasicGame {
 		}
 		for (int i = 84; i < 96; i++) {
 			board.trainCards[i].setFrontImage(pinkTrainCard);
-		}										
+		}
 		// for (int i = 96; i < 110; i++) {
 		// board.trainCards[i].setFrontImage(rainbowTrainCard); // no jokers atm
 		// }
-		
-		/*
-		 * Tasks, which should happen in 1 function: card#deckOfA -->
-		 * card#playerHandStack card#deckOfA --> remove
-		 */
-		System.out.print("Displayed stack on board:		");					// Print player hand 1
-		int displayedTrainCardIncrementer = 2;
-		
-		for(int i = 0; i < 3; i ++) {
-				board.displayedTrainStack.add(board.arrayOfTrainCards.get(0));			// card#deckOfA --> card#playerHandStack
-				board.displayedTrainStack.get(i).yPos = 85 * displayedTrainCardIncrementer;
-				board.arrayOfTrainCards.remove(0);									// card#deckOfA --> remove
-				System.out.print(board.displayedTrainStack.size() + "		");			// print the cards in the players hand stack
-				displayedTrainCardIncrementer++;
-			}
-		
-		
-		board.displayedTrainStack.add(board.arrayOfTrainCards.get(0));			// card#deckOfA --> card#playerHandStack
-		board.displayedTrainStack.get(1).yPos = 85 * 3;
-		board.arrayOfTrainCards.remove(0);									// card#deckOfA --> remove
-		System.out.print(board.displayedTrainStack.size() + "		");			// print the cards in the players hand stack
-		
-		board.displayedTrainStack.add(board.arrayOfTrainCards.get(0));			// card#deckOfA --> card#playerHandStack
-		board.displayedTrainStack.get(2).yPos = 85 * 4;
-		board.arrayOfTrainCards.remove(0);									// card#deckOfA --> remove
-		System.out.print(board.displayedTrainStack.size() + "		");			// print the cards in the players hand stack
 
-		
-		
 		missions = new Image[30];
+		missionCardBack = new Image("/pics/missionCardBack.png");
 
-		// Loading and applying the missionCards.
+		// Loading and applying the missionCards and setting the cardback for
+		// the missioncards
 		for (int i = 0; i < board.missionCards.length; i++) {
 			missions[i] = new Image("/pics/misssion(" + i + ").jpg");
 			board.missionCards[i].setFrontImage(missions[i]);
-		}
-
-		// Setting the cardback for the missioncards
-		missionCardBack = new Image("/pics/missionCardBack.png");
-		for (int i = 0; i < board.missionCards.length; i++) {
 			board.missionCards[i].setBackImage(missionCardBack);
 		}
-
-		// Shuffle mission cards in the missioncard stack
-		board.missionCardStack.shuffle(board.missionCards);
-		// Set the mouse input conditions for the borders of the missioncard
-		// stack
-		board.missionCardStack.xPos = 1024 - board.missionCardStack.width;
-		board.missionCardStack.yPos += board.missionCardStack.height;
 	}
 
 	@Override
@@ -200,7 +156,7 @@ public class SimpleSlickGame extends BasicGame {
 		xpos = Mouse.getX();
 		ypos = Mouse.getY();
 
-//		int currentCard = 0;
+		// int currentCard = 0;
 
 		// Calling flipcard function if activated
 
@@ -219,60 +175,73 @@ public class SimpleSlickGame extends BasicGame {
 						townB = board.towns[j];
 						System.out.println(townB.getName() + " has been clicked as town B");
 					}
-
 				}
-
 			}
+
 			if (townA != null && townB != null) {
 				if (findConnectionToBuild(townA, townB) == null) {
 					townA = null;
 					townB = null;
 				} else {
 					selectedConnection = findConnectionToBuild(townA, townB);
-					//connectionsToDraw.add(selectedConnection);
+					// connectionsToDraw.add(selectedConnection);
 					System.out.println("The selected connection require " + selectedConnection.getLength()
 							+ " trains with the color " + selectedConnection.getColor().getColorName());
 				}
-
 			}
 			// System.out.println(townB.getName() + " " + townA.getName());
 
-			
 			/*
-			 * SUMMARY CARD FLIP FUNCTIONALITY
+			 * SUMMARY CARD FLIP CARD
 			 */
 			if (xpos < board.summaryCard.xPos + board.summaryCard.width && xpos > board.summaryCard.xPos
 					&& ypos > 768 - board.summaryCard.height) {
 				board.summaryCard.flipCard();
 			}
-			
+
 			/*
-			 * MISSIONCARDSTACK FUNCTIONALITY
+			 * MISSIONCARDSTACK FLIP CARD
 			 */
 			if (xpos < board.missionCardStack.xPos + board.missionCardStack.width && xpos > board.missionCardStack.xPos
 					&& ypos > 768 - board.missionCardStack.height) {
 				board.missionCardStack.card[0].flipCard();
 			}
-			
+
 			/*
 			 * TRAINCARDSTACK FUNCTIONALITY
 			 */
 			// mouse input conditions for train card stack
 			if (xpos < board.trainCardStack.xPos + board.trainCardStack.width && xpos > board.trainCardStack.xPos
 					&& ypos < 768 - board.trainCardStack.height && ypos > 768 - 2 * board.trainCardStack.height) {
-				
-				//board.arrayOfTraincards.get(0).flipCard(); //from array list stack
-								
-				//				for (int j = 0; j < 5; j++) {
-				//					board.trainCardStack.card[currentCard++].yPos = 595 - board.trainCardStack.height * (j + 1);
-				//					board.trainCardStack.card[j].flipCard();
-				//				}
-								
-								
-				//				for (int j = 0; j < 5; j++) {
-				//					board.trainCardStack.card[currentCard++].yPos = 595 - board.trainCardStack.height * (j + 1);
-				//					board.trainCardStack.card[j].flipCard();
-				//}
+				System.out.println("face-down train card stack has been clicked");
+			}
+			
+			/*
+			 * DISPLAYED STACK OF TRAINCARDS FUNCTIONALITY
+			 */
+			if (xpos < board.trainCardStack.xPos + board.trainCardStack.width && xpos > board.trainCardStack.xPos
+					&& ypos < 768 - 2 * board.trainCardStack.height && ypos > 768 - 3 * board.trainCardStack.height) {
+				System.out.println("Displayed train card #0 has been clicked");
+			}
+
+			if (xpos < board.trainCardStack.xPos + board.trainCardStack.width && xpos > board.trainCardStack.xPos
+					&& ypos < 768 - 3 * board.trainCardStack.height && ypos > 768 - 4 * board.trainCardStack.height) {
+				System.out.println("Displayed train card #1 has been clicked");
+			}
+
+			if (xpos < board.trainCardStack.xPos + board.trainCardStack.width && xpos > board.trainCardStack.xPos
+					&& ypos < 768 - 4 * board.trainCardStack.height && ypos > 768 - 5 * board.trainCardStack.height) {
+				System.out.println("Displayed train card #2 has been clicked");
+			}
+
+			if (xpos < board.trainCardStack.xPos + board.trainCardStack.width && xpos > board.trainCardStack.xPos
+					&& ypos < 768 - 5 * board.trainCardStack.height && ypos > 768 - 6 * board.trainCardStack.height) {
+				System.out.println("Displayed train card #3 has been clicked");
+			}
+
+			if (xpos < board.trainCardStack.xPos + board.trainCardStack.width && xpos > board.trainCardStack.xPos
+					&& ypos < 768 - 6 * board.trainCardStack.height && ypos > 768 - 7 * board.trainCardStack.height) {
+				System.out.println("Displayed train card #4 has been clicked");
 			}
 		}
 	}
@@ -304,43 +273,39 @@ public class SimpleSlickGame extends BasicGame {
 		// Loads the placement Map image used to detect cities
 
 		board.getBoardPic().draw(); // Place it in (0,0)
-		
-		board.summaryCard.setVisible();		
+
+		board.summaryCard.setVisible();
 		board.stationaryCard.setVisible();
 		board.missionCardStack.card[0].setVisible();
-		//board.connections.get(2).setTakenByPlayer(player1, g);
-		
-		for(int i = 0; i < 5; i++) {
-			board.displayedTrainStack.get(i).setVisible1();
-		}			
+		// board.connections.get(2).setTakenByPlayer(player1, g);
 
-//		for (int j = 0; j < 5; j++) {
-//			board.trainCardStack.card[j].setVisible();
-//		}
+		for (int i = 0; i < 5; i++) {
+			board.displayedTrainStack.get(i).setVisible1();
+		}
 		
-		//Setting the visibility of the playerpieces
-		for (int i=0; i<board.players.length;i++)
-		{
+		for (int i = 0; i < 4; i++) {
+			board.player1HandStack.get(i).setVisible1();
+		}
+
+		// for (int j = 0; j < 5; j++) {
+		// board.trainCardStack.card[j].setVisible();
+		// }
+
+		// Setting the visibility of the playerpieces
+		for (int i = 0; i < board.players.length; i++) {
 			board.players[i].setVisible(g);
 		}
-		
-		board.button.setVisible(g,0);
-		
-		
-		for(int j = 0; j < connectionsToDraw.size(); j++ ){
+
+		board.button.setVisible(g, 0);
+
+		for (int j = 0; j < connectionsToDraw.size(); j++) {
 			connectionsToDraw.get(j).setTakenByPlayer(player1, g);
 		}
-		
-		
-		
+
 	}
-	
 
 	public static void main(String[] args) throws SlickException {
 		board = new Board(4);
-		 
-		
-
 
 		// GsonJson test with stacks of
 		// traincards.-----------------------------------------------------------
@@ -359,7 +324,6 @@ public class SimpleSlickGame extends BasicGame {
 		// JSON TEST END
 		// ------------------------------------------------------------------------------------
 
-
 		// GsonJson test with stacks of
 		// traincards.-----------------------------------------------------------
 		/*
@@ -376,7 +340,6 @@ public class SimpleSlickGame extends BasicGame {
 		 */
 		// JSON TEST END
 		// ------------------------------------------------------------------------------------
-
 
 		try {
 			AppGameContainer appgc;

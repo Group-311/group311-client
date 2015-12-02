@@ -52,14 +52,15 @@ public class Board {
 		
 		// create stationary card for a stationary backImage on the mission and train stacks
 		stationaryCard = new StationaryCard();
+		stationaryCard.xPos = 1024 - stationaryCard.width;
+		stationaryCard.yPos += stationaryCard.height;
+		
 		missionCards = new MissionCard[30];
 		
 		//trainCards = new TrainCard[110];		with joker
 		trainCards = new TrainCard[96];		// without jokers
 
-
 		// create all the different colors for the trains/players
-		
 		colors[0] = new CustomColor("blue", 0, new Color(0,0,255));
 		colors[1] = new CustomColor("red", 1, new Color(255,0,0));
 		colors[2] = new CustomColor("orange", 2, new Color(255,127,0));
@@ -452,6 +453,11 @@ public class Board {
 		// adding all the mission cards in a new stack called missioncardstack
 		missionCardStack = new Stack(missionCards);
 
+		// Shuffle mission cards in the missioncard stack
+		missionCardStack.shuffle(missionCards);
+		// Set the mouse input conditions for the collision of the missioncard stack
+		missionCardStack.xPos = 1024 - missionCardStack.width;
+		missionCardStack.yPos += missionCardStack.height;
 		
 		// creating all the trainCards
 		for (int i = 0; i < trainCards.length; i++) {
@@ -477,15 +483,55 @@ public class Board {
 		// adding all the mission cards in a new stack called traincardstack
 		trainCardStack = new Stack(trainCards);
 		
+		// x position values for the trainCards
+		for (int i = 0; i < trainCards.length; i++) {
+			trainCards[i].xPos = 1024 - trainCardStack.width;
+		}
+				
 		// Set the mouse input conditions for the borders of the traincard stack
 		trainCardStack.xPos = 1024 - trainCardStack.width;
 		trainCardStack.yPos += trainCardStack.height;
 		
-		trainCardStack.shuffleA(1000);									// Shuffle cards
-		arrayOfTrainCards = trainCardStack.getdeckOfA();			// Copy the shuffled cards to the array list b and print it with the for loop	
-		//board.arrayOfTraincards.get(0).xPos = board.trainCardStack.xPos;
+		/*
+		 * Shuffle cards
+		 * Copy the shuffled cards to the array list arrayOfTrainCards	
+		 */ 
+		trainCardStack.shuffleA(1000);
+		arrayOfTrainCards = trainCardStack.getdeckOfA();		
+		System.out.println("Amount of face-down cards in the train stack on the board: " + arrayOfTrainCards.size());
 		
-		System.out.println(arrayOfTrainCards.size());
+		/*
+		 * Tasks, which should happen in 1 for loop: 
+		 * copy card from arrayOfTrainCards to displayedTrainStack
+		 * the copied card in arrayOfTrainCards should be removed
+		 */
+		int displayedTrainCardIncrementer = 2;
+
+		for (int i = 0; i < 5; i++) {
+			displayedTrainStack.add(arrayOfTrainCards.get(0)); // card#deckOfA --> card#playerHandStack
+			displayedTrainStack.get(i).yPos = 85 * displayedTrainCardIncrementer;
+			arrayOfTrainCards.remove(0); // card#deckOfA --> remove
+			displayedTrainCardIncrementer++;
+		}
+		System.out.println("Amount of face-up cards in the train stack on the board: " + displayedTrainStack.size() + "		");			// print the cards in the players hand stack
+		
+		/*
+		 * Tasks, which should happen in 1 for loop: 
+		 * copy card from arrayOfTrainCards to player1HandStack
+		 * the copied card in arrayOfTrainCards should be removed
+		 */
+		int handTrainStackIncrementer = 2;
+		
+		for(int i = 0; i < 4; i ++) {
+			player1HandStack.add(arrayOfTrainCards.get(0));
+			player1HandStack.get(i).yPos = 800;
+			player1HandStack.get(i).xPos = 85 * handTrainStackIncrementer;
+			arrayOfTrainCards.remove(0); // card#deckOfA --> remove
+			handTrainStackIncrementer++;
+		}
+		System.out.println("Amount of cards in the hand stack: " + player1HandStack.size() + "		");			// print the cards in the players hand stack
+		System.out.println("Amount of face-down cards in the train stack on the board: " + arrayOfTrainCards.size());
+		System.out.println(" "); // for spacing
 		
 		//PlayerPiece instantiation.
 		for (int i=0; i<players.length;i++)
