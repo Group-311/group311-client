@@ -49,7 +49,7 @@ public class main extends JPanel {
 
 	public void run() throws Exception {
 
-		Socket Sock = new Socket("192.168.43.8", 2222);
+		Socket Sock = new Socket("172.20.10.2", 2222);
 		PrintStream ps = new PrintStream(Sock.getOutputStream());
 		String activator = new String("1");
 		b1 = new Board(4);
@@ -167,6 +167,14 @@ public class main extends JPanel {
 			String temp = serializer.toJson(b1.players[i]);
 			jsonPlP[i] = temp;
 		}
+		
+		String[] cStringsIsTaken = new String[b1.connections.size()];
+		for (int i=0; i<b1.connections.size();i++)
+		{
+			String temp = serializer.toJson(0+i);
+			cStringsIsTaken[i]=temp;
+		}
+		
 		/*
 		//DisplayedMissionStack to JSON string
 		String[] jsonMCS = new String[b1.displayedMissionStack.size()];;
@@ -225,6 +233,12 @@ public class main extends JPanel {
 		for (int i = 0; i < b1.players.length; i++) {
 			ps.println(jsonPlP[i]);
 		}
+		
+		for (int i=0; i<b1.connections.size();i++)
+		{
+			ps.println(0+i);
+		}
+		
 		/*
 		 * //Sending the missionCardStack for (int i=0;
 		 * i<b1.displayedMissionStack.size(); i++) { ps.println(jsonMCS[i]); }
