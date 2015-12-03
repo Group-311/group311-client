@@ -105,18 +105,16 @@ public class Connection {
 		
 		return false;
 	}
-	public void setTakenByPlayer(Players player, Graphics g){
+	public void setTakenByPlayer(Players player){
 		ownedBy = player.getNum();
 		this.isTaken = true;
+	}
+	public void drawConnection(Players player, Graphics g){
 		
-		//g.setColor(player.getCustomColor().getColor());
+		setTakenByPlayer(player);
+		
 		g.setColor(player.getCustomColor().getColor());
-	
-		
 		g.drawLine(townA.getxPos(), 768-townA.getyPos(), townB.getxPos(), 768-townB.getyPos());
-		
-		
-		//return g;
 	}
 	public int getPoint() {
 		return point;

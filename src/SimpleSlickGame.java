@@ -301,7 +301,7 @@ public class SimpleSlickGame extends BasicGame {
 		board.button.setVisible(g, 0);
 
 		for (int j = 0; j < connectionsToDraw.size(); j++) {
-			connectionsToDraw.get(j).setTakenByPlayer(player1, g);
+			connectionsToDraw.get(j).drawConnection(player1, g);
 		}
 
 	}
