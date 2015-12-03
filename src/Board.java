@@ -1,8 +1,4 @@
-
-
-
 import java.util.ArrayList;
-
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -59,11 +55,11 @@ public class Board {
 		
 		// create stationary card for a stationary backImage on the mission and train stacks
 		stationaryCardT = new StationaryCard();
-		stationaryCardT.xPos = 1024 - stationaryCardT.width;
-		stationaryCardT.yPos += stationaryCardT.height;
+		stationaryCardT.xPos = 1024 - Card.width;
+		stationaryCardT.yPos += Card.height;
 		
 		stationaryCardM = new StationaryCard();
-		stationaryCardM.xPos = 1024 - stationaryCardM.width;
+		stationaryCardM.xPos = 1024 - Card.width;
 		stationaryCardM.yPos = 1;
 		
 		missionCards = new MissionCard[30];
@@ -466,31 +462,17 @@ public class Board {
 		// Shuffle mission cards in the missioncard stack
 		//missionCardStack.shuffle(missionCards);
 		// Set the mouse input conditions for the collision of the missioncard stack
-		missionCardStack.xPos = 1024 - missionCardStack.width;
-		missionCardStack.yPos += missionCardStack.height;
+		missionCardStack.xPos = 1024 - Card.width;
+		missionCardStack.yPos += Card.height;
 		
 		/*
 		 * Shuffle cards
 		 * Copy the shuffled cards to the array list arrayOfMissionCards	
 		 */
 		missionCardStack.shuffleB(missionCards, 1000);
-		arrayOfMissionCards = missionCardStack.getdeckOfB();		
+		arrayOfMissionCards = missionCardStack.getdeckOfB();
+		// CONTROL: amount of cards in the mission card stack
 		System.out.println("Amount of face-down cards in the mission stack on the board: " + arrayOfMissionCards.size());
-		
-		/*
-		 * Tasks, which should happen in 1 for loop: 
-		 * copy card from arrayOfMissionCards to player1MissionHandStack
-		 * the copied card in arrayOfMissionCards should be removed
-		 */
-		
-		int handMissionCardIncrementer = 2;
-
-		for(int i = 0; i < 3; i ++) {
-			player1MissionHandStack.add(arrayOfMissionCards.get(0));
-			player1MissionHandStack.get(i).yPos = 682;
-			player1MissionHandStack.get(i).xPos = 643 + (i * 127);
-			arrayOfMissionCards.remove(0);
-		}
 		
 		// creating all the trainCards
 		for (int i = 0; i < trainCards.length; i++) {
@@ -518,12 +500,12 @@ public class Board {
 		
 		// x position values for the trainCards
 		for (int i = 0; i < trainCards.length; i++) {
-			trainCards[i].xPos = 1024 - trainCardStack.width;
+			trainCards[i].xPos = 1024 - Card.width;
 		}
 				
 		// Set the mouse input conditions for the borders of the traincard stack
-		trainCardStack.xPos = 1024 - trainCardStack.width;
-		trainCardStack.yPos += trainCardStack.height;
+		trainCardStack.xPos = 1024 - Card.width;
+		trainCardStack.yPos += Card.height;
 		
 		/*
 		 * Shuffle cards
@@ -538,89 +520,30 @@ public class Board {
 		 * copy card from arrayOfTrainCards to displayedTrainStack
 		 * the copied card in arrayOfTrainCards should be removed
 		 */
-		int displayedTrainCardIncrementer = 2;
+//		int displayedTrainCardIncrementer = 2;
 
 		for (int i = 0; i < 5; i++) {
 			displayedTrainStack.add(arrayOfTrainCards.get(0)); // card#deckOfA --> card#playerHandStack
-			displayedTrainStack.get(i).yPos = 85 * displayedTrainCardIncrementer;
+//			displayedTrainStack.get(i).yPos = 85 * displayedTrainCardIncrementer;
 			arrayOfTrainCards.remove(0); // card#deckOfA --> remove
-			displayedTrainCardIncrementer++;
+//			displayedTrainCardIncrementer++;
 		}
-		System.out.println("Amount of face-up cards in the train stack on the board: " + displayedTrainStack.size() + "		");			// print the cards in the players hand stack
 		
-		/*
-		 * Tasks, which should happen in 1 for loop: 
-		 * copy card from arrayOfTrainCards to player1HandStack
-		 * the copied card in arrayOfTrainCards should be removed
-		 */
-		handTrainCardIncrementer = 73;
-		
-		for(int i = 0; i < 4; i ++) {
-			player1TrainHandStack.add(arrayOfTrainCards.get(0));
-			
-			// position values for a drawn blue card
-			if(player1TrainHandStack.get(i).color == colors[0]) {
-			player1TrainHandStack.get(i).yPos = 682;
-			player1TrainHandStack.get(i).xPos = 0;
-			blueColorCounter++;
-			
-			// position values for a drawn red card
-			} else if(player1TrainHandStack.get(i).color == colors[1]) {
-				player1TrainHandStack.get(i).yPos = 682;
-				player1TrainHandStack.get(i).xPos = handTrainCardIncrementer;
-				redColorCounter++;
-				
-			// position values for a drawn orange card
-			} else if(player1TrainHandStack.get(i).color == colors[2]) {
-				player1TrainHandStack.get(i).yPos = 682;
-				player1TrainHandStack.get(i).xPos = handTrainCardIncrementer * 2;
-				orangeColorCounter++;
-				
-			// position values for a drawn white card
-			} else if(player1TrainHandStack.get(i).color == colors[3]) {
-				player1TrainHandStack.get(i).yPos = 682;
-				player1TrainHandStack.get(i).xPos = handTrainCardIncrementer * 3;
-				whiteColorCounter++;
-				
-			// position values for a drawn yellow card
-			} else if(player1TrainHandStack.get(i).color == colors[4]) {
-				player1TrainHandStack.get(i).yPos = 682;
-				player1TrainHandStack.get(i).xPos = handTrainCardIncrementer * 4;
-				yellowColorCounter++;
-				
-			// position values for a drawn black card
-			} else if(player1TrainHandStack.get(i).color == colors[5]) {
-				player1TrainHandStack.get(i).yPos = 682;
-				player1TrainHandStack.get(i).xPos = handTrainCardIncrementer * 5;
-				blackColorCounter++;
-				
-			// position values for a drawn green card. NOTE! colors[6] is not used for the cards, only for the connections
-			} else if(player1TrainHandStack.get(i).color == colors[7]) {
-				player1TrainHandStack.get(i).yPos = 682;
-				player1TrainHandStack.get(i).xPos = handTrainCardIncrementer * 6;
-				greenColorCounter++;
-				
-			// position values for a drawn pink card
-			} else if(player1TrainHandStack.get(i).color == colors[8]) {
-				player1TrainHandStack.get(i).yPos = 682;
-				player1TrainHandStack.get(i).xPos = handTrainCardIncrementer * 7;
-				pinkColorCounter++;
-			}
-			arrayOfTrainCards.remove(0); // card#deckOfA --> remove
-		}		
-
-		System.out.println("Amount of cards in player 1 hand stack: " + player1TrainHandStack.size() + "		");			// print the cards in the players hand stack
+		// CONTROL: amount of train cards in the displayed card stack
+		System.out.println("Amount of face-up cards in the displayed stack on the board: " + displayedTrainStack.size() + "		");
+		// CONTROL: amount of train cards in the player hand stack
+		System.out.println("Amount of cards in player 1 hand stack: " + player1TrainHandStack.size() + "		");	
+		// CONTROL: amount of train cards in the player hand stack listed by color
 		System.out.println("Blue cards: " + blueColorCounter + ", Red cards: " + redColorCounter + ", Orange cards: " + orangeColorCounter + ", White cards: " + whiteColorCounter + ", Yellow cards: " + yellowColorCounter + ", Black cards: " + blackColorCounter + ", Green cards: " + greenColorCounter + ", Pink cards: " + pinkColorCounter);
-		
+		// CONTROL: amount of cards in the train card stack
 		System.out.println("Amount of face-down cards in the train stack on the board: " + arrayOfTrainCards.size());
 		System.out.println(" "); // for spacing
-		
+		System.out.println("Amount of face-up cards in the train stack on the board: " + displayedTrainStack.size() + "		");			// print the cards in the players hand stack
+				
 		//PlayerPiece instantiation.
-		for (int i=0; i<playerPieces.length;i++)
-		{
+		for (int i=0; i<playerPieces.length;i++) {
 			playerPieces[i]= new PlayerPiece(null, i+1);
 		}
-		
 	}
 
 	public Image getBoardPic() {
@@ -631,4 +554,3 @@ public class Board {
 		this.boardPic = new Image("/pics/Map.jpg");
 	}
 }
-

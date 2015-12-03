@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -6,7 +5,6 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.logging.Level;
 import org.lwjgl.input.Mouse;
 import java.util.logging.Logger;
@@ -19,10 +17,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-import org.omg.CORBA.BAD_INV_ORDER;
-
 import com.google.gson.Gson;
-import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 
 public class SimpleSlickGame extends BasicGame implements Runnable {
 
@@ -58,6 +53,9 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 
 	// +++++
 
+	// Color counters
+	static int blueColorCounter, redColorCounter, orangeColorCounter, whiteColorCounter, yellowColorCounter, blackColorCounter, greenColorCounter, pinkColorCounter;
+	
 	static Board board;
 
 	private Image summaryBackImage = null;
@@ -137,17 +135,18 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 		board.summaryCard.setBackImage(summaryBackImage);
 		board.summaryCard.setFrontImage(summaryFrontImage);
 
-		// Setting cardback and cardfront for the trainCards
-		// Cardback is the same for all the trainCards
+		/*
+		 *  Setting cardback and cardfront for the trainCards
+		 *  Cardback is the same for all the trainCards
+		 */
 		trainCardBack = new Image("/pics/trainCardBack.png");
 
 		for (int i = 0; i < board.trainCards.length; i++) {
 			board.trainCards[i].setBackImage(trainCardBack);
 		}
-
-		// Setting the image for the stationaryCard
+		
+		// Applying the cardback for the stationary image for train cards
 		board.stationaryCardT.setBackImage(trainCardBack);
-		board.stationaryCardM.setBackImage(trainCardBack);
 
 		// Loading all the trainCardImages
 		blackTrainCard = new Image("/pics/blackTrainCard.png");
@@ -199,6 +198,9 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 			board.missionCards[i].setFrontImage(missions[i]);
 			board.missionCards[i].setBackImage(missionCardBack);
 		}
+		
+		// Applying the cardback for the stationary image for mission cards
+		board.stationaryCardM.setBackImage(missionCardBack);
 	}
 
 	@Override
@@ -207,10 +209,6 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 		Input input = gc.getInput();
 		xpos = Mouse.getX();
 		ypos = Mouse.getY();
-
-		// int currentCard = 0;
-
-		// Calling flipcard function if activated
 
 		// --------------------------------------------------------------------------------------------------------------------------------------------
 		// Will implement what happens when you click a city in here.
@@ -257,141 +255,305 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 				}
 
 				/*
-				 * MISSIONCARDSTACK FLIP CARD
+				 * SUMMARY CARD FLIP CARD
+				 * Mouse input conditions to flip the summary card
 				 */
-				if (xpos < board.missionCardStack.xPos + board.missionCardStack.width
-						&& xpos > board.missionCardStack.xPos && ypos > 768 - board.missionCardStack.height) {
-
-					youPickedMissionCards = true;
+				if (xpos < board.summaryCard.xPos + Card.width && xpos > board.summaryCard.xPos
+						&& ypos > 768 - Card.height) {
+					board.summaryCard.flipCard();
 				}
-
+				
+				/*
+				 * MISSIONCARDSTACK FUNCTIONALITY
+				 * MISSIONCARDSTACK TO HANDSTACK
+				 * Mouse input conditions to do the following
+				 * add the top card of the drawable mission card stack to the mission card hand stack for player 1
+				 * remove that card from the drawable mission card stack
+				 * this will make the mission cards in the array list move 1 room to the left (decrease by 1)
+				 */
+				if (xpos < board.missionCardStack.xPos + Card.width
+						&& xpos > board.missionCardStack.xPos && ypos > 768 - Card.height) {
+					
+					System.out.println("mission stack clicked");
+					board.player1MissionHandStack.add(board.arrayOfMissionCards.get(0));
+					board.arrayOfMissionCards.remove(0);
+					System.out.println(board.player1MissionHandStack.size());
+				}
+				
 				/*
 				 * TRAINCARDSTACK FUNCTIONALITY
+				 * TRAINCARDSTACK TO HANDSTACK
+				 * Mouse input conditions to do the following
+				 * add the top card of the drawable train card stack to the train card hand stack for player 1
+				 * remove that card from the drawable train card stack
+				 * this will make the train cards in the array list move 1 room to the left (decrease by 1)
 				 */
-				// mouse input conditions for train card stack
-				if (xpos < board.trainCardStack.xPos + board.trainCardStack.width && xpos > board.trainCardStack.xPos
-						&& ypos < 768 - board.trainCardStack.height && ypos > 768 - 2 * board.trainCardStack.height) {
+				if (xpos < board.trainCardStack.xPos + Card.width && xpos > board.trainCardStack.xPos
+						&& ypos < 768 - Card.height && ypos > 768 - 2 * Card.height) {
+					
 					System.out.println("face-down train card stack has been clicked");
-					System.out.println(board.player1TrainHandStack.get(0).getColor().getColorName());
-
-					board.handTrainCardIncrementer = 73;
-
+					
+					if (board.arrayOfTrainCards.get(0).getColor().getColorName() == board.colors[0].getColorName()) {
+						blueColorCounter ++; 
+					} else if (board.arrayOfTrainCards.get(0).getColor().getColorName() == board.colors[1].getColorName()) {
+						redColorCounter++;
+					} else if (board.arrayOfTrainCards.get(0).getColor().getColorName() == board.colors[2].getColorName()) {
+						orangeColorCounter++;
+					} else if (board.arrayOfTrainCards.get(0).getColor().getColorName() == board.colors[3].getColorName()) {
+						whiteColorCounter++;
+					} else if (board.arrayOfTrainCards.get(0).getColor().getColorName() == board.colors[4].getColorName()) {
+						yellowColorCounter++;
+					} else if (board.arrayOfTrainCards.get(0).getColor().getColorName() == board.colors[5].getColorName()) {
+						blackColorCounter++;
+					} else if (board.arrayOfTrainCards.get(0).getColor().getColorName() == board.colors[7].getColorName()) {
+						greenColorCounter++;
+					} else if (board.arrayOfTrainCards.get(0).getColor().getColorName() == board.colors[8].getColorName()) {
+						pinkColorCounter++;
+					}
+					
 					board.player1TrainHandStack.add(board.arrayOfTrainCards.get(0));
+					board.arrayOfTrainCards.remove(0);
 
 					for (int j = 0; j < board.player1TrainHandStack.size(); j++) {
-						// position values for a drawn blue card
-						if (board.player1TrainHandStack.get(j).getColor().getColorName() == board.colors[0]
-								.getColorName()) {
-							board.player1TrainHandStack.get(j).yPos = 682;
-							board.player1TrainHandStack.get(j).xPos = 0;
-							board.blueColorCounter++;
-
-							// position values for a drawn red card
-						} else if (board.player1TrainHandStack.get(j).getColor().getColorName() == board.colors[1]
-								.getColorName()) {
-							board.player1TrainHandStack.get(j).yPos = 682;
-							board.player1TrainHandStack.get(j).xPos = board.handTrainCardIncrementer;
-							board.redColorCounter++;
-
-							// position values for a drawn orange card
-						} else if (board.player1TrainHandStack.get(j).getColor().getColorName() == board.colors[2]
-								.getColorName()) {
-							board.player1TrainHandStack.get(j).yPos = 682;
-							board.player1TrainHandStack.get(j).xPos = board.handTrainCardIncrementer * 2;
-							board.orangeColorCounter++;
-
-							// position values for a drawn white card
-						} else if (board.player1TrainHandStack.get(j).getColor().getColorName() == board.colors[3]
-								.getColorName()) {
-							board.player1TrainHandStack.get(j).yPos = 682;
-							board.player1TrainHandStack.get(j).xPos = board.handTrainCardIncrementer * 3;
-							board.whiteColorCounter++;
-
-							// position values for a drawn yellow card
-						} else if (board.player1TrainHandStack.get(j).getColor().getColorName() == board.colors[4]
-								.getColorName()) {
-							board.player1TrainHandStack.get(j).yPos = 682;
-							board.player1TrainHandStack.get(j).xPos = board.handTrainCardIncrementer * 4;
-							board.yellowColorCounter++;
-
-							// position values for a drawn black card
-						} else if (board.player1TrainHandStack.get(j).getColor().getColorName() == board.colors[5]
-								.getColorName()) {
-							board.player1TrainHandStack.get(j).yPos = 682;
-							board.player1TrainHandStack.get(j).xPos = board.handTrainCardIncrementer * 5;
-							board.blackColorCounter++;
-
-							// position values for a drawn green card. NOTE!
-							// colors[6] is not used for the cards, only for the
-							// connections
-						} else if (board.player1TrainHandStack.get(j).getColor().getColorName() == board.colors[7]
-								.getColorName()) {
-							board.player1TrainHandStack.get(j).yPos = 682;
-							board.player1TrainHandStack.get(j).xPos = board.handTrainCardIncrementer * 6;
-							board.greenColorCounter++;
-
-							// position values for a drawn pink card
-						} else if (board.player1TrainHandStack.get(j).getColor().getColorName() == board.colors[8]
-								.getColorName()) {
-							board.player1TrainHandStack.get(j).yPos = 682;
-							board.player1TrainHandStack.get(j).xPos = board.handTrainCardIncrementer * 7;
-							board.pinkColorCounter++;
-						}
-
-						board.arrayOfTrainCards.remove(0); // card#deckOfA -->
-															// remove
+						System.out.println(board.player1TrainHandStack.get(j).getColor().getColorName());
 					}
-					System.out.println(
-							"Amount of cards in player 1 hand stack: " + board.player1TrainHandStack.size() + "		"); // print
-																														// the
-																														// cards
-																														// in
-																														// the
-																														// players
-																														// hand
-																														// stack
-					System.out.println("Blue cards: " + board.blueColorCounter + ", Red cards: " + board.redColorCounter
-							+ ", Orange cards: " + board.orangeColorCounter + ", White cards: "
-							+ board.whiteColorCounter + ", Yellow cards: " + board.yellowColorCounter
-							+ ", Black cards: " + board.blackColorCounter + ", Green cards: " + board.greenColorCounter
-							+ ", Pink cards: " + board.pinkColorCounter);
+					System.out.println(board.player1TrainHandStack.size());
+				}
+				
+				/*
+				 * DISPLAYED STACK OF TRAINCARDS FUNCTIONALITY. 
+				 * The following is the structure for all the 5 rooms in the displayed hand stack array list
+				 * Mouse input conditions to do the following
+				 * check what color the card is and increment the proper color counter
+				 * add the top card of the drawable train card stack to the train card hand stack for player 1
+				 * remove that card from the drawable train card stack
+				 * reassign y positions for the cards in the drawable/displayed train stack
+				 * this will make the train cards in the array list move 1 room to the left (decrease by 1)
+				 */
+				
+				/*
+				 * 1ST ROOM: FUNCTIONALITY IN DISPLAYED CARD TO HANDSTACK
+				 */
+				if (xpos < board.trainCardStack.xPos + Card.width && xpos > board.trainCardStack.xPos
+						&& ypos < 768 - 2 * Card.height
+						&& ypos > 768 - 3 * Card.height) {
+					
+					System.out.println("Displayed train card #0 has been clicked");
 
-					System.out.println("Amount of face-down cards in the train stack on the board: "
-							+ board.arrayOfTrainCards.size());
-					System.out.println(" "); // for spacing
+					if (board.displayedTrainStack.get(0).getColor().getColorName() == board.colors[0].getColorName()) {
+						blueColorCounter ++; 
+					} else if (board.displayedTrainStack.get(0).getColor().getColorName() == board.colors[1].getColorName()) {
+						redColorCounter++;
+					} else if (board.displayedTrainStack.get(0).getColor().getColorName() == board.colors[2].getColorName()) {
+						orangeColorCounter++;
+					} else if (board.displayedTrainStack.get(0).getColor().getColorName() == board.colors[3].getColorName()) {
+						whiteColorCounter++;
+					} else if (board.displayedTrainStack.get(0).getColor().getColorName() == board.colors[4].getColorName()) {
+						yellowColorCounter++;
+					} else if (board.displayedTrainStack.get(0).getColor().getColorName() == board.colors[5].getColorName()) {
+						blackColorCounter++;
+					} else if (board.displayedTrainStack.get(0).getColor().getColorName() == board.colors[7].getColorName()) {
+						greenColorCounter++;
+					} else if (board.displayedTrainStack.get(0).getColor().getColorName() == board.colors[8].getColorName()) {
+						pinkColorCounter++;
+					}
+					
+					board.player1TrainHandStack.add(board.displayedTrainStack.get(0));
+					board.displayedTrainStack.remove(0);
+					board.displayedTrainStack.add(0, board.arrayOfTrainCards.get(0));
+					board.arrayOfTrainCards.remove(0);				
+
+					board.displayedTrainStack.get(0).yPos = 170;
+					board.displayedTrainStack.get(1).yPos = 255;
+					board.displayedTrainStack.get(2).yPos = 340;
+					board.displayedTrainStack.get(3).yPos = 425;
+					board.displayedTrainStack.get(4).yPos = 510;
+
+					for (int j = 0; j < board.player1TrainHandStack.size(); j++) {
+						System.out.println(board.player1TrainHandStack.get(j).getColor().getColorName());
+					}
+					
+					System.out.println(board.player1TrainHandStack.size());
+					System.out.println("b:"+ blueColorCounter + " r:" + redColorCounter + " o:" +orangeColorCounter + " w:" +whiteColorCounter + " y:" +  yellowColorCounter + " b:" +blackColorCounter + " g:" +greenColorCounter + " p:" + pinkColorCounter);
 				}
 
 				/*
-				 * DISPLAYED STACK OF TRAINCARDS FUNCTIONALITY
+				 * 2ND ROOM: FUNCTIONALITY IN 2ND DISPLAYED CARD TO HANDSTACK
 				 */
-				if (xpos < board.trainCardStack.xPos + board.trainCardStack.width && xpos > board.trainCardStack.xPos
-						&& ypos < 768 - 2 * board.trainCardStack.height
-						&& ypos > 768 - 3 * board.trainCardStack.height) {
-					System.out.println("Displayed train card #0 has been clicked");
-				}
-
-				if (xpos < board.trainCardStack.xPos + board.trainCardStack.width && xpos > board.trainCardStack.xPos
-						&& ypos < 768 - 3 * board.trainCardStack.height
-						&& ypos > 768 - 4 * board.trainCardStack.height) {
+				if (xpos < board.trainCardStack.xPos + Card.width && xpos > board.trainCardStack.xPos
+						&& ypos < 768 - 3 * Card.height
+						&& ypos > 768 - 4 * Card.height) {
+					
 					System.out.println("Displayed train card #1 has been clicked");
+					
+					if (board.displayedTrainStack.get(1).getColor().getColorName() == board.colors[0].getColorName()) {
+						blueColorCounter ++; 
+					} else if (board.displayedTrainStack.get(1).getColor().getColorName() == board.colors[1].getColorName()) {
+						redColorCounter++;
+					} else if (board.displayedTrainStack.get(1).getColor().getColorName() == board.colors[2].getColorName()) {
+						orangeColorCounter++;
+					} else if (board.displayedTrainStack.get(1).getColor().getColorName() == board.colors[3].getColorName()) {
+						whiteColorCounter++;
+					} else if (board.displayedTrainStack.get(1).getColor().getColorName() == board.colors[4].getColorName()) {
+						yellowColorCounter++;
+					} else if (board.displayedTrainStack.get(1).getColor().getColorName() == board.colors[5].getColorName()) {
+						blackColorCounter++;
+					} else if (board.displayedTrainStack.get(1).getColor().getColorName() == board.colors[7].getColorName()) {
+						greenColorCounter++;
+					} else if (board.displayedTrainStack.get(1).getColor().getColorName() == board.colors[8].getColorName()) {
+						pinkColorCounter++;
+					}
+					
+					board.player1TrainHandStack.add(board.displayedTrainStack.get(1));
+					board.displayedTrainStack.remove(1);
+					board.displayedTrainStack.add(1, board.arrayOfTrainCards.get(0));
+					board.arrayOfTrainCards.remove(0);
+
+					board.displayedTrainStack.get(0).yPos = 170;
+					board.displayedTrainStack.get(1).yPos = 255;
+					board.displayedTrainStack.get(2).yPos = 340;
+					board.displayedTrainStack.get(3).yPos = 425;
+					board.displayedTrainStack.get(4).yPos = 510;
+
+					for (int j = 0; j < board.player1TrainHandStack.size(); j++) {
+						System.out.println(board.player1TrainHandStack.get(j).getColor().getColorName());
+					}
+					
+					System.out.println(board.player1TrainHandStack.size());
 				}
 
-				if (xpos < board.trainCardStack.xPos + board.trainCardStack.width && xpos > board.trainCardStack.xPos
-						&& ypos < 768 - 4 * board.trainCardStack.height
-						&& ypos > 768 - 5 * board.trainCardStack.height) {
+				/*
+				 * 3RD ROOM: FUNCTIONALITY IN 3RD DISPLAYED CARD TO HANDSTACK
+				 */
+				if (xpos < board.trainCardStack.xPos + Card.width && xpos > board.trainCardStack.xPos
+						&& ypos < 768 - 4 * Card.height
+						&& ypos > 768 - 5 * Card.height) {
+					
 					System.out.println("Displayed train card #2 has been clicked");
+					if (board.displayedTrainStack.get(2).getColor().getColorName() == board.colors[0].getColorName()) {
+						blueColorCounter ++; 
+					} else if (board.displayedTrainStack.get(2).getColor().getColorName() == board.colors[1].getColorName()) {
+						redColorCounter++;
+					} else if (board.displayedTrainStack.get(2).getColor().getColorName() == board.colors[2].getColorName()) {
+						orangeColorCounter++;
+					} else if (board.displayedTrainStack.get(2).getColor().getColorName() == board.colors[3].getColorName()) {
+						whiteColorCounter++;
+					} else if (board.displayedTrainStack.get(2).getColor().getColorName() == board.colors[4].getColorName()) {
+						yellowColorCounter++;
+					} else if (board.displayedTrainStack.get(2).getColor().getColorName() == board.colors[5].getColorName()) {
+						blackColorCounter++;
+					} else if (board.displayedTrainStack.get(2).getColor().getColorName() == board.colors[7].getColorName()) {
+						greenColorCounter++;
+					} else if (board.displayedTrainStack.get(2).getColor().getColorName() == board.colors[8].getColorName()) {
+						pinkColorCounter++;
+					}
+					
+					board.player1TrainHandStack.add(board.displayedTrainStack.get(2));
+					board.displayedTrainStack.remove(2);
+					board.displayedTrainStack.add(2, board.arrayOfTrainCards.get(0));
+					board.arrayOfTrainCards.remove(0);
+
+					board.displayedTrainStack.get(0).yPos = 170;
+					board.displayedTrainStack.get(1).yPos = 255;
+					board.displayedTrainStack.get(2).yPos = 340;
+					board.displayedTrainStack.get(3).yPos = 425;
+					board.displayedTrainStack.get(4).yPos = 510;
+
+					for (int j = 0; j < board.player1TrainHandStack.size(); j++) {
+						System.out.println(board.player1TrainHandStack.get(j).getColor().getColorName());
+					}
+					
+					System.out.println(board.player1TrainHandStack.size());
 				}
 
-				if (xpos < board.trainCardStack.xPos + board.trainCardStack.width && xpos > board.trainCardStack.xPos
-						&& ypos < 768 - 5 * board.trainCardStack.height
-						&& ypos > 768 - 6 * board.trainCardStack.height) {
+				/*
+				 * 4TH ROOM: FUNCTIONALITY IN DISPLAYED CARD TO HANDSTACK
+				 */
+				if (xpos < board.trainCardStack.xPos + Card.width && xpos > board.trainCardStack.xPos
+						&& ypos < 768 - 5 * Card.height
+						&& ypos > 768 - 6 * Card.height) {
+					
 					System.out.println("Displayed train card #3 has been clicked");
+					
+					if (board.displayedTrainStack.get(3).getColor().getColorName() == board.colors[0].getColorName()) {
+						blueColorCounter ++; 
+					} else if (board.displayedTrainStack.get(3).getColor().getColorName() == board.colors[1].getColorName()) {
+						redColorCounter++;
+					} else if (board.displayedTrainStack.get(3).getColor().getColorName() == board.colors[2].getColorName()) {
+						orangeColorCounter++;
+					} else if (board.displayedTrainStack.get(3).getColor().getColorName() == board.colors[3].getColorName()) {
+						whiteColorCounter++;
+					} else if (board.displayedTrainStack.get(3).getColor().getColorName() == board.colors[4].getColorName()) {
+						yellowColorCounter++;
+					} else if (board.displayedTrainStack.get(3).getColor().getColorName() == board.colors[5].getColorName()) {
+						blackColorCounter++;
+					} else if (board.displayedTrainStack.get(3).getColor().getColorName() == board.colors[7].getColorName()) {
+						greenColorCounter++;
+					} else if (board.displayedTrainStack.get(3).getColor().getColorName() == board.colors[8].getColorName()) {
+						pinkColorCounter++;
+					}
+					
+					board.player1TrainHandStack.add(board.displayedTrainStack.get(3));
+					board.displayedTrainStack.remove(3);
+					board.displayedTrainStack.add(3, board.arrayOfTrainCards.get(0));
+					board.arrayOfTrainCards.remove(0);
+
+					board.displayedTrainStack.get(0).yPos = 170;
+					board.displayedTrainStack.get(1).yPos = 255;
+					board.displayedTrainStack.get(2).yPos = 340;
+					board.displayedTrainStack.get(3).yPos = 425;
+					board.displayedTrainStack.get(4).yPos = 510;
+
+					for (int j = 0; j < board.player1TrainHandStack.size(); j++) {
+						System.out.println(board.player1TrainHandStack.get(j).getColor().getColorName());
+					}
+					
+					System.out.println(board.player1TrainHandStack.size());
 				}
 
-				if (xpos < board.trainCardStack.xPos + board.trainCardStack.width && xpos > board.trainCardStack.xPos
-						&& ypos < 768 - 6 * board.trainCardStack.height
-						&& ypos > 768 - 7 * board.trainCardStack.height) {
+				/*
+				 * 5RD ROOM: FUNCTIONALITY IN 5TH DISPLAYED CARD TO HANDSTACK
+				 */
+				if (xpos < board.trainCardStack.xPos + Card.width && xpos > board.trainCardStack.xPos
+						&& ypos < 768 - 6 * Card.height
+						&& ypos > 768 - 7 * Card.height) {
+					
 					System.out.println("Displayed train card #4 has been clicked");
+					
+					if (board.displayedTrainStack.get(4).getColor().getColorName() == board.colors[0].getColorName()) {
+						blueColorCounter ++; 
+					} else if (board.displayedTrainStack.get(4).getColor().getColorName() == board.colors[1].getColorName()) {
+						redColorCounter++;
+					} else if (board.displayedTrainStack.get(4).getColor().getColorName() == board.colors[2].getColorName()) {
+						orangeColorCounter++;
+					} else if (board.displayedTrainStack.get(4).getColor().getColorName() == board.colors[3].getColorName()) {
+						whiteColorCounter++;
+					} else if (board.displayedTrainStack.get(4).getColor().getColorName() == board.colors[4].getColorName()) {
+						yellowColorCounter++;
+					} else if (board.displayedTrainStack.get(4).getColor().getColorName() == board.colors[5].getColorName()) {
+						blackColorCounter++;
+					} else if (board.displayedTrainStack.get(4).getColor().getColorName() == board.colors[7].getColorName()) {
+						greenColorCounter++;
+					} else if (board.displayedTrainStack.get(4).getColor().getColorName() == board.colors[8].getColorName()) {
+						pinkColorCounter++;
+					}
+					
+					board.player1TrainHandStack.add(board.displayedTrainStack.get(4));
+					board.displayedTrainStack.remove(4);
+					board.displayedTrainStack.add(4, board.arrayOfTrainCards.get(0));
+					board.arrayOfTrainCards.remove(0);
+
+					board.displayedTrainStack.get(0).yPos = 170;
+					board.displayedTrainStack.get(1).yPos = 255;
+					board.displayedTrainStack.get(2).yPos = 340;
+					board.displayedTrainStack.get(3).yPos = 425;
+					board.displayedTrainStack.get(4).yPos = 510;
+
+					for (int j = 0; j < board.player1TrainHandStack.size(); j++) {
+						System.out.println(board.player1TrainHandStack.get(j).getColor().getColorName());
+					}
+					
+					System.out.println(board.player1TrainHandStack.size());
 				}
 
 				if (xpos < board.button.getxPos() + board.button.getWidth() && xpos > board.button.getxPos()
@@ -476,29 +638,55 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 
 		board.getBoardPic().draw(); // Place it in (0,0)
 
-		board.player1TrainHandStack.get(0).setVisible1();
-
 		board.summaryCard.setVisible();
 		board.stationaryCardT.setVisible();
 		board.stationaryCardM.setVisible();
-
+		
 		// board.connections.get(2).setTakenByPlayer(player1, g);
-
+		
 		for (int i = 0; i < 5; i++) {
 			board.displayedTrainStack.get(i).setVisible1();
 		}
 
-		for (int i = 0; i < board.player1TrainHandStack.size(); i++) {
-			board.player1TrainHandStack.get(i).setVisible1();
-		}
-
-		for (int i = 0; i < 3; i++) {
-			board.player1MissionHandStack.get(i).setVisible1();
-		}
+//		for the mission cards visualization
+//		for (int i = 0; i < board.player1MissionHandStack.size(); i++) {
+//		 board.player1MissionHandStack.get(i).setVisible1();
+//		}
 
 		// Setting the visibility of the playerpieces
 		for (int i = 0; i < board.playerPieces.length; i++) {
 			board.playerPieces[i].setVisible(g);
+		}
+
+		// Drawing the string counters for the cards determined by color
+		board.button.setVisible(g, 0);
+		g.drawString("" + pinkColorCounter, 250, 750);
+		g.drawString("" + whiteColorCounter, 322, 750);
+		g.drawString("" + blueColorCounter, 394, 750);
+		g.drawString("" + yellowColorCounter, 466, 750);
+		g.drawString("" + orangeColorCounter, 538, 750);
+		g.drawString("" + blackColorCounter, 610, 750);
+		g.drawString("" + redColorCounter, 682, 750);
+		g.drawString("" + greenColorCounter, 744, 750);		
+	
+		
+		// We have to loop through all the players and display their cards in these areas.!
+		if (board.player2TrainHandStack.size()!=0) {
+		g.drawString("Player? tcards: " + board.player2TrainHandStack.size(), 20, 15);
+		} else {
+			g.drawString("Player? tcards: 0", 20, 15);
+		}
+		
+		if (board.player2MissionHandStack.size()!=0) {
+			g.drawString("Player? mcards: " + board.player2MissionHandStack.size(), 20, 30);
+		} else {
+			g.drawString("Player? mcards: 0", 20, 30);
+		}
+		
+		if (/*Something with the trains*/ 50<20) {
+			//g.drawString("Player? trains: " + board.player2trains.size(), 20, 45);
+		} else {
+			g.drawString("Player? tcards: 0", 20, 45);
 		}
 
 		board.button.setVisible(g, 0);
