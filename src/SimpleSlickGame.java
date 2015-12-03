@@ -248,6 +248,14 @@ public class SimpleSlickGame extends BasicGame {
 					&& ypos < 768 - 6 * board.trainCardStack.height && ypos > 768 - 7 * board.trainCardStack.height) {
 				System.out.println("Displayed train card #4 has been clicked");
 			}
+	
+			if (xpos < board.button.getxPos() + board.button.getWidth() && xpos > board.button.getxPos() && ypos < 768-board.button.getyPos() && ypos > 768-board.button.getyPos()- board.button.getHeight() && completedActions == true)
+			{
+				System.out.println("gg");
+			}
+			
+			
+			
 		}
 		
 		/*for(int flf = 0; flf < connectionsToDraw.size(); flf++){

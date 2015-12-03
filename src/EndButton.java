@@ -33,4 +33,16 @@ public class EndButton {
 		g.drawString("EndTurn", xPos + width / 5, yPos + height / 3);
 
 	}
+	public int getxPos() {
+		return xPos;
+	}
+	public int getyPos() {
+		return yPos;
+	}
+	public int getWidth() {
+		return width;
+	}
+	public int getHeight() {
+		return height;
+	}
 }
