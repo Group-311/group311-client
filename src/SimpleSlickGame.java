@@ -403,7 +403,12 @@ public class SimpleSlickGame extends BasicGame {
 
 		SimpleSlickGame client = new SimpleSlickGame("Ticket to Ride");
 
-		client.run();
+		try {
+			client.run();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		// GsonJson test with stacks of
 				// traincards.-----------------------------------------------------------
@@ -672,4 +677,3 @@ public class SimpleSlickGame extends BasicGame {
 		
 		
 	}
-}
