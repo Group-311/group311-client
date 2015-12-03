@@ -15,11 +15,10 @@ public class Players {
 	private int playerNum;
 	
 	
-	public Players(/*Socket sock*/ String name, int playerNum, CustomColor c) {
+	public Players(Socket sock, int playerNum, CustomColor c) {
 		
 		playerColor = c;
 		this.sock = sock;
-		this.name = name;
 		this.playerNum = playerNum;
 	}
 	

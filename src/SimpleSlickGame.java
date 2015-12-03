@@ -71,7 +71,7 @@ public class SimpleSlickGame extends BasicGame implements Runnable{
 	private Image map = null;
 
 	private boolean completedActions = false;
-	private boolean isYourTurn = false;
+	private boolean isYourTurn = true;
 	private boolean youPickedTrainCards = false;
 	private boolean youPickedMissionCards = false;
 	private boolean youPlayedAConnection = false;
@@ -87,7 +87,10 @@ public class SimpleSlickGame extends BasicGame implements Runnable{
 
 	public ArrayList<Connection> connectionsToDraw = new ArrayList<Connection>();
 
-	Players player1 = new Players("Emil", 1, board.colors[0]);
+	Players player1 = new Players(null, 1, board.colors[0]);
+	Players player2 = new Players(null, 2, board.colors[1]);
+	Players player3 = new Players(null, 3, board.colors[2]);
+	Players player4 = new Players(null, 4, board.colors[3]);
 
 	public Connection selectedConnection = null;
 
@@ -466,7 +469,7 @@ public class SimpleSlickGame extends BasicGame implements Runnable{
 			board.button.setVisible(g, 1);
 
 		for (int j = 0; j < connectionsToDraw.size(); j++) {
-			connectionsToDraw.get(j).drawConnection(player1, g);
+			connectionsToDraw.get(j).drawConnection(player2, g);
 			board.playerPieces[player1.getNum()].move(connectionsToDraw.get(j).getPoint());
 		}
 
