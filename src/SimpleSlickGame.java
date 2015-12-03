@@ -753,7 +753,7 @@ public class SimpleSlickGame extends BasicGame implements Runnable{
 				
 				if(br.readLine().contains("CanAct")){
 					
-					// isYourTurn= true;
+					 isYourTurn= true;
 					
 				}
 			} 
