@@ -3,7 +3,6 @@
 import java.net.*;
 import java.util.ArrayList;
 
-import org.newdawn.slick.SlickException;
 
 public class Players {
 	
