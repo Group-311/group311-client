@@ -87,10 +87,10 @@ public class SimpleSlickGame extends BasicGame implements Runnable{
 
 	public ArrayList<Connection> connectionsToDraw = new ArrayList<Connection>();
 
-	Players player1 = new Players(null, 1, board.colors[0]);
-	Players player2 = new Players(null, 2, board.colors[1]);
-	Players player3 = new Players(null, 3, board.colors[2]);
-	Players player4 = new Players(null, 4, board.colors[3]);
+	Players player1 = new Players(1, board.colors[0]);
+	Players player2 = new Players(2, board.colors[1]);
+	Players player3 = new Players(3, board.colors[2]);
+	Players player4 = new Players(4, board.colors[3]);
 
 	public Connection selectedConnection = null;
 
@@ -470,7 +470,7 @@ public class SimpleSlickGame extends BasicGame implements Runnable{
 
 		for (int j = 0; j < connectionsToDraw.size(); j++) {
 			connectionsToDraw.get(j).drawConnection(player2, g);
-			board.playerPieces[player1.getNum()].move(connectionsToDraw.get(j).getPoint());
+			board.playerPieces[player1.playerNum].move(connectionsToDraw.get(j).getPoint());
 		}
 
 	}
