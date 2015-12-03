@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.logging.Level;
@@ -25,9 +26,11 @@ import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 
 public class SimpleSlickGame extends BasicGame implements Runnable {
 
-	//------
+	 //------
 	
-	Socket Sock;
+	static Socket Sock;
+	
+	public static PrintStream ps;
 	
 	//-------
 	
@@ -416,9 +419,21 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 
 						// Space for what should be send to the client
 						activater = "state3";
+						ps.println(activater); 
 						
-						PrintStream ps= new PrintStream(Sock.getOutputStream(),true);
-						ps.println(activater);
+						
+						
+						/*try {
+							
+							ps = new PrintStream(Sock.getOutputStream(),true);
+							ps.println(activater);
+							System.out.println(Sock);
+							System.out.println("hopefully sent something");
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}*/
+						
 
 						isYourTurn = false;
 					}
@@ -508,6 +523,23 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 
 		Thread t1 = new Thread(client);
 		t1.start();
+		
+		try {
+			Sock = new Socket("172.20.10.2", 2222);
+		} catch (UnknownHostException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		try {
+			ps = new PrintStream(Sock.getOutputStream());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		/*
 		 * try { client.run(); } catch (Exception e) { // TODO Auto-generated
@@ -563,25 +595,10 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 	public void run() {
 
 		try {
-			Sock = new Socket("172.20.10.2", 2222);
-			PrintStream ps = new PrintStream(Sock.getOutputStream());
-			String activator = new String("1");
+			
+			//PrintStream ps = new PrintStream(Sock.getOutputStream());
+			//String activator = new String("1");
 			board = new Board(4);
-
-			t = new Train(null);
-			t.decrease(3);
-			// t2 = new Stack(null);
-			// t3 = new TrainCardStack(null);
-			// t4 = new DisplayedTrainStack(null);
-			// t5 = new HandMissionStack(5);
-			// t6 = new Stack(null);
-			// t7 = new TrainTrashStack(5);
-			// t8 = new Stack(5);
-			// t9 = new Connection(null, board.towns[1], board.towns[2], 5, 6);
-			arrayTest = new ArrayList<Integer>();
-			arrayTest.add(2);
-			arrayTest.add(5);
-			arrayTest.add(100);
 
 			Gson serializer = new Gson();
 			// Gson serializer2 = new GsonBuilder().create();
@@ -644,13 +661,13 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 			// Sending all the traincard from the traincardstack to the
 			// arraystring
 			String[] jsonTCS = new String[board.arrayOfTrainCards.size()];
-			System.out.println(board.arrayOfTrainCards.size());
+		//	System.out.println(board.arrayOfTrainCards.size());
 
 			for (int i = 0; i < board.arrayOfTrainCards.size(); i++) {
 				String temp = serializer.toJson(board.arrayOfTrainCards.get(i));
 				jsonTCS[i] = temp;
 			}
-			System.out.println(jsonTCS[4]);
+		//	System.out.println(jsonTCS[4]);
 
 			// DisplayedTrainStack to JSON string
 			String[] jsonDTS = new String[board.displayedTrainStack.size()];
@@ -698,35 +715,35 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 
 			// -----------------------------------------------------------------------------------------------------------------------
 			// This is where we start sending the JSONS
-			ps.println(activator);
+			ps.println(activater);
 
 			// Sending all the connections.
-			for (int i = 0; i < board.connections.size(); i++) {
-				ps.println(jsontest3[i]);
+	//		for (int i = 0; i < board.connections.size(); i++) {
+	//			ps.println(jsontest3[i]);
 				// ps.println(activator + "\n" + jsontest3[i] +/* "\n" + json1 +
 				// "\n"+ json2 + "\n" +json3 + "\n"+json4 + "\n"+json5 +
 				// "\n"+json6 + "\n"+json7 +*/ "\n"+ jsontest3[5] + "\n"+json9 +
 				// "\n");
-			}
+	//		}
 
 			// sending the arrayoftraincards.
-			for (int i = 0; i < board.arrayOfTrainCards.size(); i++) {
-				ps.println(jsonTCS[i]);
-			}
+	//		for (int i = 0; i < board.arrayOfTrainCards.size(); i++) {
+	//			ps.println(jsonTCS[i]);
+	//		}
 
 			// Sending displayedTrainStack
-			for (int i = 0; i < board.displayedTrainStack.size(); i++) {
-				ps.println(jsonDTS[i]);
-			}
+	//		for (int i = 0; i < board.displayedTrainStack.size(); i++) {
+	//			ps.println(jsonDTS[i]);
+	//		}
 
 			// Sending the playerpieces
-			for (int i = 0; i < board.playerPieces.length; i++) {
-				ps.println(jsonPlP[i]);
-			}
+	//		for (int i = 0; i < board.playerPieces.length; i++) {
+	//			ps.println(jsonPlP[i]);
+	//		}
 
-			for (int i = 0; i < board.connections.size(); i++) {
-				ps.println(0 + i);
-			}
+	//		for (int i = 0; i < board.connections.size(); i++) {
+	//			ps.println(0 + i);
+	//		}
 
 			/*
 			 * //Sending the missionCardStack for (int i=0;
@@ -746,23 +763,23 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 					isYourTurn = true;
 
 				}
-				if (activator == "state1") {
+				if (activater == "state1") {
 
-					ps.println(activator);
+					ps.println(activater);
 
-					activator = null;
+					activater = null;
 				}
-				if (activator == "state2") {
+				if (activater == "state2") {
 
-					ps.println(activator);
+					ps.println(activater);
 
-					activator = null;
+					activater = null;
 				}
-				if (activator == "state3") {
+				if (activater == "state3") {
 
-					ps.println(activator);
+					ps.println(activater);
 
-					activator = null;
+					activater = null;
 				}
 			}
 
