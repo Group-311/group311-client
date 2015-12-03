@@ -756,6 +756,12 @@ public class SimpleSlickGame extends BasicGame implements Runnable{
 					 isYourTurn= true;
 					
 				}
+				if(activator == "state3"){
+					
+					ps.println(activator);
+					
+					activator= null;
+				}
 			} 
 		
 		}catch (IOException e) {
