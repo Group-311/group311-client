@@ -11,8 +11,8 @@ public class EndButton {
 	int state;
 
 	public EndButton() {
-		xPos = 896;
-		yPos = 700;
+		xPos = 910;
+		yPos = 615;
 		width = 100;
 		height = 50;
 		state = 0;

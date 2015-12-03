@@ -131,7 +131,8 @@ public class SimpleSlickGame extends BasicGame {
 		}
 
 		// Setting the image for the stationaryCard
-		board.stationaryCard.setBackImage(trainCardBack);
+		board.stationaryCardT.setBackImage(trainCardBack);
+		board.stationaryCardM.setBackImage(trainCardBack);
 
 		// Loading all the trainCardImages
 		blackTrainCard = new Image("/pics/blackTrainCard.png");
@@ -245,7 +246,6 @@ public class SimpleSlickGame extends BasicGame {
 				 */
 				if (xpos < board.missionCardStack.xPos + board.missionCardStack.width
 						&& xpos > board.missionCardStack.xPos && ypos > 768 - board.missionCardStack.height) {
-					board.missionCardStack.card[0].flipCard();
 				}
 
 				/*
@@ -253,8 +253,80 @@ public class SimpleSlickGame extends BasicGame {
 				 */
 				// mouse input conditions for train card stack
 				if (xpos < board.trainCardStack.xPos + board.trainCardStack.width && xpos > board.trainCardStack.xPos
-						&& ypos < 768 - board.trainCardStack.height && ypos > 768 - 2 * board.trainCardStack.height) {
+						&& ypos < 768 - board.trainCardStack.height && ypos > 768 - 2 * board.trainCardStack.height) {		
 					System.out.println("face-down train card stack has been clicked");
+					System.out.println(board.player1TrainHandStack.get(0).getColor().getColorName());
+
+					board.handTrainCardIncrementer = 73;
+
+					board.player1TrainHandStack.add(board.arrayOfTrainCards.get(0));
+
+					for (int j = 0; j < board.player1TrainHandStack.size(); j++) {
+						// position values for a drawn blue card
+						if (board.player1TrainHandStack.get(j).getColor().getColorName() == board.colors[0].getColorName()) {
+							board.player1TrainHandStack.get(j).yPos = 682;
+							board.player1TrainHandStack.get(j).xPos = 0;
+							board.blueColorCounter++;
+
+							// position values for a drawn red card
+						} else if (board.player1TrainHandStack.get(j).getColor().getColorName() == board.colors[1].getColorName()) {
+							board.player1TrainHandStack.get(j).yPos = 682;
+							board.player1TrainHandStack.get(j).xPos = board.handTrainCardIncrementer;
+							board.redColorCounter++;
+
+							// position values for a drawn orange card
+						} else if (board.player1TrainHandStack.get(j).getColor().getColorName() == board.colors[2].getColorName() ) {
+							board.player1TrainHandStack.get(j).yPos = 682;
+							board.player1TrainHandStack.get(j).xPos = board.handTrainCardIncrementer * 2;
+							board.orangeColorCounter++;
+
+							// position values for a drawn white card
+						} else if (board.player1TrainHandStack.get(j).getColor().getColorName()  == board.colors[3].getColorName() ) {
+							board.player1TrainHandStack.get(j).yPos = 682;
+							board.player1TrainHandStack.get(j).xPos = board.handTrainCardIncrementer * 3;
+							board.whiteColorCounter++;
+
+							// position values for a drawn yellow card
+						} else if (board.player1TrainHandStack.get(j).getColor().getColorName()  == board.colors[4].getColorName() ) {
+							board.player1TrainHandStack.get(j).yPos = 682;
+							board.player1TrainHandStack.get(j).xPos = board.handTrainCardIncrementer * 4;
+							board.yellowColorCounter++;
+
+							// position values for a drawn black card
+						} else if (board.player1TrainHandStack.get(j).getColor().getColorName()  == board.colors[5].getColorName() ) {
+							board.player1TrainHandStack.get(j).yPos = 682;
+							board.player1TrainHandStack.get(j).xPos = board.handTrainCardIncrementer * 5;
+							board.blackColorCounter++;
+
+							// position values for a drawn green card. NOTE!
+							// colors[6] is not used for the cards, only for the
+							// connections
+						} else if (board.player1TrainHandStack.get(j).getColor().getColorName()  == board.colors[7].getColorName() ) {
+							board.player1TrainHandStack.get(j).yPos = 682;
+							board.player1TrainHandStack.get(j).xPos = board.handTrainCardIncrementer * 6;
+							board.greenColorCounter++;
+
+							// position values for a drawn pink card
+						} else if (board.player1TrainHandStack.get(j).getColor().getColorName()  == board.colors[8].getColorName() ) {
+							board.player1TrainHandStack.get(j).yPos = 682;
+							board.player1TrainHandStack.get(j).xPos = board.handTrainCardIncrementer * 7;
+							board.pinkColorCounter++;
+						}
+
+						board.arrayOfTrainCards.remove(0); // card#deckOfA -->
+															// remove
+					}
+						System.out.println(
+								"Amount of cards in player 1 hand stack: " + board.player1TrainHandStack.size() + "		"); // print the cards in the players hand stack
+						System.out.println("Blue cards: " + board.blueColorCounter + ", Red cards: " + board.redColorCounter
+								+ ", Orange cards: " + board.orangeColorCounter + ", White cards: "
+								+ board.whiteColorCounter + ", Yellow cards: " + board.yellowColorCounter
+								+ ", Black cards: " + board.blackColorCounter + ", Green cards: " + board.greenColorCounter
+								+ ", Pink cards: " + board.pinkColorCounter);
+
+						System.out.println("Amount of face-down cards in the train stack on the board: "
+								+ board.arrayOfTrainCards.size());
+						System.out.println(" "); // for spacing
 				}
 
 				/*
@@ -357,24 +429,25 @@ public class SimpleSlickGame extends BasicGame {
 
 		board.getBoardPic().draw(); // Place it in (0,0)
 
-		board.player1HandStack.get(0).setVisible1();
+		board.player1TrainHandStack.get(0).setVisible1();
 
 		board.summaryCard.setVisible();
-		board.stationaryCard.setVisible();
-		board.missionCardStack.card[0].setVisible();
-		// board.connections.get(2).setTakenByPlayer(player1, g);
+		board.stationaryCardT.setVisible();
+		board.stationaryCardM.setVisible();
 
+		// board.connections.get(2).setTakenByPlayer(player1, g);
+		
 		for (int i = 0; i < 5; i++) {
 			board.displayedTrainStack.get(i).setVisible1();
 		}
 
-		// for (int i = 0; i < 4; i++) {
-		// board.player1HandStack.get(i).setVisible1();
-		// }
+		for (int i = 0; i < board.player1TrainHandStack.size(); i++) {
+			board.player1TrainHandStack.get(i).setVisible1();
+		}
 
-		// for (int j = 0; j < 5; j++) {
-		// board.trainCardStack.card[j].setVisible();
-		// }
+		for (int i = 0; i < 3; i++) {
+			board.player1MissionHandStack.get(i).setVisible1();
+		}
 
 		// Setting the visibility of the playerpieces
 		for (int i = 0; i < board.playerPieces.length; i++) {
