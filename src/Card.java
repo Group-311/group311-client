@@ -130,7 +130,7 @@ public class Card {
 		return color;
 	}
 
-	public boolean areConnected() {
+	public boolean areConnected(Players player) {
 		return false;
 	}
 

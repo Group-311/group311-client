@@ -45,13 +45,13 @@ public class MissionCard extends Card{
 	 */
 	
 	@Override
-	public boolean areConnected(){
+	public boolean areConnected(Players player){
 
 		boolean temp = false;
 		
 		for(int i = 0; i < this.townA.getConnections().size();i++){
 			
-			if(_areConnected(this.townA, this.townB, i )){
+			if(_areConnected(this.townA, this.townB, i , player)){
 				temp = true;
 			}
 		}
@@ -83,13 +83,13 @@ public class MissionCard extends Card{
 	 * @param flf	 The incremented "i" of the for loop called in "areConnected()"
 	 * @return returns false if it did not find a connecting path, returns true if it does.
 	 */
-	public boolean _areConnected(Town townA, Town townB, int flf){
+	public boolean _areConnected(Town townA, Town townB, int flf, Players player){
 		
 		Town current = townA;
 
 		for(int i = 0; i <  current.getConnections().size(); i++){  //check all the connections
 
-		if(current.getConnection(i).getIsTaken()){					//if they are taken
+		if(current.getConnection(i).getIsTaken() && current.getConnection(i).getTakenByPlayer(player)){					//if they are taken
 			if(current.getConnection(i).getTownB().getName() == townB.getName() ||			//if names match the target name
 						current.getConnection(i).getTownA().getName() == townB.getName()){  //if names match the target name
 					
@@ -101,7 +101,7 @@ public class MissionCard extends Card{
 		boolean returnValue = false;			//variable for dynamic return value
 
 		for(int i = 0+flf; i < current.getConnections().size(); i++){    //loop through connections to change the current town
-			if(current.getConnection(i).getIsTaken() && current.getConnection(i).getIsVisited() == false){ //if its taken and not visited
+			if(current.getConnection(i).getIsTaken() && current.getConnection(i).getTakenByPlayer(player) && current.getConnection(i).getIsVisited() == false){ //if its taken and not visited
 				
 				current.getConnection(i).setIsVisited(true);				//set it as visited
 				visitedConnections.add(current.getConnection(i));			//also store it in our Arraylist
@@ -119,11 +119,11 @@ public class MissionCard extends Card{
 		
 		for(int i = 0; i < current.getConnections().size(); i++){			//current has been changed
 
-		if(current.getConnection(i).getIsTaken()){							//check "taken" towns
+		if(current.getConnection(i).getIsTaken() && current.getConnection(i).getTakenByPlayer(player)){							//check "taken" towns
 			
 
 			if(!current.getConnection(i).getIsVisited()){					//skip visited towns
-				returnValue = returnValue || _areConnected(current, townB, flf);	//call the function on it self, it might return true
+				returnValue = returnValue || _areConnected(current, townB, flf, player);	//call the function on it self, it might return true
 				}
 			}
 		}
