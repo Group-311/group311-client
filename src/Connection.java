@@ -100,20 +100,20 @@ public class Connection {
 		return color;
 	}
 	public boolean getTakenByPlayer(Players player){
-		if(ownedBy == player.getNum())
+		if(ownedBy == player.playerNum)
 			return true;
 		
 		return false;
 	}
 	public void setTakenByPlayer(Players player){
-		ownedBy = player.getNum();
+		ownedBy = player.playerNum;
 		this.isTaken = true;
 	}
 	public void drawConnection(Players player, Graphics g){
 		
 		setTakenByPlayer(player);
 		
-		g.setColor(player.getCustomColor().getColor());
+		g.setColor(player.getPlColor().getColor());
 		g.drawLine(townA.getxPos(), 768-townA.getyPos(), townB.getxPos(), 768-townB.getyPos());
 		
 		//movePlayerPiece(this.point);
