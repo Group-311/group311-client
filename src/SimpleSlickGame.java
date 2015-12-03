@@ -1,5 +1,6 @@
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
@@ -22,7 +23,7 @@ import org.omg.CORBA.BAD_INV_ORDER;
 import com.google.gson.Gson;
 import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 
-public class SimpleSlickGame extends BasicGame {
+public class SimpleSlickGame extends BasicGame implements Runnable{
 
 	public static Train t;
 	public static Stack t2;
@@ -475,6 +476,16 @@ public class SimpleSlickGame extends BasicGame {
 		board = new Board(4);
 
 		SimpleSlickGame client = new SimpleSlickGame("Ticket to Ride");
+		
+		Thread t1 = new Thread(client);
+		t1.start();
+		
+	/*	try {
+			client.run();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} */
 
 		
 		
@@ -522,16 +533,11 @@ public class SimpleSlickGame extends BasicGame {
 
 		}
 		
-		try {
-			client.run();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 		
-		public void run() throws Exception {
+		public void run() {
 
+			try {
 			Socket Sock = new Socket("172.20.10.2", 2222);
 			PrintStream ps = new PrintStream(Sock.getOutputStream());
 			String activator = new String("1");
@@ -742,13 +748,16 @@ public class SimpleSlickGame extends BasicGame {
 					// isYourTurn= true;
 					
 				}
-			}
+			} 
 		
+		}catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		//+++++++++++
 
-		
-
-		
-		
 	}
+}
