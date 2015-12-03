@@ -16,6 +16,7 @@ import org.newdawn.slick.SlickException;
 import org.omg.CORBA.BAD_INV_ORDER;
 
 import com.google.gson.Gson;
+import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 
 public class SimpleSlickGame extends BasicGame {
 	static Board board;
@@ -42,6 +43,10 @@ public class SimpleSlickGame extends BasicGame {
 	private Image map = null;
 	
 	private boolean completedActions = false;
+	private boolean isYourTurn = false;
+	private boolean youPickedTrainCards = false;
+	private boolean youPickedMissionCards = false;
+	private boolean youPlayedAConnection = false;
 
 	int xpos;
 	int ypos;
@@ -164,7 +169,7 @@ public class SimpleSlickGame extends BasicGame {
 
 		// --------------------------------------------------------------------------------------------------------------------------------------------
 		// Will implement what happens when you click a city in here.
-
+if (isYourTurn){
 		if (input.isMousePressed(0)) {
 			for (int j = 0; j < board.towns.length; j++) {
 				if (xpos < board.towns[j].getxPos() + 10 && xpos >= board.towns[j].getxPos() - 10
@@ -251,13 +256,39 @@ public class SimpleSlickGame extends BasicGame {
 	
 			if (xpos < board.button.getxPos() + board.button.getWidth() && xpos > board.button.getxPos() && ypos < 768-board.button.getyPos() && ypos > 768-board.button.getyPos()- board.button.getHeight() && completedActions == true)
 			{
-				System.out.println("gg");
+				if (youPickedMissionCards){
+					System.out.println("YouPickedMissionCards");
+					
+					//Space for what should be send to the client
+					
+					isYourTurn = false;
+				}
+				if (youPickedTrainCards)
+				{
+					System.out.println("YouPickedTrainCards");
+					
+					
+					//Space for what should be send to the client
+					
+					
+					isYourTurn = false;
+				}
+				
+				if (youPlayedAConnection)
+				{
+					System.out.println("youPlayedAConnection");
+					
+					//Space for what should be send to the client
+					
+					isYourTurn = false;
+				}
+				
 			}
 			
 			
 			
 		}
-		
+}
 		/*for(int flf = 0; flf < connectionsToDraw.size(); flf++){
 			connectionsToDraw.get(flf).movePlayerPiece();
 		}*/
