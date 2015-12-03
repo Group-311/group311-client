@@ -162,9 +162,9 @@ public class main extends JPanel {
 		}
 		
 		// PlayerPiece to JSON string
-		String[] jsonPlP = new String[b1.players.length];
-		for (int i = 0; i < b1.players.length; i++) {
-			String temp = serializer.toJson(b1.players[i]);
+		String[] jsonPlP = new String[b1.playerPieces.length];
+		for (int i = 0; i < b1.playerPieces.length; i++) {
+			String temp = serializer.toJson(b1.playerPieces[i]);
 			jsonPlP[i] = temp;
 		}
 		
@@ -230,7 +230,7 @@ public class main extends JPanel {
 		}
 		
 		// Sending the playerpieces
-		for (int i = 0; i < b1.players.length; i++) {
+		for (int i = 0; i < b1.playerPieces.length; i++) {
 			ps.println(jsonPlP[i]);
 		}
 		
