@@ -24,7 +24,10 @@ public class Board {
 	Stack missionCardStack;
 	Stack trainCardStack;		// Create a stack for all the traincards
 
+	Card[] playerHandStack;
+	
 	ArrayList<Card> player1MissionHandStack, player2MissionHandStack, player3MissionHandStack, player4MissionHandStack;
+
 	ArrayList<Card> player1TrainHandStack, player2TrainHandStack, player3TrainHandStack, player4TrainHandStack;					// Instantiate player hand stack array lists
 	ArrayList<Card> arrayOfMissionCards, arrayOfTrainCards, displayedTrainStack;							// Instantiate train card stack, displayed train card stack and displayed mission card stack arraylists
 
@@ -32,6 +35,7 @@ public class Board {
 	int handTrainCardIncrementer;
 	
 	Board(int numOfPlayers) throws SlickException {
+
 		
 		player1TrainHandStack = new ArrayList<Card>();			// Player hand stack
 		player2TrainHandStack = new ArrayList<Card>();			// Player hand stack

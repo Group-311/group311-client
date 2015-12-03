@@ -18,10 +18,20 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import com.google.gson.Gson;
+import com.sun.security.ntlm.Client;
+
+import sun.print.resources.serviceui;
 
 public class SimpleSlickGame extends BasicGame implements Runnable {
 
 	 //------
+PrintStream pStream;
+BufferedReader bufInput;
+String answer = null;
+String textString;
+static Socket s;
+	
+	
 	
 	static Socket Sock;
 	
@@ -556,6 +566,12 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 					System.out.println(board.player1TrainHandStack.size());
 				}
 
+				
+				
+				
+				
+				
+				// ---------------------------------------------------------------------------------------------------CLICKED THE END BUTTON
 				if (xpos < board.button.getxPos() + board.button.getWidth() && xpos > board.button.getxPos()
 						&& ypos < 768 - board.button.getyPos()
 						&& ypos > 768 - board.button.getyPos() - board.button.getHeight() && completedActions == true) {
@@ -564,7 +580,7 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 
 						// Space for what should be send to the client
 						activater = "state1";
-
+						run();
 						isYourTurn = false;
 					}
 					if (youPickedTrainCards) {
@@ -572,7 +588,7 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 
 						// Space for what should be send to the client
 						activater = "state2";
-
+						run();
 						isYourTurn = false;
 					}
 
@@ -581,22 +597,7 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 
 						// Space for what should be send to the client
 						activater = "state3";
-						ps.println(activater); 
-						
-						
-						
-						/*try {
-							
-							ps = new PrintStream(Sock.getOutputStream(),true);
-							ps.println(activater);
-							System.out.println(Sock);
-							System.out.println("hopefully sent something");
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}*/
-						
-
+						run();
 						isYourTurn = false;
 					}
 
@@ -604,10 +605,7 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 
 			}
 		}
-		/*
-		 * for(int flf = 0; flf < connectionsToDraw.size(); flf++){
-		 * connectionsToDraw.get(flf).movePlayerPiece(); }
-		 */
+
 	}
 
 	private Connection findConnectionToBuild(Town town1, Town town2) {
@@ -703,70 +701,16 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 
 	// +++++++++++++++++++++++++
 
-	public static void main(String[] args) throws SlickException {
+	public static void main(String[] args) throws SlickException, UnknownHostException, IOException {
 
 		board = new Board(4);
 
+		s = new Socket("172.20.10.2", 2222);
+		
 		SimpleSlickGame client = new SimpleSlickGame("Ticket to Ride");
 
 		Thread t1 = new Thread(client);
 		t1.start();
-		
-		try {
-			Sock = new Socket("172.20.10.2", 2222);
-		} catch (UnknownHostException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		try {
-			ps = new PrintStream(Sock.getOutputStream());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		/*
-		 * try { client.run(); } catch (Exception e) { // TODO Auto-generated
-		 * catch block e.printStackTrace(); }
-		 */
-
-		// GsonJson test with stacks of
-		// traincards.-----------------------------------------------------------
-		/*
-		 * System.out.println(board.trainCardStack.card[1].getColor().
-		 * getColorNum());
-		 * System.out.println(board.trainCardStack.card[50].getColor().
-		 * getColorNum()); Gson serializer = new Gson(); String Jsontrain =
-		 * serializer.toJson(board);
-		 * 
-		 * Board temp = new Gson().fromJson(Jsontrain, Board.class);
-		 * 
-		 * System.out.println(temp.trainCardStack.card[1].getColor().getColorNum
-		 * ());
-		 */
-		// JSON TEST END
-		// ------------------------------------------------------------------------------------
-
-		// GsonJson test with stacks of
-		// traincards.-----------------------------------------------------------
-		/*
-		 * System.out.println(board.trainCardStack.card[1].getColor().
-		 * getColorNum());
-		 * System.out.println(board.trainCardStack.card[50].getColor().
-		 * getColorNum()); Gson serializer = new Gson(); String Jsontrain =
-		 * serializer.toJson(board);
-		 * 
-		 * Board temp = new Gson().fromJson(Jsontrain, Board.class);
-		 * 
-		 * System.out.println(temp.trainCardStack.
-		 * card[1].getColor().getColorNum());
-		 */
-		// JSON TEST END
-		// ------------------------------------------------------------------------------------
 
 		try {
 			AppGameContainer appgc;
@@ -783,202 +727,60 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 	public void run() {
 
 		try {
-			
-			//PrintStream ps = new PrintStream(Sock.getOutputStream());
-			//String activator = new String("1");
-			board = new Board(4);
-
+			PrintStream ps = new PrintStream(s.getOutputStream());
 			Gson serializer = new Gson();
-			// Gson serializer2 = new GsonBuilder().create();
-
-			String json = serializer.toJson(t);
-			String json1 = serializer.toJson(t2);
-
-			String json5 = serializer.toJson(t6);
-
-			String json7 = serializer.toJson(t8);
-			String json8 = serializer.toJson(t9);
-			String json9 = serializer.toJson(t10);
-
-			String jsonTest = serializer.toJson(arrayTest);
-			String missionTest = serializer.toJson(new MissionCard(
-					new Town(board.towns[1].getName(), 4, board.connections.get(1).getTownA().getxPos(),
-							board.towns[1].getyPos()),
-					new Town(board.towns[4].getName(), 6, board.towns[4].getxPos(), board.towns[4].getxPos()), 2));
-					// String townTest = serializer.toJson(new
-					// Town(board.towns[1].getName(), 5, 74, 499));
-
-			// jsonTest2=null;
-			//
-
-			/*
-			 * String jsonTest2 = serializer.toJson( new Connection( new
-			 * CustomColor("red", 2, new Color(255,0,0)),
-			 * 
-			 * new Town("piK", 2, 3, 4),
-			 * 
-			 * new Town("fisse", 5, 6, 7),
-			 * 
-			 * 8, 9,1));
-			 */
-			String jsontest2 = null;
-			String[] jsontest3 = new String[board.connections.size()];
-
-			// sending the connections into a array of Strings.
-			for (int i = 0; i < board.connections.size(); i++) {
-
-				String temp = serializer
-						.toJson(new Connection(new CustomColor(board.connections.get(i).getColor().getColorName(),
-								board.connections.get(i).getColor().getColorNum(),
-								board.connections.get(i).getColor().getColor()),
-
-				new Town(board.connections.get(i).getTownA().getName(),
-						board.connections.get(i).getTownA().getAmountOfConnections(),
-						board.connections.get(i).getTownA().getxPos(), board.connections.get(i).getTownA().getyPos()),
-
-				new Town(board.connections.get(i).getTownB().getName(),
-						board.connections.get(i).getTownB().getAmountOfConnections(),
-						board.connections.get(i).getTownB().getxPos(), board.connections.get(i).getTownB().getyPos()),
-
-				board.connections.get(i).getLength(), board.connections.get(i).getPoint(), 1));
-
-				jsontest3[i] = temp;
-
+			
+			if (activater != null) {
+				ps.println(activater);
+				activater = null;
 			}
-
-			// Sending all the traincard from the traincardstack to the
-			// arraystring
-			String[] jsonTCS = new String[board.arrayOfTrainCards.size()];
-		//	System.out.println(board.arrayOfTrainCards.size());
-
-			for (int i = 0; i < board.arrayOfTrainCards.size(); i++) {
-				String temp = serializer.toJson(board.arrayOfTrainCards.get(i));
-				jsonTCS[i] = temp;
-			}
-		//	System.out.println(jsonTCS[4]);
-
-			// DisplayedTrainStack to JSON string
-			String[] jsonDTS = new String[board.displayedTrainStack.size()];
-			for (int i = 0; i < board.displayedTrainStack.size(); i++) {
-				String temp = serializer.toJson(board.displayedTrainStack.get(i));
-				jsonDTS[i] = temp;
-			}
-
-			// PlayerPiece to JSON string
-			String[] jsonPlP = new String[board.playerPieces.length];
-			for (int i = 0; i < board.playerPieces.length; i++) {
-				String temp = serializer.toJson(board.playerPieces[i]);
-				jsonPlP[i] = temp;
-			}
-
-			String[] cStringsIsTaken = new String[board.connections.size()];
-			for (int i = 0; i < board.connections.size(); i++) {
-				String temp = serializer.toJson(0 + i);
-				cStringsIsTaken[i] = temp;
-			}
-
-			/*
-			 * //DisplayedMissionStack to JSON string String[] jsonMCS = new
-			 * String[board.displayedMissionStack.size()];; for (int i=0;
-			 * i<board.displayedMissionStack.size(); i++) { String temp =
-			 * serializer.toJson(board.displayedMissionStack.get(i)); jsonMCS[i]
-			 * = temp;
-			 * 
-			 * }
-			 * 
-			 */
-
-			// Trains to JSON
-			// String[] jsonTra = null;
-
-			// Player to Json
-
-			// TrashTrainCard to JSON
-
-			// TrashMissionCard to JSON
-
-			// MissionCards on hand to JSON
-
-			// TrainCards on hand to JSON
-
-			// -----------------------------------------------------------------------------------------------------------------------
+	
+			
+			
+			
 			// This is where we start sending the JSONS
-			ps.println(activater);
 
-			// Sending all the connections.
-	//		for (int i = 0; i < board.connections.size(); i++) {
-	//			ps.println(jsontest3[i]);
-				// ps.println(activator + "\n" + jsontest3[i] +/* "\n" + json1 +
-				// "\n"+ json2 + "\n" +json3 + "\n"+json4 + "\n"+json5 +
-				// "\n"+json6 + "\n"+json7 +*/ "\n"+ jsontest3[5] + "\n"+json9 +
-				// "\n");
-	//		}
-
-			// sending the arrayoftraincards.
-	//		for (int i = 0; i < board.arrayOfTrainCards.size(); i++) {
-	//			ps.println(jsonTCS[i]);
-	//		}
-
-			// Sending displayedTrainStack
-	//		for (int i = 0; i < board.displayedTrainStack.size(); i++) {
-	//			ps.println(jsonDTS[i]);
-	//		}
-
-			// Sending the playerpieces
-	//		for (int i = 0; i < board.playerPieces.length; i++) {
-	//			ps.println(jsonPlP[i]);
-	//		}
-
-	//		for (int i = 0; i < board.connections.size(); i++) {
-	//			ps.println(0 + i);
-	//		}
-
-			/*
-			 * //Sending the missionCardStack for (int i=0;
-			 * i<board.displayedMissionStack.size(); i++) {
-			 * ps.println(jsonMCS[i]); }
-			 * 
-			 */
-
-			InputStreamReader ir = new InputStreamReader(Sock.getInputStream());
+			InputStreamReader ir = new InputStreamReader(s.getInputStream());
 			BufferedReader br = new BufferedReader(ir);
+			
+			
+			
+		
+			System.out.println(board.player1TrainHandStack.size());
+			
+			for (int i=0; i<4; i++)
+			{
+				String temp = br.readLine();
+				Card c = new Gson().fromJson(temp, Card.class);
+				board.player1TrainHandStack.add(c);
+				System.out.println(c.getxPos());
+			}
+			
+			System.out.println(board.player1TrainHandStack.size());
+			
+			
 			while (true) {
+				
+				//This is what all clients should receive on gamestart
+					
+				
+					
+				
+				
+				
+				
 				String Message = br.readLine();
 				System.out.println(Message);
 
 				if (br.readLine().contains("CanAct")) {
-
 					isYourTurn = true;
-
-				}
-				if (activater == "state1") {
-
-					ps.println(activater);
-
-					activater = null;
-				}
-				if (activater == "state2") {
-
-					ps.println(activater);
-
-					activater = null;
-				}
-				if (activater == "state3") {
-
-					ps.println(activater);
-
-					activater = null;
 				}
 			}
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-		// +++++++++++
 
 	}
 }
