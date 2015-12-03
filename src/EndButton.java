@@ -23,10 +23,11 @@ public class EndButton {
 		if (state == 0) {
 			g.setColor(new Color(255, 255, 0));
 			g.fillRect(xPos, yPos, width, height);
-		} else {
+		} else if (state == 1) {
 			g.setColor(new Color(0, 255, 0));
 			g.fillRect(xPos, yPos, width, height);
 		}
+		
 		g.setColor(new Color(0, 0, 0));
 
 		g.drawString("EndTurn", xPos + width / 5, yPos + height / 3);

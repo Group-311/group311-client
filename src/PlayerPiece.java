@@ -9,6 +9,8 @@ public class PlayerPiece {
 	private Color color;
 	private Circle playerPiece;
 	private int playerNum;
+	
+	boolean hasbeenmoved = false;
 
 	PlayerPiece(Color color, int playerNum) {
 		this.color = color;
@@ -20,6 +22,7 @@ public class PlayerPiece {
 	}
 
 	public void move(int points) {
+		if(!hasbeenmoved){
 		for (int i = 0; i < points; i++) {
 			if (xPos == 10 + playerNum * 4 && yPos > 104) {
 				this.yPos -= 33;
@@ -39,6 +42,8 @@ public class PlayerPiece {
 			}
 		}
 		totalPoints += points;
+		hasbeenmoved = true;
+		}
 
 	}
 

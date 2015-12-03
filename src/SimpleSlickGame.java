@@ -40,6 +40,8 @@ public class SimpleSlickGame extends BasicGame {
 	private Color red, green, blue, yellow;
 
 	private Image map = null;
+	
+	private boolean completedActions = false;
 
 	int xpos;
 	int ypos;
@@ -63,8 +65,8 @@ public class SimpleSlickGame extends BasicGame {
 		// I don't know where this has to be loaded, but for now we can load all
 		// images here
 
-		for (int flf = 0; flf < board.connections.size(); flf++)
-			connectionsToDraw.add(board.connections.get(flf));
+		//for (int flf = 0; flf < board.connections.size(); flf++)
+			//connectionsToDraw.add(board.connections.get(5));
 
 		map = new Image("/pics/Map.jpg");
 		board.setBoardPic(map);
@@ -75,10 +77,10 @@ public class SimpleSlickGame extends BasicGame {
 		blue = new Color(0, 0, 255);
 		yellow = new Color(255, 255, 0);
 
-		board.players[0].setColor(new Color(red));
-		board.players[1].setColor(new Color(green));
-		board.players[2].setColor(new Color(blue));
-		board.players[3].setColor(new Color(yellow));
+		board.playerPieces[0].setColor(new Color(red));
+		board.playerPieces[1].setColor(new Color(green));
+		board.playerPieces[2].setColor(new Color(blue));
+		board.playerPieces[3].setColor(new Color(yellow));
 
 		// Setting the images for the summaryCard
 		summaryBackImage = new Image("/pics/summaryBack.jpg");
@@ -184,7 +186,10 @@ public class SimpleSlickGame extends BasicGame {
 					townB = null;
 				} else {
 					selectedConnection = findConnectionToBuild(townA, townB);
-					// connectionsToDraw.add(selectedConnection);
+					connectionsToDraw.add(selectedConnection);
+					//playCards();
+					completedActions = true;
+					
 					System.out.println("The selected connection require " + selectedConnection.getLength()
 							+ " trains with the color " + selectedConnection.getColor().getColorName());
 				}
@@ -244,6 +249,10 @@ public class SimpleSlickGame extends BasicGame {
 				System.out.println("Displayed train card #4 has been clicked");
 			}
 		}
+		
+		/*for(int flf = 0; flf < connectionsToDraw.size(); flf++){
+			connectionsToDraw.get(flf).movePlayerPiece();
+		}*/
 	}
 
 	private Connection findConnectionToBuild(Town town1, Town town2) {
@@ -294,14 +303,18 @@ public class SimpleSlickGame extends BasicGame {
 		// }
 
 		// Setting the visibility of the playerpieces
-		for (int i = 0; i < board.players.length; i++) {
-			board.players[i].setVisible(g);
+		for (int i = 0; i < board.playerPieces.length; i++) {
+			board.playerPieces[i].setVisible(g);
 		}
 
 		board.button.setVisible(g, 0);
+		
+		if(completedActions)
+			board.button.setVisible(g,1);
 
 		for (int j = 0; j < connectionsToDraw.size(); j++) {
 			connectionsToDraw.get(j).drawConnection(player1, g);
+			board.playerPieces[player1.getNum()].move(connectionsToDraw.get(j).getPoint());
 		}
 
 	}

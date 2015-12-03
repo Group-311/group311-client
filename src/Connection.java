@@ -115,10 +115,13 @@ public class Connection {
 		
 		g.setColor(player.getCustomColor().getColor());
 		g.drawLine(townA.getxPos(), 768-townA.getyPos(), townB.getxPos(), 768-townB.getyPos());
+		
+		//movePlayerPiece(this.point);
 	}
 	public int getPoint() {
 		return point;
 	}
+	
 	
 
 }

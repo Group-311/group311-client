@@ -13,7 +13,7 @@ public class Board {
 	Town[] towns;
 	EndButton button;
 	
-	PlayerPiece[] players;
+	PlayerPiece[] playerPieces;
 
 	
 	ArrayList<Connection> connections = new ArrayList<Connection>();
@@ -44,7 +44,7 @@ public class Board {
 		// set the amount of towns, connections, colors and players
 		towns = new Town[36];
 		colors = new CustomColor[9];
-		players = new PlayerPiece[numOfPlayers];
+		playerPieces = new PlayerPiece[numOfPlayers];
 
 		// create the different types of cards
 		summaryCard = new SummaryCard();
@@ -143,10 +143,10 @@ public class Board {
 		connections.add(new Connection(colors[6], towns[1], towns[5], 4, 7));
 		
 		//connections[10] = new Connection(colors[4], towns[1], towns[6], 6, 13);
-		connections.add(new Connection(colors[4], towns[1], towns[6], 6, 13));
+		connections.add(new Connection(colors[4], towns[1], towns[6], 6, 15));
 		
 		//connections[11] = new Connection(colors[0], towns[2], towns[7], 6, 13);
-		connections.add(new Connection(colors[0], towns[2], towns[7], 6, 13));
+		connections.add(new Connection(colors[0], towns[2], towns[7], 6, 15));
 		
 		//connections[12] = new Connection(colors[2], towns[3], towns[7], 5, 10);
 		connections.add(new Connection(colors[2], towns[3], towns[7], 5, 10));
@@ -161,10 +161,10 @@ public class Board {
 		connections.add(new Connection(colors[6], towns[4], towns[9], 3, 4));
 		
 		//connections[16] = new Connection(colors[5], towns[4], towns[13], 6, 13);
-		connections.add(new Connection(colors[5], towns[4], towns[13], 6, 13));
+		connections.add(new Connection(colors[5], towns[4], towns[13], 6, 15));
 		
 		//connections[17] = new Connection(colors[3], towns[5], towns[10], 6, 13);
-		connections.add(new Connection(colors[3], towns[5], towns[10], 6, 13));
+		connections.add(new Connection(colors[3], towns[5], towns[10], 6, 15));
 		
 		//connections[18] = new Connection(colors[6], towns[5], towns[6], 4, 7);
 		connections.add(new Connection(colors[6], towns[5], towns[6], 4, 7));
@@ -191,7 +191,7 @@ public class Board {
 		connections.add(new Connection(colors[0], towns[6], towns[10], 4, 7));
 		
 		//connections[26] = new Connection(colors[2], towns[6], towns[14], 6, 13);
-		connections.add(new Connection(colors[2], towns[6], towns[14], 6, 13));
+		connections.add(new Connection(colors[2], towns[6], towns[14], 6, 15));
 		
 		//connections[27] = new Connection(colors[1], towns[6], towns[15], 5, 10);
 		connections.add(new Connection(colors[1], towns[6], towns[15], 5, 10));
@@ -227,10 +227,10 @@ public class Board {
 		connections.add(new Connection(colors[1], towns[13], towns[18], 4, 7));
 		
 		//connections[38] = new Connection(colors[7], towns[13], towns[19], 6, 13);
-		connections.add(new Connection(colors[7], towns[13], towns[19], 6, 13));
+		connections.add(new Connection(colors[7], towns[13], towns[19], 6, 15));
 		
 		//connections[39] = new Connection(colors[6], towns[10], towns[20], 6, 13);
-		connections.add(new Connection(colors[6], towns[10], towns[20], 6, 13));
+		connections.add(new Connection(colors[6], towns[10], towns[20], 6, 15));
 		
 		//connections[40] = new Connection(colors[5], towns[10], towns[14], 4, 7);
 		connections.add(new Connection(colors[5], towns[10], towns[14], 4, 7));
@@ -239,7 +239,7 @@ public class Board {
 		connections.add(new Connection(colors[6], towns[14], towns[20], 3, 4));
 		
 		//connections[42] = new Connection(colors[8], towns[14], towns[26], 6, 13);
-		connections.add(new Connection(colors[8], towns[14], towns[26], 6, 13));
+		connections.add(new Connection(colors[8], towns[14], towns[26], 6, 15));
 		
 		//connections[43] = new Connection(colors[1], towns[14], towns[21], 3, 4);
 		connections.add(new Connection(colors[1], towns[14], towns[21], 3, 4));
@@ -338,7 +338,7 @@ public class Board {
 		connections.add(new Connection(colors[2], towns[24], towns[29], 4, 7));
 		
 		//connections[75] = new Connection(colors[1], towns[24], towns[35], 6, 13);
-		connections.add(new Connection(colors[1], towns[24], towns[35], 6, 13));
+		connections.add(new Connection(colors[1], towns[24], towns[35], 6, 15));
 		
 		//connections[76] = new Connection(colors[6], towns[26], towns[27], 2, 2);
 		connections.add(new Connection(colors[6], towns[26], towns[27], 2, 2));
@@ -533,9 +533,9 @@ public class Board {
 		System.out.println("Amount of face-down cards in the train stack on the board: " + arrayOfTrainCards.size());
 		System.out.println(" "); // for spacing
 		//PlayerPiece instantiation.
-		for (int i=0; i<players.length;i++)
+		for (int i=0; i<playerPieces.length;i++)
 		{
-			players[i]= new PlayerPiece(null, i+1);
+			playerPieces[i]= new PlayerPiece(null, i+1);
 		}
 		
 	}
