@@ -54,6 +54,8 @@ public class SimpleSlickGame extends BasicGame {
 
 	private Town townA = null;
 	private Town townB = null;
+	
+	String activater=null;
 
 	public ArrayList<Connection> connectionsToDraw = new ArrayList<Connection>();
 
@@ -169,6 +171,7 @@ public class SimpleSlickGame extends BasicGame {
 
 		// --------------------------------------------------------------------------------------------------------------------------------------------
 		// Will implement what happens when you click a city in here.
+		
 if (isYourTurn){
 		if (input.isMousePressed(0)) {
 			for (int j = 0; j < board.towns.length; j++) {
@@ -261,6 +264,7 @@ if (isYourTurn){
 					System.out.println("YouPickedMissionCards");
 					
 					//Space for what should be send to the client
+					activater = "state1";
 					
 					isYourTurn = false;
 				}
@@ -270,7 +274,7 @@ if (isYourTurn){
 					
 					
 					//Space for what should be send to the client
-					
+					activater = "state2";
 					
 					isYourTurn = false;
 				}
@@ -280,6 +284,7 @@ if (isYourTurn){
 					System.out.println("youPlayedAConnection");
 					
 					//Space for what should be send to the client
+					activater = "state3";
 					
 					isYourTurn = false;
 				}
