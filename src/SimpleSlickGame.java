@@ -201,6 +201,9 @@ public class SimpleSlickGame extends BasicGame implements Runnable{
 		// --------------------------------------------------------------------------------------------------------------------------------------------
 		// Will implement what happens when you click a city in here.
 
+		
+		
+		
 		if (isYourTurn) {
 			if (input.isMousePressed(0)) {
 				for (int j = 0; j < board.towns.length; j++) {
@@ -247,6 +250,8 @@ public class SimpleSlickGame extends BasicGame implements Runnable{
 				 */
 				if (xpos < board.missionCardStack.xPos + board.missionCardStack.width
 						&& xpos > board.missionCardStack.xPos && ypos > 768 - board.missionCardStack.height) {
+					
+					youPickedMissionCards= true;
 				}
 
 				/*
