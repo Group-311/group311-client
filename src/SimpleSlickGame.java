@@ -194,6 +194,7 @@ if (isYourTurn){
 					connectionsToDraw.add(selectedConnection);
 					//playCards();
 					completedActions = true;
+					youPlayedAConnection = true;
 					
 					System.out.println("The selected connection require " + selectedConnection.getLength()
 							+ " trains with the color " + selectedConnection.getColor().getColorName());
