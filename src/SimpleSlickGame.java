@@ -615,7 +615,7 @@ public class SimpleSlickGame extends BasicGame {
 			
 			//-----------------------------------------------------------------------------------------------------------------------
 			//This is where we start sending the JSONS
-			ps.println(activator +"\n");
+			ps.println(activator);
 
 
 			//Sending all the connections.
