@@ -110,6 +110,10 @@ static Socket s;
 	Players player2 = new Players(2, board.colors[1]);
 	Players player3 = new Players(3, board.colors[2]);
 	Players player4 = new Players(4, board.colors[3]);
+	
+	
+	ArrayList<Card> myHand;
+	
 
 	public Connection selectedConnection = null;
 
@@ -168,6 +172,10 @@ static Socket s;
 		whiteTrainCard = new Image("/pics/whiteTrainCard.png");
 		yellowTrainCard = new Image("/pics/yellowTrainCard.png");
 		// rainbowTrainCard = new Image("/rainbowTrainCard.png"); without jokers
+		
+		
+		
+		
 
 		// Applying the trainCardImages to the correct spot within the array.
 		for (int i = 0; i < 12; i++) {
@@ -216,6 +224,8 @@ static Socket s;
 	@Override
 	public void update(GameContainer gc, int i) throws SlickException {
 
+		
+		
 		Input input = gc.getInput();
 		xpos = Mouse.getX();
 		ypos = Mouse.getY();
@@ -744,26 +754,53 @@ static Socket s;
 			BufferedReader br = new BufferedReader(ir);
 			
 			
+
 			
-		
-			System.out.println(board.player1TrainHandStack.size());
 			
-			for (int i=0; i<4; i++)
-			{
-				String temp = br.readLine();
-				Card c = new Gson().fromJson(temp, Card.class);
-				board.player1TrainHandStack.add(c);
-				System.out.println(c.getxPos());
-			}
-			
-			System.out.println(board.player1TrainHandStack.size());
-			
+
+			String whoAmI = br.readLine();
 			
 			while (true) {
 				
 				//This is what all clients should receive on gamestart
-					
-				
+		
+				if (whoAmI.contains("1")) {
+					for (int i=0; i<4; i++)
+					{
+						String temp = br.readLine();
+						Card c = new Gson().fromJson(temp, Card.class);
+						board.player1TrainHandStack.add(c);
+						System.out.println(board.player1TrainHandStack.size());
+			
+					}
+				}
+				else if (whoAmI.contains("2")) {
+					for (int i=0; i<4; i++)
+					{
+						String temp = br.readLine();
+						Card c = new Gson().fromJson(temp, Card.class);
+						board.player1TrainHandStack.add(c);
+						System.out.println("I am 2" + board.player1TrainHandStack.size());
+					}
+				}
+				else if (whoAmI.contains("3")) {
+					for (int i=0; i<4; i++)
+					{
+						String temp = br.readLine();
+						Card c = new Gson().fromJson(temp, Card.class);
+						board.player1TrainHandStack.add(c);
+						System.out.println("I am 3" + board.player1TrainHandStack.size());
+					}
+				}
+				else if (whoAmI.contains("4")) {
+					for (int i=0; i<4; i++)
+					{
+						String temp = br.readLine();
+						Card c = new Gson().fromJson(temp, Card.class);
+						board.player1TrainHandStack.add(c);
+						System.out.println("I am 4" + board.player1TrainHandStack.size());
+					}
+				}
 					
 				
 				
