@@ -44,9 +44,6 @@ public class SimpleSlickGame extends BasicGame implements Runnable{
 
 	public static Town tempCityB, tempCityA;
 	public static Card tempCard;
-	
-	//public ClientThread client = new ClientThread();
-	
 
 	// +++++
 
@@ -100,7 +97,6 @@ public class SimpleSlickGame extends BasicGame implements Runnable{
 
 	@Override
 	public void init(GameContainer gc) throws SlickException {
-		
 		// I don't know where this has to be loaded, but for now we can load all
 		// images here
 
