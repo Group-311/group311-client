@@ -32,6 +32,8 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 	String textString;
 	static Socket s;
 
+	static boolean runThisOnce=false;
+	
 	static Socket Sock;
 
 	public static PrintStream ps;
@@ -866,7 +868,8 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 						// We need connections.isTaken(Player.)
 						for (int j=0; j<board.connections.size();j++)
 						{
-							ps.println(board.connections.get(j).getTakenByPlayer()); 
+							String temp = serializer.toJson(board.connections.get(j).getTakenByPlayer());
+							ps.println(temp); 
 						}
 						
 						
@@ -878,12 +881,14 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 			}
 					// This is where we start sending the JSONS
 
+			
 			String whoAmI = br.readLine();
-
 			while (true) {
 
 				// This is what all clients should receive on gamestart
-
+if (runThisOnce == true)
+{
+	
 				if (whoAmI.contains("1")) {
 					for (int i = 0; i < 4; i++) {
 						String temp = br.readLine();
@@ -896,6 +901,10 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 						board.player1MissionHandStack.add(c);
 						System.out.println(board.player1MissionHandStack.get(i).getTownA().getName());
 					}
+						String temp1 = br.readLine();
+						Players p1 = new Gson().fromJson(temp1, Players.class);
+						
+					
 				} else if (whoAmI.contains("2")) {
 					for (int i = 0; i < 4; i++) {
 						String temp = br.readLine();
@@ -908,6 +917,8 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 						board.player1MissionHandStack.add(c);
 						System.out.println(board.player1MissionHandStack.get(i).getTownA().getName());
 					}
+					String temp2 = br.readLine();
+					Players p2 = new Gson().fromJson(temp2, Players.class);
 				} else if (whoAmI.contains("3")) {
 					for (int i = 0; i < 4; i++) {
 						String temp = br.readLine();
@@ -921,6 +932,8 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 						board.player1MissionHandStack.add(c);
 						System.out.println(board.player1MissionHandStack.get(i).getTownA().getName());
 					}
+					String temp3 = br.readLine();
+					Players p3 = new Gson().fromJson(temp3, Players.class);
 				} else if (whoAmI.contains("4")) {
 					for (int i = 0; i < 4; i++) {
 						String temp = br.readLine();
@@ -933,6 +946,8 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 						board.player1MissionHandStack.add(c);
 						System.out.println(board.player1MissionHandStack.get(i).getTownA().getName());
 					}
+					String temp4 = br.readLine();
+					Players p4 = new Gson().fromJson(temp4, Players.class);
 				}
 				for (int i = 0; i < board.displayedTrainStack.size(); i++) {
 					String temp = br.readLine();
@@ -959,7 +974,8 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 					board.arrayOfMissionCards.remove(i);
 					board.arrayOfMissionCards.add(i, c);
 				}
-
+//runThisOnce=false;
+}
 				String Message = br.readLine();
 
 				if (Message.contains("CanAct")) {
