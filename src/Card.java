@@ -63,11 +63,22 @@ public class Card {
 			backImage.draw(xPos, yPos, width, height);
 		else
 			frontImage.draw(xPos, yPos, width, height);
-	}
+	} 
 
 	// Flipping the card to frontImage
 	public void setVisible1() {
+
 		frontImage.draw(xPos, yPos, width, height);
+
+		
+	}
+	public void setVisible1(Graphics g)
+	{
+		if (color.getColorName()!=null){
+		g.drawString(color.getColorName(), xPos, yPos);
+		}
+		else 
+			g.drawString("waiting", xPos, yPos);
 	}
 
 	public void setColor(CustomColor color) {

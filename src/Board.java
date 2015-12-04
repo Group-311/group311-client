@@ -10,6 +10,8 @@ public class Board {
 	EndButton button;
 	
 	PlayerPiece[] playerPieces;
+	
+	
 
 	
 	ArrayList<Connection> connections = new ArrayList<Connection>();
@@ -524,13 +526,13 @@ public class Board {
 		 * copy card from arrayOfTrainCards to displayedTrainStack
 		 * the copied card in arrayOfTrainCards should be removed
 		 */
-//		int displayedTrainCardIncrementer = 2;
+		int displayedTrainCardIncrementer = 2;
 
 		for (int i = 0; i < 5; i++) {
 			displayedTrainStack.add(arrayOfTrainCards.get(0)); // card#deckOfA --> card#playerHandStack
-//			displayedTrainStack.get(i).yPos = 85 * displayedTrainCardIncrementer;
+			displayedTrainStack.get(i).yPos = 85 * displayedTrainCardIncrementer;
 			arrayOfTrainCards.remove(0); // card#deckOfA --> remove
-//			displayedTrainCardIncrementer++;
+			displayedTrainCardIncrementer++;
 		}
 		
 		// CONTROL: amount of train cards in the displayed card stack

@@ -61,6 +61,8 @@ static Socket s;
 	public static Town tempCityB, tempCityA;
 	public static Card tempCard;
 
+	public static boolean displayTheCards= false, displayTheCards2=false;
+	
 	// +++++
 
 	// Color counters
@@ -225,6 +227,10 @@ static Socket s;
 	public void update(GameContainer gc, int i) throws SlickException {
 
 		
+		
+		if (displayTheCards2=true){
+			displayTheCards=true;
+		}
 		
 		Input input = gc.getInput();
 		xpos = Mouse.getX();
@@ -615,7 +621,7 @@ static Socket s;
 
 			}
 		}
-
+		
 	}
 
 	private Connection findConnectionToBuild(Town town1, Town town2) {
@@ -651,10 +657,15 @@ static Socket s;
 		board.stationaryCardM.setVisible();
 		
 		// board.connections.get(2).setTakenByPlayer(player1, g);
-		
-		for (int i = 0; i < 5; i++) {
-			board.displayedTrainStack.get(i).setVisible1();
+	//	for (int j = 0; j < board.displayedTrainStack.size(); j++) {
+	//		board.displayedTrainStack.get(j).setVisible1();
+	//		}
+	
+		for (int j=0; j<board.displayedTrainStack.size();j++)
+		{
+			board.displayedTrainStack.get(j).setVisible1(g);
 		}
+		
 
 //		for the mission cards visualization
 //		for (int i = 0; i < board.player1MissionHandStack.size(); i++) {
@@ -662,9 +673,11 @@ static Socket s;
 //		}
 
 		// Setting the visibility of the playerpieces
+		
 		for (int i = 0; i < board.playerPieces.length; i++) {
 			board.playerPieces[i].setVisible(g);
 		}
+		
 
 		// Drawing the string counters for the cards determined by color
 		board.button.setVisible(g, 0);
@@ -776,9 +789,9 @@ static Socket s;
 						String temp = br.readLine();
 						MissionCard c = new Gson().fromJson(temp, MissionCard.class);
 						board.player1MissionHandStack.add(c);
-						System.out.println(board.player1MissionHandStack.get(i).getTownA());
+						System.out.println(board.player1MissionHandStack.get(i).getTownA().getName());
 					}
-				}/*
+				}
 				else if (whoAmI.contains("2")) {
 					for (int i=0; i<4; i++)
 					{
@@ -789,9 +802,9 @@ static Socket s;
 					for (int i=0; i<2; i++)
 					{
 						String temp = br.readLine();
-						Card c = new Gson().fromJson(temp, Card.class);
+						MissionCard c = new Gson().fromJson(temp, MissionCard.class);
 						board.player1MissionHandStack.add(c);
-						System.out.println(board.player1MissionHandStack.get(i).getTownA());
+						System.out.println(board.player1MissionHandStack.get(i).getTownA().getName());
 					}
 				}
 				else if (whoAmI.contains("3")) {
@@ -800,13 +813,14 @@ static Socket s;
 						String temp = br.readLine();
 						Card c = new Gson().fromJson(temp, Card.class);
 						board.player1TrainHandStack.add(c);
-						System.out.println(board.player1MissionHandStack.get(i).getTownA());
+						
 					}
 					for (int i=0; i<2; i++)
 					{
 						String temp = br.readLine();
-						Card c = new Gson().fromJson(temp, Card.class);
+						MissionCard c = new Gson().fromJson(temp, MissionCard.class);
 						board.player1MissionHandStack.add(c);
+						System.out.println(board.player1MissionHandStack.get(i).getTownA().getName());
 					}
 				}
 				else if (whoAmI.contains("4")) {
@@ -819,11 +833,39 @@ static Socket s;
 					for (int i=0; i<2; i++)
 					{
 						String temp = br.readLine();
-						Card c = new Gson().fromJson(temp, Card.class);
+						MissionCard c = new Gson().fromJson(temp, MissionCard.class);
 						board.player1MissionHandStack.add(c);
-						System.out.println(board.player1MissionHandStack.get(i).getTownA());
+						System.out.println(board.player1MissionHandStack.get(i).getTownA().getName());
 					}
-				}*/
+				}
+				for (int i =0; i<board.displayedTrainStack.size(); i++)
+				{
+					String temp = br.readLine();
+					Card c = new Gson().fromJson(temp, Card.class);
+					board.displayedTrainStack.remove(i);
+					board.displayedTrainStack.add(i,c);
+					
+					System.out.println(board.displayedTrainStack.get(i).getColor().getColorName());
+				}
+
+				for (int i=0; i<75;i++)
+				{
+					String temp = br.readLine();
+					Card c = new Gson().fromJson(temp, Card.class);
+					board.arrayOfTrainCards.remove(i);
+					board.arrayOfTrainCards.add(i,c);
+				}
+				for (int i=0; i<30;i++)
+				{
+					String temp = br.readLine();
+					MissionCard c = new Gson().fromJson(temp, MissionCard.class);
+					board.arrayOfMissionCards.remove(i);
+					board.arrayOfMissionCards.add(i,c);
+				}
+				
+				
+			
+				
 					
 				
 				
@@ -840,6 +882,7 @@ static Socket s;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+
 		}
 
 	}
