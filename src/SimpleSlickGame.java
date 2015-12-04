@@ -221,7 +221,7 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 		Input input = gc.getInput();
 		xpos = Mouse.getX();
 		ypos = Mouse.getY();
-		board.isYourTurnBoard = true;
+		
 		// --------------------------------------------------------------------------------------------------------------------------------------------
 		// Will implement what happens when you click a city in here.
 
@@ -999,7 +999,7 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 
 		board = new Board(4);
 
-		//s = new Socket("172.20.10.2", 2222);
+		s = new Socket("172.20.10.2", 2222);
 
 		SimpleSlickGame client = new SimpleSlickGame("Ticket to Ride");
 
