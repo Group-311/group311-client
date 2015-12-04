@@ -855,6 +855,7 @@ static Socket s;
 					board.arrayOfTrainCards.remove(i);
 					board.arrayOfTrainCards.add(i,c);
 				}
+				
 				for (int i=0; i<30;i++)
 				{
 					String temp = br.readLine();
