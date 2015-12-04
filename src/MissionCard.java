@@ -35,6 +35,12 @@ public class MissionCard extends Card{
 	public Town getTownB() {
 		return townB;
 	}
+
+@Override
+public int getPoints(){
+	return points;
+}
+
 	
 	/**
 	 * Overrides a default function which does nothing
@@ -131,4 +137,5 @@ public class MissionCard extends Card{
 		return returnValue;				//returns false often, but should return true at least once if there is a connection.
 		
 	}
+
 }

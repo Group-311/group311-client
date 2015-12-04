@@ -113,4 +113,8 @@ public class Card {
 	public Town getTownB() {
 		return null;
 	}
+
+	public int getPoints() {
+		return 0;
+	}
 }

@@ -28,6 +28,8 @@ public class Board {
 
 	Card[] playerHandStack;
 	
+	boolean isYourTurnBoard;
+	
 	ArrayList<Card> player1MissionHandStack, player2MissionHandStack, player3MissionHandStack, player4MissionHandStack;
 
 	ArrayList<Card> player1TrainHandStack, player2TrainHandStack, player3TrainHandStack, player4TrainHandStack;					// Instantiate player hand stack array lists
@@ -38,7 +40,7 @@ public class Board {
 	
 	Board(int numOfPlayers) throws SlickException {
 
-		
+		isYourTurnBoard = false;
 		player1TrainHandStack = new ArrayList<Card>();			// Player hand stack
 		player2TrainHandStack = new ArrayList<Card>();			// Player hand stack
 		player3TrainHandStack = new ArrayList<Card>();			// Player hand stack
