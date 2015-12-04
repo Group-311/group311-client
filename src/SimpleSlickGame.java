@@ -643,6 +643,13 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 
 					if (youPlayedAConnection) {
 						System.out.println("youPlayedAConnection");
+						
+						//This is where we check if someone completed their mission, and they get the points
+						for(int missions = 0; missions < player1.getHandOfMissions().size(); missions++){
+							if(player1.getHandOfMissions().get(missions).areConnected(player1)){
+								board.playerPieces[0].move(player1.getHandOfMissions().get(missions).getPoints());
+							}
+						}
 
 						// Space for what should be send to the client
 						activater = "state3";
