@@ -105,9 +105,18 @@ public class Connection {
 		
 		return false;
 	}
+	public int getTakenByPlayer(){
+		return ownedBy;
+	}
+	
 	public void setTakenByPlayer(Players player){
 		ownedBy = player.playerNum;
 		this.isTaken = true;
+	}
+	public int setTakenByPlayer(int num)
+	{
+		ownedBy=num;
+		return ownedBy;
 	}
 	public void drawConnection(Players player, Graphics g){
 		

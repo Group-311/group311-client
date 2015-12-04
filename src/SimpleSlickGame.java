@@ -18,6 +18,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import com.google.gson.Gson;
+import com.sun.media.jfxmedia.events.NewFrameEvent;
 import com.sun.security.ntlm.Client;
 
 import sun.print.resources.serviceui;
@@ -338,6 +339,10 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 					System.out.println("b:" + blueColorCounter + " r:" + redColorCounter + " o:" + orangeColorCounter
 							+ " w:" + whiteColorCounter + " y:" + yellowColorCounter + " b:" + blackColorCounter + " g:"
 							+ greenColorCounter + " p:" + pinkColorCounter);
+					
+					
+					youPickedTrainCards= true;
+					completedActions = true;
 				}
 
 				/*
@@ -639,6 +644,7 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 
 						// Space for what should be send to the client
 						activater = "state3";
+						System.out.println(activater);
 						run();
 						isYourTurn = false;
 					}
@@ -750,7 +756,7 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 		board = new Board(4);
 
 		// s = new Socket("172.20.10.2", 2222);
-		s = new Socket("192.168.43.131", 2222);
+		s = new Socket("172.20.10.2", 2222);
 
 		SimpleSlickGame client = new SimpleSlickGame("Ticket to Ride");
 
@@ -778,7 +784,8 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 			Gson serializer = new Gson();
 
 			if (activater != null) {
-				if (activater.contains("state1")) {
+				if (activater != null) {
+					if (activater.contains("state1")){
 					ps.println(activater);
 
 					System.out.println(board.arrayOfMissionCards.size());
@@ -799,18 +806,77 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 
 					}
 					System.out.println(board.arrayOfMissionCards.size());
-
-					for (int j = 0; j < board.player1MissionHandStack.size(); j++) {
-						String temp = serializer.toJson(board.player1MissionHandStack.get(j));
+					
+					
+					for (int j =0; j<board.player1MissionHandStack.size(); j++)
+					{
+						String temp =serializer.toJson(board.player1MissionHandStack.get(j));
 						ps.println(temp);
-
 					}
-
 					activater = null;
 				}
+					
+					
+					// IF STATE IS 2.
+					else if (activater.contains("state2")){
+						System.out.println(activater);
+						System.out.println(board.arrayOfTrainCards.size());
+						ps.println(activater);
+						
+						for (int j=0; j<board.arrayOfTrainCards.size(); j++)
+						{
+							String temp = serializer.toJson(board.arrayOfTrainCards.get(j));
+							ps.println(temp);					
+						}
+						
+						
+						System.out.println(board.player1TrainHandStack.size());
+						for (int j=0; j<board.player1TrainHandStack.size();j++)
+						{
+							String temp = serializer.toJson(board.player1TrainHandStack.get(j));
+							ps.println(temp);
+						}
+						
+						for (int j=0; j<5;j++)
+						{
+							String temp = serializer.toJson(board.displayedTrainStack.get(j));
+							ps.println(temp);
+						}
+						activater = null;
+					}
+					else if (activater.contains("state3"))
+					{
+						ps.println(activater);
+						// We need the trains
+						
+						// We need the trainCards
+						for (int j=0; j<board.arrayOfTrainCards.size(); j++)
+						{
+							String temp = serializer.toJson(board.arrayOfTrainCards.get(j));
+							ps.println(temp);					
+						}
+						ps.println("stop");
+						// We need the traincardsstack
+						for (int j=0; j<board.player1TrainHandStack.size();j++)
+						{
+							String temp = serializer.toJson(board.player1TrainHandStack.get(j));
+							ps.println(temp);
+						}
+						ps.println("stop");
+						// We need connections.isTaken(Player.)
+						for (int j=0; j<board.connections.size();j++)
+						{
+							ps.println(board.connections.get(j).getTakenByPlayer()); 
+						}
+						
+						
+						
+						activater = null;
+						
+					}
+				}
 			}
-
-			// This is where we start sending the JSONS
+					// This is where we start sending the JSONS
 
 			String whoAmI = br.readLine();
 
@@ -876,13 +942,13 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 
 					System.out.println(board.displayedTrainStack.get(i).getColor().getColorName());
 				}
-
+				board.arrayOfTrainCards.clear();
 				for (int i = 0; i < 75; i++) {
 					String temp = br.readLine();
 					Card c = new Gson().fromJson(temp, Card.class);
-					board.arrayOfTrainCards.remove(i);
-					board.arrayOfTrainCards.add(i, c);
+					board.arrayOfTrainCards.add(c);
 				}
+				System.out.println(board.arrayOfTrainCards.size());
 
 				for (int i = 0; i < 8; i++) {
 					board.arrayOfMissionCards.remove(0);
