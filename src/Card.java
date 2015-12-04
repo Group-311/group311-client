@@ -118,4 +118,14 @@ public class Card {
 	public int getPoints() {
 		return 0;
 	}
+
+	public void setPointsHaveBeenGiven(boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public boolean getPointsHaveBeenGiven() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

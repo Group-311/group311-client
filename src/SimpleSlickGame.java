@@ -646,8 +646,9 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 						
 						//This is where we check if someone completed their mission, and they get the points
 						for(int missions = 0; missions < player1.getHandOfMissions().size(); missions++){
-							if(player1.getHandOfMissions().get(missions).areConnected(player1)){
+							if(!player1.getHandOfMissions().get(missions).getPointsHaveBeenGiven() && player1.getHandOfMissions().get(missions).areConnected(player1)){
 								board.playerPieces[0].move(player1.getHandOfMissions().get(missions).getPoints());
+								player1.getHandOfMissions().get(missions).setPointsHaveBeenGiven(true);
 							}
 						}
 

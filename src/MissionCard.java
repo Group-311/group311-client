@@ -11,7 +11,7 @@ public class MissionCard extends Card{
 	private Town townA, townB;
 	private int points;
 	Image image;
-	private boolean isCompleted;
+	private boolean isCompleted, pointsHaveBeenGiven;
 	
 	ArrayList<Connection> visitedConnections = new ArrayList<Connection>();
 
@@ -25,6 +25,7 @@ public class MissionCard extends Card{
 		this.townB = townB;
 		this.points=points;
 		this.isCompleted = false;
+		this.pointsHaveBeenGiven = false;
 	}
 @Override
 	public Town getTownA() {
@@ -136,6 +137,15 @@ public int getPoints(){
 		
 		return returnValue;				//returns false often, but should return true at least once if there is a connection.
 		
+	}
+	
+	@Override
+	public void setPointsHaveBeenGiven(boolean b){
+		pointsHaveBeenGiven = b;
+	}
+	@Override
+	public boolean getPointsHaveBeenGiven(){
+		return pointsHaveBeenGiven;
 	}
 
 }
