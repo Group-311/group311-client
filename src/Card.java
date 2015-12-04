@@ -11,6 +11,7 @@ public class Card {
 	protected Image displayedImage;
 	private int visible = 0;
 	protected CustomColor color;
+	private Town townA, townB;
 	
 	public Card() {
 		
@@ -105,13 +106,14 @@ public class Card {
 	public int getyPos() {
 		return yPos;
 	}
+	
 	public Town getTownA() {
-	return null;
+		return townA;
 	}
 
 
 	public Town getTownB() {
-		return null;
+		return townB;
 	}
 
 	public int getPoints() {
