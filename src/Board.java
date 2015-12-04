@@ -479,13 +479,6 @@ public class Board {
 		arrayOfMissionCards = missionCardStack.getdeckOfB();
 		// CONTROL: amount of cards in the mission card stack
 		System.out.println("Amount of face-down cards in the mission stack on the board: " + arrayOfMissionCards.size());
-				
-		for (int i = 0; i < 2; i++) {
-			player1MissionHandStack.add(arrayOfMissionCards.get(0)); // card#deckOfA --> card#playerHandStack
-			player1MissionHandStack.get(i).yPos = 688;
-			player1MissionHandStack.get(i).xPos = 80 * i;
-			arrayOfMissionCards.remove(0); // card#deckOfA --> remove
-		}
 		
 		// creating all the trainCards
 		for (int i = 0; i < trainCards.length; i++) {
