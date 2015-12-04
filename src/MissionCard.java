@@ -26,12 +26,12 @@ public class MissionCard extends Card{
 		this.points=points;
 		this.isCompleted = false;
 	}
-
+@Override
 	public Town getTownA() {
 		return townA;
 	}
 
-
+@Override
 	public Town getTownB() {
 		return townB;
 	}

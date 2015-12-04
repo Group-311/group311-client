@@ -770,17 +770,28 @@ static Socket s;
 						String temp = br.readLine();
 						Card c = new Gson().fromJson(temp, Card.class);
 						board.player1TrainHandStack.add(c);
-						System.out.println(board.player1TrainHandStack.size());
-			
 					}
-				}
+					for (int i=0; i<2; i++)
+					{
+						String temp = br.readLine();
+						MissionCard c = new Gson().fromJson(temp, MissionCard.class);
+						board.player1MissionHandStack.add(c);
+						System.out.println(board.player1MissionHandStack.get(i).getTownA());
+					}
+				}/*
 				else if (whoAmI.contains("2")) {
 					for (int i=0; i<4; i++)
 					{
 						String temp = br.readLine();
 						Card c = new Gson().fromJson(temp, Card.class);
 						board.player1TrainHandStack.add(c);
-						System.out.println("I am 2" + board.player1TrainHandStack.size());
+					}
+					for (int i=0; i<2; i++)
+					{
+						String temp = br.readLine();
+						Card c = new Gson().fromJson(temp, Card.class);
+						board.player1MissionHandStack.add(c);
+						System.out.println(board.player1MissionHandStack.get(i).getTownA());
 					}
 				}
 				else if (whoAmI.contains("3")) {
@@ -789,7 +800,13 @@ static Socket s;
 						String temp = br.readLine();
 						Card c = new Gson().fromJson(temp, Card.class);
 						board.player1TrainHandStack.add(c);
-						System.out.println("I am 3" + board.player1TrainHandStack.size());
+						System.out.println(board.player1MissionHandStack.get(i).getTownA());
+					}
+					for (int i=0; i<2; i++)
+					{
+						String temp = br.readLine();
+						Card c = new Gson().fromJson(temp, Card.class);
+						board.player1MissionHandStack.add(c);
 					}
 				}
 				else if (whoAmI.contains("4")) {
@@ -798,9 +815,15 @@ static Socket s;
 						String temp = br.readLine();
 						Card c = new Gson().fromJson(temp, Card.class);
 						board.player1TrainHandStack.add(c);
-						System.out.println("I am 4" + board.player1TrainHandStack.size());
 					}
-				}
+					for (int i=0; i<2; i++)
+					{
+						String temp = br.readLine();
+						Card c = new Gson().fromJson(temp, Card.class);
+						board.player1MissionHandStack.add(c);
+						System.out.println(board.player1MissionHandStack.get(i).getTownA());
+					}
+				}*/
 					
 				
 				
