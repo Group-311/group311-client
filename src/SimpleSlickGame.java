@@ -250,13 +250,250 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 						townB = null;
 					} else {
 						selectedConnection = findConnectionToBuild(townA, townB);
-						connectionsToDraw.add(selectedConnection);
+						//connectionsToDraw.add(selectedConnection);
+						
+						
+						
+						
+						// Claim a blue route, get points, use cards and train
+						// tokens
+						if (blueColorCounter >= selectedConnection.getLength()
+								&& selectedConnection.getColor() == board.colors[0]) {
+							connectionsToDraw.add(selectedConnection);
+
+							// Put the cards played back into the train card
+							// stack array list
+							for (int j = 0; j < selectedConnection.getLength(); j++) {
+								board.arrayOfTrainCards.add(board.player1TrainHandStack.get(0));
+								board.player1TrainHandStack.remove(0);
+							}
+
+							// amount of blue cards decreases by amount of cost
+							blueColorCounter -= selectedConnection.getLength();
+							// amount of train pieces decreases by amount of
+							// cost
+							player1.numOfTrains -= selectedConnection.getLength();
+
+							board.playerPieces[player1.playerNum].hasbeenmoved = false;
+							board.playerPieces[player1.playerNum].totalPoints += selectedConnection.getLength();
+						}
+
+						// Claim a red route, get points, use cards and train
+						// tokens
+						else if (redColorCounter >= selectedConnection.getLength()
+								&& selectedConnection.getColor() == board.colors[1]) {
+							connectionsToDraw.add(selectedConnection);
+
+							// Put the cards played back into the train card
+							// stack array list
+							for (int j = 0; j < selectedConnection.getLength(); j++) {
+								board.arrayOfTrainCards.add(board.player1TrainHandStack.get(0));
+								board.player1TrainHandStack.remove(0);
+							}
+
+							// amount of red cards decreases by amount of cost
+							redColorCounter -= selectedConnection.getLength();
+							// amount of train pieces decreases by amount of
+							// cost
+							player1.numOfTrains -= selectedConnection.getLength();
+
+							board.playerPieces[player1.playerNum].hasbeenmoved = false;
+							board.playerPieces[player1.playerNum].totalPoints += selectedConnection.getLength();
+						}
+
+						// Claim a orange route, get points, use cards and train
+						// tokens
+						else if (orangeColorCounter >= selectedConnection.getLength()
+								&& selectedConnection.getColor() == board.colors[2]) {
+							connectionsToDraw.add(selectedConnection);
+
+							// Put the cards played back into the train card
+							// stack array list
+							for (int j = 0; j < selectedConnection.getLength(); j++) {
+								board.arrayOfTrainCards.add(board.player1TrainHandStack.get(0));
+								board.player1TrainHandStack.remove(0);
+							}
+
+							// amount of orange cards decreases by amount of
+							// cost
+							orangeColorCounter -= selectedConnection.getLength();
+							// amount of train pieces decreases by amount of
+							// cost
+							player1.numOfTrains -= selectedConnection.getLength();
+
+							board.playerPieces[player1.playerNum].hasbeenmoved = false;
+							board.playerPieces[player1.playerNum].totalPoints += selectedConnection.getLength();
+						}
+
+						// Claim a white route, get points, use cards and train
+						// tokens
+						else if (whiteColorCounter >= selectedConnection.getLength()
+								&& selectedConnection.getColor() == board.colors[3]) {
+							connectionsToDraw.add(selectedConnection);
+
+							// Put the cards played back into the train card
+							// stack array list
+							for (int j = 0; j < selectedConnection.getLength(); j++) {
+								board.arrayOfTrainCards.add(board.player1TrainHandStack.get(0));
+								board.player1TrainHandStack.remove(0);
+							}
+
+							// amount of white cards decreases by amount of cost
+							whiteColorCounter -= selectedConnection.getLength();
+							// amount of train pieces decreases by amount of
+							// cost
+							player1.numOfTrains -= selectedConnection.getLength();
+
+							board.playerPieces[player1.playerNum].hasbeenmoved = false;
+							board.playerPieces[player1.playerNum].totalPoints += selectedConnection.getLength();
+						}
+
+						// Claim a yellow route, get points, use cards and train
+						// tokens
+						else if (yellowColorCounter >= selectedConnection.getLength()
+								&& selectedConnection.getColor() == board.colors[4]) {
+							connectionsToDraw.add(selectedConnection);
+
+							// Put the cards played back into the train card
+							// stack array list
+							for (int j = 0; j < selectedConnection.getLength(); j++) {
+								board.arrayOfTrainCards.add(board.player1TrainHandStack.get(0));
+								board.player1TrainHandStack.remove(0);
+							}
+
+							// amount of yellow cards decreases by amount of
+							// cost
+							yellowColorCounter -= selectedConnection.getLength();
+							// amount of train pieces decreases by amount of
+							// cost
+							player1.numOfTrains -= selectedConnection.getLength();
+
+							board.playerPieces[player1.playerNum].hasbeenmoved = false;
+							board.playerPieces[player1.playerNum].totalPoints += selectedConnection.getLength();
+						}
+
+						// Claim a black route, get points, use cards and train
+						// tokens
+						else if (blackColorCounter >= selectedConnection.getLength()
+								&& selectedConnection.getColor() == board.colors[5]) {
+							connectionsToDraw.add(selectedConnection);
+
+							// Put the cards played back into the train card
+							// stack array list
+							for (int j = 0; j < selectedConnection.getLength(); j++) {
+								board.arrayOfTrainCards.add(board.player1TrainHandStack.get(0));
+								board.player1TrainHandStack.remove(0);
+							}
+
+							// amount of black cards decreases by amount of cost
+							blackColorCounter -= selectedConnection.getLength();
+							// amount of train pieces decreases by amount of
+							// cost
+							player1.numOfTrains -= selectedConnection.getLength();
+
+							board.playerPieces[player1.playerNum].hasbeenmoved = false;
+							board.playerPieces[player1.playerNum].totalPoints += selectedConnection.getLength();
+						}
+
+						// Claim a grey route, get points, use cards and train
+						// tokens
+						else if (selectedConnection.getColor() == board.colors[6]) {
+							// Play all cards - no conditions
+							connectionsToDraw.add(selectedConnection);
+
+							if (blueColorCounter == selectedConnection.getLength()) {
+								blueColorCounter -= selectedConnection.getLength();
+							} else if (redColorCounter == selectedConnection.getLength()) {
+								redColorCounter -= selectedConnection.getLength();
+							} else if (orangeColorCounter == selectedConnection.getLength()) {
+								orangeColorCounter -= selectedConnection.getLength();
+							} else if (whiteColorCounter == selectedConnection.getLength()) {
+								whiteColorCounter -= selectedConnection.getLength();
+							} else if (yellowColorCounter == selectedConnection.getLength()) {
+								yellowColorCounter -= selectedConnection.getLength();
+							} else if (blackColorCounter == selectedConnection.getLength()) {
+								blackColorCounter -= selectedConnection.getLength();
+							} else if (greenColorCounter == selectedConnection.getLength()) {
+								greenColorCounter -= selectedConnection.getLength();
+							} else if (pinkColorCounter == selectedConnection.getLength()) {
+								pinkColorCounter -= selectedConnection.getLength();
+							}
+
+							// Put the cards played back into the train card
+							// stack array list
+							for (int j = 0; j < selectedConnection.getLength(); j++) {
+								board.arrayOfTrainCards.add(board.player1TrainHandStack.get(0));
+								board.player1TrainHandStack.remove(0);
+							}
+
+							// amount of train pieces decreases by amount of
+							// cost
+							player1.numOfTrains -= selectedConnection.getLength();
+
+							board.playerPieces[player1.playerNum].hasbeenmoved = false;
+							board.playerPieces[player1.playerNum].totalPoints += selectedConnection.getLength();
+						}
+
+						// Claim a green route, get points, use cards and train
+						// tokens
+						else if (greenColorCounter >= selectedConnection.getLength()
+								&& selectedConnection.getColor() == board.colors[7]) {
+							connectionsToDraw.add(selectedConnection);
+
+							// Put the cards played back into the train card
+							// stack array list
+							for (int j = 0; j < selectedConnection.getLength(); j++) {
+								board.arrayOfTrainCards.add(board.player1TrainHandStack.get(0));
+								board.player1TrainHandStack.remove(0);
+							}
+
+							// amount of green cards decreases by amount of cost
+							greenColorCounter -= selectedConnection.getLength();
+							// amount of train pieces decreases by amount of
+							// cost
+							player1.numOfTrains -= selectedConnection.getLength();
+
+							board.playerPieces[player1.playerNum].hasbeenmoved = false;
+							board.playerPieces[player1.playerNum].totalPoints += selectedConnection.getLength();
+						}
+
+						// Claim a pink route, get points, use cards and train
+						// tokens
+						else if (pinkColorCounter >= selectedConnection.getLength()
+								&& selectedConnection.getColor() == board.colors[8]) {
+							connectionsToDraw.add(selectedConnection);
+
+							// Put the cards played back into the train card
+							// stack array list
+							for (int j = 0; j < selectedConnection.getLength(); j++) {
+								board.arrayOfTrainCards.add(board.player1TrainHandStack.get(0));
+								board.player1TrainHandStack.remove(0);
+							}
+
+							// amount of pink cards decreases by amount of cost
+							pinkColorCounter -= selectedConnection.getLength();
+							// amount of train pieces decreases by amount of
+							// cost
+							player1.numOfTrains -= selectedConnection.getLength();
+
+							board.playerPieces[player1.playerNum].hasbeenmoved = false;
+							board.playerPieces[player1.playerNum].totalPoints += selectedConnection.getLength();
+						}
+						
+						
+						
+						
 
 						completedActions = true;
 						youPlayedAConnection = true;
 
 						System.out.println("The selected connection require " + selectedConnection.getLength()
 								+ " trains with the color " + selectedConnection.getColor().getColorName());
+						
+						// set the values of the towns to null so a new
+						// connection can be made
+						townA = null;
+						townB = null;
 					}
 				}
 
@@ -746,6 +983,9 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 		} else {
 			g.drawString("Player? tcards: 0", 20, 45);
 		}
+		
+		g.setColor(new Color(0, 0, 0));
+		g.drawString("Trains: " + player1.numOfTrains, 900, 720);
 
 		board.button.setVisible(g, 0);
 
@@ -766,7 +1006,7 @@ public class SimpleSlickGame extends BasicGame implements Runnable {
 		board = new Board(4);
 
 		// s = new Socket("172.20.10.2", 2222);
-		s = new Socket("172.20.10.2", 2222);
+		s = new Socket("192.168.43.131", 2222);
 
 		SimpleSlickGame client = new SimpleSlickGame("Ticket to Ride");
 

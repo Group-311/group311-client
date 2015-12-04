@@ -5,7 +5,8 @@ import org.newdawn.slick.geom.Circle;
 
 public class PlayerPiece {
 
-	private int totalPoints, xPos, yPos;
+	protected int totalPoints;
+	private int xPos, yPos;
 	private Color color;
 	private Circle playerPiece;
 	private int playerNum;
